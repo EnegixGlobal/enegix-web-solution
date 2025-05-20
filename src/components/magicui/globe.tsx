@@ -85,6 +85,7 @@ export function Globe({
       ...config,
       width: width.current * 2,
       height: width.current * 2,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onRender: (state: any) => {
         if (!pointerInteracting.current) phi.current += 0.005;
         state.phi = phi.current + rs.get();
