@@ -8,6 +8,9 @@ import { cn } from "@/lib/utils";
 
 const MOVEMENT_DAMPING = 1400;
 
+// Use the type that the cobe library expects
+type RenderState = Record<string, any>;
+
 const GLOBE_CONFIG: COBEOptions = {
   width: 800,
   height: 800,
@@ -85,8 +88,7 @@ export function Globe({
       ...config,
       width: width.current * 2,
       height: width.current * 2,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      onRender: (state: any) => {
+      onRender: (state: RenderState) => {
         if (!pointerInteracting.current) phi.current += 0.005;
         state.phi = phi.current + rs.get();
         state.width = width.current * 2;

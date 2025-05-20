@@ -8,10 +8,22 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.config({
     extends: ['next'],
+    parser: '@typescript-eslint/parser',
+    plugins: ['@typescript-eslint'],
     rules: {
       'react/no-unescaped-entities': 'off',
       '@next/next/no-page-custom-font': 'off',
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
+    overrides: [
+      {
+        // Disable no-explicit-any for the globe component
+        files: ['**/globe.tsx'],
+        rules: {
+          '@typescript-eslint/no-explicit-any': 'off'
+        }
+      }
+    ]
   }),
 ]
  

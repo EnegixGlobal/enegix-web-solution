@@ -180,17 +180,15 @@ const ServicesSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <motion.h2
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold mb-4 font-montserrat tracking-tight heading-text"
           >
-            <h1 className="text-3xl font-bold tracking-tighter md:text-3xl lg:text-5xl">
-              Our <AuroraText>Services</AuroraText>
-            </h1>
-          </motion.h2>
+            Our <AuroraText>Services</AuroraText>
+          </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -216,7 +214,7 @@ const ServicesSection = () => {
           viewport={{ once: true }}
           className="flex justify-center mt-12"
         >
-           <RainbowButton size={"lg"}>View Our Services</RainbowButton>
+          <RainbowButton size={"lg"}>View Our Services</RainbowButton>
         </motion.div>
       </div>
     </section>

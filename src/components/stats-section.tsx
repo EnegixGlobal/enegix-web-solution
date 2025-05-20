@@ -26,7 +26,7 @@ const testimonials = [
       "Hey I made this website and i can bet you that is the top class website you will ever see.",
     name: "Mr. Rajiv",
     designation: "Web Developer",
-    src: "https://avatars.githubusercontent.com/u/95340414?v=4",
+    src: "https://i.pinimg.com/736x/66/86/a7/6686a7ab9c6bc084952676915af65e8a.jpg",
   },
   {
     quote:
@@ -87,12 +87,13 @@ const StatsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-            
             >
               <Card className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 text-center relative overflow-hidden max-w-[350px] w-full">
                 <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
                 <CardHeader>
-                  <CardTitle className="text-3xl text-gray-200">{stat.value}</CardTitle>
+                  <CardTitle className="text-3xl text-gray-200">
+                    {stat.value}
+                  </CardTitle>
                   <CardDescription className="text-gray-400">
                     {stat.label}
                   </CardDescription>
@@ -105,17 +106,15 @@ const StatsSection = () => {
         {/* Testimonials */}
         <div className="mb-16">
           <div className="text-center mb-12">
-            <motion.h2
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
               className="text-3xl md:text-5xl font-bold mb-4 font-poppins tracking-tight"
             >
-              <h1 className="text-3xl font-bold tracking-tighter md:text-3xl lg:text-5xl">
-                What Our <AuroraText>Client Says</AuroraText>
-              </h1>
-            </motion.h2>
+              What Our <AuroraText>Client Says</AuroraText>
+            </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
