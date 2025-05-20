@@ -15,13 +15,13 @@ const GLOBE_CONFIG: COBEOptions = {
   devicePixelRatio: 2,
   phi: 0,
   theta: 0.3,
-  dark: 0,
-  diffuse: 0.4,
+  dark: 1.2, // Add depth like space
+  diffuse: 1.5, // Make colors pop more
   mapSamples: 16000,
   mapBrightness: 1.2,
-  baseColor: [1, 1, 1],
-  markerColor: [251 / 255, 100 / 255, 21 / 255],
-  glowColor: [1, 1, 1],
+  baseColor: [0.2, 0.5, 1.0], // 💙 Ocean-blue Earth tone
+  markerColor: [1, 0.4, 0.1], // Keep your nice marker color
+  glowColor: [0.4, 0.8, 1.0], // 🌟 Blue-ish glow
   markers: [
     { location: [14.5995, 120.9842], size: 0.03 },
     { location: [19.076, 72.8777], size: 0.1 },
@@ -35,6 +35,7 @@ const GLOBE_CONFIG: COBEOptions = {
     { location: [41.0082, 28.9784], size: 0.06 },
   ],
 };
+
 
 export function Globe({
   className,
