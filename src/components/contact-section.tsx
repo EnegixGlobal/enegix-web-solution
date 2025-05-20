@@ -37,7 +37,7 @@ const ContactSection = () => {
             Get In Touch
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto font-space-grotesk body-text font-light leading-relaxed">
-            Have a question or ready to start your next project? Reach out to us and we'll get back to you as soon as possible.
+            Have a question or ready to start your next project? Reach out to us and we&apos;ll get back to you as soon as possible.
           </p>
         </motion.div>
 
