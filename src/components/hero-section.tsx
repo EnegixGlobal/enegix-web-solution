@@ -40,16 +40,15 @@ const HeroSection = () => {
     };
   }, []);
 
-  return (    <section
+  return (
+    <section
       id="home-section"
-      className="relative px-10 mx-auto pt-10 min-h-screen w-full flex flex-col items-center justify-center"
+      className="relative md:px-10  mx-auto pt-10 min-h-screen w-full flex flex-col items-center justify-center"
     >
       {/* Background gradient */}
-
-        <div className="absolute top-20 flex h-[800px] w-full flex-col items-center justify-center overflow-hidden ">
-          <Meteors number={70} />
-        </div>
-
+      <div className="absolute top-24 md:top-20 left-12 md:left-0 flex h-[900px] w-full flex-col items-center justify-center overflow-hidden ">
+        <Meteors number={100} />
+      </div>
       {/* Animated circles */}
       <div className="absolute top-0 left-0 right-0 bottom-0 z-0 pointer-events-none">
         <motion.div
@@ -83,8 +82,8 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="w-full md:w-3/5 text-center md:text-left pr-0 md:pr-4"
         >
-          {" "}
-          <div className="group relative flex items-center w-fit  rounded-full px-4 py-1.5 shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f] my-4">
+        
+          <div className="group relative mx-auto md:mx-0 flex items-center w-fit  rounded-full px-4 py-1.5 shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f] my-4">
             <span
               className={cn(
                 "absolute inset-0 block h-full w-full animate-gradient rounded-[inherit] bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:300%_100%] p-[1px]"
@@ -106,7 +105,8 @@ const HeroSection = () => {
               className="ml-1 size-4 stroke-neutral-500 transition-transform
  duration-300 ease-in-out group-hover:translate-x-0.5"
             />
-          </div>          <div className="my-4">
+          </div>{" "}
+          <div className="my-4">
             <span
               ref={el}
               className="relative font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 text-xl md:text-4xl tracking-tight drop-shadow-md"
@@ -115,7 +115,9 @@ const HeroSection = () => {
           <p className="text-lg md:text-lg text-gray-300 mb-8 max-w-xl font-space-grotesk body-text">
             We craft stunning websites, impactful digital marketing campaigns,
             and eye-catching designs that transform your vision into reality.
-          </p><div className="flex flex-wrap gap-2 justify-center md:justify-start">            <Link href="/#contact-section">
+          </p>
+          <div className="flex gap-2 justify-center md:justify-start">
+            <Link href="/#contact">
               <RainbowButton variant="outline" size={"lg"}>
                 Get Started
               </RainbowButton>

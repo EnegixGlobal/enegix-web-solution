@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { RainbowButton } from "./magicui/rainbow-button";
+import Link from "next/link";
 
 const navLinks = [
   { label: "Home", href: "/", isActive: true },
@@ -29,47 +30,8 @@ export default function Navbar () {
       }))
     );
   };
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+ 
 
-      // Optional: Update active section based on scroll position
-      // Maps route paths to corresponding section IDs
-      const sectionMap = {
-        "/": "home-section",
-        "/services": "services-section",
-        "/portfolio": "portfolio-section",
-        "/team": "team-section",
-        "/about": "about-section",
-        "#contact-section": "contact-section",
-      };
-
-      const sections = navLinks.map((link) =>
-        document.getElementById(
-          sectionMap[link.href as keyof typeof sectionMap]
-        )
-      );
-      const scrollPosition = window.scrollY + 100;
-
-      sections.forEach((section, index) => {
-        if (
-          section instanceof HTMLElement &&
-          scrollPosition >= section.offsetTop &&
-          scrollPosition < section.offsetTop + section.offsetHeight
-        ) {
-          handleLinkClick(index);
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrolled]);
   return (
     <motion.header
       className={cn(
@@ -85,12 +47,12 @@ export default function Navbar () {
     >
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between">
-          {" "}
-          {/* Logo */}{" "}
+        
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
+            <Link href="/" >
             <Image
               src="/newlogo.png"
               alt="Logo"
@@ -102,6 +64,7 @@ export default function Navbar () {
                   : "drop-shadow-[0_0_8px_rgba(66,153,225,0.3)]"
               }`}
             />
+            </Link>
           </motion.div>{" "}
           {/* Desktop Navigation */}{" "}
           <div className="hidden md:flex items-center space-x-2">
