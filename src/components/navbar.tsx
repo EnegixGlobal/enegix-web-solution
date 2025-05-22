@@ -14,7 +14,8 @@ const navLinks = [
   { label: "About", href: "/about", isActive: false },
   { label: "Contact", href: "#contact-section", isActive: false },
 ];
-const Navbar = () => {
+
+export default function Navbar () {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeLinks, setActiveLinks] = useState(navLinks);
@@ -247,4 +248,3 @@ const Navbar = () => {
 };
 
 
-export default Navbar;
