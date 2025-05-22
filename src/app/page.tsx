@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Navbar from "@/components/navbar";
 import HeroSection from "@/components/hero-section";
 import ServicesSection from "@/components/services-section";
 import StatsSection from "@/components/stats-section";
@@ -11,6 +10,7 @@ import LoadingScreen from "@/components/loading";
 import ScrollToTopButton from "@/components/scroll-to-top";
 import ScrollFix from "@/components/scroll-fix";
 import { enablePageScroll } from "@/utils/scroll-helper";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);

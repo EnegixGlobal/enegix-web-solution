@@ -4,10 +4,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { AuroraText } from "./magicui/aurora-text";
 import { RainbowButton } from "./magicui/rainbow-button";
+import Link from "next/link";
 
 const services = [
   {
-    id: 1,
+    id: "web-development",
     title: "Web Development",
     description:
       "Custom websites and web applications built with the latest technologies to deliver exceptional user experiences.",
@@ -27,9 +28,8 @@ const services = [
         />
       </svg>
     ),
-  },
-  {
-    id: 2,
+  },  {
+    id: "logo-design",
     title: "Logo Design",
     description:
       "Professional and memorable logo designs that effectively communicate your brand identity and values.",
@@ -49,9 +49,8 @@ const services = [
         />
       </svg>
     ),
-  },
-  {
-    id: 3,
+  },  {
+    id: "seo-optimization",
     title: "SEO Optimization",
     description:
       "Drive organic traffic to your website with our search engine optimization strategies tailored to your business goals.",
@@ -71,9 +70,8 @@ const services = [
         />
       </svg>
     ),
-  },
-  {
-    id: 4,
+  },  {
+    id: "digital-marketing",
     title: "Digital Marketing",
     description:
       "Comprehensive digital marketing campaigns to increase your online visibility and drive conversions.",
@@ -93,9 +91,8 @@ const services = [
         />
       </svg>
     ),
-  },
-  {
-    id: 5,
+  },  {
+    id: "ecommerce-solutions",
     title: "E-commerce Solutions",
     description:
       "Build and optimize online stores that provide seamless shopping experiences and drive sales.",
@@ -115,9 +112,8 @@ const services = [
         />
       </svg>
     ),
-  },
-  {
-    id: 6,
+  },  {
+    id: "ppc-advertising",
     title: "PPC Advertising",
     description:
       "Strategic pay-per-click campaigns that maximize your ROI and help you reach your target audience effectively.",
@@ -161,16 +157,24 @@ const ServiceCard = ({
       <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300 font-montserrat tracking-tight">
         {service.title}
       </h3>
-      <p className="text-gray-400 font-space-grotesk font-light text-sm leading-relaxed">
+      <p className="text-gray-400 font-space-grotesk font-light text-sm leading-relaxed mb-4">
         {service.description}
       </p>
+      <Link href={`/services/${service.id}`} className="inline-block">
+        <span className="text-cyan-400 font-medium text-sm hover:text-cyan-300 transition-colors flex items-center gap-1">
+          Learn More 
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m9 18 6-6-6-6"/>
+          </svg>
+        </span>
+      </Link>
     </motion.div>
   );
 };
 
 const ServicesSection = () => {
   return (
-    <section className="min-h-screen relative w-full py-20" id="services">
+    <section className="min-h-screen relative w-full py-20" id="services-section">
       {/* Background elements */}
       <div className="absolute inset-0 bg-[#0f172a] z-0" />
       <div className="absolute w-full h-full">
@@ -199,23 +203,24 @@ const ServicesSection = () => {
             We deliver comprehensive digital solutions to help your business
             grow and thrive in the digital landscape.
           </motion.p>
-        </div>
+        </div>          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <ServiceCard key={service.id} service={service} index={index} />
+            ))}
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
-          ))}
-        </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="flex justify-center mt-16"
+          >
+            <Link href="/services">
+              <RainbowButton size="lg">View All Services</RainbowButton>
+            </Link>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="flex justify-center mt-12"
-        >
-          <RainbowButton size={"lg"}>View Our Services</RainbowButton>
-        </motion.div>
       </div>
     </section>
   );

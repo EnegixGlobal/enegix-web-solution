@@ -7,13 +7,13 @@ import Image from "next/image";
 import { RainbowButton } from "./magicui/rainbow-button";
 
 const navLinks = [
-  { label: "Home", href: "#", isActive: true },
-  { label: "Services", href: "#services", isActive: false },
-  { label: "Portfolio", href: "#portfolio", isActive: false },
-  { label: "About", href: "#about", isActive: false },
-  { label: "Contact", href: "#contact", isActive: false },
+  { label: "Home", href: "/", isActive: true },
+  { label: "Services", href: "/services", isActive: false },
+  { label: "Portfolio", href: "/portfolio", isActive: false },
+  { label: "Team", href: "/team", isActive: false },
+  { label: "About", href: "/about", isActive: false },
+  { label: "Contact", href: "#contact-section", isActive: false },
 ];
-
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -28,7 +28,6 @@ const Navbar = () => {
       }))
     );
   };
-
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 10;
@@ -37,8 +36,20 @@ const Navbar = () => {
       }
 
       // Optional: Update active section based on scroll position
+      // Maps route paths to corresponding section IDs
+      const sectionMap = {
+        "/": "home-section",
+        "/services": "services-section",
+        "/portfolio": "portfolio-section",
+        "/team": "team-section",
+        "/about": "about-section",
+        "#contact-section": "contact-section",
+      };
+
       const sections = navLinks.map((link) =>
-        document.querySelector(link.href)
+        document.getElementById(
+          sectionMap[link.href as keyof typeof sectionMap]
+        )
       );
       const scrollPosition = window.scrollY + 100;
 
@@ -116,7 +127,7 @@ const Navbar = () => {
               </motion.a>
             ))}{" "}
             <motion.a
-              href="#contact"
+              href="#contact-section"
               // className="ml-4 px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 text-white nav-button text-sm tracking-wider relative overflow-hidden group"
               whileHover={{
                 scale: 1.05,
@@ -208,7 +219,7 @@ const Navbar = () => {
                   </motion.a>
                 ))}{" "}
                 <motion.a
-                  href="#contact"
+                  href="#contact-section"
                   // className="mt-2 px-4 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-400 text-white nav-button hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 text-center flex items-center justify-center"
                   onClick={() => setMobileMenuOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
@@ -234,5 +245,6 @@ const Navbar = () => {
     </motion.header>
   );
 };
+
 
 export default Navbar;

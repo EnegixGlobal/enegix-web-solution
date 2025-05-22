@@ -9,12 +9,12 @@ import Typed from "typed.js";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import { AnimatedGradientText } from "./magicui/animated-gradient-text";
-import { FlickeringGrid } from "./magicui/flickering-grid";
+import { Meteors } from "./magicui/meteors";
+import Link from "next/link";
 
 const HeroSection = () => {
   const el = useRef(null);
   const typed = useRef<Typed | null>(null);
-
   useEffect(() => {
     const options = {
       strings: [
@@ -23,7 +23,8 @@ const HeroSection = () => {
         "Creative Logo Designs",
         "WhatsApp Ad Campaigns",
         "Full-Stack Digital Solutions",
-        "Scalable Online Platforms",
+        "E-commerce Platforms",
+        "PPC Advertising Services",
         "Conversion-Driven Websites",
       ],
       typeSpeed: 50,
@@ -39,21 +40,15 @@ const HeroSection = () => {
     };
   }, []);
 
-  return (
-    <section
-      id="home"
+  return (    <section
+      id="home-section"
       className="relative px-10 mx-auto pt-10 min-h-screen w-full flex flex-col items-center justify-center"
     >
       {/* Background gradient */}
-     
-      <FlickeringGrid
-        className="absolute inset-0 z-0 [mask-image:radial-gradient(500px_circle_at_center,white,transparent)]"
-        squareSize={4}
-        gridGap={6}
-        color="#60A5FA"
-        maxOpacity={0.5}
-        flickerChance={0.1}
-      />
+
+        <div className="absolute top-20 flex h-[800px] w-full flex-col items-center justify-center overflow-hidden ">
+          <Meteors number={70} />
+        </div>
 
       {/* Animated circles */}
       <div className="absolute top-0 left-0 right-0 bottom-0 z-0 pointer-events-none">
@@ -111,22 +106,23 @@ const HeroSection = () => {
               className="ml-1 size-4 stroke-neutral-500 transition-transform
  duration-300 ease-in-out group-hover:translate-x-0.5"
             />
-          </div>
-          <div className="my-4">
+          </div>          <div className="my-4">
             <span
               ref={el}
-              className=" relative font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 text-xl md:text-4xl tracking-tight  drop-shadow-md "
+              className="relative font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 text-xl md:text-4xl tracking-tight drop-shadow-md"
             />
           </div>
           <p className="text-lg md:text-lg text-gray-300 mb-8 max-w-xl font-space-grotesk body-text">
             We craft stunning websites, impactful digital marketing campaigns,
             and eye-catching designs that transform your vision into reality.
-          </p>{" "}
-          <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-            <RainbowButton variant="outline" size={"lg"}>
-              Get Started
-            </RainbowButton>
-            <RainbowButton size={"lg"}>Our Services</RainbowButton>
+          </p><div className="flex flex-wrap gap-2 justify-center md:justify-start">            <Link href="/#contact-section">
+              <RainbowButton variant="outline" size={"lg"}>
+                Get Started
+              </RainbowButton>
+            </Link>
+            <Link href="/services">
+              <RainbowButton size={"lg"}>Our Services</RainbowButton>
+            </Link>
           </div>
         </motion.div>{" "}
         {/* Globe Animation */}
