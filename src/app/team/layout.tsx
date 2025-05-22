@@ -1,6 +1,6 @@
-import React from 'react';
+"use client";
 
-export default function ProjectLayout({
+export default function TeamLayout({
   children,
 }: {
   children: React.ReactNode;

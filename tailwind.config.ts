@@ -5,12 +5,25 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
+  ],  theme: {
     extend: {      fontFamily: {
         montserrat: ['var(--font-montserrat)', 'sans-serif'],
         'space-grotesk': ['var(--font-space-grotesk)', 'sans-serif'],
         inter: ['var(--font-inter)', 'sans-serif'],
+      },
+      keyframes: {
+        shine: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        shineVertical: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100%)' },
+        },
+      },
+      animation: {
+        shine: 'shine 2s linear infinite',
+        shineVertical: 'shineVertical 2s linear infinite',
       },
       colors: {
         border: "hsl(var(--border))",
