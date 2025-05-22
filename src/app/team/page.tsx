@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { RainbowButton } from "@/components/magicui/rainbow-button";

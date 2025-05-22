@@ -11,7 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import { notFound } from "next/navigation";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar";
 
 // Portfolio project data (same as in portfolio page)
 const portfolioProjects = [

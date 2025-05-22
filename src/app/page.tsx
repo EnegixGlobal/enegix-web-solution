@@ -10,7 +10,7 @@ import LoadingScreen from "@/components/loading";
 import ScrollToTopButton from "@/components/scroll-to-top";
 import ScrollFix from "@/components/scroll-fix";
 import { enablePageScroll } from "@/utils/scroll-helper";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
