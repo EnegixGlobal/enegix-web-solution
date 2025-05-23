@@ -43,11 +43,13 @@ const HeroSection = () => {
   return (
     <section
       id="home-section"
-      className="relative md:px-10  mx-auto pt-10 min-h-screen w-full flex flex-col items-center justify-center"
+      className="relative md:px-10 mx-auto pt-10 min-h-screen w-full flex flex-col items-center justify-center"
     >
       {/* Background gradient */}
-      <div className="absolute top-24 md:top-20 left-12 md:left-0 flex h-[900px] w-full flex-col items-center justify-center overflow-hidden ">
-        <Meteors number={100} />
+      <div
+        className="absolute top-24 md:top-20 flex h-[900px] w-full flex-col items-center justify-center  "
+      >
+        <Meteors number={60} />
       </div>
       {/* Animated circles */}
       <div className="absolute top-0 left-0 right-0 bottom-0 z-0 pointer-events-none">
@@ -82,7 +84,6 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="w-full md:w-3/5 text-center md:text-left pr-0 md:pr-4"
         >
-        
           <div className="group relative mx-auto md:mx-0 flex items-center w-fit  rounded-full px-4 py-1.5 shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f] my-4">
             <span
               className={cn(
