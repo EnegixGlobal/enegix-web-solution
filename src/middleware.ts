@@ -9,14 +9,13 @@ export function middleware(request: NextRequest) {
 
     const token = request.cookies.get("token")?.value || "";
   
-   console.log(token)
-    
+
     if (!token) {
-        return NextResponse.redirect(new URL("/admin-login", request.nextUrl));
+        return NextResponse.redirect(new URL("/", request.nextUrl));
     }
 
-    
-
+    // If the user is authenticated, allow access to the requested page
+    return NextResponse.next();
 }
 
 export const config = {
