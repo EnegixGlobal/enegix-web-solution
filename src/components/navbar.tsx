@@ -206,7 +206,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-2 w-64 bg-[#0a192f]/95 backdrop-blur-xl border border-blue-500/20 rounded-xl shadow-2xl shadow-black/20 py-3 z-50 overflow-hidden"
+                      className="absolute top-full left-0 mt-2 w-64 bg-[#0a192f]/95 backdrop-blur-xl border border-blue-500/20 rounded-xl shadow-2xl shadow-black/20 py-3 z-50 overflow-hidden hidden md:block"
                     >
                       {/* Dropdown gradient background */}
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5"></div>
@@ -309,15 +309,16 @@ export default function Navbar() {
                 className="bg-[#0a192f]/95 backdrop-blur-xl rounded-2xl border border-blue-500/20 shadow-2xl shadow-black/20 p-6 relative overflow-hidden"
               >
                 {/* Mobile menu gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5"></div>
-
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5"></div>{" "}
                 <div className="relative z-10 flex flex-col space-y-2">
                   {navLinks.map((link, index) => {
                     const isActive = isLinkActive(link.href);
+                    // For mobile, use main href for navigation (no dropdowns)
+                    const mobileHref = link.href === "#" ? "/about" : link.href;
+
                     return (
                       <motion.div key={link.label}>
-                        <Link href={link.href === "#" ? "" : link.href}>
-                          {" "}
+                        <Link href={mobileHref}>
                           <motion.div
                             className={cn(
                               "px-4 py-4 rounded-xl text-base font-medium transition-all duration-300 cursor-pointer flex items-center justify-between relative group",
@@ -337,7 +338,6 @@ export default function Navbar() {
                             whileHover={{ x: 4 }}
                             whileTap={{ scale: 0.98 }}
                           >
-                            {" "}
                             <div className="flex items-center relative z-10">
                               {isActive && (
                                 <motion.div
@@ -354,41 +354,8 @@ export default function Navbar() {
                             </div>
                             {/* Mobile hover background */}
                             <motion.div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            {link.hasDropdown && (
-                              <ChevronDownIcon className="h-4 w-4 text-gray-400 group-hover:text-blue-300 relative z-10" />
-                            )}
                           </motion.div>
                         </Link>
-
-                        {/* Mobile Dropdown Items */}
-                        {link.hasDropdown && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            className="ml-6 mt-2 space-y-1"
-                          >
-                            {link.dropdownItems?.map((item, itemIndex) => (
-                              <Link key={item.label} href={item.href}>
-                                <motion.div
-                                  className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 rounded-lg transition-all duration-200 cursor-pointer flex items-center group"
-                                  onClick={() => setMobileMenuOpen(false)}
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{
-                                    delay: (index + itemIndex) * 0.05,
-                                  }}
-                                  whileHover={{ x: 2 }}
-                                >
-                                  <div className="w-1 h-1 bg-blue-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-200"></div>
-                                  <span className="relative z-10">
-                                    {item.label}
-                                  </span>
-                                  <motion.div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                                </motion.div>
-                              </Link>
-                            ))}
-                          </motion.div>
-                        )}
                       </motion.div>
                     );
                   })}
