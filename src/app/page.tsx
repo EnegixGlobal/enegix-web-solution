@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import HeroSection from "@/components/hero-section";
 import ServicesSection from "@/components/services-section";
 import StatsSection from "@/components/stats-section";
-import TechStackSection from "@/components/tech-stack-section";
+import TechStackSimple from "@/components/tech-stack-simple";
+import VideoShowcase from "@/components/video-showcase";
 import WhyChooseUsSection from "@/components/why-choose-us-section";
 import ContactCTA from "@/components/contact-cta";
 import Footer from "@/components/footer";
@@ -62,11 +63,11 @@ export default function Home() {
     <div className="bg-[#0a192f] text-white">
       <Toaster position="top-right" reverseOrder={false} />
       {mounted && <LoadingScreen />}
-      {mounted && <ScrollFix />} <Navbar />
-      <HeroSection />
+      {mounted && <ScrollFix />} <Navbar />      <HeroSection />
       <ServicesSection />
       <StatsSection />
-      <TechStackSection />
+      <TechStackSimple />
+      <VideoShowcase />
       <WhyChooseUsSection />
       <ContactCTA />
       <Footer />
