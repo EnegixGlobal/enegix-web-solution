@@ -16,8 +16,8 @@ import { enablePageScroll } from "@/utils/scroll-helper";
 // Team members data
 const teamMembers = [
   {
-    id: "Ehtesham raghib",
-    name: "Ehtesham raghib",
+    id: "Ehtesham Raghib",
+    name: "Ehtesham Raghib",
     role: "Founder & CEO",
     bio: "Ehtesham Raghib, the founder of Enegix Web Solutions, is a passionate entrepreneur and digital strategist dedicated to transforming businesses through cutting-edge web solutions. With a deep understanding of web development, digital marketing, and brand growth, he has played a pivotal role in helping businesses establish a powerful online presence. Under his leadership, Enegix Web Solutions has evolved from a specialized web development firm into a full-service digital agency, offering innovative and results-driven solutions. Ehtesham's expertise in leveraging the latest technologies and data-driven strategies ensures that businesses stay ahead in the ever-evolving digital landscape.",
     image:
@@ -498,7 +498,7 @@ export default function TeamPage() {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <RainbowButton size="lg">View Open Positions</RainbowButton>
-                <Link href="/#contact-section">
+                <Link href="/contact">
                   <RainbowButton variant="outline" size="lg">
                     Contact Us
                   </RainbowButton>

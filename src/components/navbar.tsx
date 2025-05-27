@@ -7,20 +7,61 @@ import Image from "next/image";
 import { RainbowButton } from "./magicui/rainbow-button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Team", href: "/team" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "#contact-section" },
+  {
+    label: "Home",
+    href: "/",
+    hasDropdown: false,
+  },
+  {
+    label: "Services",
+    href: "/services",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "Web Development", href: "/services/web-development" },
+      { label: "Digital Marketing", href: "/services/digital-marketing" },
+      { label: "E-commerce Solutions", href: "/services/ecommerce-solutions" },
+      { label: "SEO Optimization", href: "/services/seo-optimization" },
+      { label: "PPC Advertising", href: "/services/ppc-advertising" },
+      { label: "Logo Design", href: "/services/logo-design" },
+    ],
+  },
+  {
+    label: "Portfolio",
+    href: "/portfolio",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "Web Projects", href: "/portfolio/web-projects" },
+      { label: "Mobile Apps", href: "/portfolio/mobile-apps" },
+      { label: "Branding", href: "/portfolio/branding" },
+      { label: "E-commerce", href: "/portfolio/ecommerce" },
+    ],
+  },
+  {
+    label: "Company",
+    href: "#",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "About Us", href: "/about" },
+      { label: "Our Team", href: "/team" },
+      { label: "Careers", href: "/careers" },
+      { label: "Blog", href: "/blog" },
+    ],
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    hasDropdown: false,
+  },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   // Handle scroll effect
   useEffect(() => {
@@ -41,9 +82,18 @@ export default function Navbar() {
       return pathname === href;
     }
     if (href.startsWith("#")) {
-      return false; // Anchor links are never considered "active" based on URL
+      return false;
     }
     return pathname.startsWith(href);
+  };
+
+  // Handle dropdown hover
+  const handleDropdownEnter = (label: string) => {
+    setActiveDropdown(label);
+  };
+
+  const handleDropdownLeave = () => {
+    setActiveDropdown(null);
   };
 
   return (
@@ -51,7 +101,7 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-500",
         scrolled
-          ? "bg-gradient-to-r from-[#0a192f]/80 to-[#112240]/80 backdrop-blur-md py-3 shadow-lg shadow-blue-900/20 border-b border-white/5"
+          ? "bg-[#0a192f]/95 backdrop-blur-xl py-3 border-b border-gray-700/30 shadow-2xl shadow-black/20"
           : "bg-transparent py-6"
       )}
       initial={{ y: -100 }}
@@ -61,104 +111,186 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between">
+          {" "}
+          {/* Logo Section */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className="flex items-center space-x-3"
           >
-            <Link href="/">
-              <Image
-                src="/newlogo.png"
-                alt="Logo"
-                width={120}
-                height={50}
-                className={`rounded-full object-cover transition-all duration-500 ${
-                  scrolled
-                    ? "drop-shadow-[0_0_12px_rgba(66,153,225,0.45)]"
-                    : "drop-shadow-[0_0_8px_rgba(66,153,225,0.3)]"
-                }`}
-              />
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-pink-400/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500 animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full group-hover:scale-110 transition-transform duration-500"></div>
+                <Image
+                  src="/newlogo.png"
+                  alt="Enegix Web Solutions"
+                  width={50}
+                  height={50}
+                  className="relative rounded-full object-cover ring-2 ring-gray-500/30 group-hover:ring-blue-400/50 transition-all duration-500 group-hover:shadow-lg group-hover:shadow-blue-500/25"
+                />
+              </div>
+              <div className="hidden sm:block">
+                <h1 className="text-xl font-bold bg-gradient-to-r from-white via-gray-100 to-gray-200 bg-clip-text text-transparent group-hover:from-blue-200 group-hover:via-purple-200 group-hover:to-pink-200 transition-all duration-300">
+                  Enegix{" "}
+                </h1>
+                <p className="text-xs text-gray-400 group-hover:text-blue-300 transition-colors duration-300 -mt-1 font-medium">
+                  Web Solutions
+                </p>
+              </div>
             </Link>
           </motion.div>
-          
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-2">
-            {navLinks.map((link, index) => {
-              const isActive = isLinkActive(link.href);
-              return (
-                <motion.div key={link.label}>
-                  <Link href={link.href} passHref>
-                    <motion.a
-                      className={`px-4 py-2 rounded-md ${
-                        isActive ? "text-white" : "text-gray-300"
-                      } hover:text-white hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-cyan-400/10 transition-all duration-300 nav-link text-sm relative overflow-hidden group`}
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      custom={index}
+          <div className="hidden lg:flex items-center space-x-1">
+            {navLinks.map((link, index) => (
+              <motion.div
+                key={link.label}
+                className="relative"
+                onMouseEnter={() =>
+                  link.hasDropdown && handleDropdownEnter(link.label)
+                }
+                onMouseLeave={() => link.hasDropdown && handleDropdownLeave()}
+              >
+                {" "}
+                <Link href={link.href === "#" ? "" : link.href} passHref>
+                  <motion.div
+                    className={cn(
+                      "flex items-center px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer relative group",
+                      isLinkActive(link.href)
+                        ? "text-white bg-gradient-to-r from-blue-500/20 to-purple-500/20 shadow-lg backdrop-blur-sm border border-blue-500/20"
+                        : "text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 hover:backdrop-blur-sm hover:border hover:border-blue-500/10"
+                    )}
+                    whileHover={{ y: -2, scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    custom={index}
+                  >
+                    {" "}
+                    <span className="relative z-10">
+                      {link.label}
+                      {isLinkActive(link.href) && (
+                        <motion.div
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full"
+                          layoutId="activeTab"
+                          transition={{
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 30,
+                          }}
+                        />
+                      )}
+                    </span>
+                    {/* Hover effect background */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      layoutId={`hover-${link.label}`}
+                    />
+                    {link.hasDropdown && (
+                      <ChevronDownIcon
+                        className={cn(
+                          "ml-1 h-4 w-4 transition-all duration-200 relative z-10",
+                          activeDropdown === link.label
+                            ? "rotate-180 text-blue-300"
+                            : ""
+                        )}
+                      />
+                    )}
+                  </motion.div>
+                </Link>
+                {/* Dropdown Menu */}
+                <AnimatePresence>
+                  {link.hasDropdown && activeDropdown === link.label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 mt-2 w-64 bg-[#0a192f]/95 backdrop-blur-xl border border-blue-500/20 rounded-xl shadow-2xl shadow-black/20 py-3 z-50 overflow-hidden"
                     >
-                      <span className="relative z-10">{link.label}</span>
-                      <span
-                        className={`absolute bottom-0 left-0 ${
-                          isActive ? "w-full shadow-glow" : "w-0"
-                        } h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 group-hover:w-full transition-all duration-300`}
-                      ></span>
-                    </motion.a>
-                  </Link>
-                </motion.div>
-              );
-            })}
-            
-            <motion.div>
-              <Link href="#contact-section" passHref>
-                <motion.a
+                      {/* Dropdown gradient background */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5"></div>
+
+                      {link.dropdownItems?.map((item, itemIndex) => (
+                        <Link key={item.label} href={item.href}>
+                          <motion.div
+                            className="relative px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-200 cursor-pointer flex items-center group"
+                            whileHover={{ x: 6, scale: 1.02 }}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: itemIndex * 0.05 }}
+                          >
+                            <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3 opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all duration-200"></div>
+                            <span className="relative z-10">{item.label}</span>
+                            <motion.div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                          </motion.div>
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+            {/* CTA Button */}
+            <motion.div className="ml-6">
+              <Link href="/contact">
+                <motion.div
                   whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 0 20px rgba(66,153,225,0.5)",
+                    boxShadow: "0 0 25px rgba(59, 130, 246, 0.4)",
                   }}
+                  whileTap={{ scale: 0.98 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  animate={{
-                    boxShadow: scrolled
-                      ? "0 0 15px rgba(66,153,225,0.35)"
-                      : "0 0 10px rgba(66,153,225,0.2)",
-                  }}
+                  className="relative group"
                 >
-                  <RainbowButton variant="outline" size={"lg"}>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                  <RainbowButton
+                    variant="outline"
+                    size="lg"
+                    className="relative font-semibold border-blue-500/30 hover:border-blue-400/50 text-gray-700 hover:text-blue-600"
+                  >
                     Get Started
                   </RainbowButton>
-                </motion.a>
+                </motion.div>
               </Link>
             </motion.div>
-          </div>
-          
+          </div>{" "}
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden text-white focus:outline-none p-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10"
+            className="lg:hidden text-white focus:outline-none p-3 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-md border border-blue-500/30 hover:from-blue-500/30 hover:to-purple-500/30 hover:border-blue-400/50 transition-all duration-300 shadow-lg"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <div className="w-6 h-5 relative flex flex-col justify-between">
-              <span
-                className={`w-full h-0.5 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-full transform transition-all duration-300 ${
-                  mobileMenuOpen ? "rotate-45 translate-y-2" : ""
-                }`}
+              <motion.span
+                className="w-full h-0.5 bg-white rounded-full origin-center"
+                animate={{
+                  rotate: mobileMenuOpen ? 45 : 0,
+                  y: mobileMenuOpen ? 9 : 0,
+                }}
+                transition={{ duration: 0.3 }}
               />
-              <span
-                className={`w-full h-0.5 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-full transition-opacity duration-300 ${
-                  mobileMenuOpen ? "opacity-0" : "opacity-100"
-                }`}
+              <motion.span
+                className="w-full h-0.5 bg-white rounded-full"
+                animate={{
+                  opacity: mobileMenuOpen ? 0 : 1,
+                }}
+                transition={{ duration: 0.3 }}
               />
-              <span
-                className={`w-full h-0.5 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-full transform transition-all duration-300 ${
-                  mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
-                }`}
+              <motion.span
+                className="w-full h-0.5 bg-white rounded-full origin-center"
+                animate={{
+                  rotate: mobileMenuOpen ? -45 : 0,
+                  y: mobileMenuOpen ? -9 : 0,
+                }}
+                transition={{ duration: 0.3 }}
               />
             </div>
           </motion.button>
         </nav>
-        
+
         {/* Mobile Menu */}
         <AnimatePresence>
           {mobileMenuOpen && (
@@ -167,71 +299,130 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden pt-6 pb-6"
+              className="lg:hidden pt-6 pb-6"
             >
-              <div className="flex flex-col space-y-3 bg-gradient-to-b from-[#0a192f]/95 to-[#112240]/95 backdrop-blur-lg rounded-xl p-4 border border-white/5 shadow-lg shadow-blue-900/20">
-                {navLinks.map((link, index) => {
-                  const isActive = isLinkActive(link.href);
-                  return (
-                    <motion.div key={link.label}>
-                      <Link href={link.href} passHref>
-                        <motion.a
-                          className={`px-4 py-3 ${
-                            isActive
-                              ? "text-white bg-gradient-to-r from-blue-500/20 to-cyan-400/20"
-                              : "text-gray-300"
-                          } hover:text-white hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-cyan-400/10 rounded-lg transition-all duration-300 nav-link relative overflow-hidden`}
-                          onClick={() => setMobileMenuOpen(false)}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 24,
-                            delay: index * 0.08,
-                          }}
-                          whileHover={{ x: 5 }}
-                        >
-                          <span className="relative z-10 flex items-center">
-                            {isActive && (
-                              <span className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mr-2"></span>
+              {" "}
+              <motion.div
+                initial={{ y: -20 }}
+                animate={{ y: 0 }}
+                exit={{ y: -20 }}
+                className="bg-[#0a192f]/95 backdrop-blur-xl rounded-2xl border border-blue-500/20 shadow-2xl shadow-black/20 p-6 relative overflow-hidden"
+              >
+                {/* Mobile menu gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5"></div>
+
+                <div className="relative z-10 flex flex-col space-y-2">
+                  {navLinks.map((link, index) => {
+                    const isActive = isLinkActive(link.href);
+                    return (
+                      <motion.div key={link.label}>
+                        <Link href={link.href === "#" ? "" : link.href}>
+                          {" "}
+                          <motion.div
+                            className={cn(
+                              "px-4 py-4 rounded-xl text-base font-medium transition-all duration-300 cursor-pointer flex items-center justify-between relative group",
+                              isActive
+                                ? "text-white bg-gradient-to-r from-blue-500/30 to-purple-500/30 shadow-lg border border-blue-500/20"
+                                : "text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10"
                             )}
-                            {link.label}
-                          </span>
-                        </motion.a>
-                      </Link>
-                    </motion.div>
-                  );
-                })}
-                
-                <motion.div>
-                  <Link href="#contact-section" passHref>
-                    <motion.a
+                            onClick={() => setMobileMenuOpen(false)}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 24,
+                              delay: index * 0.1,
+                            }}
+                            whileHover={{ x: 4 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
+                            {" "}
+                            <div className="flex items-center relative z-10">
+                              {isActive && (
+                                <motion.div
+                                  className="w-2 h-2 bg-blue-400 rounded-full mr-3"
+                                  layoutId="mobileDot"
+                                  transition={{
+                                    type: "spring",
+                                    stiffness: 400,
+                                    damping: 30,
+                                  }}
+                                />
+                              )}
+                              <span>{link.label}</span>
+                            </div>
+                            {/* Mobile hover background */}
+                            <motion.div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            {link.hasDropdown && (
+                              <ChevronDownIcon className="h-4 w-4 text-gray-400 group-hover:text-blue-300 relative z-10" />
+                            )}
+                          </motion.div>
+                        </Link>
+
+                        {/* Mobile Dropdown Items */}
+                        {link.hasDropdown && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            className="ml-6 mt-2 space-y-1"
+                          >
+                            {link.dropdownItems?.map((item, itemIndex) => (
+                              <Link key={item.label} href={item.href}>
+                                <motion.div
+                                  className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 rounded-lg transition-all duration-200 cursor-pointer flex items-center group"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{
+                                    delay: (index + itemIndex) * 0.05,
+                                  }}
+                                  whileHover={{ x: 2 }}
+                                >
+                                  <div className="w-1 h-1 bg-blue-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-200"></div>
+                                  <span className="relative z-10">
+                                    {item.label}
+                                  </span>
+                                  <motion.div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                                </motion.div>
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </motion.div>
+                    );
+                  })}
+                </div>
+                {/* Mobile CTA */}
+                <motion.div
+                  className="relative z-10 mt-6 pt-6 border-t border-blue-500/20"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: navLinks.length * 0.1 }}
+                >
+                  <Link href="/contact">
+                    <motion.div
                       onClick={() => setMobileMenuOpen(false)}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 24,
-                        delay: navLinks.length * 0.08,
-                      }}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      className="w-full relative group"
                     >
-                      <RainbowButton variant="outline" size={"lg"}>
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                      <RainbowButton
+                        variant="outline"
+                        size="lg"
+                        className="w-full font-semibold relative border-blue-500/30 hover:border-blue-400/50"
+                      >
                         Get Started
                       </RainbowButton>
-                    </motion.a>
+                    </motion.div>
                   </Link>
                 </motion.div>
-              </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
     </motion.header>
   );
-};
-
-
+}
