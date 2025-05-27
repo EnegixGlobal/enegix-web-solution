@@ -7,15 +7,7 @@ export function middleware(request: NextRequest) {
 
     const isPublicPath = path === "/admin-login" || path == "/admin-signup" || path == "/";
 
-    const token = request.cookies.get("token")?.value || "";
-  
-
-    if (!token) {
-        return NextResponse.redirect(new URL("/", request.nextUrl));
-    }
-
-    // If the user is authenticated, allow access to the requested page
-    return NextResponse.next();
+    
 }
 
 export const config = {
