@@ -1,14 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { RainbowButton } from "./magicui/rainbow-button";
 import Link from "next/link";
 import { LineShadowText } from "./magicui/line-shadow-text";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { usePrefersReducedMotion } from "@/utils/use-reduced-motion";
 
 const HeroSection = () => {
-  return (
-    <section
+  const [heroRef, isInView] = useIntersectionObserver({ threshold: 0.3 });
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Don't render animations on server or if not in view
+  const shouldAnimate = isClient && isInView && !prefersReducedMotion;
+
+  return (    <section
+      ref={heroRef}
       id="home-section"
       className="relative pt-40 md:pt-8 min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a192f]"
     >
@@ -17,13 +30,13 @@ const HeroSection = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {" "}
         {/* Professional Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-gray-900/30 to-slate-800/50" />{" "}
-        {/* Professional Wave Background */}
-        <motion.div
-          className="absolute inset-0 overflow-hidden"
-          animate={{ opacity: [0.7, 1, 0.7] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        >
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-gray-900/30 to-slate-800/50" />{" "}        {/* Professional Wave Background */}
+        {shouldAnimate ? (
+          <motion.div
+            className="absolute inset-0 overflow-hidden"
+            animate={{ opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          >
           <svg
             className="absolute bottom-0 left-0 w-full h-full"
             viewBox="0 0 1200 800"
@@ -127,10 +140,13 @@ const HeroSection = () => {
                 ease: "easeInOut",
                 delay: 4,
               }}
-            />
-          </svg>{" "}
+            />          </svg>{" "}
         </motion.div>
-        {/* Elegant Flowing Lines */}
+        ) : (
+          // Static version when animations are disabled
+          <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-blue-500/10 to-transparent" />
+        )}        {/* Elegant Flowing Lines */}
+        {shouldAnimate && (
         <motion.svg
           className="absolute inset-0 w-full h-full"
           animate={{ opacity: [0.2, 0.5, 0.2] }}
@@ -240,9 +256,9 @@ const HeroSection = () => {
               repeatCount="indefinite"
               path="M200,350 Q500,120 800,400 Q1000,220 1300,300"
               begin="3s"
-            />
-          </motion.circle>
+            />          </motion.circle>
         </motion.svg>
+      )}
       </div>
       {/* Content */}
       <div className="container md:pl-16  mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center min-h-screen">

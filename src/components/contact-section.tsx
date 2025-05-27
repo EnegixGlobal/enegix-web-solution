@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +8,32 @@ const ContactSection = () => {
     email: "",
     message: "",
   });
+  const [isVisible, setIsVisible] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    const section = document.getElementById('contact-section');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -28,27 +53,23 @@ const ContactSection = () => {
   return (
     <section id="contact-section" className="py-20 overflow-hidden">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}          className="text-center mb-16"
-        >          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-600 font-montserrat heading-text tracking-tight">
+        <div 
+          className={`text-center mb-16 transition-all duration-500 ease-out ${isClient && isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-600 font-montserrat heading-text tracking-tight">
             Get In Touch
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto font-space-grotesk body-text font-light leading-relaxed">
             Have a question or ready to start your next project? Reach out to us and we&apos;ll get back to you as soon as possible.
           </p>
-        </motion.div>
+        </div>
 
         <div className="flex flex-col lg:flex-row gap-10">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-1/2"
-          >            <form onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">              <h3 className="text-2xl font-semibold mb-6 font-montserrat tracking-tight">Send Us A Message</h3>
+          <div
+            className={`w-full lg:w-1/2 transition-all duration-500 ease-out delay-100 ${isClient && isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
+          >
+            <form onSubmit={handleSubmit} className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
+              <h3 className="text-2xl font-semibold mb-6 font-montserrat tracking-tight">Send Us A Message</h3>
               <div className="mb-6">
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2 font-inter">
                   Name
@@ -99,16 +120,13 @@ const ContactSection = () => {
                 Send Message
               </button>
             </form>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-1/2 space-y-8"
+          <div
+            className={`w-full lg:w-1/2 space-y-8 transition-all duration-500 ease-out delay-200 ${isClient && isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
           >
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">              <h4 className="text-white font-semibold mb-4 font-poppins">Contact Information</h4>
+            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+              <h4 className="text-white font-semibold mb-4 font-poppins">Contact Information</h4>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-blue-600/20 rounded-lg">
@@ -169,7 +187,7 @@ const ContactSection = () => {
                 </li>
               </ul>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

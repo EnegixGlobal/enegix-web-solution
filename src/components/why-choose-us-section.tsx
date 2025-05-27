@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React from "react";
 import { cn } from "@/lib/utils";
 
 const achievements = [
@@ -71,17 +70,13 @@ const features = [
 ];
 
 const WhyChooseUsSection = () => {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-
   return (
     <section 
-      ref={sectionRef}
       className="relative py-20 px-4 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 overflow-hidden"
     >
-      {/* Background Effects */}
+      {/* Simplified Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Animated Grid Background */}
+        {/* Static Grid Background */}
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
@@ -93,103 +88,41 @@ const WhyChooseUsSection = () => {
           </svg>
         </div>
 
-        {/* Floating Orbs */}
-        {Array.from({ length: 8 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10 backdrop-blur-sm"
-            style={{
-              width: `${Math.random() * 200 + 100}px`,
-              height: `${Math.random() * 200 + 100}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              x: [0, Math.random() * 100 - 50],
-              y: [0, Math.random() * 100 - 50],
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: Math.random() * 20 + 15,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="container mx-auto relative z-10">
+        {/* Static Decorative Elements */}
+        <div className="absolute top-20 left-20 w-32 h-32 rounded-full bg-gradient-to-r from-blue-500/5 to-cyan-500/5 backdrop-blur-sm"></div>
+        <div className="absolute bottom-20 right-20 w-48 h-48 rounded-full bg-gradient-to-r from-purple-500/5 to-blue-500/5 backdrop-blur-sm"></div>
+        <div className="absolute top-1/2 left-1/2 w-24 h-24 rounded-full bg-gradient-to-r from-cyan-500/5 to-purple-500/5 backdrop-blur-sm transform -translate-x-1/2 -translate-y-1/2"></div>
+      </div>      <div className="container mx-auto relative z-10">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-20"
-        >
-          <motion.h2 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Why Choose{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400">
               Enegix Web Solutions?
             </span>
-          </motion.h2>
-          <motion.p 
-            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             We don't just build websites and apps—we craft digital experiences that drive results. 
             Here's what sets us apart from the competition.
-          </motion.p>
-        </motion.div>
-
-        {/* Achievement Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
-        >
+          </p>
+        </div>        {/* Achievement Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 animate-fade-in-up">
           {achievements.map((achievement, index) => (
-            <motion.div
+            <div
               key={achievement.label}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ 
-                duration: 0.6, 
-                delay: 0.8 + index * 0.1,
-                type: "spring",
-                stiffness: 100
-              }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="text-center group"
+              className="text-center group transition-all duration-300 hover:scale-105 hover:-translate-y-2"
             >
-              <div className="relative p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
-                {/* Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden group-hover:border-white/20 transition-all duration-300">
+                {/* Subtle Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 <div className="relative z-10">
-                  <motion.div 
-                    className="text-4xl mb-4"
-                    whileHover={{ rotate: 360, scale: 1.2 }}
-                    transition={{ duration: 0.5 }}
-                  >
+                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                     {achievement.icon}
-                  </motion.div>
-                  <motion.div 
-                    className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-2"
-                    initial={{ scale: 0 }}
-                    animate={isInView ? { scale: 1 } : {}}
-                    transition={{ duration: 0.8, delay: 1 + index * 0.1 }}
-                  >
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-2">
                     {achievement.number}
-                  </motion.div>
+                  </div>
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {achievement.label}
                   </h3>
@@ -198,65 +131,28 @@ const WhyChooseUsSection = () => {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
-
-        {/* Features Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        </div>
+                  {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in-up">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={feature.title}
-              initial={{ opacity: 0, y: 50, rotateY: -15 }}
-              animate={isInView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
-              transition={{ 
-                duration: 0.8, 
-                delay: 1.4 + index * 0.1,
-                type: "spring",
-                stiffness: 100
-              }}
-              whileHover={{ 
-                y: -10, 
-                scale: 1.03,
-                rotateY: 5,
-                transition: { duration: 0.3 }
-              }}
-              className="group perspective-1000"
+              className="group perspective-1000 transition-all duration-300 hover:-translate-y-3 hover:scale-105"
             >
-              <div className="relative p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden transform-gpu">
+              <div className="relative p-8 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden transform-gpu group-hover:border-white/20 transition-all duration-300">
                 {/* Gradient Background */}
                 <div className={cn(
-                  "absolute inset-0 bg-gradient-to-br opacity-5 group-hover:opacity-10 transition-opacity duration-500",
+                  "absolute inset-0 bg-gradient-to-br opacity-5 group-hover:opacity-10 transition-opacity duration-300",
                   feature.gradient
                 )} />
-                
-                {/* Animated Border */}
-                <motion.div
-                  className={cn(
-                    "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500",
-                    `bg-gradient-to-r ${feature.gradient}`
-                  )}
-                  style={{ padding: '1px' }}
-                  whileHover={{ scale: 1.02 }}
-                />
 
                 <div className="relative z-10">
                   {/* Feature Icon */}
-                  <motion.div 
-                    className="text-5xl mb-6"
-                    whileHover={{ 
-                      rotate: [0, -10, 10, -10, 0],
-                      scale: 1.2 
-                    }}
-                    transition={{ duration: 0.6 }}
-                  >
+                  <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
                     {feature.icon}
-                  </motion.div>
+                  </div>
                   
                   {/* Feature Title */}
                   <h3 className="text-xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">
@@ -269,16 +165,33 @@ const WhyChooseUsSection = () => {
                   </p>
                 </div>
 
-                {/* Shine Effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-                  style={{ skewX: '-20deg' }}
-                />
+                {/* Subtle Shine Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/3 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 opacity-0 group-hover:opacity-100" />
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 0.6s ease-out;
+        }
+        
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out 0.2s both;
+        }
+      `}</style>
     </section>
   );
 };
