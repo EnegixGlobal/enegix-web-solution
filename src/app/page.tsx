@@ -17,15 +17,12 @@ import Navbar from "@/components/navbar";
 import { Toaster } from "react-hot-toast";
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-  // Prevent hydration mismatch
+  // Only run client-side effects after hydration
   useEffect(() => {
-    setMounted(true);
-  }, []); // Add smooth scrolling for anchor links
-  useEffect(() => {
-    if (!mounted) return;
-
+    setIsClient(true);
+    
     // Enable page scrolling and fix scroll issues
     enablePageScroll();
     // Clear any transform styles that might be affecting scroll
@@ -58,12 +55,15 @@ export default function Home() {
 
     document.body.addEventListener("click", handleAnchorClick);
     return () => document.body.removeEventListener("click", handleAnchorClick);
-  }, [mounted]);
+  }, []);
+
   return (
-    <div className="bg-[#0a192f] text-white">
+    <div className="bg-[#0a192f] text-white w-full min-h-screen">
       <Toaster position="top-right" reverseOrder={false} />
-      {mounted && <LoadingScreen />}
-      {mounted && <ScrollFix />} <Navbar />      <HeroSection />
+      {/* {isClient && <LoadingScreen />} */}
+      {isClient && <ScrollFix />} 
+      <Navbar />      
+      <HeroSection />
       <ServicesSection />
       <StatsSection />
       <TechStackSimple />
@@ -71,7 +71,7 @@ export default function Home() {
       <WhyChooseUsSection />
       <ContactCTA />
       <Footer />
-      {mounted && <ScrollToTopButton />}
+      {isClient && <ScrollToTopButton />}
     </div>
   );
 }

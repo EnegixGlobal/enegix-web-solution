@@ -33,45 +33,45 @@ const achievements = [
 const features = [
   {
     icon: "⚡",
-    title: "Lightning Fast Development",
-    description: "Rapid prototyping and delivery without compromising quality. We use modern frameworks and agile methodologies.",
+    title: "Result-Oriented Strategies",
+    description: "We convert traffic into conversions and clicks into customers",
     gradient: "from-yellow-400 to-orange-500"
   },
   {
     icon: "🎯",
-    title: "Precision & Attention to Detail",
-    description: "Every pixel matters. We craft pixel-perfect designs that translate into flawless user experiences.",
+    title: "Custom-Fitted Strategy for Every Client",
+    description: " No templates, no shortcuts, just personalized solutions ",
     gradient: "from-blue-400 to-cyan-500"
   },
   {
     icon: "🔒",
-    title: "Enterprise-Grade Security",
-    description: "Your data and applications are protected with industry-leading security practices and protocols.",
+    title: "An Expert and Certified Team",
+    description: " They bring their insight and experience in every project.",
     gradient: "from-green-400 to-emerald-500"
   },
   {
     icon: "📱",
-    title: "Mobile-First Approach",
-    description: "Every solution is optimized for mobile devices, ensuring seamless experiences across all platforms.",
+    title: "Transparent Communication & Reports",
+    description: " You always stay in the loop",
     gradient: "from-purple-400 to-pink-500"
   },
   {
     icon: "🎨",
-    title: "Custom Design Solutions",
-    description: "Unique designs tailored to your brand identity. No templates, no compromises, just pure creativity.",
+    title: "Tactics for Sustainable Growth",
+    description: " We compete for the long-term digital sustainability, not a short-term buzz.",
     gradient: "from-indigo-400 to-purple-500"
   },
   {
     icon: "⚙️",
-    title: "Scalable Architecture",
-    description: "Future-proof solutions that grow with your business. Built for scale from day one.",
+    title: "Client-First Attitude",
+    description: " Your objectives are what we consider in all our actions.",
     gradient: "from-teal-400 to-blue-500"
   }
 ];
 
 const WhyChooseUsSection = () => {
   return (
-    <section 
+    <section
       className="relative py-20 px-4 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 overflow-hidden"
     >
       {/* Simplified Background Effects */}
@@ -81,7 +81,7 @@ const WhyChooseUsSection = () => {
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
               <pattern id="grid-pattern" width="10" height="10" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(59, 130, 246, 0.3)" strokeWidth="0.5"/>
+                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(59, 130, 246, 0.3)" strokeWidth="0.5" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid-pattern)" />
@@ -92,20 +92,22 @@ const WhyChooseUsSection = () => {
         <div className="absolute top-20 left-20 w-32 h-32 rounded-full bg-gradient-to-r from-blue-500/5 to-cyan-500/5 backdrop-blur-sm"></div>
         <div className="absolute bottom-20 right-20 w-48 h-48 rounded-full bg-gradient-to-r from-purple-500/5 to-blue-500/5 backdrop-blur-sm"></div>
         <div className="absolute top-1/2 left-1/2 w-24 h-24 rounded-full bg-gradient-to-r from-cyan-500/5 to-purple-500/5 backdrop-blur-sm transform -translate-x-1/2 -translate-y-1/2"></div>
-      </div>      <div className="container mx-auto relative z-10">
+      </div>
+      <div className="container mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <div className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Why Choose{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400">
               Enegix Web Solutions?
             </span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            We don't just build websites and apps—we craft digital experiences that drive results. 
+          </div>
+          <p className="text-md text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            We don't just build websites and apps—we craft digital experiences that drive results.
             Here's what sets us apart from the competition.
           </p>
-        </div>        {/* Achievement Stats */}
+        </div>
+        {/* Achievement Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 animate-fade-in-up">
           {achievements.map((achievement, index) => (
             <div
@@ -115,7 +117,7 @@ const WhyChooseUsSection = () => {
               <div className="relative p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden group-hover:border-white/20 transition-all duration-300">
                 {/* Subtle Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
+
                 <div className="relative z-10">
                   <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
                     {achievement.icon}
@@ -134,7 +136,10 @@ const WhyChooseUsSection = () => {
             </div>
           ))}
         </div>
-                  {/* Features Grid */}
+        {/* Features Grid */}
+
+        <h3 className="text-4xl md:text-4xl text-center font-bold mt-20 mb-4 ">For Your Partnership With Enegix Global Pvt. Ltd.: SEO Experts in India You Can Trust</h3>
+        <p className="text-md text-gray-300 max-w-5xl mx-auto text-center mb-10 leading-relaxed">When visibility, rankings, and traffic come into consideration, we stand as the go-to <span className="font-extrabold text-green-600">SEO Experts in India</span> businesses bank upon. In fact, toward anything we do, our approach appreciates a holistic method. Creativity goes hand in hand with analytics in our team, so strategies never exist without a firm base. At Enegix Global Pvt. Ltd., a quick win is never sought, but a solid and lasting digital success. These Are the Major Reasons That Would Make a Brand Pick Us:</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in-up">
           {features.map((feature, index) => (
             <div
@@ -153,12 +158,12 @@ const WhyChooseUsSection = () => {
                   <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
                     {feature.icon}
                   </div>
-                  
+
                   {/* Feature Title */}
                   <h3 className="text-xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">
                     {feature.title}
                   </h3>
-                  
+
                   {/* Feature Description */}
                   <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                     {feature.description}

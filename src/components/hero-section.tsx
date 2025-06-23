@@ -145,7 +145,8 @@ const HeroSection = () => {
         ) : (
           // Static version when animations are disabled
           <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-blue-500/10 to-transparent" />
-        )}        {/* Elegant Flowing Lines */}
+        )}        
+        {/* Elegant Flowing Lines */}
         {shouldAnimate && (
         <motion.svg
           className="absolute inset-0 w-full h-full"
@@ -270,18 +271,17 @@ const HeroSection = () => {
           className="w-full lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0"
         >
           {" "}
-          <h1 className="text-balance text-4xl font-semibold leading-none tracking-tighter sm:text-6xl md:text-4xl lg:text-6xl">
+          <h1 className="text-balance text-3xl font-semibold leading-none tracking-tighter md:text-5xl ">
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              We create cutting-edge web
+            Top Web Design in Ranchi That Delivers More Than Just
             </span>{" "}
             <LineShadowText className="italic" shadowColor="white">
-              solutions
+              Looks
             </LineShadowText>
           </h1>
           {/* Subtitle */}
-          <p className="text-lg mt-3 md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
-            Transform your business with premium web development and digital
-            solutions.
+          <p className="text-lg mt-3 md:text-md text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
+            Enegix Global Pvt. Ltd. is the provider of the <span className="font-extrabold text-green-600">Top Web Design in Ranchi</span>, providing more than just aesthetically pleasing web design but rather one, which performs. We design web interfaces that are mobile-responsive and easy to use, and which aim to accomplish the set goal of your brand. 
           </p>
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

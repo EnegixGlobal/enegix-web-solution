@@ -36,6 +36,23 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   overscroll-behavior-y: none; /* Prevents bounce effect on some browsers */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Ensure full width for main containers */
+#__next,
+main {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 @theme inline {

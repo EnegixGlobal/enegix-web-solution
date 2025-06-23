@@ -119,14 +119,14 @@ export default function Navbar() {
                   className="relative rounded-full object-cover ring-2 ring-gray-500/30 group-hover:ring-blue-400/50 transition-all duration-500"
                 />
               </div>
-              <div className="hidden sm:block">
+              {/* <div className="hidden sm:block">
                 <h1 className="text-xl font-bold bg-gradient-to-r from-white via-gray-100 to-gray-200 bg-clip-text text-transparent">
                   Enegix{" "}
                 </h1>
                 <p className="text-xs text-gray-400 -mt-1 font-medium">
                   Web Solutions
                 </p>
-              </div>
+              </div> */}
             </Link>
           </div>{" "}
           {/* Desktop Navigation */}
@@ -175,7 +175,7 @@ export default function Navbar() {
 
                 {/* Dropdown Menu */}
                 {link.hasDropdown && activeDropdown === link.label && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-[#0a192f]/95 backdrop-blur-xl border border-gray-700/30 rounded-2xl shadow-2xl p-2 opacity-100 transition-all duration-200">
+                  <div className="absolute top-full left-0 w-64 bg-[#0a192f]/95 backdrop-blur-xl border border-gray-700/30 rounded-2xl shadow-2xl p-2 opacity-100 transition-all duration-200">
                     {" "}
                     {link.dropdownItems?.map((item) => (
                       <Link
@@ -230,7 +230,7 @@ export default function Navbar() {
         </nav>{" "}
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden pt-6 pb-6 transition-all duration-300">
+          <div className="lg:hidden pt-4 pb-6 transition-all duration-300">
             <div className="flex flex-col space-y-2">
               {navLinks.map((link) => (
                 <div key={link.label}>
