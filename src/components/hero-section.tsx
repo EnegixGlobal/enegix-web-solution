@@ -279,15 +279,17 @@ const HeroSection = () => {
             </span>{" "}
           </h1>
           {/* Subtitle */}
-          <p className="text-lg mt-3 md:text-md text-gray-200 mb-8 max-w-2xl mx-auto lg:mx-0">
-            Enegix Global Pvt. Ltd. is the provider of the{" "}
+          <p className="text-md mt-3 md:text-md text-gray-200 mb-8 max-w-2xl mx-auto lg:mx-0">
+            Enegix Global Pvt. Ltd. is the{" "}
             <span className="font-extrabold text-emerald-400">
-              Top Web Design in Ranchi
+              Top Web Design Company in Ranchi
             </span>
             , providing more than just aesthetically pleasing web design but
             rather one, which performs. We design web interfaces that are
             mobile-responsive and easy to use, and which aim to accomplish the
-            set goal of your brand.
+            set goal of your brand. Be it a portfolio, eCommerce site, or
+            corporate site; our designs focus on engaging users and converting
+            traffic into trust.
           </p>
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
