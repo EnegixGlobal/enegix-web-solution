@@ -23,14 +23,22 @@ const HeroSection = () => {
   return (    <section
       ref={heroRef}
       id="home-section"
-      className="relative pt-40 md:pt-8 min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a192f]"
+      className="relative pt-40 md:pt-8 min-h-screen w-full flex items-center justify-center overflow-hidden"
+      style={{
+        backgroundImage: `url('/web-development.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
-      {" "}
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-slate-900/80" />
+      
       {/* Professional 3D Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {" "}
-        {/* Professional Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-gray-900/30 to-slate-800/50" />{" "}        {/* Professional Wave Background */}
+        {/* Glassmorphism gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-900/20 via-emerald-900/10 to-slate-900/30" />
+        {/* Professional Wave Background */}
         {shouldAnimate ? (
           <motion.div
             className="absolute inset-0 overflow-hidden"
@@ -51,8 +59,8 @@ const HeroSection = () => {
                 x2="100%"
                 y2="0%"
               >
-                <stop offset="0%" stopColor="rgba(59, 130, 246, 0.25)" />
-                <stop offset="50%" stopColor="rgba(147, 51, 234, 0.30)" />
+                <stop offset="0%" stopColor="rgba(20, 184, 166, 0.25)" />
+                <stop offset="50%" stopColor="rgba(16, 185, 129, 0.30)" />
                 <stop offset="100%" stopColor="rgba(6, 182, 212, 0.25)" />
               </linearGradient>
               <linearGradient
@@ -63,8 +71,8 @@ const HeroSection = () => {
                 y2="0%"
               >
                 <stop offset="0%" stopColor="rgba(6, 182, 212, 0.18)" />
-                <stop offset="50%" stopColor="rgba(59, 130, 246, 0.22)" />
-                <stop offset="100%" stopColor="rgba(147, 51, 234, 0.18)" />
+                <stop offset="50%" stopColor="rgba(20, 184, 166, 0.22)" />
+                <stop offset="100%" stopColor="rgba(16, 185, 129, 0.18)" />
               </linearGradient>
               <linearGradient
                 id="waveGradient3"
@@ -271,17 +279,17 @@ const HeroSection = () => {
           className="w-full lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0"
         >
           {" "}
-          <h1 className="text-balance text-3xl font-semibold leading-none tracking-tighter md:text-5xl ">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+          <h1 className="text-balance text-3xl font-semibold leading-none tracking-tighter md:text-5xl text-white">
+            <span className="bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
             Top Web Design in Ranchi That Delivers More Than Just
             </span>{" "}
-            <LineShadowText className="italic" shadowColor="white">
+            <LineShadowText className="italic text-white" shadowColor="rgba(20, 184, 166, 0.3)">
               Looks
             </LineShadowText>
           </h1>
           {/* Subtitle */}
-          <p className="text-lg mt-3 md:text-md text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
-            Enegix Global Pvt. Ltd. is the provider of the <span className="font-extrabold text-green-600">Top Web Design in Ranchi</span>, providing more than just aesthetically pleasing web design but rather one, which performs. We design web interfaces that are mobile-responsive and easy to use, and which aim to accomplish the set goal of your brand. 
+          <p className="text-lg mt-3 md:text-md text-gray-200 mb-8 max-w-2xl mx-auto lg:mx-0">
+            Enegix Global Pvt. Ltd. is the provider of the <span className="font-extrabold text-emerald-400">Top Web Design in Ranchi</span>, providing more than just aesthetically pleasing web design but rather one, which performs. We design web interfaces that are mobile-responsive and easy to use, and which aim to accomplish the set goal of your brand. 
           </p>
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -340,7 +348,7 @@ const HeroSection = () => {
                   duration: 4,
                   ease: "easeInOut",
                 }}
-                className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-cyan-400/20 rounded-full blur-2xl"
+                className="absolute inset-0 bg-gradient-to-r from-teal-400/20 via-emerald-400/20 to-cyan-400/20 rounded-full blur-2xl"
                 style={{ transform: "translateZ(-20px) scale(1.5)" }}
               />
 
@@ -411,15 +419,15 @@ const HeroSection = () => {
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className="absolute inset-0 bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-cyan-500/30 rounded-lg blur-xl"
+                    className="absolute inset-0 bg-gradient-to-br from-teal-500/30 via-emerald-500/30 to-cyan-500/30 rounded-lg blur-xl"
                   />
 
                   {/* The Coding Icon <> */}
                   <motion.div
                     animate={{
                       textShadow: [
-                        "0 0 20px rgba(59, 130, 246, 0.5)",
-                        "0 0 40px rgba(147, 51, 234, 0.7)",
+                        "0 0 20px rgba(20, 184, 166, 0.5)",
+                        "0 0 40px rgba(16, 185, 129, 0.7)",
                         "0 0 20px rgba(6, 182, 212, 0.5)",
                       ],
                     }}
@@ -431,7 +439,7 @@ const HeroSection = () => {
                     className="relative text-9xl font-bold text-white select-none"
                     style={{
                       transform: "translateZ(20px)",
-                      textShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
+                      textShadow: "0 0 30px rgba(20, 184, 166, 0.6)",
                     }}
                   >
                     &lt;/&gt;
@@ -450,10 +458,10 @@ const HeroSection = () => {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="absolute top-8 right-8 bg-slate-800/80 border border-slate-600/50 rounded px-3 py-2 backdrop-blur-sm"
+                  className="absolute top-8 right-8 bg-white/10 border border-teal-400/30 rounded px-3 py-2 backdrop-blur-lg"
                   style={{ transform: "rotateX(20deg) translateZ(15px)" }}
                 >
-                  <code className="text-blue-300 text-sm font-mono">React</code>
+                  <code className="text-teal-300 text-sm font-mono">React</code>
                 </motion.div>
 
                 <motion.div
@@ -468,10 +476,10 @@ const HeroSection = () => {
                     ease: "easeInOut",
                     delay: 2,
                   }}
-                  className="absolute bottom-8 left-8 bg-slate-800/80 border border-slate-600/50 rounded px-3 py-2 backdrop-blur-sm"
+                  className="absolute bottom-8 left-8 bg-white/10 border border-emerald-400/30 rounded px-3 py-2 backdrop-blur-lg"
                   style={{ transform: "rotateX(-20deg) translateZ(15px)" }}
                 >
-                  <code className="text-purple-300 text-sm font-mono">
+                  <code className="text-emerald-300 text-sm font-mono">
                     Next.js
                   </code>
                 </motion.div>
@@ -488,7 +496,7 @@ const HeroSection = () => {
                     ease: "easeInOut",
                     delay: 4,
                   }}
-                  className="absolute top-1/2 left-4 bg-slate-800/80 border border-slate-600/50 rounded px-2 py-1 backdrop-blur-sm"
+                  className="absolute top-1/2 left-4 bg-white/10 border border-cyan-400/30 rounded px-2 py-1 backdrop-blur-lg"
                   style={{ transform: "rotateY(30deg) translateZ(10px)" }}
                 >
                   <code className="text-cyan-300 text-xs font-mono">TS</code>
@@ -506,10 +514,10 @@ const HeroSection = () => {
                     ease: "easeInOut",
                     delay: 6,
                   }}
-                  className="absolute top-1/2 right-4 bg-slate-800/80 border border-slate-600/50 rounded px-2 py-1 backdrop-blur-sm"
+                  className="absolute top-1/2 right-4 bg-white/10 border border-emerald-400/30 rounded px-2 py-1 backdrop-blur-lg"
                   style={{ transform: "rotateY(-30deg) translateZ(10px)" }}
                 >
-                  <code className="text-green-300 text-xs font-mono">API</code>
+                  <code className="text-emerald-300 text-xs font-mono">API</code>
                 </motion.div>
               </motion.div>
 

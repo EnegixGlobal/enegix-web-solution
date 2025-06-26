@@ -96,22 +96,22 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-[#0a192f] overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-gray-900 via-slate-800 to-teal-900/20 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 w-full h-24 bg-gradient-to-b from-[#1e293b] to-transparent" />
+        <div className="absolute top-0 w-full h-24 bg-gradient-to-b from-gray-800 to-transparent" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           <div>
-            <h2 className="text-xl font-bold mb-6 flex items-center">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+            <h5 className="text-xl font-bold mb-6 flex items-center">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-300">
                 Enegix
               </span>
               <span className="text-white ml-1">Websolution</span>
-            </h2>
-            <p className="text-gray-400 ">
+            </h5>
+            <p className="text-gray-300 ">
               Elevating digital experiences through innovative web solutions,
               creative design, and strategic marketing.
             </p>
@@ -121,9 +121,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-4 font-poppins tracking-tight">
+            <h6 className="text-white font-semibold mb-4 font-poppins tracking-tight">
               Company
-            </h3>
+            </h6>
             <ul className="space-y-2">
               {companyLinks.map((link) => (
                 <li key={link.label}>
@@ -139,9 +139,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-4 font-montserrat tracking-tight">
+            <h6 className="text-white font-semibold mb-4 font-montserrat tracking-tight">
               Services
-            </h3>
+            </h6>
             <ul className="space-y-2">
               {serviceLinks.map((link) => (
                 <li key={link.label}>
@@ -157,9 +157,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-4 font-montserrat tracking-tight">
+            <h6 className="text-white font-semibold mb-4 font-montserrat tracking-tight">
               Contact Us
-            </h3>
+            </h6>
             <address className="not-italic text-gray-400 font-space-grotesk text-sm">
               <p className="mb-2">House No.2, Old AG More</p>
               <p className="mb-2">

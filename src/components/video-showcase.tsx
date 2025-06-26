@@ -41,13 +41,13 @@ const VideoShowcase = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-900">
+    <section className="py-16 bg-gradient-to-r from-gray-50 to-teal-50">
       <div className="w-full">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             See Our Work in Action
-          </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          </div>
+          <p className="text-gray-600 max-w-2xl mx-auto">
             Watch how we bring digital experiences to life
           </p>
         </div>

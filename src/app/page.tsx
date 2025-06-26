@@ -58,17 +58,17 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-[#0a192f] text-white w-full min-h-screen">
+    <div className="bg-white text-gray-900 w-full min-h-screen">
       <Toaster position="top-right" reverseOrder={false} />
       {/* {isClient && <LoadingScreen />} */}
       {isClient && <ScrollFix />} 
       <Navbar />      
       <HeroSection />
       <ServicesSection />
-      <StatsSection />
+      {/* <StatsSection /> */}
+      <WhyChooseUsSection />
       <TechStackSimple />
       <VideoShowcase />
-      <WhyChooseUsSection />
       <ContactCTA />
       <Footer />
       {isClient && <ScrollToTopButton />}

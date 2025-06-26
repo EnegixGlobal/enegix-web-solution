@@ -99,15 +99,12 @@ const StatsSection = () => {
     }
   };
   return (
-    <div className="relative w-full py-24 overflow-hidden">
+    <div className="relative  py-24 overflow-hidden bg-gradient-to-r from-teal-50 to-emerald-50 ">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#1e293b] z-0" />
-
-      {/* Background gradient */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 w-full h-24 bg-gradient-to-b from-[#0f172a] to-transparent" />
-        <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-[#0f172a] to-transparent" />
-      </div>
+      {/* <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-teal-500/5 rounded-full filter blur-3xl" />
+        <div className="absolute bottom-1/3 left-1/3 w-96 h-96 bg-emerald-400/5 rounded-full filter blur-3xl" />
+      </div> */}
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Stats */}
@@ -124,12 +121,12 @@ const StatsSection = () => {
                 key={stat.id}
                 variants={itemVariants}
               >
-                <Card className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 text-center relative overflow-hidden max-w-[350px] w-full">
-                  <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+                <Card className="bg-white border border-teal-100 hover:border-teal-300 rounded-lg p-6 text-center relative overflow-hidden max-w-[350px] w-full hover:shadow-lg transition-all duration-300">
+                  <ShineBorder shineColor={["#14B8A6", "#10B981", "#06B6D4"]} />
                   <CardHeader>
-                    <CardTitle className="text-3xl text-gray-200">
+                    <CardTitle className="text-3xl text-teal-600">
                       {stat.value}
-                    </CardTitle>                    <CardDescription className="text-gray-400">
+                    </CardTitle>                    <CardDescription className="text-gray-600">
                       {stat.label}
                     </CardDescription>
                   </CardHeader>
@@ -145,14 +142,14 @@ const StatsSection = () => {
             {isClient ? (
               <>
                 <h1 
-                  className={`text-3xl md:text-5xl font-bold mb-4 font-poppins tracking-tight transition-opacity duration-300 ease-out ${
+                  className={`text-3xl md:text-5xl font-bold mb-4 font-poppins tracking-tight text-gray-900 transition-opacity duration-300 ease-out ${
                     statsInView ? "opacity-100" : "opacity-0"
                   }`}
                 >
                   What Our <AuroraText>Client Says</AuroraText>
                 </h1>
                 <p
-                  className={`text-gray-400 max-w-xl mx-auto font-outfit font-light leading-relaxed transition-opacity duration-300 ease-out ${
+                  className={`text-gray-600 max-w-xl mx-auto font-outfit font-light leading-relaxed transition-opacity duration-300 ease-out ${
                     statsInView ? "opacity-100" : "opacity-0"
                   }`}
                   style={{ transitionDelay: statsInView ? "100ms" : "0ms" }}

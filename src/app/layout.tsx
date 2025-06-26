@@ -29,9 +29,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Enegix Websolution - Web Development, Logo Design, SEO & Advertising",
-  description: "Transform your digital presence with Enegix Websolution. We offer professional web development, logo design, SEO optimization, and digital advertising services.",
-  keywords: ["web development", "logo design", "SEO services", "digital advertising", "web design", "professional website", "online marketing"],
+  title: "Top Web Design Company in Ranchi, Digital Marketing Agency in India",
+  description: "Enegix Web Solutions Pvt. Ltd. builds top-ranking websites, delivers result-driven SEO, and powers growth with digital marketing strategies tailored for Indian businesses. Book a free consultation today!",
+  keywords: ["web development", "logo design", "SEO services", "digital advertising", "web design", "professional website", "online marketing", "Ranchi web design", "digital marketing India", "SEO Ranchi"],
 };
 
 export default function RootLayout({

@@ -200,10 +200,10 @@ const RelatedProjectCard = ({
   project: (typeof portfolioProjects)[0];
 }) => {
   return (
-    <div className="group relative overflow-hidden rounded-xl">
+    <div className="group relative overflow-hidden rounded-xl bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300">
       {/* Project Image */}
-      <div className="relative h-64 w-full overflow-hidden rounded-xl">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
+      <div className="relative h-64 w-full overflow-hidden rounded-t-xl">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 z-10"></div>
         <Image
           src={project.image}
           alt={project.title}
@@ -214,14 +214,14 @@ const RelatedProjectCard = ({
         />
       </div>
 
-      {/* Project Info Overlay */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-        <span className="inline-block px-3 py-1 mb-2 text-xs font-medium text-cyan-400 bg-cyan-950/70 backdrop-blur-sm rounded-full">
+      {/* Project Info */}
+      <div className="p-4">
+        <span className="inline-block px-3 py-1 mb-2 text-xs font-medium text-emerald-700 bg-emerald-100 rounded-full">
           {project.category}
         </span>
-        <h3 className="text-lg font-bold text-white mb-1">{project.title}</h3>
+        <h3 className="text-lg font-bold text-gray-900 mb-1">{project.title}</h3>
         <Link href={`/portfolio/${project.id}`}>
-          <span className="text-cyan-400 text-sm hover:text-cyan-300 transition-colors">
+          <span className="text-emerald-600 text-sm hover:text-emerald-700 transition-colors">
             View Project →
           </span>
         </Link>
@@ -275,11 +275,11 @@ export default function ProjectDetailPage({
       <ScrollFix />
       <Navbar />
 
-      <main className="bg-[#0c1220] text-white min-h-screen relative overflow-x-hidden">
+      <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
         {/* Hero Banner */}
-        <section className="relative pt-32 pb-20">
+        <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0c1220]/30 via-[#0c1220]/70 to-[#0c1220] z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-800/70 to-slate-900 z-10"></div>
             <div className="h-full w-full">
               <Image
                 src={project.image}
@@ -298,54 +298,159 @@ export default function ProjectDetailPage({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
+                className="mb-6"
               >
-                <span className="inline-block px-3 py-1 mb-4 text-sm font-medium text-cyan-400 bg-cyan-950/70 backdrop-blur-sm rounded-full">
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors mb-6"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="m15 18-6-6 6-6" />
+                  </svg>
+                  Back to Portfolio
+                </Link>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <span className="inline-block px-3 py-1 mb-4 text-xs font-medium text-emerald-400 bg-emerald-950/70 backdrop-blur-sm rounded-full">
                   {project.category}
                 </span>
                 <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
                   {project.title}
                 </h1>
-                <p className="text-xl text-gray-200 mb-8">
+                <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-8">
+                {/* Project Meta */}
+                <div className="flex flex-wrap gap-6 mb-8">
+                  {project.client && (
+                    <div>
+                      <span className="text-gray-400 text-sm">Client:</span>
+                      <span className="text-white font-medium ml-2">{project.client}</span>
+                    </div>
+                  )}
+                  {project.duration && (
+                    <div>
+                      <span className="text-gray-400 text-sm">Duration:</span>
+                      <span className="text-white font-medium ml-2">{project.duration}</span>
+                    </div>
+                  )}
+                  {project.year && (
+                    <div>
+                      <span className="text-gray-400 text-sm">Year:</span>  
+                      <span className="text-white font-medium ml-2">{project.year}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Tags */}
+                <div className="flex gap-2 flex-wrap mb-8">
                   {project.tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-300"
+                      className="px-3 py-1 text-sm bg-white/10 rounded-md text-gray-300"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <RainbowButton size="lg">Visit Live Project</RainbowButton>
-                </a>
+                {/* Live Link */}
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors"
+                  >
+                    View Live Site
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15,3 21,3 21,9" />
+                      <line x1="10" x2="21" y1="14" y2="3" />
+                    </svg>
+                  </a>
+                )}
               </motion.div>
             </div>
           </div>
         </section>
 
         {/* Project Details */}
-        <section className="py-16 px-4">
+        <section className="py-16 px-4 bg-white">
           <div className="container mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Project Info */}
               <div className="lg:col-span-1">
-                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 sticky top-32">
-                  <h3 className="text-xl font-bold mb-6 pb-4 border-b border-white/10">
+                <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 sticky top-32">
+                  <h3 className="text-xl font-bold mb-6 pb-4 border-b border-gray-200 text-gray-900">
                     Project Details
                   </h3>
 
                   <div className="space-y-4">
+                    {project.client && (
+                      <div>
+                        <p className="text-gray-600 text-sm">Client</p>
+                        <p className="text-gray-900 font-medium">{project.client}</p>
+                      </div>
+                    )}
+                    {project.duration && (
+                      <div>
+                        <p className="text-gray-600 text-sm">Duration</p>
+                        <p className="text-gray-900 font-medium">{project.duration}</p>
+                      </div>
+                    )}
+                    {project.year && (
+                      <div>
+                        <p className="text-gray-600 text-sm">Year</p>
+                        <p className="text-gray-900 font-medium">{project.year}</p>
+                      </div>
+                    )}
                     <div>
-                      <p className="text-gray-400 text-sm">Client</p>
+                      <p className="text-gray-600 text-sm">Category</p>
+                      <p className="text-gray-900 font-medium">{project.category}</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-600 text-sm">Technologies</p>
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {project.tags.map((tag, idx) => (
+                          <span
+                            key={idx}
+                            className="px-2 py-1 text-xs bg-emerald-100 text-emerald-700 rounded-md"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
                       <p className="text-white font-medium">
                         {project.client || "Confidential"}
                       </p>
@@ -411,10 +516,10 @@ export default function ProjectDetailPage({
                   viewport={{ once: true, margin: "-100px" }}
                   className="mb-12"
                 >
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
                     The <AuroraText>Challenge</AuroraText>
                   </h2>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {project.challenge ||
                       "Our client approached us with specific requirements and challenges that needed innovative solutions."}
                   </p>
@@ -428,10 +533,10 @@ export default function ProjectDetailPage({
                   viewport={{ once: true, margin: "-100px" }}
                   className="mb-12"
                 >
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
                     Our <AuroraText>Solution</AuroraText>
                   </h2>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {project.solution ||
                       "We developed a comprehensive solution tailored to the client's specific needs and goals."}
                   </p>
@@ -446,7 +551,7 @@ export default function ProjectDetailPage({
                     viewport={{ once: true, margin: "-100px" }}
                     className="mb-12"
                   >
-                    <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
                       Project <AuroraText>Gallery</AuroraText>
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -479,10 +584,10 @@ export default function ProjectDetailPage({
                   viewport={{ once: true, margin: "-100px" }}
                   className="mb-12"
                 >
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
                     The <AuroraText>Results</AuroraText>
                   </h2>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {project.results ||
                       "The implemented solution delivered significant improvements and helped the client achieve their business objectives."}
                   </p>
@@ -497,25 +602,19 @@ export default function ProjectDetailPage({
                     viewport={{ once: true, margin: "-100px" }}
                     className="mb-12"
                   >
-                    <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-                      <svg
-                        className="h-10 w-10 text-cyan-400 mb-4"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"></path>
-                      </svg>
-                      <p className="text-gray-200 italic text-lg mb-4">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                      Client <AuroraText>Testimonial</AuroraText>
+                    </h2>
+                    <div className="bg-gray-50 rounded-xl p-6 border-l-4 border-emerald-500">
+                      <blockquote className="text-gray-700 italic text-lg mb-4">
                         "{project.testimonial.text}"
-                      </p>
-                      <div>
-                        <p className="text-white font-bold">
-                          {project.testimonial.author}
-                        </p>
-                        <p className="text-gray-400 text-sm">
-                          {project.testimonial.position}
-                        </p>
-                      </div>
+                      </blockquote>
+                      <cite className="text-gray-900 font-medium">
+                        {project.testimonial.author}
+                        <span className="text-gray-600 font-normal">
+                          , {project.testimonial.position}
+                        </span>
+                      </cite>
                     </div>
                   </motion.div>
                 )}
@@ -523,17 +622,16 @@ export default function ProjectDetailPage({
             </div>
           </div>
         </section>
-
         {/* Related Projects */}
         {relatedProjects.length > 0 && (
-          <section className="py-16 px-4 bg-gradient-to-b from-transparent to-[#0a0f1a]">
+          <section className="py-16 px-4 bg-gray-50">
             <div className="container mx-auto">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="text-2xl md:text-3xl font-bold mb-10 text-center"
+                className="text-2xl md:text-3xl font-bold mb-10 text-center text-gray-900"
               >
                 Related <AuroraText>Projects</AuroraText>
               </motion.h2>
@@ -556,16 +654,16 @@ export default function ProjectDetailPage({
         )}
 
         {/* CTA Section */}
-        <section className="py-20 px-4 relative">
+        <section className="py-20 px-4 relative bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
           <div className="container mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 backdrop-blur-lg rounded-2xl p-12 border border-white/10 text-center max-w-4xl mx-auto"
+              className="bg-white/10 backdrop-blur-lg rounded-2xl p-12 border border-white/10 text-center max-w-4xl mx-auto"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
                 Ready for Similar Results?
               </h2>
               <p className="text-gray-300 mb-8 text-lg max-w-2xl mx-auto">

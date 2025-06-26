@@ -120,11 +120,11 @@ const ProjectCard = ({ project, index }: { project: typeof portfolioProjects[0];
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative overflow-hidden rounded-xl"
+      className="group relative overflow-hidden rounded-xl bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300"
     >
       {/* Project Image */}
-      <div className="relative h-80 w-full overflow-hidden rounded-xl">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
+      <div className="relative h-80 w-full overflow-hidden rounded-t-xl">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 z-10"></div>
         <Image
           src={project.image}
           alt={project.title}
@@ -135,36 +135,35 @@ const ProjectCard = ({ project, index }: { project: typeof portfolioProjects[0];
         />
       </div>
 
-      {/* Project Info Overlay */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-        <span className="inline-block px-3 py-1 mb-3 text-xs font-medium text-cyan-400 bg-cyan-950/70 backdrop-blur-sm rounded-full">
+      {/* Project Info */}
+      <div className="p-6">
+        <span className="inline-block px-3 py-1 mb-3 text-xs font-medium text-emerald-700 bg-emerald-100 rounded-full">
           {project.category}
         </span>
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-1 tracking-tight">{project.title}</h3>
+        <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 tracking-tight">{project.title}</h3>
+        <p className="text-gray-600 mb-4 text-sm line-clamp-3">{project.description}</p>
         
-        <div className="flex gap-2 flex-wrap mt-3 mb-4">
+        <div className="flex gap-2 flex-wrap mb-4">
           {project.tags.slice(0, 3).map((tag, idx) => (
-            <span key={idx} className="px-2 py-1 text-xs bg-white/10 rounded-md text-gray-300">
+            <span key={idx} className="px-2 py-1 text-xs bg-gray-100 rounded-md text-gray-700">
               {tag}
             </span>
           ))}
           {project.tags.length > 3 && (
-            <span className="px-2 py-1 text-xs bg-white/10 rounded-md text-gray-300">
+            <span className="px-2 py-1 text-xs bg-gray-100 rounded-md text-gray-700">
               +{project.tags.length - 3}
             </span>
           )}
         </div>
         
-        <div className="transform translate-y-8 transition-transform duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-          <Link href={`/portfolio/${project.id}`}>
-            <span className="text-cyan-400 font-medium text-sm hover:text-cyan-300 transition-colors flex items-center gap-1">
-              View Project 
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m9 18 6-6-6-6"/>
-              </svg>
-            </span>
-          </Link>
-        </div>
+        <Link href={`/portfolio/${project.id}`}>
+          <span className="text-emerald-600 font-medium text-sm hover:text-emerald-700 transition-colors flex items-center gap-1">
+            View Project 
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </span>
+        </Link>
       </div>
     </motion.div>
   );
@@ -177,7 +176,7 @@ const FeaturedProjectCard = ({ project }: { project: typeof portfolioProjects[0]
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
-      className="relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900/50 to-gray-800/50 border border-white/10 p-1"
+      className="relative overflow-hidden rounded-xl bg-white border border-gray-200 shadow-lg p-1"
     >
       <div className="flex flex-col md:flex-row h-full">
         {/* Project Image */}
@@ -194,15 +193,15 @@ const FeaturedProjectCard = ({ project }: { project: typeof portfolioProjects[0]
         
         {/* Project Info */}
         <div className="p-6 md:w-1/2 flex flex-col justify-center">
-          <span className="inline-block px-3 py-1 mb-3 text-xs font-medium text-cyan-400 bg-cyan-950/70 backdrop-blur-sm rounded-full">
+          <span className="inline-block px-3 py-1 mb-3 text-xs font-medium text-emerald-700 bg-emerald-100 rounded-full">
             {project.category}
           </span>
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">{project.title}</h3>
-          <p className="text-gray-300 mb-6">{project.description}</p>
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 tracking-tight">{project.title}</h3>
+          <p className="text-gray-600 mb-6">{project.description}</p>
           
           <div className="flex gap-2 flex-wrap mb-6">
             {project.tags.map((tag, idx) => (
-              <span key={idx} className="px-2 py-1 text-xs bg-white/10 rounded-md text-gray-300">
+              <span key={idx} className="px-2 py-1 text-xs bg-gray-100 rounded-md text-gray-700">
                 {tag}
               </span>
             ))}
@@ -275,9 +274,9 @@ export default function PortfolioPage() {
       <ScrollFix />
       <Navbar />
 
-      <main className="bg-[#0c1220] text-white min-h-screen relative overflow-x-hidden">
+      <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-4">
+        <section className="relative pt-32 pb-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
           {/* Animated background effects */}
           <div className="absolute top-0 left-0 right-0 bottom-0 z-0 pointer-events-none overflow-hidden">
             <div className="absolute top-20 flex h-[600px] w-full flex-col items-center justify-center overflow-hidden">
@@ -291,7 +290,7 @@ export default function PortfolioPage() {
                 duration: 10,
                 ease: "easeInOut",
               }}
-              className="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-3xl pointer-events-none"
+              className="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-emerald-500/10 to-teal-500/10 blur-3xl pointer-events-none"
             />
           </div>
           
@@ -302,10 +301,10 @@ export default function PortfolioPage() {
               transition={{ duration: 0.8 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
                 Our <AuroraText>Portfolio</AuroraText>
               </h1>
-              <p className="text-gray-400 text-lg md:text-xl mb-12 max-w-3xl mx-auto font-space-grotesk">
+              <p className="text-gray-300 text-lg md:text-xl mb-12 max-w-3xl mx-auto font-space-grotesk">
                 Explore our collection of projects that showcase our expertise in web development, 
                 branding, e-commerce, and digital marketing solutions.
               </p>
@@ -314,13 +313,13 @@ export default function PortfolioPage() {
         </section>
 
         {/* Featured Projects Section */}
-        <section className="py-10 px-4">
+        <section className="py-10 px-4 bg-white">
           <div className="container mx-auto">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-3xl font-bold mb-12 text-center"
+              className="text-3xl font-bold mb-12 text-center text-gray-900"
             >
               Featured <AuroraText>Projects</AuroraText>
             </motion.h2>
@@ -334,7 +333,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* Filter and Search Section */}
-        <section className="py-16 px-4">
+        <section className="py-16 px-4 bg-white">
           <div className="container mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
               {/* Category Filters */}
@@ -346,8 +345,8 @@ export default function PortfolioPage() {
                     className={cn(
                       "px-4 py-2 rounded-full text-sm font-medium transition-all",
                       activeCategory === category
-                        ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white"
-                        : "bg-white/10 text-gray-300 hover:bg-white/20"
+                        ? "bg-gradient-to-r from-emerald-500 to-teal-400 text-white"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                     )}
                   >
                     {category}
@@ -376,7 +375,7 @@ export default function PortfolioPage() {
                   placeholder="Search projects..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white/10 border border-white/20 rounded-full py-2 pl-10 pr-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-transparent"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-full py-2 pl-10 pr-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent"
                 />
               </div>
             </div>
@@ -398,7 +397,7 @@ export default function PortfolioPage() {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-16 w-16 mx-auto text-gray-500 mb-4"
+                    className="h-16 w-16 mx-auto text-gray-400 mb-4"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -410,8 +409,8 @@ export default function PortfolioPage() {
                       d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <h3 className="text-xl font-bold text-white mb-2">No projects found</h3>
-                  <p className="text-gray-400 mb-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">No projects found</h3>
+                  <p className="text-gray-600 mb-6">
                     We couldn't find any projects matching your current filters.
                   </p>
                   <button
@@ -419,7 +418,7 @@ export default function PortfolioPage() {
                       setActiveCategory("All");
                       setSearchQuery("");
                     }}
-                    className="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full text-white font-medium hover:opacity-90 transition-opacity"
+                    className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full text-white font-medium hover:opacity-90 transition-opacity"
                   >
                     Reset Filters
                   </button>
@@ -430,16 +429,16 @@ export default function PortfolioPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 relative">
+        <section className="py-20 px-4 relative bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
           <div className="container mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 backdrop-blur-lg rounded-2xl p-12 border border-white/10 text-center max-w-4xl mx-auto"
+              className="bg-white/10 backdrop-blur-lg rounded-2xl p-12 border border-white/10 text-center max-w-4xl mx-auto"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Create Something Amazing Together</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Let's Create Something Amazing Together</h2>
               <p className="text-gray-300 mb-8 text-lg max-w-2xl mx-auto">
                 Ready to bring your vision to life? We're here to help you create a project that exceeds your expectations
                 and delivers real results for your business.

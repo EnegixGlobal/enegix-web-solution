@@ -520,18 +520,33 @@ export default function Contact() {
       {mounted && <ScrollFix />}
       <Navbar />
 
-      <main className=" bg-[#0a192f]">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden py-20 md:py-28 px-4">
-          {/* Decorative elements */}
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-0 left-0 w-1/3 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-1/2 h-1/3 bg-cyan-500/10 rounded-full blur-3xl"></div>
+      <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
+        {/* Hero Section with Background Image */}
+        <section
+          className="relative pt-24 pb-16 px-6 lg:px-8 min-h-[80vh] flex items-center"
+          role="banner">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80"
+              alt="Contact Us Background"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-teal-900/60" />
           </div>
 
-          <Meteors number={15} />
+          {/* Subtle decorative effects */}
+          <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+            <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-[800px] h-[400px] opacity-5">
+              <Meteors number={15} />
+            </div>
+            <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full bg-teal-100 blur-3xl opacity-20" />
+          </div>
 
-          <div className="container mx-auto relative pt-10 z-10">
+          <div className="max-w-7xl mx-auto relative z-20">
             <div className="max-w-3xl mx-auto text-center">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

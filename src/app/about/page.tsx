@@ -26,7 +26,7 @@ const companyValues = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-10 h-10 mb-4 text-cyan-400"
+        className="w-10 h-10 mb-4 text-teal-600"
       >
         <path d="M12 2v8"></path>
         <path d="m4.93 10.93 1.41 1.41"></path>
@@ -52,7 +52,7 @@ const companyValues = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-10 h-10 mb-4 text-cyan-400"
+        className="w-10 h-10 mb-4 text-emerald-600"
       >
         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
         <circle cx="9" cy="7" r="4"></circle>
@@ -74,7 +74,7 @@ const companyValues = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-10 h-10 mb-4 text-cyan-400"
+        className="w-10 h-10 mb-4 text-teal-600"
       >
         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
       </svg>
@@ -93,7 +93,7 @@ const companyValues = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-10 h-10 mb-4 text-cyan-400"
+        className="w-10 h-10 mb-4 text-emerald-600"
       >
         <path d="M21 2v6"></path>
         <path d="M3 10v6"></path>
@@ -130,7 +130,7 @@ const services = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-8 h-8 text-cyan-400"
+        className="w-8 h-8 text-teal-600"
       >
         <circle cx="11" cy="11" r="8"></circle>
         <path d="m21 21-4.3-4.3"></path>
@@ -151,7 +151,7 @@ const services = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-8 h-8 text-cyan-400"
+        className="w-8 h-8 text-emerald-600"
       >
         <polyline points="16 18 22 12 16 6"></polyline>
         <polyline points="8 6 2 12 8 18"></polyline>
@@ -172,7 +172,7 @@ const services = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-8 h-8 text-cyan-400"
+        className="w-8 h-8 text-teal-600"
       >
         <circle cx="8" cy="21" r="1"></circle>
         <circle cx="19" cy="21" r="1"></circle>
@@ -194,7 +194,7 @@ const services = [
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="w-8 h-8 text-cyan-400"
+        className="w-8 h-8 text-emerald-600"
       >
         <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
         <line x1="4" y1="22" x2="4" y2="15"></line>
@@ -206,12 +206,12 @@ const services = [
 // Progress bar component
 const ProgressBar = ({ percentage }: { percentage: number }) => {
   return (
-    <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden mt-2">
+    <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden mt-2">
       <motion.div
         initial={{ width: 0 }}
         whileInView={{ width: `${percentage}%` }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="h-full bg-gradient-to-r from-blue-500 to-cyan-400"
+        className="h-full bg-gradient-to-r from-teal-600 to-emerald-600"
       />
     </div>
   );
@@ -233,12 +233,12 @@ const Stats = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
           viewport={{ once: true }}
-          className="text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-cyan-400/30 transition-all duration-300"
+          className="text-center p-6 rounded-xl bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
         >
-          <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+          <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-emerald-600">
             {stat.value}
           </h3>
-          <p className="text-gray-400 mt-2">{stat.label}</p>
+          <p className="text-gray-600 mt-2">{stat.label}</p>
         </motion.div>
       ))}
     </div>
@@ -281,13 +281,13 @@ export default function About() {
       {mounted && <ScrollFix />}
       <Navbar />
       
-      <main className=" bg-[#0a192f]">
+      <main className="bg-white">
         {/* Hero Section */}
-        <section className="relative overflow-hidden py-20 md:py-28 px-4">
+        <section className="relative overflow-hidden py-20 md:py-28 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
           {/* Decorative elements */}
           <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-0 left-0 w-1/3 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-1/2 h-1/3 bg-cyan-500/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-0 left-0 w-1/3 h-1/2 bg-teal-500/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-1/2 h-1/3 bg-emerald-500/10 rounded-full blur-3xl"></div>
           </div>
           
           <Meteors number={20} />
@@ -300,7 +300,7 @@ export default function About() {
                 transition={{ duration: 0.5 }}
                 className="mb-6"
               >
-                <span className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-sm font-semibold mb-4">
+                <span className="inline-block px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 text-sm font-semibold mb-4">
                   Our Story
                 </span>
               </motion.div>
@@ -345,7 +345,7 @@ export default function About() {
         </section>
         
         {/* About Enegix Section */}
-        <section className="py-20 px-4 bg-gradient-to-b from-[#0c1220] to-[#0a192f]">
+        <section className="py-20 px-4 bg-white">
           <div className="container mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <motion.div
@@ -353,54 +353,54 @@ export default function About() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-              >                <span className="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm font-semibold mb-4">
+              >                <span className="inline-block px-3 py-1 rounded-full bg-teal-500/10 text-teal-600 text-sm font-semibold mb-4">
                   Who We Are
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-                  Empowering <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Digital Innovation</span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+                  Empowering <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-emerald-600">Digital Innovation</span>
                 </h2>
-                <p className="text-gray-300 mb-6">
+                <p className="text-gray-600 mb-6">
                   Enegix Web Solutions was founded with a vision to bridge the gap between technology and business. Our team of skilled developers, designers, and digital strategists work together to create dynamic, user-friendly, and high-performance websites tailored to your unique needs.
                 </p>
-                <p className="text-gray-300 mb-8">
+                <p className="text-gray-600 mb-8">
                   At Enegix Web Solutions, we are more than just a web development company—we are your digital growth partners. With a passion for innovation and a commitment to excellence, we provide businesses with cutting-edge web solutions that drive success in the ever-evolving digital world.
                 </p>
                 
                 <div className="flex flex-col space-y-4">
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mr-3 mt-1">
-                      <div className="w-5 h-5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-r from-teal-600 to-emerald-600 flex items-center justify-center">
                         <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
                         </svg>
                       </div>
                     </div>
-                    <p className="text-gray-300">
-                      <span className="font-semibold text-white">Innovation-driven solutions</span> that keep you ahead of competitors
+                    <p className="text-gray-600">
+                      <span className="font-semibold text-gray-900">Innovation-driven solutions</span> that keep you ahead of competitors
                     </p>
                   </div>
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mr-3 mt-1">
-                      <div className="w-5 h-5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-r from-teal-600 to-emerald-600 flex items-center justify-center">
                         <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
                         </svg>
                       </div>
                     </div>
-                    <p className="text-gray-300">
-                      <span className="font-semibold text-white">Results-driven approach</span> focused on delivering real business impact
+                    <p className="text-gray-600">
+                      <span className="font-semibold text-gray-900">Results-driven approach</span> focused on delivering real business impact
                     </p>
                   </div>
                   <div className="flex items-start">
                     <div className="flex-shrink-0 mr-3 mt-1">
-                      <div className="w-5 h-5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-r from-teal-600 to-emerald-600 flex items-center justify-center">
                         <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
                         </svg>
                       </div>
                     </div>
-                    <p className="text-gray-300">
-                      <span className="font-semibold text-white">Customer-centric solutions</span> tailored to your specific needs
+                    <p className="text-gray-600">
+                      <span className="font-semibold text-gray-900">Customer-centric solutions</span> tailored to your specific needs
                     </p>
                   </div>
                 </div>
@@ -412,8 +412,8 @@ export default function About() {
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
                 className="relative"
-              >                <div className="relative w-full h-[500px] overflow-hidden rounded-xl border border-white/10">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/40 to-cyan-900/40 z-10 mix-blend-overlay"></div>
+              >                <div className="relative w-full h-[500px] overflow-hidden rounded-xl border border-gray-200 shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-teal-900/40 to-emerald-900/40 z-10 mix-blend-overlay"></div>
                   <Image
                     src="/portfolio/tech-summit.jpg"
                     alt="Enegix Web Solutions Team"
@@ -430,16 +430,16 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                   viewport={{ once: true }}
-                  className="absolute -bottom-6 -left-6 bg-[#0c1220]/80 backdrop-blur-md p-4 rounded-lg border border-white/10 shadow-xl"
+                  className="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-md p-4 rounded-lg border border-gray-200 shadow-xl"
                 >
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
-                      <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center">
+                      <svg className="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                       </svg>
                     </div>                    <div>
-                      <h4 className="text-lg font-bold text-white">Innovative</h4>
-                      <p className="text-sm text-gray-400">Cutting-edge solutions</p>
+                      <h4 className="text-lg font-bold text-gray-900">Innovative</h4>
+                      <p className="text-sm text-gray-600">Cutting-edge solutions</p>
                     </div>
                   </div>
                 </motion.div>
@@ -449,16 +449,16 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                   viewport={{ once: true }}
-                  className="absolute -top-6 -right-6 bg-[#0c1220]/80 backdrop-blur-md p-4 rounded-lg border border-white/10 shadow-xl"
+                  className="absolute -top-6 -right-6 bg-white/90 backdrop-blur-md p-4 rounded-lg border border-gray-200 shadow-xl"
                 >
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center">
-                      <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center">
+                      <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                       </svg>
                     </div>                    <div>
-                      <h4 className="text-lg font-bold text-white">Client-First</h4>
-                      <p className="text-sm text-gray-400">Your success is our priority</p>
+                      <h4 className="text-lg font-bold text-gray-900">Client-First</h4>
+                      <p className="text-sm text-gray-600">Your success is our priority</p>
                     </div>
                   </div>
                 </motion.div>
@@ -468,7 +468,7 @@ export default function About() {
         </section>
         
         {/* Parent Company Section */}
-        <section className="py-20 px-4 bg-gradient-to-b from-[#0a192f] to-[#0c1220]">
+        <section className="py-20 px-4 bg-gray-50">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto text-center mb-16">
               <motion.span
@@ -476,7 +476,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm font-semibold mb-4"
+                className="inline-block px-3 py-1 rounded-full bg-teal-100 text-teal-700 text-sm font-semibold mb-4"
               >
                 Our Parent Company
               </motion.span>
@@ -485,7 +485,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-bold mb-6"
+                className="text-3xl md:text-4xl font-bold mb-6 text-gray-900"
               >
                 <AuroraText>Enegix Global</AuroraText>
               </motion.h2>
@@ -494,7 +494,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="text-gray-300"
+                className="text-gray-600"
               >
                 Enegix Global is the driving force behind Enegix Web Solutions, serving as the parent company that pioneers cutting-edge digital transformation. With expertise in web development, digital marketing, AI-driven solutions, and enterprise technology, Enegix Global empowers businesses to scale, innovate, and succeed in the modern digital landscape.
               </motion.p>
@@ -507,20 +507,20 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 backdrop-blur-md rounded-xl p-8 border border-white/10 mt-16"
+              className="bg-white border border-gray-200 shadow-lg rounded-xl p-8 mt-16"
             >
               <div className="grid md:grid-cols-2 gap-8">
-                <div>                  <h3 className="text-2xl font-bold mb-4 text-white">Our Mission</h3>
-                  <p className="text-gray-300 mb-6">
+                <div>                  <h3 className="text-2xl font-bold mb-4 text-gray-900">Our Mission</h3>
+                  <p className="text-gray-600 mb-6">
                     To empower businesses with innovative and results-driven digital solutions that enhance growth, efficiency, and brand impact.
                   </p>
-                  <div className="h-1 w-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></div>
+                  <div className="h-1 w-16 bg-gradient-to-r from-teal-600 to-emerald-600 rounded-full"></div>
                 </div>
-                <div>                  <h3 className="text-2xl font-bold mb-4 text-white">Our Vision</h3>
-                  <p className="text-gray-300 mb-6">
+                <div>                  <h3 className="text-2xl font-bold mb-4 text-gray-900">Our Vision</h3>
+                  <p className="text-gray-600 mb-6">
                     To be a leading web solutions provider, helping businesses worldwide achieve digital excellence and long-term success.
                   </p>
-                  <div className="h-1 w-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></div>
+                  <div className="h-1 w-16 bg-gradient-to-r from-teal-600 to-emerald-600 rounded-full"></div>
                 </div>
               </div>
             </motion.div>
@@ -528,7 +528,7 @@ export default function About() {
         </section>
         
         {/* Our Values Section */}
-        <section className="py-20 px-4 bg-gradient-to-b from-[#0c1220] to-[#0a192f]">
+        <section className="py-20 px-4 bg-white">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto text-center mb-16">
               <motion.span
@@ -536,7 +536,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-sm font-semibold mb-4"
+                className="inline-block px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-semibold mb-4"
               >
                 Our Core Values
               </motion.span>
@@ -545,7 +545,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="text-3xl md:text-4xl text-white font-bold mb-6"
+                className="text-3xl md:text-4xl text-gray-900 font-bold mb-6"
               >
                 The <AuroraText>Principles</AuroraText> That Guide Us
               </motion.h2>
@@ -554,7 +554,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="text-gray-300"
+                className="text-gray-600"
               >
                 Our values define who we are and how we work. They're the foundation of our company culture and guide every decision we make.
               </motion.p>
@@ -568,12 +568,12 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-cyan-400/30 hover:bg-white/10 transition-all duration-300 text-center"
+                  className="bg-white border border-gray-200 shadow-lg rounded-xl p-6 hover:shadow-xl hover:border-teal-200 transition-all duration-300 text-center"
                 >
                   <div className="flex justify-center mb-4">
                     {value.icon}
-                  </div>                  <h3 className="text-xl font-bold mb-3 text-white">{value.title}</h3>
-                  <p className="text-gray-400">{value.description}</p>
+                  </div>                  <h3 className="text-xl font-bold mb-3 text-gray-900">{value.title}</h3>
+                  <p className="text-gray-600">{value.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -581,7 +581,7 @@ export default function About() {
         </section>
         
         {/* What We Do Section */}
-        <section className="py-20 px-4 bg-gradient-to-b from-[#0a192f] to-[#0c1220]">
+        <section className="py-20 px-4 bg-gray-50">
           <div className="container mx-auto">
             <div className="max-w-3xl mx-auto text-center mb-16">
               <motion.span
@@ -589,7 +589,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="inline-block px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-sm font-semibold mb-4"
+                className="inline-block px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-4"
               >
                 What We Do
               </motion.span>
@@ -597,7 +597,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}                transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="text-3xl md:text-4xl font-bold mb-6 text-white"
+                className="text-3xl md:text-4xl font-bold mb-6 text-gray-900"
               >
                 Better <AuroraText>Design</AuroraText> for Your Digital Products
               </motion.h2>
@@ -606,7 +606,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="text-gray-300"
+                className="text-gray-600"
               >
                 We take pride in crafting innovative, high-performing digital solutions tailored to your business needs.
               </motion.p>
@@ -620,16 +620,16 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-cyan-400/30 transition-all duration-300"
+                  className="bg-white border border-gray-200 shadow-lg rounded-xl p-6 hover:shadow-xl hover:border-teal-200 transition-all duration-300"
                 >
                   <div className="flex items-start mb-4">
-                    <div className="mr-4 p-3 rounded-full bg-white/10">
+                    <div className="mr-4 p-3 rounded-full bg-gray-100">
                       {service.icon}
                     </div>                    <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-2 text-white">{service.title}</h3>
-                      <p className="text-gray-400 mb-4">{service.description}</p>
+                      <h3 className="text-xl font-bold mb-2 text-gray-900">{service.title}</h3>
+                      <p className="text-gray-600 mb-4">{service.description}</p>
                       <ProgressBar percentage={service.percentage} />
-                      <p className="text-right text-sm text-cyan-400 mt-1">{service.percentage}%</p>
+                      <p className="text-right text-sm text-teal-600 mt-1">{service.percentage}%</p>
                     </div>
                   </div>
                 </motion.div>
@@ -647,8 +647,8 @@ export default function About() {
         </section>
         
         {/* CTA Section */}
-        <section className="py-20 px-4 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-cyan-900/20"></div>
+        <section className="py-20 px-4 relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-900/20 to-emerald-900/20"></div>
           <Meteors number={20} />
           
           <div className="container mx-auto relative z-10">
@@ -657,11 +657,11 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-r from-[#0c1220]/90 to-[#0a192f]/90 backdrop-blur-lg rounded-2xl p-12 border border-white/10 text-center max-w-4xl mx-auto"
-            >              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+              className="bg-white/95 backdrop-blur-lg rounded-2xl p-12 border border-gray-200 shadow-2xl text-center max-w-4xl mx-auto"
+            >              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
                 Ready to Transform Your Digital Presence?
               </h2>
-              <p className="text-gray-300 mb-8 text-lg max-w-2xl mx-auto">
+              <p className="text-gray-600 mb-8 text-lg max-w-2xl mx-auto">
                 No matter how big your company is, as you expand and reach new heights, you'll want an agency to have your back. One with the process and expertise to help you succeed.
               </p>              <div className="flex flex-wrap justify-center gap-4">
                 <Link href="/contact">
