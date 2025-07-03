@@ -21,9 +21,9 @@ import ScrollFix from '@/components/scroll-fix';
 
 const seoData = {
   "ecommerce-solutions": {
-    title: "E-Commerce Solutions Ranchi, E-Commerce Website India",
+    title: "E-Commerce Solutions India, E-Commerce Website India",
     description: "Launch and scale your online store with feature-rich e-commerce websites. We build secure, fast, and conversion-optimized shopping platforms.",
-    keywords: "ecommerce solutions ranchi, ecommerce website india, online store development, shopping website design, ecommerce platform",
+    keywords: "ecommerce solutions India, ecommerce website india, online store development, shopping website design, ecommerce platform",
     canonicalUrl: "https://enegixwebsolutions.com/services/ecommerce-solutions",
     structuredData: {
       "@context": "https://schema.org",
@@ -34,7 +34,7 @@ const seoData = {
         name: "Enegix Web Solutions Pvt. Ltd.",
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Ranchi",
+          addressLocality: "India",
           addressRegion: "Jharkhand",
           addressCountry: "India",
         },
@@ -202,7 +202,7 @@ export default function EcommerceSolutionsPage() {
 
               {/* Title - H1 */}
               <h1 className="text-3xl lg:text-4xl font-bold leading-tight text-white drop-shadow-lg">
-                E-Commerce Solutions in Ranchi
+                E-Commerce Solutions in India
               </h1>
 
               {/* Description with your content */}
@@ -210,7 +210,7 @@ export default function EcommerceSolutionsPage() {
                 <p className="text-white text-lg leading-relaxed">
                   We at Enegix Web Solutions Pvt. Ltd. provide innovative{" "}
                   <span className="font-extrabold text-teal-300">
-                    E-Commerce Solutions in Ranchi
+                    E-Commerce Solutions in India
                   </span>{" "}
                   that do more than sell products—they build smooth digital experiences that turn visitors into repeat buyers. We realize that online shopping is as much about usability, speed, and trust as choice. Our solutions are designed for scale, engineered for performance, and handcrafted with precision—whether you're opening your first store or revamping an enterprise-grade platform. From bespoke functionalities to user-centric design, we design systems that stay ahead of the curve in a competitive eCommerce environment.
                 </p>
@@ -510,14 +510,14 @@ export default function EcommerceSolutionsPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "E-Commerce Solutions Ranchi",
+            "name": "E-Commerce Solutions India",
             "description": "Launch and scale your online store with feature-rich e-commerce websites. We build secure, fast, and conversion-optimized shopping platforms.",
             "provider": {
               "@type": "Organization",
               "name": "Enegix Web Solutions Pvt. Ltd.",
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Ranchi",
+                "addressLocality": "India",
                 "addressRegion": "Jharkhand",
                 "addressCountry": "India"
               },
@@ -527,7 +527,7 @@ export default function EcommerceSolutionsPage() {
             "areaServed": [
               {
                 "@type": "Place",
-                "name": "Ranchi"
+                "name": "India"
               },
               {
                 "@type": "Place", 

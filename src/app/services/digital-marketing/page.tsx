@@ -15,11 +15,11 @@ import { enablePageScroll } from "@/utils/scroll-helper";
 const seoData = {
   "digital-marketing": {
     title:
-      "Digital Marketing Agency Ranchi, Top 10 Best Digital Marketing Services India",
+      "Digital Marketing Agency India, Top 10 Best Digital Marketing Services India",
     description:
       "Get high-performance digital marketing campaigns including SEO, social media, content & ads. Enegix helps you drive traffic, leads, and sales online.",
     keywords:
-      "digital marketing agency ranchi, digital marketing services india, content marketing india, seo services ranchi, ppc advertising",
+      "digital marketing agency India, digital marketing services india, content marketing india, seo services India, ppc advertising",
     canonicalUrl: "https://enegixwebsolutions.com/services/digital-marketing",
     structuredData: {
       "@context": "https://schema.org",
@@ -30,7 +30,7 @@ const seoData = {
         name: "Enegix Web Solutions Pvt. Ltd.",
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Ranchi",
+          addressLocality: "India",
           addressRegion: "Jharkhand",
           addressCountry: "India",
         },
@@ -266,7 +266,7 @@ export default function DigitalMarketingPage() {
 
                 {/* Title - H1 */}
                 <h1 className="text-3xl lg:text-4xl font-bold leading-tight text-white drop-shadow-lg">
-                  Digital Marketing Agency in Ranchi
+                  Digital Marketing Agency in India
                 </h1>
 
                 {/* Description with your content */}
@@ -274,7 +274,7 @@ export default function DigitalMarketingPage() {
                   <p className="text-white text-lg leading-relaxed">
                     At Enegix Web Solutions Pvt. Ltd., we are not simply a{" "}
                     <span className="font-extrabold text-teal-300">
-                      Digital Marketing Agency in Ranchi
+                      Digital Marketing Agency in India
                     </span>
                     , but a catalyst for your growth strategy. In a digital age overflowing with ads, likes, and scrolls, we focus on creating experiences that connect, resonate, and deliver. Our marketing philosophy blends data intelligence with storytelling craft, leaving every campaign felt rather than just seen. Besides building branding presence and engineering lead conversions, we act as an extension of your vision; creatively and performance-led by the edge of precision marketing.
                   </p>

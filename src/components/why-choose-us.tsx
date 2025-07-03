@@ -2,13 +2,14 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
+import Container from "./Container";
 
 const achievements = [
   {
     icon: "🏆",
     number: "500+",
     label: "Projects Completed",
-    description: "Successfully delivered across various industries"
+    description: "delivered across industries"
   },
   {
     icon: "⭐",
@@ -72,9 +73,8 @@ const features = [
 const WhyChooseUsSection = () => {
   return (
     <section
-      className="relative py-20 max-w-6xl mx-auto overflow-hidden"
+      className="relative py-8  mx-auto overflow-hidden"
     >
-      <div className=" bg">
       {/* Simplified Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Static Grid Background */}
@@ -94,6 +94,7 @@ const WhyChooseUsSection = () => {
         <div className="absolute bottom-20 right-20 w-48 h-48 rounded-full bg-gradient-to-r from-emerald-500/5 to-cyan-500/5 backdrop-blur-sm"></div>
         <div className="absolute top-1/2 left-1/2 w-24 h-24 rounded-full bg-gradient-to-r from-cyan-500/5 to-teal-500/5 backdrop-blur-sm transform -translate-x-1/2 -translate-y-1/2"></div>
       </div>
+      <Container>
       <div className="container mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-20 animate-fade-in">
@@ -110,7 +111,7 @@ const WhyChooseUsSection = () => {
         </div>
         {/* Achievement Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 animate-fade-in-up">
-          {achievements.map((achievement, index) => (
+          {achievements.map((achievement) => (
             <div
               key={achievement.label}
               className="text-center group transition-all duration-300 hover:scale-105 hover:-translate-y-2"
@@ -199,7 +200,7 @@ const WhyChooseUsSection = () => {
         }
       `}</style>
 
-      </div>
+      </Container>
     </section>
   );
 };

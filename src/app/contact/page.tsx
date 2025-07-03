@@ -16,6 +16,84 @@ import { Dock, DockIcon } from "@/components/magicui/dock";
 import { Home, Settings, Search } from "lucide-react";
 import { DockDemo } from "@/components/dock-demo";
 
+const faqs = [
+  {
+    question: "How long to website?",
+    answer:
+      "The timeline depends on your project complexity. A basic business website typically takes 1-2 weeks. Advanced e-commerce or custom portals may take 3-6 weeks. We always give you a realistic timeline before starting.",
+  },
+  {
+    question: "Technologies we use?",
+    answer:
+      "We work with modern, scalable technologies like React.js, Next.js, Node.js, MongoDB, WordPress, Shopify, and more. Our tech stack is tailored to match your project's goals and future scalability.",
+  },
+  {
+    question: "Challenges we completed?",
+    answer:
+      "From revamping slow websites into high-speed performers to building complex CRM, booking, and e-commerce systems from scratch — we've successfully delivered solutions across various industries with unique challenges.",
+  },
+  {
+    question: "Mobile Friendly?",
+    answer:
+      "Absolutely! Every website we build is fully responsive and optimized for mobile devices, ensuring smooth user experience across phones, tablets, and desktops.",
+  },
+  {
+    question: "Can I update my website after it is built?",
+    answer:
+      "Yes! We offer content management systems or admin panels that let you update text, images, and more — even if you're not tech-savvy. Or you can opt for our support plans for ongoing updates.",
+  },
+  {
+    question: "Domain and hosting services too?",
+    answer:
+      "Yes, we offer domain registration and lightning-fast, secure hosting. Whether you need shared hosting, VPS, or cloud deployment — we’ve got you covered end-to-end.",
+  },
+  {
+    question: "Cost?",
+    answer:
+      "Website pricing depends on the features, number of pages, and design complexity. Our packages start from budget-friendly options and scale up as per your need. Reach out for a free quote!",
+  },
+  {
+    question: "Digital Marketing services included?",
+    answer:
+      "We provide complete digital marketing services including SEO, social media management, PPC advertising, content strategy, and email marketing. Everything you need to grow your digital presence.",
+  },
+  {
+    question: "Results and ROI?",
+    answer:
+      "Our marketing strategies are data-driven. We focus on increasing traffic, generating qualified leads, and boosting conversions — so you see real business growth and return on investment (ROI).",
+  },
+  {
+    question: "Lists of Social Media we can handle?",
+    answer:
+      "We handle Instagram, Facebook, LinkedIn, Twitter (X), and YouTube. From content creation to posting schedules and engagement — we manage it all professionally.",
+  },
+  {
+    question: "Paid Ad services -> Insta, Facebook, LinkedIn, YouTube?",
+    answer:
+      "Yes, we run high-converting ad campaigns on Instagram, Facebook, LinkedIn, and YouTube. From ad design to targeting and analytics — we take care of everything for better ROI.",
+  },
+  {
+    question: "SEO and Result?",
+    answer:
+      "We provide full-stack SEO services: keyword research, on-page optimization, technical SEO, backlinks, and performance tracking. You’ll see steady growth in rankings and organic traffic.",
+  },
+  {
+    question: "Plans and Discounts?",
+    answer:
+      "We offer flexible monthly and one-time project plans. Discounts are available for long-term packages, startups, and bundle deals. Contact us to know what’s best for your budget.",
+  },
+  {
+    question: "Our payment modes",
+    answer:
+      "We accept payments via UPI, bank transfer, credit/debit cards, and international methods like PayPal. EMI options available on select packages.",
+  },
+  {
+    question: "Maintenance and Support services?",
+    answer:
+      "Yes, we offer ongoing support plans covering updates, bug fixes, security patches, performance checks, backups, and technical assistance. Peace of mind, guaranteed.",
+  },
+];
+
 // Contact form component
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +122,6 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form validation
     if (formData.service === "Select a service") {
       setFormStatus({
         submitted: true,
@@ -54,10 +131,8 @@ const ContactForm = () => {
       return;
     }
 
-    // Here you would typically send the form data to your backend
     console.log("Form submitted:", formData);
 
-    // Reset form
     setFormData({
       name: "",
       email: "",
@@ -67,7 +142,6 @@ const ContactForm = () => {
       service: "Select a service",
     });
 
-    // Show success message
     setFormStatus({
       submitted: true,
       success: true,
@@ -75,15 +149,14 @@ const ContactForm = () => {
         "Your message has been sent successfully! We'll get back to you soon.",
     });
 
-    // Clear success message after 5 seconds
     setTimeout(() => {
       setFormStatus(null);
     }, 5000);
   };
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 shadow-xl hover:border-blue-500/30 transition-all duration-300">
-      <h3 className="text-2xl font-semibold mb-6 text-white">
+    <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-blue-500/30 transition-all duration-300">
+      <h3 className="text-2xl font-semibold mb-6 text-black">
         Send Us A Message
       </h3>
 
@@ -91,10 +164,9 @@ const ContactForm = () => {
         <div
           className={`p-4 mb-6 rounded-lg ${
             formStatus.success
-              ? "bg-green-500/20 text-green-200 border border-green-500/30"
-              : "bg-red-500/20 text-red-200 border border-red-500/30"
-          }`}
-        >
+              ? "bg-green-100 text-green-800 border border-green-300"
+              : "bg-red-100 text-red-800 border border-red-300"
+          }`}>
           {formStatus.message}
         </div>
       )}
@@ -104,9 +176,8 @@ const ContactForm = () => {
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-300 mb-2"
-            >
-              Name <span className="text-red-400">*</span>
+              className="block text-sm font-medium text-gray-700 mb-2">
+              Name <span className="text-red-600">*</span>
             </label>
             <input
               type="text"
@@ -115,7 +186,7 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Your Name"
             />
           </div>
@@ -123,9 +194,8 @@ const ContactForm = () => {
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-300 mb-2"
-            >
-              Email <span className="text-red-400">*</span>
+              className="block text-sm font-medium text-gray-700 mb-2">
+              Email <span className="text-red-600">*</span>
             </label>
             <input
               type="email"
@@ -134,7 +204,7 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Your Email"
             />
           </div>
@@ -142,8 +212,7 @@ const ContactForm = () => {
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-gray-300 mb-2"
-            >
+              className="block text-sm font-medium text-gray-700 mb-2">
               Phone Number
             </label>
             <input
@@ -152,7 +221,7 @@ const ContactForm = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Your Phone Number"
             />
           </div>
@@ -160,9 +229,8 @@ const ContactForm = () => {
           <div>
             <label
               htmlFor="service"
-              className="block text-sm font-medium text-gray-300 mb-2"
-            >
-              Service <span className="text-red-400">*</span>
+              className="block text-sm font-medium text-gray-700 mb-2">
+              Service <span className="text-red-600">*</span>
             </label>
             <select
               id="service"
@@ -170,8 +238,7 @@ const ContactForm = () => {
               value={formData.service}
               onChange={handleChange}
               required
-              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
               <option value="Select a service" disabled>
                 Select a service
               </option>
@@ -187,9 +254,8 @@ const ContactForm = () => {
           <div className="md:col-span-2">
             <label
               htmlFor="subject"
-              className="block text-sm font-medium text-gray-300 mb-2"
-            >
-              Subject <span className="text-red-400">*</span>
+              className="block text-sm font-medium text-gray-700 mb-2">
+              Subject <span className="text-red-600">*</span>
             </label>
             <input
               type="text"
@@ -198,7 +264,7 @@ const ContactForm = () => {
               value={formData.subject}
               onChange={handleChange}
               required
-              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Subject of your message"
             />
           </div>
@@ -206,9 +272,8 @@ const ContactForm = () => {
           <div className="md:col-span-2">
             <label
               htmlFor="message"
-              className="block text-sm font-medium text-gray-300 mb-2"
-            >
-              Message <span className="text-red-400">*</span>
+              className="block text-sm font-medium text-gray-700 mb-2">
+              Message <span className="text-red-600">*</span>
             </label>
             <textarea
               id="message"
@@ -217,7 +282,7 @@ const ContactForm = () => {
               onChange={handleChange}
               required
               rows={5}
-              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="How can we help you?"
             />
           </div>
@@ -226,21 +291,18 @@ const ContactForm = () => {
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="py-3 px-8 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium transition-transform hover:scale-[1.02] active:scale-[0.98] tracking-wide text-sm"
-          >
+            className="py-3 px-8 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-medium transition-transform hover:scale-[1.02] active:scale-[0.98] tracking-wide text-sm">
             Send Message
           </button>
 
           <Link
             href="https://wa.me/919608263050?text=Hi%20I%20Need%20Digital%20Marketing%20services%20for%20My%20Business"
-            target="_blank"
-          >
-            <div className="flex items-center text-green-400 hover:text-green-300 transition-colors">
+            target="_blank">
+            <div className="flex items-center text-green-700 hover:text-green-600 transition-colors">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"
-                className="w-5 h-5 mr-2 fill-current"
-              >
+                className="w-5 h-5 mr-2 fill-current">
                 <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
               </svg>
               <span>Quick Chat</span>
@@ -256,21 +318,20 @@ const ContactForm = () => {
 const ContactInfo = () => {
   return (
     <div className="space-y-8">
-      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 shadow-xl hover:border-blue-500/30 transition-all duration-300">
-        <h4 className="text-white text-xl font-semibold mb-6">
+      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-blue-500/30 transition-all duration-300">
+        <h4 className="text-black text-xl font-semibold mb-6">
           Contact Information
         </h4>
 
         <div className="space-y-6">
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-blue-600/20 rounded-lg">
+            <div className="p-3 bg-blue-100/20 rounded-lg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-blue-400"
+                className="h-6 w-6 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+                stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -287,31 +348,29 @@ const ContactInfo = () => {
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-2">Address</h4>
-              <p className="text-gray-300 mb-1">House No.2, Old AG More</p>
-              <p className="text-gray-300 mb-1">
+              <h4 className="text-black font-semibold mb-2">Address</h4>
+              <p className="text-gray-700 mb-1">House No.2, Old AG More</p>
+              <p className="text-gray-700 mb-1">
                 near Bharat Kitchen, above Saryu Son's Jwellers
               </p>
-              <p className="text-gray-300 mb-1">Kadru, Ranchi, Jharkhand</p>
+              <p className="text-gray-700 mb-1">Kadru, Ranchi, Jharkhand</p>
               <a
                 href="https://www.google.com/maps/place/Enegix+Web+Solutions/@23.3514491,85.3163412,21z/"
                 target="_blank"
-                className="inline-block mt-2 text-blue-400 hover:text-blue-300 transition-colors"
-              >
+                className="inline-block mt-2 text-blue-600 hover:text-blue-500 transition-colors">
                 View on map →
               </a>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-blue-600/20 rounded-lg">
+            <div className="p-3 bg-blue-100/20 rounded-lg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-blue-400"
+                className="h-6 w-6 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+                stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -322,31 +381,28 @@ const ContactInfo = () => {
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-2">Email</h4>
+              <h4 className="text-black font-semibold mb-2">Email</h4>
               <a
                 href="mailto:contact@enegixwebsolutions.com"
-                className="block text-gray-300 hover:text-blue-400 transition-colors"
-              >
+                className="block text-gray-700 hover:text-blue-600 transition-colors">
                 contact@enegixwebsolutions.com
               </a>
               <a
                 href="mailto:support@enegixwebsolutions.com"
-                className="block text-gray-300 hover:text-blue-400 transition-colors"
-              >
+                className="block text-gray-700 hover:text-blue-600 transition-colors">
                 support@enegixwebsolutions.com
               </a>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-blue-600/20 rounded-lg">
+            <div className="p-3 bg-blue-100/20 rounded-lg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-blue-400"
+                className="h-6 w-6 text-blue-600"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+                stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -357,17 +413,15 @@ const ContactInfo = () => {
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-2">Call Us</h4>
+              <h4 className="text-black font-semibold mb-2">Call Us</h4>
               <a
                 href="tel:+919608263050"
-                className="block text-gray-300 hover:text-blue-400 transition-colors"
-              >
+                className="block text-gray-700 hover:text-blue-600 transition-colors">
                 +91 96082 63050
               </a>
               <a
                 href="tel:+919801828117"
-                className="block text-gray-300 hover:text-blue-400 transition-colors"
-              >
+                className="block text-gray-700 hover:text-blue-600 transition-colors">
                 +91 98018 28117
               </a>
             </div>
@@ -375,39 +429,36 @@ const ContactInfo = () => {
         </div>
       </div>
 
-      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 shadow-xl hover:border-blue-500/30 transition-all duration-300">
-        <h4 className="text-white text-xl font-semibold mb-6">
+      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-blue-500/30 transition-all duration-300">
+        <h4 className="text-black text-xl font-semibold mb-6">
           Business Hours
         </h4>
 
         <ul className="space-y-4">
-          <li className="flex justify-between items-center pb-2 border-b border-white/10">
-            <span className="text-gray-300">Monday - Friday:</span>
-            <span className="text-white bg-blue-500/20 px-3 py-1 rounded-full text-sm">
+          <li className="flex justify-between items-center pb-2 border-b border-gray-200">
+            <span className="text-gray-700">Monday - Friday:</span>
+            <span className="text-black bg-blue-100 px-3 py-1 rounded-full text-sm">
               10:00 AM - 7:00 PM
             </span>
           </li>
-          <li className="flex justify-between items-center pb-2 border-b border-white/10">
-            <span className="text-gray-300">Saturday (odd):</span>
-            <span className="text-white bg-blue-500/20 px-3 py-1 rounded-full text-sm">
+          <li className="flex justify-between items-center pb-2 border-b border-gray-200">
+            <span className="text-gray-700">Saturday (odd):</span>
+            <span className="text-black bg-blue-100 px-3 py-1 rounded-full text-sm">
               10:00 AM - 7:00 PM
             </span>
           </li>
           <li className="flex justify-between items-center">
-            <span className="text-gray-300">Sunday, Saturday (even):</span>
-            <span className="text-red-300 bg-red-500/20 px-3 py-1 rounded-full text-sm">
+            <span className="text-gray-700">Sunday, Saturday (even):</span>
+            <span className="text-red-700 bg-red-100 px-3 py-1 rounded-full text-sm">
               Closed
             </span>
           </li>
         </ul>
       </div>
 
-      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 shadow-xl hover:border-blue-500/30 transition-all duration-300">
-        <h4 className="text-white text-xl font-semibold ">
-          Connect With Us
-        </h4>
+      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-blue-500/30 transition-all duration-300">
+        <h4 className="text-black text-xl font-semibold">Connect With Us</h4>
 
-        
         <div className="flex justify-normal">
           <DockDemo />
         </div>
@@ -424,82 +475,120 @@ const FAQ = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const faqs = [
-    {
-      question: "What services does Enegix Web Solutions offer?",
-      answer:
-        "We offer a comprehensive range of digital services including web design and development, e-commerce solutions, SEO optimization, digital marketing, logo design, and PPC advertising.",
-    },
-    {
-      question: "How much does a website cost?",
-      answer:
-        "The cost of a website varies depending on your specific requirements, complexity, and features needed. We offer customized solutions to fit different budgets. Contact us for a personalized quote tailored to your project.",
-    },
-    {
-      question: "How long does it take to build a website?",
-      answer:
-        "Project timelines vary based on complexity. A simple website might take 2-4 weeks, while more complex e-commerce or custom platforms can take 8-12 weeks. We'll provide you with a specific timeline during our initial consultation.",
-    },
-    {
-      question: "Do you provide website maintenance services?",
-      answer:
-        "Yes, we offer comprehensive website maintenance packages to keep your site secure, updated, and performing optimally. This includes regular updates, security monitoring, backup services, and technical support.",
-    },
-    {
-      question: "Can you help improve my website's search engine ranking?",
-      answer:
-        "Absolutely! Our SEO specialists can analyze your current performance and implement strategies to improve your search engine visibility, including on-page optimization, content enhancement, technical SEO fixes, and off-page strategies.",
-    },
-  ];
-
   return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 shadow-xl">
-      <h3 className="text-2xl font-semibold mb-8 text-white">
-        Frequently Asked Questions
-      </h3>
-
-      <div className="space-y-4">
+    <div className="max-w-4xl mx-auto">
+  <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-1 shadow-2xl">
+    <div className="bg-white/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-100">
+      <div className="space-y-1 p-1">
         {faqs.map((faq, index) => (
-          <div
+          <motion.div
             key={index}
-            className={`border border-white/10 rounded-lg overflow-hidden transition-all duration-300 ${
-              openIndex === index ? "bg-white/10" : "bg-white/5"
-            }`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
+            className={`relative rounded-xl overflow-hidden ${
+              openIndex === index ? "bg-blue-50/50" : "hover:bg-gray-50/70"
+            } transition-colors duration-200`}
           >
             <button
-              className="flex items-center justify-between w-full p-5 text-left focus:outline-none"
+              className="flex items-center justify-between w-full px-6 py-5 text-left focus:outline-none group"
               onClick={() => toggleFAQ(index)}
             >
-              <span className="text-white font-medium text-lg">
+              <span className="text-lg font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
                 {faq.question}
               </span>
-              <svg
-                className={`w-5 h-5 text-blue-400 transform transition-transform duration-300 ${
-                  openIndex === index ? "rotate-180" : ""
-                }`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              <motion.div
+                className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center ml-4"
+                animate={{
+                  rotate: openIndex === index ? 180 : 0,
+                  backgroundColor: openIndex === index ? "#3b82f6" : "#eff6ff"
+                }}
+                transition={{ duration: 0.3 }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
+                <svg
+                  className={`w-5 h-5 ${
+                    openIndex === index ? "text-white" : "text-blue-500"
+                  } transition-colors`}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2.5}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </motion.div>
             </button>
 
-            <div
-              className={`overflow-hidden transition-all max-h-0 duration-300 ${
-                openIndex === index ? "max-h-96" : ""
-              }`}
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{
+                height: openIndex === index ? "auto" : 0,
+                opacity: openIndex === index ? 1 : 0
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
             >
-              <div className="p-5 pt-0 text-gray-300">{faq.answer}</div>
-            </div>
-          </div>
+              <div className="px-6 pb-6 pt-0 text-gray-600 text-base leading-relaxed">
+                <div className="border-t border-gray-200/80 pt-5">
+                  {faq.answer}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         ))}
       </div>
+    </div>
+  </div>
+</div>
+  );
+};
+
+// Search FAQ component
+type FAQ = { question: string; answer: string };
+
+const FAQSearch = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredFAQs, setFilteredFAQs] = useState<FAQ[]>([]);
+
+  const handleSearch = (e: { target: { value: string } }) => {
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
+    const filtered = faqs.filter(
+      (faq) =>
+        faq.question.toLowerCase().includes(term) ||
+        faq.answer.toLowerCase().includes(term)
+    );
+    setFilteredFAQs(filtered);
+  };
+
+  return (
+    <div className="mt-8">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleSearch}
+        placeholder="Search FAQs..."
+        className="w-full p-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black placeholder-gray-500 bg-white shadow-md transition-all duration-300"
+      />
+      {searchTerm && filteredFAQs.length > 0 && (
+        <div className="mt-4 bg-white rounded-xl p-4 border border-gray-200 shadow-lg">
+          <h4 className="text-lg font-semibold text-gray-900 mb-2">
+            Search Results
+          </h4>
+          {filteredFAQs.map((faq, index) => (
+            <div key={index} className="mb-2 p-2 bg-gray-50 rounded-lg">
+              <p className="text-gray-700">{faq.question}</p>
+              <p className="text-sm text-gray-600 mt-1">
+                {faq.answer.substring(0, 100)}...
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
@@ -507,11 +596,8 @@ const FAQ = () => {
 export default function Contact() {
   const [mounted, setMounted] = useState(false);
 
-  // Prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
-
-    // Enable page scrolling
     enablePageScroll();
   }, []);
 
@@ -520,51 +606,23 @@ export default function Contact() {
       {mounted && <ScrollFix />}
       <Navbar />
 
-      <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
+      <main className="bg-white text-black min-h-screen relative overflow-x-hidden">
         {/* Hero Section with Background Image */}
         <section
-          className="relative pt-24 pb-16 px-6 lg:px-8 min-h-[80vh] flex items-center"
+          className="bg-gradient-to-br from-teal-50 via-emerald-50 to-white relative pt-24 pb-16 px-6 lg:px-8 h-screen flex items-center"
           role="banner">
-          {/* Background Image */}
           <div className="absolute inset-0 z-0">
-            <Image
-              src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80"
-              alt="Contact Us Background"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-teal-900/60" />
-          </div>
-
-          {/* Subtle decorative effects */}
-          <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-            <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-[800px] h-[400px] opacity-5">
-              <Meteors number={15} />
-            </div>
-            <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full bg-teal-100 blur-3xl opacity-20" />
+            <Meteors number={10} />
+            <div className="absolute inset-0" />
           </div>
 
           <div className="max-w-7xl mx-auto relative z-20">
             <div className="max-w-3xl mx-auto text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="mb-6"
-              >
-                <span className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-sm font-semibold mb-4">
-                  Get In Touch
-                </span>
-              </motion.div>
-
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-4xl md:text-5xl text-white lg:text-6xl font-bold leading-tight mb-6"
-              >
+                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                 Let's <AuroraText>Connect</AuroraText>
               </motion.h1>
 
@@ -572,8 +630,7 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg text-gray-300 mb-8"
-              >
+                className="text-lg text-gray-700 mb-8">
                 Have a question or want to discuss your project? We're here to
                 help you transform your digital presence and achieve your
                 business goals.
@@ -583,8 +640,7 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex flex-wrap justify-center gap-4"
-              >
+                className="flex flex-wrap justify-center gap-4">
                 <a href="tel:+919608263050">
                   <RainbowButton size="lg">Call Us Now</RainbowButton>
                 </a>
@@ -599,7 +655,7 @@ export default function Contact() {
         </section>
 
         {/* Contact Form Section */}
-        <section className="py-20 px-4 bg-gradient-to-b from-[#0c1220] to-[#0a192f]">
+        <section className="py-20 px-4">
           <div className="container mx-auto">
             <div className="flex flex-col lg:flex-row gap-10">
               <motion.div
@@ -607,8 +663,7 @@ export default function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="w-full lg:w-3/5"
-              >
+                className="w-full lg:w-3/5">
                 <ContactForm />
               </motion.div>
 
@@ -617,8 +672,7 @@ export default function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="w-full lg:w-2/5"
-              >
+                className="w-full lg:w-2/5">
                 <ContactInfo />
               </motion.div>
             </div>
@@ -626,19 +680,18 @@ export default function Contact() {
         </section>
 
         {/* Map Section */}
-        <section className="py-16 px-4 bg-gradient-to-b from-[#0a192f] to-[#0c1220]">
+        <section className="py-16 px-4">
           <div className="container mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Find Us <AuroraText>Here</AuroraText>
               </h2>
-              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-700 max-w-2xl mx-auto">
                 Our office is conveniently located in Kadru, Ranchi. Feel free
                 to stop by during business hours!
               </p>
@@ -649,33 +702,30 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="rounded-xl overflow-hidden border border-white/10 shadow-xl h-[400px] relative"
-            >
+              className="rounded-xl overflow-hidden border border-gray-200 shadow-xl h-[400px] relative">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117711.79643388708!2d85.2427698754836!3d23.344214949837785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e104aa5db7dd%3A0xdc09d49d6899f43e!2sRanchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1716470350983!5m2!1sen!2sin"
                 className="w-full h-full border-0"
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+                referrerPolicy="no-referrer-when-downgrade"></iframe>
             </motion.div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 px-4 bg-gradient-to-b from-[#0c1220] to-[#0a192f]">
+        <section className="py-20 px-4">
           <div className="container mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Frequently Asked <AuroraText>Questions</AuroraText>
               </h2>
-              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-700 max-w-2xl mx-auto">
                 Find answers to the most common questions about our services and
                 process.
               </p>
@@ -686,30 +736,27 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="max-w-4xl mx-auto"
-            >
+              className="max-w-4xl mx-auto">
               <FAQ />
+              <FAQSearch />
             </motion.div>
           </div>
         </section>
 
         {/* CTA Section */}
         <section className="py-20 px-4 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-cyan-900/20"></div>
-          <Meteors number={10} />
-
+          <div className="absolute inset-0 bg-gray-100/50"></div>
           <div className="container mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-r from-[#0c1220]/90 to-[#0a192f]/90 backdrop-blur-lg rounded-2xl p-12 border border-white/10 text-center max-w-4xl mx-auto"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+              className="bg-white rounded-2xl p-12 border border-gray-200 text-center max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready to Transform Your Digital Presence?
               </h2>
-              <p className="text-gray-300 mb-8 text-lg max-w-2xl mx-auto">
+              <p className="text-gray-700 mb-8 text-lg max-w-2xl mx-auto">
                 No matter the size of your company, we're here to help you
                 expand and reach new heights with our expertise and proven
                 process.
@@ -722,8 +769,7 @@ export default function Contact() {
                 </a>
                 <a
                   href="https://wa.me/919608263050?text=Hi%20I%20Need%20Digital%20Marketing%20services%20for%20My%20Business"
-                  target="_blank"
-                >
+                  target="_blank">
                   <RainbowButton variant="outline" size="lg">
                     WhatsApp Chat
                   </RainbowButton>

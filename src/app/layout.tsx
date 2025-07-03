@@ -5,7 +5,7 @@ import "./scroll-fix.css";
 import "./typography.css";
 
 // Modern, premium heading font
-const montserrat = Montserrat({ 
+const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-montserrat",
@@ -30,8 +30,20 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Top Web Design Company in Ranchi, Digital Marketing Agency in India",
-  description: "Enegix Web Solutions Pvt. Ltd. builds top-ranking websites, delivers result-driven SEO, and powers growth with digital marketing strategies tailored for Indian businesses. Book a free consultation today!",
-  keywords: ["web development", "logo design", "SEO services", "digital advertising", "web design", "professional website", "online marketing", "Ranchi web design", "digital marketing India", "SEO Ranchi"],
+  description:
+    "Enegix Web Solutions Pvt. Ltd. builds top-ranking websites, delivers result-driven SEO, and powers growth with digital marketing strategies tailored for Indian businesses. Book a free consultation today!",
+  keywords: [
+    "web development",
+    "logo design",
+    "SEO services",
+    "digital advertising",
+    "web design",
+    "professional website",
+    "online marketing",
+    "Ranchi web design",
+    "digital marketing India",
+    "SEO Ranchi",
+  ],
 };
 
 export default function RootLayout({
@@ -42,8 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${montserrat.variable} ${spaceGrotesk.variable} ${inter.variable} font-montserrat antialiased overscroll-none`}
-      >
+        className={` font-montserrat antialiased overscroll-none`}>
         {/* The loading component is client-side only, so we don't include it directly in layout */}
         {children}
       </body>

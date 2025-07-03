@@ -16,11 +16,11 @@ import { enablePageScroll } from "@/utils/scroll-helper";
 // SEO Metadata for web development
 const seoData = {
   "web-development": {
-    title: "Web Development Company Ranchi, Website Development Services India",
+    title: "Web Development Company India, Website Development Services India",
     description:
       "We design and develop custom, mobile-friendly websites that convert. Partner with India's trusted web development team for your business success.",
     keywords:
-      "web development company ranchi, website development services india, web design ranchi, custom websites, responsive web design",
+      "web development company India, website development services india, web design India, custom websites, responsive web design",
     canonicalUrl: "https://enegixwebsolutions.com/services/web-development",
     structuredData: {
       "@context": "https://schema.org",
@@ -31,7 +31,7 @@ const seoData = {
         name: "Enegix Global Pvt. Ltd.",
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Ranchi",
+          addressLocality: "India",
           addressRegion: "Jharkhand",
           addressCountry: "India",
         },
@@ -286,14 +286,14 @@ export default function WebDevelopmentPage() {
                 </div>
                 {/* Title - H1 */}
                 <h1 className="text-3xl lg:text-4xl font-bold leading-tight text-white drop-shadow-lg">
-                  Web Development Company in Ranchi
+                  Web Development Company in India
                 </h1>{" "}
                 {/* Description with your content */}
                 <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl">
                   <p className="text-white text-lg leading-relaxed">
                     At Enegix Global, Ltd., we understand the importance of a{" "}
                     <span className="font-extrabold text-teal-300">
-                      Web Development Company in Ranchi
+                      Web Development Company in India
                     </span>{" "}
                     to do more than simply "build" your next website. As your
                     partner of technology, our products and services will do

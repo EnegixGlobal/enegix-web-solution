@@ -16,7 +16,7 @@ import { enablePageScroll } from "@/utils/scroll-helper";
 // SEO Metadata for PPC advertising
 const seoData = {
   "ppc-advertising": {
-    title: "PPC Advertising Ranchi, Google Ads India",
+    title: "PPC Advertising India, Google Ads India",
     description:
       "Drive instant leads with ROI-focused PPC services. From Google Ads to Meta campaigns, Enegix Global ensures every click counts toward your growth.",
     keywords:
@@ -31,7 +31,7 @@ const seoData = {
         name: "Enegix Web Solutions Pvt. Ltd.",
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Ranchi",
+          addressLocality: "India",
           addressRegion: "Jharkhand",
           addressCountry: "India",
         },
@@ -285,14 +285,14 @@ export default function PPCAdvertisingPage() {
                 </div>
                 {/* Title - H1 */}
                 <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-white drop-shadow-lg">
-                  PPC Advertisement in Ranchi
+                  PPC Advertisement in India
                 </h1>{" "}
                 {/* Description */}
                 <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl">
                   <p className="text-white text-lg leading-relaxed">
                     At Enegix Web Solutions Pvt. Ltd., what we consider{" "}
                     <span className="font-extrabold text-teal-300">
-                      PPC Advertising in Ranchi
+                      PPC Advertising in India
                     </span>{" "}
                     is a science of intent and impact. Creating our campaigns
                     lean, intelligent, and conversion-bound built on real-time

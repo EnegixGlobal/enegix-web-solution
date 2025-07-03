@@ -58,11 +58,11 @@ const itemVariants = {
 // SEO Metadata for logo design
 const seoData = {
   "logo-design": {
-    title: "Logo Design Company Ranchi, Branding India",
+    title: "Logo Design Company India, Branding India",
     description:
       "Get a logo that tells your story. Our creative team at Enegix crafts brand identities that stand out across digital and print platforms in India.",
     keywords:
-      "logo design company ranchi, branding services india, graphic design ranchi, brand identity design, visual design services",
+      "logo design company India, branding services india, graphic design India, brand identity design, visual design services",
     canonicalUrl: "https://enegixwebsolutions.com/services/logo-design",
     structuredData: {
       "@context": "https://schema.org",
@@ -73,7 +73,7 @@ const seoData = {
         name: "Enegix Web Solutions Pvt. Ltd.",
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Ranchi",
+          addressLocality: "India",
           addressRegion: "Jharkhand",
           addressCountry: "India",
         },
@@ -299,7 +299,7 @@ export default function LogoDesignPage() {
 
                 {/* Title - H1 */}
                 <h1 className="text-3xl lg:text-4xl font-bold leading-tight text-white drop-shadow-lg">
-                  Logo Design Company in Ranchi
+                  Logo Design Company in India
                 </h1>
 
                 {/* Description with your content */}
@@ -309,7 +309,7 @@ export default function LogoDesignPage() {
                     is not merely a symbol—it's your story in one frame. Being a
                     progressive{" "}
                     <span className="font-extrabold text-teal-300">
-                      Logo Design Company in Ranchi
+                      Logo Design Company in India
                     </span>
                     , we care beyond looks to create identities that speak to
                     your people and tell your story. Whether startup looking for

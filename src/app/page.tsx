@@ -6,7 +6,7 @@ import ServicesSection from "@/components/services-section";
 import StatsSection from "@/components/stats-section";
 import TechStackSimple from "@/components/tech-stack-simple";
 import VideoShowcase from "@/components/video-showcase";
-import WhyChooseUsSection from "@/components/why-choose-us-section";
+import WhyChooseUsSection from "../components/why-choose-us";
 import ContactCTA from "@/components/contact-cta";
 import Footer from "@/components/footer";
 import LoadingScreen from "@/components/loading";
@@ -22,7 +22,7 @@ export default function Home() {
   // Only run client-side effects after hydration
   useEffect(() => {
     setIsClient(true);
-    
+
     // Enable page scrolling and fix scroll issues
     enablePageScroll();
     // Clear any transform styles that might be affecting scroll
@@ -58,11 +58,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-white text-gray-900 w-full min-h-screen">
+    <div className="">
       <Toaster position="top-right" reverseOrder={false} />
       {/* {isClient && <LoadingScreen />} */}
-      {isClient && <ScrollFix />} 
-      <Navbar />      
+      {isClient && <ScrollFix />}
+      <Navbar />
       <HeroSection />
       <ServicesSection />
       {/* <StatsSection /> */}

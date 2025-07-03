@@ -15,9 +15,9 @@ import { enablePageScroll } from "@/utils/scroll-helper";
 // SEO Metadata for SEO optimization
 const seoData = {
   "seo-optimization": {
-    title: "SEO Company in Ranchi, SEO Services India",
+    title: "SEO Company in India, SEO Services India",
     description: "Rank higher on Google with our proven SEO strategies. Enegix Global boosts your visibility with on-page, off-page & technical SEO tailored for India.",
-    keywords: "seo company ranchi, seo services india, search engine optimization, seo expert ranchi, organic traffic optimization, google ranking",
+    keywords: "seo company India, seo services india, search engine optimization, seo expert India, organic traffic optimization, google ranking",
     canonicalUrl: "https://enegixwebsolutions.com/services/seo-optimization",
     structuredData: {
       "@context": "https://schema.org",
@@ -28,7 +28,7 @@ const seoData = {
         "name": "Enegix Web Solutions Pvt. Ltd.",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Ranchi",
+          "addressLocality": "India",
           "addressRegion": "Jharkhand",
           "addressCountry": "India"
         }
@@ -171,7 +171,7 @@ export default function SeoOptimizationPage() {
             <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] rounded-full bg-teal-100 blur-3xl opacity-20" />
           </div>
 
-          <div className="max-w-7xl mx-auto relative z-20">
+          <div className="max-w-7xl mx-auto relative z-20 mt-6">
             {/* Breadcrumb Navigation */}
             <nav aria-label="Breadcrumb" className="mb-8">
               <ol className="flex items-center space-x-2 text-sm text-gray-300">
@@ -200,13 +200,13 @@ export default function SeoOptimizationPage() {
 
                 {/* Title - H1 */}
                 <h1 className="text-3xl lg:text-4xl font-bold leading-tight text-white drop-shadow-lg">
-                  SEO Company in Ranchi
+                  Search Engine Optimization Company in India
                 </h1>
 
                 {/* Description with your content */}
                 <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-white/30 shadow-2xl">
                   <p className="text-white text-lg leading-relaxed">
-                    At Enegix Web Solutions Pvt. Ltd., as the top <span className="font-extrabold text-green-600">SEO Company in Ranchi</span>, our services are designed to propel your business from invisible to unmissable. With constantly changing algorithms and increasing digital noise, we concentrate on building true, authority-led presence for your brand. Our strategy isn't about hunting traffic—it's about earning relevance. By means of ethical tactics, technical expertise, and audience intent mapping, we make your brand rank and connect. We blend accuracy analysis with market intelligence to place your company where your customers are actively looking.
+                    At Enegix Web Solutions Pvt. Ltd., as the top <span className="font-extrabold text-green-600">SEO Company in India</span>, our services are designed to propel your business from invisible to unmissable. With constantly changing algorithms and increasing digital noise, we concentrate on building true, authority-led presence for your brand. Our strategy isn't about hunting traffic—it's about earning relevance. By means of ethical tactics, technical expertise, and audience intent mapping, we make your brand rank and connect. We blend accuracy analysis with market intelligence to place your company where your customers are actively looking.
                   </p>
                 </div>
 
