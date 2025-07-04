@@ -9,92 +9,128 @@ import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Button from "@/components/Button";
-import { FaArrowRight, FaPlus, FaMinus, FaPalette, FaLightbulb, FaClipboardList, FaPencilRuler, FaRocket, FaCogs, FaGem, FaSearch, FaSketch, FaCode, FaCheckCircle, FaPaperPlane } from "react-icons/fa";
+import { FaArrowRight, FaPlus, FaMinus, FaMobile, FaCode, FaRocket, FaShieldAlt, FaStore, FaUsers } from "react-icons/fa";
+import { MdDashboard, MdCloud, MdIntegrationInstructions, MdAnalytics, MdSecurity, MdSupport } from "react-icons/md";
 
-export default function LogoDesign() {
+export default function MobileApplication() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   useEffect(() => {
     enablePageScroll();
   }, []);
 
-
+  const features = [
+    {
+      title: "Native iOS & Android Apps",
+      description:
+        "High-performance native applications built specifically for iOS and Android platforms",
+      icon: <FaMobile className="text-blue-500" />,
+    },
+    {
+      title: "Cross-Platform Development",
+      description:
+        "Cost-effective React Native and Flutter apps that work seamlessly across platforms",
+      icon: <FaCode className="text-purple-500" />,
+    },
+    {
+      title: "App Store Optimization",
+      description:
+        "Complete app store submission and optimization for maximum visibility and downloads",
+      icon: <FaStore className="text-green-500" />,
+    },
+    {
+      title: "Backend Integration",
+      description:
+        "Robust backend systems with APIs, databases, and cloud services integration",
+      icon: <MdCloud className="text-cyan-500" />,
+    },
+    {
+      title: "User Analytics & Insights",
+      description: "Advanced analytics to track user behavior and app performance metrics",
+      icon: <MdAnalytics className="text-orange-500" />,
+    },
+    {
+      title: "Security & Compliance",
+      description: "Enterprise-grade security measures and compliance with industry standards",
+      icon: <MdSecurity className="text-red-500" />,
+    },
+  ];
 
   const process = [
     {
       step: "1",
-      title: "Brand Discovery",
+      title: "Discovery & Planning",
       description:
-        "We dive deep into your brand essence, values, and target audience. This includes analyzing your industry, competitors, and understanding your unique brand positioning in the market.",
-      icon: <FaSearch className="text-blue-500" />,
+        "We analyze your business requirements, target audience, and market needs. This includes competitor analysis, feature planning, and creating a comprehensive development roadmap tailored to your goals.",
+      icon: <MdAnalytics className="text-2xl text-blue-500" />,
     },
     {
       step: "2",
-      title: "Concept Development",
+      title: "UI/UX Design",
       description:
-        "We develop multiple creative concepts based on your brand strategy, exploring different visual directions and design approaches that align with your brand identity.",
-      icon: <FaLightbulb className="text-yellow-500" />,
+        "Our design team creates intuitive wireframes and stunning visual designs. We focus on user experience, ensuring your app is both beautiful and easy to navigate across all devices.",
+      icon: <FaCode className="text-2xl text-purple-500" />,
     },
     {
       step: "3",
-      title: "Design Creation",
+      title: "Development & Testing",
       description:
-        "Our designers craft multiple logo variations, experimenting with typography, symbols, colors, and layouts to create a distinctive brand mark.",
-      icon: <FaPencilRuler className="text-purple-500" />,
+        "We build your app using the latest technologies and best practices. Rigorous testing ensures optimal performance, security, and compatibility across different devices and OS versions.",
+      icon: <FaRocket className="text-2xl text-green-500" />,
     },
     {
       step: "4",
-      title: "Refinement",
+      title: "App Store Deployment",
       description:
-        "We refine the chosen concept, perfecting every detail, ensuring scalability across different applications and optimal visual impact.",
-      icon: <FaGem className="text-pink-500" />,
+        "We handle the complete app store submission process for both iOS and Android platforms, including optimization for maximum visibility and download rates.",
+      icon: <FaStore className="text-2xl text-orange-500" />,
     },
     {
       step: "5",
-      title: "Brand Guidelines",
+      title: "Launch & Marketing",
       description:
-        "We create comprehensive brand guidelines including color palettes, typography, usage rules, and applications to maintain brand consistency.",
-      icon: <FaClipboardList className="text-green-500" />,
+        "We support your app launch with marketing strategies, user acquisition campaigns, and performance monitoring to ensure a successful market entry.",
+      icon: <FaUsers className="text-2xl text-cyan-500" />,
     },
     {
       step: "6",
-      title: "Final Delivery",
+      title: "Maintenance & Updates",
       description:
-        "We deliver all logo files in various formats, complete brand guidelines, and mockups showing your new logo in real-world applications.",
-      icon: <FaPaperPlane className="text-red-500" />,
+        "Ongoing support includes regular updates, feature enhancements, bug fixes, and performance optimization to keep your app competitive and up-to-date with platform changes.",
+      icon: <MdSupport className="text-2xl text-red-500" />,
     },
   ];
 
   const faqs = [
     {
-      question: "What's included in your logo design service?",
-      answer: "Our comprehensive logo design service includes brand discovery, multiple concept development, logo refinement, complete brand guidelines, and final delivery in all necessary formats (AI, EPS, PNG, JPG, SVG). We also provide usage guidelines and brand applications."
+      question: "What platforms do you develop mobile apps for?",
+      answer: "We develop for both iOS and Android platforms. We offer native development using Swift/Objective-C for iOS and Kotlin/Java for Android, as well as cross-platform solutions using React Native and Flutter for cost-effective development."
     },
     {
-      question: "How long does the logo design process take?",
-      answer: "A typical logo design project takes 2-3 weeks from initial consultation to final delivery. This includes discovery phase, concept development, revisions, and brand guideline creation. Rush projects can be completed in 1-2 weeks with our expedited service."
+      question: "How long does it take to develop a mobile app?",
+      answer: "Development timelines vary based on complexity. A simple app typically takes 3-4 months, while complex apps with advanced features can take 6-12 months. We provide detailed project timelines during our initial consultation based on your specific requirements."
     },
     {
-      question: "How many logo concepts do you provide?",
-      answer: "We typically provide 3-5 initial logo concepts based on your brand discovery. Each concept explores different creative directions. After you select your preferred direction, we provide 2-3 refined variations before finalizing your logo."
+      question: "Do you help with app store submission and approval?",
+      answer: "Yes, we handle the complete app store submission process for both Apple App Store and Google Play Store. This includes preparing all required assets, metadata optimization, and ensuring compliance with store guidelines to maximize approval chances."
     },
     {
-      question: "Do you provide brand guidelines and style guides?",
-      answer: "Yes! We create comprehensive brand guidelines that include your logo variations, color palettes, typography, spacing rules, dos and don'ts, and application examples. This ensures consistent brand usage across all materials."
+      question: "Can you integrate my app with existing systems or APIs?",
+      answer: "Absolutely! We specialize in integrating mobile apps with existing business systems, third-party APIs, databases, and cloud services. We ensure seamless data synchronization and secure communication between your app and backend systems."
     },
     {
-      question: "What file formats will I receive?",
-      answer: "You'll receive your logo in all necessary formats including vector files (AI, EPS, SVG), high-resolution raster files (PNG, JPG), and web-optimized versions. We also provide black & white versions and different orientations."
+      question: "Do you provide ongoing maintenance and updates?",
+      answer: "Yes, we offer comprehensive maintenance packages including regular updates, bug fixes, performance optimization, and feature enhancements. We also ensure your app stays compatible with the latest OS versions and security standards."
     },
     {
-      question: "Can you redesign an existing logo or create a completely new one?",
-      answer: "We can do both! Whether you need a complete rebrand with a new logo or want to refresh and modernize your existing logo, we'll work with you to create a design that perfectly represents your brand and resonates with your target audience."
+      question: "What's the difference between native and cross-platform development?",
+      answer: "Native apps are built specifically for one platform (iOS or Android) offering the best performance and access to all platform features. Cross-platform apps use frameworks like React Native or Flutter to work on both platforms, reducing development time and cost while maintaining good performance."
     }
   ];
 
   return (
     <>
-      <div className="min-h-screen  bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         <Navbar />
 
         {/* Hero Section */}
@@ -106,15 +142,15 @@ export default function LogoDesign() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}>
                 <div className="flex items-center space-x-3 mb-6">
-                  <FaPalette className="text-4xl text-green-600" />
+                  <FaMobile className="text-4xl text-blue-500" />
                   <h1 className="text-5xl md:text-5xl font-bold text-green-600">
-                   Branding & Logo Design
+                    Mobile Application
                   </h1>
                 </div>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Create powerful brand identities that leave lasting impressions. We design 
-                  memorable logos and comprehensive brand systems that connect with your 
-                  audience and drive business growth.
+                  Transform your ideas into powerful mobile applications. We build 
+                  native and cross-platform apps that engage users and drive 
+                  business growth across iOS and Android platforms.
                 </p>
 
                 <div className="w-sm">
@@ -131,8 +167,8 @@ export default function LogoDesign() {
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="w-full flex justify-right mb-10  ">
                 <Image
-                  src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
-                  alt="Logo Design Process"
+                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                  alt="Mobile Application Development"
                   height={600}
                   width={500}
                   className=" h-[400px] rounded-tl-[100px] rounded-br-[100px]  object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
@@ -158,10 +194,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                OUR BRANDING SERVICES
+                OUR MOBILE APP SERVICES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                A Branding Team That Creates Impact
+                Mobile Apps That Make Impact
               </h2>
             </motion.div>
 
@@ -175,10 +211,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.1 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Logo Design & Creation
+                    Native iOS & Android Development
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create memorable, scalable logos that perfectly represent your brand identity. Through comprehensive research and creative exploration, we design distinctive marks that resonate with your target audience and stand out in competitive markets.
+                    We build high-performance native applications using Swift for iOS and Kotlin for Android. Our platform-specific approach ensures optimal performance, access to native features, and seamless integration with device capabilities for superior user experiences.
                   </p>
                 </motion.div>
 
@@ -188,10 +224,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.2 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Identity Systems
+                    Cross-Platform Solutions
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop comprehensive brand identity systems including color palettes, typography, visual elements, and brand voice. Our systematic approach ensures consistent brand expression across all touchpoints and applications.
+                    Maximize your ROI with React Native and Flutter development. We create apps that work seamlessly across both iOS and Android platforms, reducing development time and costs while maintaining native-like performance and user experience.
                   </p>
                 </motion.div>
               </div>
@@ -204,10 +240,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.3 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Guidelines & Standards
+                    Backend & API Integration
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create detailed brand guidelines that ensure consistent application of your brand across all materials. These comprehensive documents include usage rules, color specifications, typography guidelines, and application examples.
+                    We develop robust backend systems with secure APIs, real-time databases, and cloud services integration. Our scalable architecture ensures your app can handle growing user bases while maintaining fast response times and data security.
                   </p>
                 </motion.div>
 
@@ -217,10 +253,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.4 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Strategy & Positioning
+                    App Store Optimization
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop strategic brand positioning that differentiates you from competitors. Through market analysis and brand audits, we create compelling brand stories and messaging that connect emotionally with your audience.
+                    We handle complete app store submission and optimization for both Apple App Store and Google Play Store. From metadata optimization to screenshot design, we ensure maximum visibility and download rates for your mobile application.
                   </p>
                 </motion.div>
               </div>
@@ -233,10 +269,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.5 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Applications & Mockups
+                    Security & Compliance
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create realistic mockups showing your brand in real-world applications including business cards, letterheads, signage, and digital platforms. This helps visualize your brand's impact across different mediums.
+                    We implement enterprise-grade security measures including data encryption, secure authentication, and compliance with GDPR, HIPAA, and other industry standards. Your users' data remains protected with our comprehensive security protocols.
                   </p>
                 </motion.div>
 
@@ -246,10 +282,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.6 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Refresh & Rebranding
+                    Analytics & Performance Monitoring
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We help evolve existing brands through strategic refreshes or complete rebranding. Our approach balances brand heritage with modern relevance, ensuring smooth transitions while maintaining customer recognition and loyalty.
+                    We integrate advanced analytics and monitoring tools to track user behavior, app performance, and crash reporting. Our comprehensive insights help you make data-driven decisions for continuous app improvement and user retention.
                   </p>
                 </motion.div>
               </div>
@@ -266,10 +302,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                CUSTOM BRANDING BUILT AROUND YOU
+                MOBILE APP DEVELOPMENT PROCESS
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Your Brand in Six Creative Steps
+                From Concept to App Store
               </h2>
             </motion.div>
 
@@ -381,7 +417,7 @@ export default function LogoDesign() {
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Find answers to common questions about our logo design and branding services
+                Find answers to common questions about our mobile app development process and services
               </p>
             </motion.div>
 

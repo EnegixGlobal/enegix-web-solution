@@ -9,92 +9,127 @@ import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Button from "@/components/Button";
-import { FaArrowRight, FaPlus, FaMinus, FaPalette, FaLightbulb, FaClipboardList, FaPencilRuler, FaRocket, FaCogs, FaGem, FaSearch, FaSketch, FaCode, FaCheckCircle, FaPaperPlane } from "react-icons/fa";
+import { FaArrowRight, FaPlus, FaMinus } from "react-icons/fa";
 
-export default function LogoDesign() {
+export default function UIUXDesigning() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   useEffect(() => {
     enablePageScroll();
   }, []);
 
-
+  const features = [
+    {
+      title: "User Research & Analysis",
+      description:
+        "In-depth user research to understand your target audience and their needs",
+      icon: "🔍",
+    },
+    {
+      title: "Wireframing & Prototyping",
+      description:
+        "Interactive prototypes to visualize the user journey before development",
+      icon: "📐",
+    },
+    {
+      title: "Visual Design",
+      description:
+        "Beautiful, modern interfaces that reflect your brand identity",
+      icon: "🎨",
+    },
+    {
+      title: "Usability Testing",
+      description:
+        "Testing designs with real users to ensure optimal user experience",
+      icon: "🧪",
+    },
+    {
+      title: "Mobile-First Design",
+      description: "Responsive designs that work perfectly across all devices",
+      icon: "📱",
+    },
+    {
+      title: "Design Systems",
+      description: "Scalable design systems for consistent user experiences",
+      icon: "🔧",
+    },
+  ];
 
   const process = [
     {
       step: "1",
-      title: "Brand Discovery",
+      title: "Discovery",
       description:
-        "We dive deep into your brand essence, values, and target audience. This includes analyzing your industry, competitors, and understanding your unique brand positioning in the market.",
-      icon: <FaSearch className="text-blue-500" />,
+        "We delve deep to fully understand your business and its goals. This includes analyzing your industry, competitors, and your target audience's preferences and behaviors.",
+      icon: "💡",
     },
     {
       step: "2",
-      title: "Concept Development",
+      title: "Planning",
       description:
-        "We develop multiple creative concepts based on your brand strategy, exploring different visual directions and design approaches that align with your brand identity.",
-      icon: <FaLightbulb className="text-yellow-500" />,
+        "Next, we tailor our strategy to align with your business objectives, beginning with a comprehensive analysis of user needs and market requirements.",
+      icon: "📋",
     },
     {
       step: "3",
-      title: "Design Creation",
+      title: "Preparation",
       description:
-        "Our designers craft multiple logo variations, experimenting with typography, symbols, colors, and layouts to create a distinctive brand mark.",
-      icon: <FaPencilRuler className="text-purple-500" />,
+        "Using the strategy as a roadmap, we assess both your current design and external elements to ensure they align with the strategic plan.",
+      icon: "📝",
     },
     {
       step: "4",
-      title: "Refinement",
+      title: "Implementation",
       description:
-        "We refine the chosen concept, perfecting every detail, ensuring scalability across different applications and optimal visual impact.",
-      icon: <FaGem className="text-pink-500" />,
+        "Our design framework is designed to provide a consistent flow of optimizations, creating an action plan that respects your internal resources.",
+      icon: "🚀",
     },
     {
       step: "5",
-      title: "Brand Guidelines",
+      title: "Growth",
       description:
-        "We create comprehensive brand guidelines including color palettes, typography, usage rules, and applications to maintain brand consistency.",
-      icon: <FaClipboardList className="text-green-500" />,
+        "As your project gains momentum, we focus on tracking progress towards your goals and ensuring continued, sustainable design success.",
+      icon: "⚙️",
     },
     {
       step: "6",
-      title: "Final Delivery",
+      title: "Refinement",
       description:
-        "We deliver all logo files in various formats, complete brand guidelines, and mockups showing your new logo in real-world applications.",
-      icon: <FaPaperPlane className="text-red-500" />,
+        "We continuously analyze performance data to identify new opportunities and adapt to user feedback. This ongoing optimization ensures your design strategy evolves with your business and market conditions.",
+      icon: "📦",
     },
   ];
 
   const faqs = [
     {
-      question: "What's included in your logo design service?",
-      answer: "Our comprehensive logo design service includes brand discovery, multiple concept development, logo refinement, complete brand guidelines, and final delivery in all necessary formats (AI, EPS, PNG, JPG, SVG). We also provide usage guidelines and brand applications."
+      question: "What's included in your UI/UX design service?",
+      answer: "Our comprehensive UI/UX design service includes user research, wireframing, visual design, prototyping, usability testing, and design system creation. We provide all design files, assets, and detailed specifications for development."
     },
     {
-      question: "How long does the logo design process take?",
-      answer: "A typical logo design project takes 2-3 weeks from initial consultation to final delivery. This includes discovery phase, concept development, revisions, and brand guideline creation. Rush projects can be completed in 1-2 weeks with our expedited service."
+      question: "How long does a typical UI/UX design project take?",
+      answer: "Project timelines vary based on complexity. A simple website redesign typically takes 4-6 weeks, while complex applications can take 8-12 weeks. We provide detailed timelines during our initial consultation based on your specific requirements."
     },
     {
-      question: "How many logo concepts do you provide?",
-      answer: "We typically provide 3-5 initial logo concepts based on your brand discovery. Each concept explores different creative directions. After you select your preferred direction, we provide 2-3 refined variations before finalizing your logo."
+      question: "Do you provide design files and assets for development?",
+      answer: "Yes, we provide all necessary design files including Figma/Sketch files, exported assets, style guides, and detailed specifications. We also offer developer handoff sessions to ensure smooth implementation of the designs."
     },
     {
-      question: "Do you provide brand guidelines and style guides?",
-      answer: "Yes! We create comprehensive brand guidelines that include your logo variations, color palettes, typography, spacing rules, dos and don'ts, and application examples. This ensures consistent brand usage across all materials."
+      question: "Can you redesign an existing website or app?",
+      answer: "Absolutely! We specialize in both new designs and redesigns. We'll analyze your current design, identify pain points, and create an improved user experience while maintaining your brand identity and business goals."
     },
     {
-      question: "What file formats will I receive?",
-      answer: "You'll receive your logo in all necessary formats including vector files (AI, EPS, SVG), high-resolution raster files (PNG, JPG), and web-optimized versions. We also provide black & white versions and different orientations."
+      question: "Do you conduct user testing?",
+      answer: "Yes, user testing is a crucial part of our process. We conduct usability testing with real users to validate design decisions, identify potential issues, and ensure the final product meets user expectations and business objectives."
     },
     {
-      question: "Can you redesign an existing logo or create a completely new one?",
-      answer: "We can do both! Whether you need a complete rebrand with a new logo or want to refresh and modernize your existing logo, we'll work with you to create a design that perfectly represents your brand and resonates with your target audience."
+      question: "What's the difference between UI and UX design?",
+      answer: "UX (User Experience) focuses on the overall feel and user journey, including research, wireframing, and user flow. UI (User Interface) focuses on the visual elements like colors, typography, and interactive components. We provide both services as an integrated approach."
     }
   ];
 
   return (
     <>
-      <div className="min-h-screen  bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         <Navbar />
 
         {/* Hero Section */}
@@ -106,15 +141,15 @@ export default function LogoDesign() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}>
                 <div className="flex items-center space-x-3 mb-6">
-                  <FaPalette className="text-4xl text-green-600" />
+                  <span className="text-4xl">🎨</span>
                   <h1 className="text-5xl md:text-5xl font-bold text-green-600">
-                   Branding & Logo Design
+                    UI/UX Designing
                   </h1>
                 </div>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Create powerful brand identities that leave lasting impressions. We design 
-                  memorable logos and comprehensive brand systems that connect with your 
-                  audience and drive business growth.
+                  Design experiences that are both stunning and user-focused. We
+                  create intuitive interfaces that delight users and drive
+                  business results.
                 </p>
 
                 <div className="w-sm">
@@ -131,8 +166,8 @@ export default function LogoDesign() {
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="w-full flex justify-right mb-10  ">
                 <Image
-                  src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
-                  alt="Logo Design Process"
+                  src="/hero-image.jpg"
+                  alt="Hero Image"
                   height={600}
                   width={500}
                   className=" h-[400px] rounded-tl-[100px] rounded-br-[100px]  object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
@@ -158,10 +193,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                OUR BRANDING SERVICES
+                OUR UI/UX SERVICES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                A Branding Team That Creates Impact
+                A Design Team That Delivers
               </h2>
             </motion.div>
 
@@ -175,10 +210,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.1 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Logo Design & Creation
+                    User Research & Analysis
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create memorable, scalable logos that perfectly represent your brand identity. Through comprehensive research and creative exploration, we design distinctive marks that resonate with your target audience and stand out in competitive markets.
+                    We identify valuable user insights through comprehensive research analysis. Using advanced tools, we uncover behavioral patterns your competitors miss. This strategic foundation targets users your customers actually represent, positioning your business for sustainable design growth.
                   </p>
                 </motion.div>
 
@@ -188,10 +223,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.2 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Identity Systems
+                    Wireframing & Prototyping
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop comprehensive brand identity systems including color palettes, typography, visual elements, and brand voice. Our systematic approach ensures consistent brand expression across all touchpoints and applications.
+                    We optimize your user flows to satisfy both functionality and users. Our balanced approach combines strategic layout planning with engaging interactions that answer visitor questions. This enhances existing interfaces and builds your design authority.
                   </p>
                 </motion.div>
               </div>
@@ -204,10 +239,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.3 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Guidelines & Standards
+                    Visual Design
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create detailed brand guidelines that ensure consistent application of your brand across all materials. These comprehensive documents include usage rules, color specifications, typography guidelines, and application examples.
+                    Our experts ensure your interface meets all design requirements for optimal usability. We address visual hierarchy, brand consistency, accessibility issues and aesthetics to create a solid design foundation. This improves both appeal and user experience.
                   </p>
                 </motion.div>
 
@@ -217,10 +252,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.4 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Strategy & Positioning
+                    Usability Testing
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop strategic brand positioning that differentiates you from competitors. Through market analysis and brand audits, we create compelling brand stories and messaging that connect emotionally with your audience.
+                    We boost your design effectiveness through comprehensive user testing to reach target users. From prototype validation to interface optimization, we implement proven tactics that improve user satisfaction and design performance to drive qualified engagement.
                   </p>
                 </motion.div>
               </div>
@@ -233,10 +268,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.5 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Applications & Mockups
+                    Mobile-First Design
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create realistic mockups showing your brand in real-world applications including business cards, letterheads, signage, and digital platforms. This helps visualize your brand's impact across different mediums.
+                    We develop responsive designs from relevant, mobile-first websites in your industry. Our ethical strategies ensure compatibility that drives both functionality and mobile traffic. This builds device authority, creating a competitive advantage that's difficult to replicate.
                   </p>
                 </motion.div>
 
@@ -246,10 +281,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.6 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Refresh & Rebranding
+                    Design Systems & Analytics
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We help evolve existing brands through strategic refreshes or complete rebranding. Our approach balances brand heritage with modern relevance, ensuring smooth transitions while maintaining customer recognition and loyalty.
+                    We track all design activities against clear performance metrics that matter to your business. Our transparent methodology shows usability improvements, engagement growth and conversion data, allowing continuous refinement for maximum ROI.
                   </p>
                 </motion.div>
               </div>
@@ -266,10 +301,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                CUSTOM BRANDING BUILT AROUND YOU
+                CUSTOM UI/UX BUILT AROUND YOU
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Your Brand in Six Creative Steps
+                Get Started in Six Easy Steps
               </h2>
             </motion.div>
 
@@ -381,7 +416,7 @@ export default function LogoDesign() {
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Find answers to common questions about our logo design and branding services
+                Find answers to common questions about our UI/UX design process and services
               </p>
             </motion.div>
 

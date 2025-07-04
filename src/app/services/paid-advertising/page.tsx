@@ -9,92 +9,128 @@ import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Button from "@/components/Button";
-import { FaArrowRight, FaPlus, FaMinus, FaPalette, FaLightbulb, FaClipboardList, FaPencilRuler, FaRocket, FaCogs, FaGem, FaSearch, FaSketch, FaCode, FaCheckCircle, FaPaperPlane } from "react-icons/fa";
+import { FaArrowRight, FaPlus, FaMinus, FaGoogle, FaFacebook, FaChartLine, FaBullseye, FaRocket, FaShieldAlt } from "react-icons/fa";
+import { MdCampaign, MdAnalytics, MdTrendingUp, MdGpsFixed, MdMonetizationOn, MdInsights } from "react-icons/md";
 
-export default function LogoDesign() {
+export default function PaidAdvertising() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   useEffect(() => {
     enablePageScroll();
   }, []);
 
-
+  const features = [
+    {
+      title: "Google Ads Management",
+      description:
+        "Expert Google Ads campaigns with keyword research, ad copy optimization, and bid management",
+      icon: <FaGoogle className="text-4xl text-blue-500" />,
+    },
+    {
+      title: "Facebook & Instagram Ads",
+      description:
+        "Targeted social media advertising campaigns that reach your ideal customers effectively",
+      icon: <FaFacebook className="text-4xl text-blue-600" />,
+    },
+    {
+      title: "Performance Analytics",
+      description:
+        "Comprehensive tracking and reporting to measure ROI and optimize campaign performance",
+      icon: <MdAnalytics className="text-4xl text-green-500" />,
+    },
+    {
+      title: "Audience Targeting",
+      description:
+        "Precise audience targeting using demographics, interests, and behavioral data",
+      icon: <MdGpsFixed className="text-4xl text-purple-500" />,
+    },
+    {
+      title: "Campaign Optimization",
+      description: "Continuous A/B testing and optimization for maximum ROI and conversions",
+      icon: <MdTrendingUp className="text-4xl text-orange-500" />,
+    },
+    {
+      title: "Budget Management",
+      description: "Strategic budget allocation and cost-per-click optimization for best results",
+      icon: <MdMonetizationOn className="text-4xl text-red-500" />,
+    },
+  ];
 
   const process = [
     {
       step: "1",
-      title: "Brand Discovery",
+      title: "Strategy & Research",
       description:
-        "We dive deep into your brand essence, values, and target audience. This includes analyzing your industry, competitors, and understanding your unique brand positioning in the market.",
-      icon: <FaSearch className="text-blue-500" />,
+        "We analyze your business goals, target audience, and competitive landscape. This includes keyword research, audience analysis, and platform selection to create a winning advertising strategy.",
+      icon: <MdInsights className="text-2xl text-blue-500" />,
     },
     {
       step: "2",
-      title: "Concept Development",
+      title: "Campaign Setup",
       description:
-        "We develop multiple creative concepts based on your brand strategy, exploring different visual directions and design approaches that align with your brand identity.",
-      icon: <FaLightbulb className="text-yellow-500" />,
+        "We create optimized campaigns across chosen platforms with targeted ad groups, compelling ad copy, and strategic bidding strategies tailored to your objectives.",
+      icon: <MdCampaign className="text-2xl text-purple-500" />,
     },
     {
       step: "3",
-      title: "Design Creation",
+      title: "Creative Development",
       description:
-        "Our designers craft multiple logo variations, experimenting with typography, symbols, colors, and layouts to create a distinctive brand mark.",
-      icon: <FaPencilRuler className="text-purple-500" />,
+        "Our team designs engaging ad creatives, writes persuasive copy, and develops landing pages that align with your campaigns for maximum conversion potential.",
+      icon: <FaBullseye className="text-2xl text-green-500" />,
     },
     {
       step: "4",
-      title: "Refinement",
+      title: "Launch & Monitor",
       description:
-        "We refine the chosen concept, perfecting every detail, ensuring scalability across different applications and optimal visual impact.",
-      icon: <FaGem className="text-pink-500" />,
+        "We launch your campaigns with careful monitoring and real-time adjustments to ensure optimal performance from day one.",
+      icon: <FaRocket className="text-2xl text-orange-500" />,
     },
     {
       step: "5",
-      title: "Brand Guidelines",
+      title: "Optimize & Scale",
       description:
-        "We create comprehensive brand guidelines including color palettes, typography, usage rules, and applications to maintain brand consistency.",
-      icon: <FaClipboardList className="text-green-500" />,
+        "Continuous optimization through A/B testing, bid adjustments, and audience refinement to improve performance and scale successful campaigns.",
+      icon: <MdTrendingUp className="text-2xl text-cyan-500" />,
     },
     {
       step: "6",
-      title: "Final Delivery",
+      title: "Report & Refine",
       description:
-        "We deliver all logo files in various formats, complete brand guidelines, and mockups showing your new logo in real-world applications.",
-      icon: <FaPaperPlane className="text-red-500" />,
+        "Regular performance reports with actionable insights and strategic recommendations to continuously improve ROI and campaign effectiveness.",
+      icon: <FaChartLine className="text-2xl text-red-500" />,
     },
   ];
 
   const faqs = [
     {
-      question: "What's included in your logo design service?",
-      answer: "Our comprehensive logo design service includes brand discovery, multiple concept development, logo refinement, complete brand guidelines, and final delivery in all necessary formats (AI, EPS, PNG, JPG, SVG). We also provide usage guidelines and brand applications."
+      question: "Which advertising platforms do you manage?",
+      answer: "We manage campaigns across Google Ads (Search, Display, Shopping, YouTube), Facebook & Instagram Ads, LinkedIn Ads, Microsoft Advertising (Bing), and other relevant platforms based on your target audience and business goals."
     },
     {
-      question: "How long does the logo design process take?",
-      answer: "A typical logo design project takes 2-3 weeks from initial consultation to final delivery. This includes discovery phase, concept development, revisions, and brand guideline creation. Rush projects can be completed in 1-2 weeks with our expedited service."
+      question: "How much should I budget for paid advertising?",
+      answer: "Ad budgets vary depending on your industry, competition, and goals. We typically recommend starting with at least $1,000-$3,000 per month for Google Ads and $500-$2,000 for social media ads. We'll provide specific recommendations based on your market analysis."
     },
     {
-      question: "How many logo concepts do you provide?",
-      answer: "We typically provide 3-5 initial logo concepts based on your brand discovery. Each concept explores different creative directions. After you select your preferred direction, we provide 2-3 refined variations before finalizing your logo."
+      question: "How quickly will I see results from paid advertising?",
+      answer: "You can start seeing traffic and impressions immediately after campaigns launch. However, meaningful results and optimizations typically develop within 2-4 weeks as we gather data and refine targeting, ad copy, and bidding strategies."
     },
     {
-      question: "Do you provide brand guidelines and style guides?",
-      answer: "Yes! We create comprehensive brand guidelines that include your logo variations, color palettes, typography, spacing rules, dos and don'ts, and application examples. This ensures consistent brand usage across all materials."
+      question: "Do you provide detailed performance reports?",
+      answer: "Yes, we provide comprehensive monthly reports including key metrics like impressions, clicks, conversions, cost-per-click, return on ad spend (ROAS), and recommendations for improvement. We also offer real-time dashboard access."
     },
     {
-      question: "What file formats will I receive?",
-      answer: "You'll receive your logo in all necessary formats including vector files (AI, EPS, SVG), high-resolution raster files (PNG, JPG), and web-optimized versions. We also provide black & white versions and different orientations."
+      question: "Can you help improve my existing ad campaigns?",
+      answer: "Absolutely! We offer campaign audits and optimization services for existing accounts. We'll analyze your current performance, identify opportunities for improvement, and implement strategies to enhance ROI and reduce costs."
     },
     {
-      question: "Can you redesign an existing logo or create a completely new one?",
-      answer: "We can do both! Whether you need a complete rebrand with a new logo or want to refresh and modernize your existing logo, we'll work with you to create a design that perfectly represents your brand and resonates with your target audience."
+      question: "What's the difference between Google Ads and social media advertising?",
+      answer: "Google Ads target users actively searching for your products/services (intent-based), while social media ads target users based on demographics, interests, and behaviors (interest-based). Both have unique advantages and work best when used together strategically."
     }
   ];
 
   return (
     <>
-      <div className="min-h-screen  bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         <Navbar />
 
         {/* Hero Section */}
@@ -106,15 +142,16 @@ export default function LogoDesign() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}>
                 <div className="flex items-center space-x-3 mb-6">
-                  <FaPalette className="text-4xl text-green-600" />
+                  <a href="https://www.flaticon.com/free-icons/app" title="app icons"></a>
+                  <MdCampaign className="text-5xl text-blue-500" />
                   <h1 className="text-5xl md:text-5xl font-bold text-green-600">
-                   Branding & Logo Design
+                    Paid Advertising
                   </h1>
                 </div>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Create powerful brand identities that leave lasting impressions. We design 
-                  memorable logos and comprehensive brand systems that connect with your 
-                  audience and drive business growth.
+                  Drive instant traffic and qualified leads with strategic paid advertising campaigns. 
+                  We maximize your ad spend ROI through expert Google Ads, Facebook Ads, and 
+                  multi-platform advertising management.
                 </p>
 
                 <div className="w-sm">
@@ -131,8 +168,8 @@ export default function LogoDesign() {
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="w-full flex justify-right mb-10  ">
                 <Image
-                  src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
-                  alt="Logo Design Process"
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                  alt="Paid Advertising & PPC Marketing"
                   height={600}
                   width={500}
                   className=" h-[400px] rounded-tl-[100px] rounded-br-[100px]  object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
@@ -158,10 +195,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                OUR BRANDING SERVICES
+                OUR PAID ADVERTISING SERVICES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                A Branding Team That Creates Impact
+                Campaigns That Convert & Scale
               </h2>
             </motion.div>
 
@@ -175,10 +212,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.1 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Logo Design & Creation
+                    Google Ads & Search Marketing
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create memorable, scalable logos that perfectly represent your brand identity. Through comprehensive research and creative exploration, we design distinctive marks that resonate with your target audience and stand out in competitive markets.
+                    We create high-converting Google Ads campaigns with strategic keyword research, compelling ad copy, and optimized landing pages. Our data-driven approach ensures maximum visibility when your customers are actively searching for your services.
                   </p>
                 </motion.div>
 
@@ -188,10 +225,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.2 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Identity Systems
+                    Social Media Advertising
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop comprehensive brand identity systems including color palettes, typography, visual elements, and brand voice. Our systematic approach ensures consistent brand expression across all touchpoints and applications.
+                    Leverage Facebook, Instagram, LinkedIn, and other social platforms to reach your ideal audience. We craft engaging ad creatives and precisely target demographics, interests, and behaviors to drive qualified traffic and conversions.
                   </p>
                 </motion.div>
               </div>
@@ -204,10 +241,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.3 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Guidelines & Standards
+                    Performance Analytics & Reporting
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create detailed brand guidelines that ensure consistent application of your brand across all materials. These comprehensive documents include usage rules, color specifications, typography guidelines, and application examples.
+                    Comprehensive tracking and transparent reporting keep you informed of campaign performance. We monitor key metrics like CTR, conversion rates, and ROI, providing actionable insights to continuously improve your advertising results.
                   </p>
                 </motion.div>
 
@@ -217,10 +254,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.4 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Strategy & Positioning
+                    Audience Targeting & Retargeting
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop strategic brand positioning that differentiates you from competitors. Through market analysis and brand audits, we create compelling brand stories and messaging that connect emotionally with your audience.
+                    We implement sophisticated audience targeting strategies including demographic, geographic, and behavioral targeting. Our retargeting campaigns re-engage visitors who showed interest, significantly improving conversion rates and customer acquisition.
                   </p>
                 </motion.div>
               </div>
@@ -233,10 +270,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.5 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Applications & Mockups
+                    Campaign Optimization & A/B Testing
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create realistic mockups showing your brand in real-world applications including business cards, letterheads, signage, and digital platforms. This helps visualize your brand's impact across different mediums.
+                    Continuous optimization through systematic A/B testing of ad copy, creatives, landing pages, and targeting parameters. We identify what works best for your audience and scale successful elements while eliminating underperforming components.
                   </p>
                 </motion.div>
 
@@ -246,10 +283,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.6 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Refresh & Rebranding
+                    Budget Management & ROI Optimization
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We help evolve existing brands through strategic refreshes or complete rebranding. Our approach balances brand heritage with modern relevance, ensuring smooth transitions while maintaining customer recognition and loyalty.
+                    Strategic budget allocation across platforms and campaigns to maximize return on ad spend. We monitor cost-per-click, cost-per-acquisition, and lifetime value metrics to ensure every dollar generates maximum impact for your business growth.
                   </p>
                 </motion.div>
               </div>
@@ -266,10 +303,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                CUSTOM BRANDING BUILT AROUND YOU
+                STRATEGIC ADVERTISING PROCESS
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Your Brand in Six Creative Steps
+                From Strategy to Success
               </h2>
             </motion.div>
 
@@ -381,7 +418,7 @@ export default function LogoDesign() {
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Find answers to common questions about our logo design and branding services
+                Find answers to common questions about our paid advertising services and process
               </p>
             </motion.div>
 

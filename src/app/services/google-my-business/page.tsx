@@ -9,92 +9,128 @@ import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Button from "@/components/Button";
-import { FaArrowRight, FaPlus, FaMinus, FaPalette, FaLightbulb, FaClipboardList, FaPencilRuler, FaRocket, FaCogs, FaGem, FaSearch, FaSketch, FaCode, FaCheckCircle, FaPaperPlane } from "react-icons/fa";
+import { FaArrowRight, FaPlus, FaMinus, FaGoogle, FaMapMarkerAlt, FaStar, FaSearch, FaCamera, FaUsers, FaChartLine, FaClipboardList, FaCog, FaCheckCircle, FaRocket } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
-export default function LogoDesign() {
+export default function GoogleMyBusiness() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   useEffect(() => {
     enablePageScroll();
   }, []);
 
-
+  const features = [
+    {
+      title: "Google My Business Setup",
+      description:
+        "Complete GMB profile setup and optimization for maximum visibility",
+      icon: <FaGoogle className="text-green-500" />,
+    },
+    {
+      title: "Local SEO Optimization",
+      description:
+        "Strategic optimization to rank higher in local search results",
+      icon: <FaMapMarkerAlt className="text-green-500" />,
+    },
+    {
+      title: "Review Management",
+      description:
+        "Professional review monitoring and response management",
+      icon: <FaStar className="text-green-500" />,
+    },
+    {
+      title: "Local Citation Building",
+      description:
+        "Consistent NAP citations across top local directories",
+      icon: <FaSearch className="text-green-500" />,
+    },
+    {
+      title: "Google Posts & Media",
+      description: "Engaging Google posts and professional photo optimization",
+      icon: <FaCamera className="text-green-500" />,
+    },
+    {
+      title: "Performance Analytics",
+      description: "Detailed insights and reporting on local search performance",
+      icon: <FaChartLine className="text-green-500" />,
+    },
+  ];
 
   const process = [
     {
       step: "1",
-      title: "Brand Discovery",
+      title: "Business Audit",
       description:
-        "We dive deep into your brand essence, values, and target audience. This includes analyzing your industry, competitors, and understanding your unique brand positioning in the market.",
-      icon: <FaSearch className="text-blue-500" />,
+        "We analyze your current GMB profile, local presence, and competitor landscape to identify optimization opportunities.",
+      icon: <FaSearch className="text-white" />,
     },
     {
       step: "2",
-      title: "Concept Development",
+      title: "Profile Setup",
       description:
-        "We develop multiple creative concepts based on your brand strategy, exploring different visual directions and design approaches that align with your brand identity.",
-      icon: <FaLightbulb className="text-yellow-500" />,
+        "Complete optimization of your Google My Business profile with accurate information, categories, and business details.",
+      icon: <FaClipboardList className="text-white" />,
     },
     {
       step: "3",
-      title: "Design Creation",
+      title: "Content Creation",
       description:
-        "Our designers craft multiple logo variations, experimenting with typography, symbols, colors, and layouts to create a distinctive brand mark.",
-      icon: <FaPencilRuler className="text-purple-500" />,
+        "Professional photos, compelling descriptions, and regular Google posts to enhance your online presence.",
+      icon: <FaCamera className="text-white" />,
     },
     {
       step: "4",
-      title: "Refinement",
+      title: "Citation Building",
       description:
-        "We refine the chosen concept, perfecting every detail, ensuring scalability across different applications and optimal visual impact.",
-      icon: <FaGem className="text-pink-500" />,
+        "Strategic placement of your business information across authoritative local directories and platforms.",
+      icon: <FaCog className="text-white" />,
     },
     {
       step: "5",
-      title: "Brand Guidelines",
+      title: "Review Strategy",
       description:
-        "We create comprehensive brand guidelines including color palettes, typography, usage rules, and applications to maintain brand consistency.",
-      icon: <FaClipboardList className="text-green-500" />,
+        "Implementation of review generation strategies and professional response management to build trust.",
+      icon: <FaStar className="text-white" />,
     },
     {
       step: "6",
-      title: "Final Delivery",
+      title: "Monitoring & Growth",
       description:
-        "We deliver all logo files in various formats, complete brand guidelines, and mockups showing your new logo in real-world applications.",
-      icon: <FaPaperPlane className="text-red-500" />,
+        "Ongoing optimization, performance tracking, and strategic adjustments to maintain and improve local rankings.",
+      icon: <FaChartLine className="text-white" />,
     },
   ];
 
   const faqs = [
     {
-      question: "What's included in your logo design service?",
-      answer: "Our comprehensive logo design service includes brand discovery, multiple concept development, logo refinement, complete brand guidelines, and final delivery in all necessary formats (AI, EPS, PNG, JPG, SVG). We also provide usage guidelines and brand applications."
+      question: "What is Google My Business and why is it important?",
+      answer: "Google My Business (GMB) is a free tool that allows businesses to manage their online presence across Google Search and Maps. It's crucial for local SEO as it helps customers find your business, see reviews, hours, and contact information directly in search results."
     },
     {
-      question: "How long does the logo design process take?",
-      answer: "A typical logo design project takes 2-3 weeks from initial consultation to final delivery. This includes discovery phase, concept development, revisions, and brand guideline creation. Rush projects can be completed in 1-2 weeks with our expedited service."
+      question: "How long does it take to see results from GMB optimization?",
+      answer: "Initial improvements can be seen within 2-4 weeks, with significant ranking improvements typically occurring within 2-3 months. Local SEO is a long-term strategy that continues to build authority and visibility over time."
     },
     {
-      question: "How many logo concepts do you provide?",
-      answer: "We typically provide 3-5 initial logo concepts based on your brand discovery. Each concept explores different creative directions. After you select your preferred direction, we provide 2-3 refined variations before finalizing your logo."
+      question: "Do you help with getting more Google reviews?",
+      answer: "Yes, we implement ethical review generation strategies, help set up automated review requests, and provide professional response management for all reviews. We focus on building genuine, positive customer experiences."
     },
     {
-      question: "Do you provide brand guidelines and style guides?",
-      answer: "Yes! We create comprehensive brand guidelines that include your logo variations, color palettes, typography, spacing rules, dos and don'ts, and application examples. This ensures consistent brand usage across all materials."
+      question: "Can you optimize GMB for multiple business locations?",
+      answer: "Absolutely! We specialize in multi-location businesses and can optimize individual GMB profiles for each location while maintaining brand consistency across all listings."
     },
     {
-      question: "What file formats will I receive?",
-      answer: "You'll receive your logo in all necessary formats including vector files (AI, EPS, SVG), high-resolution raster files (PNG, JPG), and web-optimized versions. We also provide black & white versions and different orientations."
+      question: "What's included in your GMB optimization service?",
+      answer: "Our service includes complete profile setup, keyword optimization, photo optimization, Google Posts creation, review management, citation building, competitor analysis, and monthly performance reporting."
     },
     {
-      question: "Can you redesign an existing logo or create a completely new one?",
-      answer: "We can do both! Whether you need a complete rebrand with a new logo or want to refresh and modernize your existing logo, we'll work with you to create a design that perfectly represents your brand and resonates with your target audience."
+      question: "How do you measure GMB optimization success?",
+      answer: "We track key metrics including local search rankings, profile views, website clicks, direction requests, phone calls, review ratings, and overall online visibility in local search results."
     }
   ];
 
   return (
     <>
-      <div className="min-h-screen  bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         <Navbar />
 
         {/* Hero Section */}
@@ -106,15 +142,15 @@ export default function LogoDesign() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}>
                 <div className="flex items-center space-x-3 mb-6">
-                  <FaPalette className="text-4xl text-green-600" />
+                  
                   <h1 className="text-5xl md:text-5xl font-bold text-green-600">
-                   Branding & Logo Design
+                    <FcGoogle className="text-6xl inline mb-3"/>oogle My Business
                   </h1>
                 </div>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Create powerful brand identities that leave lasting impressions. We design 
-                  memorable logos and comprehensive brand systems that connect with your 
-                  audience and drive business growth.
+                  Dominate local search results with optimized Google My Business listings. 
+                  We help your business appear prominently when customers search for your 
+                  services in your area.
                 </p>
 
                 <div className="w-sm">
@@ -131,11 +167,11 @@ export default function LogoDesign() {
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="w-full flex justify-right mb-10  ">
                 <Image
-                  src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
-                  alt="Logo Design Process"
+                  src="https://images.pexels.com/photos/38547/office-freelancer-computer-business-38547.jpeg"
+                  alt="Google My Business Analytics"
                   height={600}
                   width={500}
-                  className=" h-[400px] rounded-tl-[100px] rounded-br-[100px]  object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
+                  className="w-[500px] h-[400px] rounded-tl-[100px] rounded-br-[100px]  object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
                 />
                 <Image
                   src="/pattern.png"
@@ -158,10 +194,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                OUR BRANDING SERVICES
+                OUR GMB SERVICES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                A Branding Team That Creates Impact
+                Local SEO Excellence
               </h2>
             </motion.div>
 
@@ -175,10 +211,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.1 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Logo Design & Creation
+                    Google My Business Setup
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create memorable, scalable logos that perfectly represent your brand identity. Through comprehensive research and creative exploration, we design distinctive marks that resonate with your target audience and stand out in competitive markets.
+                    Complete GMB profile creation and optimization with accurate business information, compelling descriptions, and strategic keyword placement. We ensure your listing stands out in local search results and attracts more customers.
                   </p>
                 </motion.div>
 
@@ -188,10 +224,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.2 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Identity Systems
+                    Local SEO Optimization
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop comprehensive brand identity systems including color palettes, typography, visual elements, and brand voice. Our systematic approach ensures consistent brand expression across all touchpoints and applications.
+                    Strategic optimization techniques to improve your local search rankings. We optimize for location-based keywords, ensure NAP consistency, and implement proven local SEO strategies that drive qualified local traffic.
                   </p>
                 </motion.div>
               </div>
@@ -204,10 +240,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.3 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Guidelines & Standards
+                    Review Management
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create detailed brand guidelines that ensure consistent application of your brand across all materials. These comprehensive documents include usage rules, color specifications, typography guidelines, and application examples.
+                    Professional review monitoring and response management to build trust and credibility. We help generate positive reviews through ethical strategies and handle negative feedback professionally to protect your reputation.
                   </p>
                 </motion.div>
 
@@ -217,10 +253,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.4 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Strategy & Positioning
+                    Local Citation Building
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop strategic brand positioning that differentiates you from competitors. Through market analysis and brand audits, we create compelling brand stories and messaging that connect emotionally with your audience.
+                    Strategic placement of your business information across authoritative local directories and platforms. Consistent NAP citations boost your local authority and improve search engine trust in your business location.
                   </p>
                 </motion.div>
               </div>
@@ -233,10 +269,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.5 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Applications & Mockups
+                    Google Posts & Media
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create realistic mockups showing your brand in real-world applications including business cards, letterheads, signage, and digital platforms. This helps visualize your brand's impact across different mediums.
+                    Engaging Google posts that showcase your products, services, and business updates. Professional photo optimization and regular content creation keep your listing fresh and encourage customer engagement.
                   </p>
                 </motion.div>
 
@@ -246,10 +282,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.6 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Refresh & Rebranding
+                    Performance Analytics
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We help evolve existing brands through strategic refreshes or complete rebranding. Our approach balances brand heritage with modern relevance, ensuring smooth transitions while maintaining customer recognition and loyalty.
+                    Comprehensive tracking and reporting of your GMB performance including search visibility, customer actions, and review metrics. Data-driven insights help optimize your local presence for maximum business growth.
                   </p>
                 </motion.div>
               </div>
@@ -266,10 +302,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                CUSTOM BRANDING BUILT AROUND YOU
+                GOOGLE MY BUSINESS OPTIMIZATION PROCESS
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Your Brand in Six Creative Steps
+                Local Success in Six Steps
               </h2>
             </motion.div>
 
@@ -381,7 +417,7 @@ export default function LogoDesign() {
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Find answers to common questions about our logo design and branding services
+                Find answers to common questions about our Google My Business optimization services
               </p>
             </motion.div>
 

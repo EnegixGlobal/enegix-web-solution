@@ -65,9 +65,8 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <ServicesSection />
-      {/* <StatsSection /> */}
-      <WhyChooseUsSection />
       <TechStackSimple />
+      <WhyChooseUsSection />
       <VideoShowcase />
       <ContactCTA />
       <Footer />

@@ -140,44 +140,7 @@ const WhyChooseUsSection = () => {
         </div>
         {/* Features Grid */}
 
-        <h3 className="text-4xl md:text-4xl text-center font-bold mt-20 mb-4 ">For Your Partnership With Enegix Global Pvt. Ltd.: SEO Experts in India You Can Trust</h3>
-        <p className="text-md text-gray-800 max-w-5xl mx-auto text-center mb-10 leading-relaxed">When visibility, rankings, and traffic come into consideration, we stand as the go-to <span className="font-extrabold text-green-600">SEO Experts in India</span> businesses bank upon. In fact, toward anything we do, our approach appreciates a holistic method. Creativity goes hand in hand with analytics in our team, so strategies never exist without a firm base. At Enegix Global Pvt. Ltd., a quick win is never sought, but a solid and lasting digital success. These Are the Major Reasons That Would Make a Brand Pick Us:</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in-up">
-          {features.map((feature, index) => (
-            <div
-              key={feature.title}
-              className="group perspective-1000 transition-all duration-300 hover:-translate-y-3 hover:scale-105"
-            >
-              <div className="relative p-8 bg-white rounded-2xl shadow-lg border border-teal-100 overflow-hidden transform-gpu group-hover:border-teal-300 group-hover:shadow-xl transition-all duration-300">
-                {/* Gradient Background */}
-                <div className={cn(
-                  "absolute inset-0 bg-gradient-to-br opacity-5 group-hover:opacity-10 transition-opacity duration-300",
-                  feature.gradient
-                )} />
-
-                <div className="relative z-10">
-                  {/* Feature Icon */}
-                  <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                    {feature.icon}
-                  </div>
-
-                  {/* Feature Title */}
-                  <h4 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-teal-600 group-hover:to-emerald-600 transition-all duration-300">
-                    {feature.title}
-                  </h4>
-
-                  {/* Feature Description */}
-                  <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                    {feature.description}
-                  </p>
-                </div>
-
-                {/* Subtle Shine Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 opacity-0 group-hover:opacity-100" />
-              </div>
-            </div>
-          ))}
-        </div>
+        
       </div>
 
       <style jsx>{`

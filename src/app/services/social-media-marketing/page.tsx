@@ -9,92 +9,128 @@ import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Button from "@/components/Button";
-import { FaArrowRight, FaPlus, FaMinus, FaPalette, FaLightbulb, FaClipboardList, FaPencilRuler, FaRocket, FaCogs, FaGem, FaSearch, FaSketch, FaCode, FaCheckCircle, FaPaperPlane } from "react-icons/fa";
+import { FaArrowRight, FaPlus, FaMinus, FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube, FaHashtag } from "react-icons/fa";
+import { MdCampaign, MdAnalytics, MdTrendingUp, MdPeople, MdContentCopy, MdSchedule } from "react-icons/md";
 
-export default function LogoDesign() {
+export default function SocialMediaMarketing() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   useEffect(() => {
     enablePageScroll();
   }, []);
 
-
+  const features = [
+    {
+      title: "Content Strategy & Creation",
+      description:
+        "Engaging content that resonates with your audience and drives meaningful interactions",
+      icon: <MdContentCopy className="text-4xl text-blue-500" />,
+    },
+    {
+      title: "Platform Management",
+      description:
+        "Complete management of Facebook, Instagram, LinkedIn, Twitter, and YouTube accounts",
+      icon: <FaFacebook className="text-4xl text-blue-600" />,
+    },
+    {
+      title: "Community Engagement",
+      description:
+        "Active community management with timely responses and relationship building",
+      icon: <MdPeople className="text-4xl text-green-500" />,
+    },
+    {
+      title: "Paid Social Advertising",
+      description:
+        "Strategic paid campaigns across platforms to maximize reach and conversions",
+      icon: <MdCampaign className="text-4xl text-purple-500" />,
+    },
+    {
+      title: "Analytics & Reporting",
+      description: "Detailed performance tracking and insights to optimize your social presence",
+      icon: <MdAnalytics className="text-4xl text-orange-500" />,
+    },
+    {
+      title: "Influencer Partnerships",
+      description: "Strategic influencer collaborations to expand your brand reach and credibility",
+      icon: <MdTrendingUp className="text-4xl text-red-500" />,
+    },
+  ];
 
   const process = [
     {
       step: "1",
-      title: "Brand Discovery",
+      title: "Brand Analysis & Strategy",
       description:
-        "We dive deep into your brand essence, values, and target audience. This includes analyzing your industry, competitors, and understanding your unique brand positioning in the market.",
-      icon: <FaSearch className="text-blue-500" />,
+        "We analyze your brand, target audience, and competitors to develop a comprehensive social media strategy that aligns with your business goals.",
+      icon: <MdAnalytics className="text-2xl text-blue-500" />,
     },
     {
       step: "2",
-      title: "Concept Development",
+      title: "Content Planning & Creation",
       description:
-        "We develop multiple creative concepts based on your brand strategy, exploring different visual directions and design approaches that align with your brand identity.",
-      icon: <FaLightbulb className="text-yellow-500" />,
+        "Develop engaging content calendars with high-quality posts, graphics, videos, and stories tailored to each platform and audience segment.",
+      icon: <MdContentCopy className="text-2xl text-purple-500" />,
     },
     {
       step: "3",
-      title: "Design Creation",
+      title: "Platform Setup & Optimization",
       description:
-        "Our designers craft multiple logo variations, experimenting with typography, symbols, colors, and layouts to create a distinctive brand mark.",
-      icon: <FaPencilRuler className="text-purple-500" />,
+        "Optimize your social media profiles with compelling bios, branded visuals, and strategic keywords to maximize discoverability and professional appearance.",
+      icon: <MdSchedule className="text-2xl text-green-500" />,
     },
     {
       step: "4",
-      title: "Refinement",
+      title: "Content Publishing & Scheduling",
       description:
-        "We refine the chosen concept, perfecting every detail, ensuring scalability across different applications and optimal visual impact.",
-      icon: <FaGem className="text-pink-500" />,
+        "Strategic scheduling and publishing of content across platforms at optimal times to maximize engagement and reach your target audience effectively.",
+      icon: <FaHashtag className="text-2xl text-orange-500" />,
     },
     {
       step: "5",
-      title: "Brand Guidelines",
+      title: "Community Engagement",
       description:
-        "We create comprehensive brand guidelines including color palettes, typography, usage rules, and applications to maintain brand consistency.",
-      icon: <FaClipboardList className="text-green-500" />,
+        "Active engagement with your audience through timely responses, community building, and fostering meaningful conversations around your brand.",
+      icon: <MdPeople className="text-2xl text-cyan-500" />,
     },
     {
       step: "6",
-      title: "Final Delivery",
+      title: "Performance Analysis & Optimization",
       description:
-        "We deliver all logo files in various formats, complete brand guidelines, and mockups showing your new logo in real-world applications.",
-      icon: <FaPaperPlane className="text-red-500" />,
+        "Continuous monitoring and analysis of performance metrics with regular optimization to improve engagement, reach, and conversion rates.",
+      icon: <MdTrendingUp className="text-2xl text-red-500" />,
     },
   ];
 
   const faqs = [
     {
-      question: "What's included in your logo design service?",
-      answer: "Our comprehensive logo design service includes brand discovery, multiple concept development, logo refinement, complete brand guidelines, and final delivery in all necessary formats (AI, EPS, PNG, JPG, SVG). We also provide usage guidelines and brand applications."
+      question: "Which social media platforms do you manage?",
+      answer: "We manage all major social media platforms including Facebook, Instagram, LinkedIn, Twitter, YouTube, TikTok, and Pinterest. We'll recommend the best platforms based on your target audience and business objectives."
     },
     {
-      question: "How long does the logo design process take?",
-      answer: "A typical logo design project takes 2-3 weeks from initial consultation to final delivery. This includes discovery phase, concept development, revisions, and brand guideline creation. Rush projects can be completed in 1-2 weeks with our expedited service."
+      question: "How often do you post content on social media?",
+      answer: "Posting frequency varies by platform and strategy. Typically, we post 1-2 times daily on Facebook and Instagram, 3-5 times on Twitter, and 2-3 times weekly on LinkedIn. We customize the schedule based on your audience engagement patterns."
     },
     {
-      question: "How many logo concepts do you provide?",
-      answer: "We typically provide 3-5 initial logo concepts based on your brand discovery. Each concept explores different creative directions. After you select your preferred direction, we provide 2-3 refined variations before finalizing your logo."
+      question: "Do you create all the content or do we need to provide it?",
+      answer: "We handle all content creation including graphics, captions, videos, and stories. However, we also welcome any content you'd like to share. Our team ensures all content aligns with your brand voice and marketing goals."
     },
     {
-      question: "Do you provide brand guidelines and style guides?",
-      answer: "Yes! We create comprehensive brand guidelines that include your logo variations, color palettes, typography, spacing rules, dos and don'ts, and application examples. This ensures consistent brand usage across all materials."
+      question: "How do you measure social media success?",
+      answer: "We track key metrics including engagement rate, reach, follower growth, website traffic from social media, lead generation, and conversions. We provide detailed monthly reports with insights and recommendations for improvement."
     },
     {
-      question: "What file formats will I receive?",
-      answer: "You'll receive your logo in all necessary formats including vector files (AI, EPS, SVG), high-resolution raster files (PNG, JPG), and web-optimized versions. We also provide black & white versions and different orientations."
+      question: "Can you help with paid social media advertising?",
+      answer: "Yes! We create and manage paid social media campaigns across platforms. This includes audience targeting, ad creation, budget optimization, and performance tracking to maximize your advertising ROI."
     },
     {
-      question: "Can you redesign an existing logo or create a completely new one?",
-      answer: "We can do both! Whether you need a complete rebrand with a new logo or want to refresh and modernize your existing logo, we'll work with you to create a design that perfectly represents your brand and resonates with your target audience."
+      question: "How long does it take to see results from social media marketing?",
+      answer: "You'll see initial engagement within the first few weeks, but significant growth in followers and brand awareness typically takes 3-6 months. Consistent, high-quality content and engagement are key to long-term social media success."
     }
   ];
 
   return (
     <>
-      <div className="min-h-screen  bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         <Navbar />
 
         {/* Hero Section */}
@@ -106,15 +142,15 @@ export default function LogoDesign() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}>
                 <div className="flex items-center space-x-3 mb-6">
-                  <FaPalette className="text-4xl text-green-600" />
+                  <FaHashtag className="text-4xl text-blue-500" />
                   <h1 className="text-5xl md:text-5xl font-bold text-green-600">
-                   Branding & Logo Design
+                    Social Media Marketing
                   </h1>
                 </div>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Create powerful brand identities that leave lasting impressions. We design 
-                  memorable logos and comprehensive brand systems that connect with your 
-                  audience and drive business growth.
+                  Build a powerful social media presence that connects with your audience 
+                  and drives real business results. We create engaging content and strategic 
+                  campaigns across all major social platforms.
                 </p>
 
                 <div className="w-sm">
@@ -131,8 +167,8 @@ export default function LogoDesign() {
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="w-full flex justify-right mb-10  ">
                 <Image
-                  src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
-                  alt="Logo Design Process"
+                  src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                  alt="Social Media Marketing"
                   height={600}
                   width={500}
                   className=" h-[400px] rounded-tl-[100px] rounded-br-[100px]  object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
@@ -158,10 +194,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                OUR BRANDING SERVICES
+                OUR SOCIAL MEDIA SERVICES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                A Branding Team That Creates Impact
+                Social Strategies That Convert
               </h2>
             </motion.div>
 
@@ -175,10 +211,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.1 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Logo Design & Creation
+                    Content Strategy & Creation
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create memorable, scalable logos that perfectly represent your brand identity. Through comprehensive research and creative exploration, we design distinctive marks that resonate with your target audience and stand out in competitive markets.
+                    We develop comprehensive content strategies that align with your brand voice and business goals. Our creative team produces engaging posts, graphics, videos, and stories that capture attention and drive meaningful interactions across all social platforms.
                   </p>
                 </motion.div>
 
@@ -188,10 +224,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.2 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Identity Systems
+                    Multi-Platform Management
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop comprehensive brand identity systems including color palettes, typography, visual elements, and brand voice. Our systematic approach ensures consistent brand expression across all touchpoints and applications.
+                    Complete management of your social media presence across Facebook, Instagram, LinkedIn, Twitter, YouTube, and emerging platforms. We tailor content and strategies to each platform's unique audience and algorithm requirements.
                   </p>
                 </motion.div>
               </div>
@@ -204,10 +240,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.3 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Guidelines & Standards
+                    Community Engagement & Management
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create detailed brand guidelines that ensure consistent application of your brand across all materials. These comprehensive documents include usage rules, color specifications, typography guidelines, and application examples.
+                    Active community management with timely responses to comments, messages, and mentions. We build authentic relationships with your audience, handle customer service inquiries, and foster a positive brand community that drives loyalty.
                   </p>
                 </motion.div>
 
@@ -217,10 +253,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.4 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Strategy & Positioning
+                    Paid Social Advertising
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop strategic brand positioning that differentiates you from competitors. Through market analysis and brand audits, we create compelling brand stories and messaging that connect emotionally with your audience.
+                    Strategic paid advertising campaigns across social platforms to amplify your reach and drive conversions. We create targeted ads, optimize budgets, and track performance to maximize your social media advertising ROI.
                   </p>
                 </motion.div>
               </div>
@@ -233,10 +269,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.5 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Applications & Mockups
+                    Analytics & Performance Tracking
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create realistic mockups showing your brand in real-world applications including business cards, letterheads, signage, and digital platforms. This helps visualize your brand's impact across different mediums.
+                    Comprehensive analytics and reporting to track engagement, reach, follower growth, and conversion metrics. We provide detailed insights and recommendations to continuously optimize your social media strategy for better results.
                   </p>
                 </motion.div>
 
@@ -246,10 +282,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.6 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Refresh & Rebranding
+                    Influencer Marketing & Partnerships
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We help evolve existing brands through strategic refreshes or complete rebranding. Our approach balances brand heritage with modern relevance, ensuring smooth transitions while maintaining customer recognition and loyalty.
+                    Strategic influencer partnerships to expand your brand reach and credibility. We identify relevant influencers, manage collaborations, and track campaign performance to ensure authentic brand advocacy and measurable results.
                   </p>
                 </motion.div>
               </div>
@@ -266,10 +302,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                CUSTOM BRANDING BUILT AROUND YOU
+                SOCIAL MEDIA GROWTH PROCESS
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Your Brand in Six Creative Steps
+                From Strategy to Social Success
               </h2>
             </motion.div>
 
@@ -381,7 +417,7 @@ export default function LogoDesign() {
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Find answers to common questions about our logo design and branding services
+                Find answers to common questions about our social media marketing services and process
               </p>
             </motion.div>
 

@@ -93,20 +93,20 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-[#1a3c34] overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-emerald-900 via-teal-900 to-green-900 overflow-hidden">
         <Container>
         {/* Subtle top gradient for smooth transition */}
         <div className="absolute inset-0">
-          <div className="absolute top-0 w-full h-24 bg-gradient-to-b from-[#16332b] to-transparent" />
+          <div className="absolute top-0 w-full h-24 bg-gradient-to-b from-emerald-800/50 to-transparent" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             <div>
-              <h5 className="text-xl font-bold mb-6 text-white">
+              <h5 className="text-xl font-black mb-6 text-white">
                 Enegix Websolutions
               </h5>
-              <p className="text-gray-300">
+              <p className="text-gray-200 font-medium leading-relaxed">
                 Elevating digital experiences through innovative web solutions,
                 creative design, and strategic marketing.
               </p>
@@ -115,7 +115,7 @@ const Footer = () => {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-300">
+                    className="text-gray-200 hover:text-emerald-300 transition-colors duration-300">
                     {renderSocialIcon(link.icon)}
                   </Link>
                 ))}
@@ -123,7 +123,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <h6 className="text-white font-semibold mb-4 font-poppins tracking-tight">
+              <h6 className="text-white font-bold mb-4 font-poppins tracking-tight">
                 Company
               </h6>
               <ul className="space-y-2">
@@ -131,7 +131,7 @@ const Footer = () => {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors duration-300 font-outfit text-sm">
+                      className="text-gray-200 hover:text-emerald-300 transition-colors duration-300 font-outfit text-sm font-medium">
                       {link.label}
                     </Link>
                   </li>
@@ -140,7 +140,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <h6 className="text-white font-semibold mb-4 font-montserrat tracking-tight">
+              <h6 className="text-white font-bold mb-4 font-montserrat tracking-tight">
                 Services
               </h6>
               <ul className="space-y-2">
@@ -148,7 +148,7 @@ const Footer = () => {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors duration-300 font-space-grotesk text-sm">
+                      className="text-gray-200 hover:text-emerald-300 transition-colors duration-300 font-space-grotesk text-sm font-medium">
                       {link.label}
                     </Link>
                   </li>
@@ -157,28 +157,28 @@ const Footer = () => {
             </div>
 
             <div>
-              <h6 className="text-white font-semibold mb-4 font-montserrat tracking-tight">
+              <h6 className="text-white font-bold mb-4 font-montserrat tracking-tight">
                 Contact Us
               </h6>
-              <address className="not-italic text-gray-300 font-space-grotesk text-sm">
+              <address className="not-italic text-gray-200 font-space-grotesk text-sm font-medium">
                 <p className="mb-2">House No.2, Old AG More</p>
                 <p className="mb-2">
                   near Bharat Kitchen, above Saryu Son's Jwellers
                 </p>
                 <p className="mb-4">Kadru, Ranchi, Jharkhand</p>
                 <p className="mb-2">
-                  <strong className="text-white font-inter">Email:</strong>{" "}
+                  <strong className="text-white font-inter font-bold">Email:</strong>{" "}
                   <a
                     href="mailto:contact@enegixwebsolutions.com"
-                    className="hover:text-white transition-colors">
+                    className="hover:text-emerald-300 transition-colors">
                     contact@enegixwebsolutions.com
                   </a>
                 </p>
                 <p>
-                  <strong className="text-white font-inter">Phone:</strong>{" "}
+                  <strong className="text-white font-inter font-bold">Phone:</strong>{" "}
                   <a
                     href="tel:+919608263050"
-                    className="hover:text-white transition-colors">
+                    className="hover:text-emerald-300 transition-colors">
                     +91 96082 63050
                   </a>
                 </p>
@@ -186,27 +186,27 @@ const Footer = () => {
             </div>
           </div>
 
-          <hr className="border-gray-600 my-8" />
+          <hr className="border-gray-500/50 my-8" />
 
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-300 text-sm mb-4 md:mb-0 font-space-grotesk">
+            <p className="text-gray-200 text-sm mb-4 md:mb-0 font-space-grotesk font-medium">
               © {new Date().getFullYear()} Enegix Websolutions. All rights
               reserved.
             </p>
             <div className="flex space-x-6">
               <Link
                 href="/privacy-policy"
-                className="text-gray-300 hover:text-white text-sm transition-colors duration-300 font-inter">
+                className="text-gray-200 hover:text-emerald-300 text-sm transition-colors duration-300 font-inter font-medium">
                 Privacy Policy
               </Link>
               <Link
                 href="/terms-of-service"
-                className="text-gray-300 hover:text-white text-sm transition-colors duration-300 font-inter">
+                className="text-gray-200 hover:text-emerald-300 text-sm transition-colors duration-300 font-inter font-medium">
                 Terms of Service
               </Link>
               <Link
                 href="/cookie-policy"
-                className="text-gray-300 hover:text-white text-sm transition-colors duration-300 font-inter">
+                className="text-gray-200 hover:text-emerald-300 text-sm transition-colors duration-300 font-inter font-medium">
                 Cookie Policy
               </Link>
             </div>

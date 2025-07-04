@@ -9,92 +9,127 @@ import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Button from "@/components/Button";
-import { FaArrowRight, FaPlus, FaMinus, FaPalette, FaLightbulb, FaClipboardList, FaPencilRuler, FaRocket, FaCogs, FaGem, FaSearch, FaSketch, FaCode, FaCheckCircle, FaPaperPlane } from "react-icons/fa";
+import { FaArrowRight, FaPlus, FaMinus, FaUsers, FaCog, FaChartLine, FaRocket, FaShieldAlt, FaHeadset, FaSearch, FaClipboardList, FaCode, FaCheckCircle, FaPaperPlane, FaMobile, FaCloud } from "react-icons/fa";
 
-export default function LogoDesign() {
+export default function CrmMlm() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   useEffect(() => {
     enablePageScroll();
   }, []);
 
-
+  const features = [
+    {
+      title: "Customer Relationship Management",
+      description:
+        "Comprehensive CRM solutions to manage customer interactions and relationships",
+      icon: <FaUsers className="text-green-500" />,
+    },
+    {
+      title: "Multi-Level Marketing Systems",
+      description:
+        "Advanced MLM platforms with compensation plans and downline management",
+      icon: <FaChartLine className="text-green-500" />,
+    },
+    {
+      title: "Lead Management",
+      description:
+        "Automated lead tracking, scoring, and nurturing systems",
+      icon: <FaSearch className="text-green-500" />,
+    },
+    {
+      title: "Sales Pipeline Automation",
+      description:
+        "Streamlined sales processes with automated follow-ups and notifications",
+      icon: <FaCog className="text-green-500" />,
+    },
+    {
+      title: "Mobile CRM Apps",
+      description: "Mobile-friendly CRM access for on-the-go sales management",
+      icon: <FaMobile className="text-green-500" />,
+    },
+    {
+      title: "Cloud-Based Solutions",
+      description: "Secure, scalable cloud infrastructure for your CRM/MLM needs",
+      icon: <FaCloud className="text-green-500" />,
+    },
+  ];
 
   const process = [
     {
       step: "1",
-      title: "Brand Discovery",
+      title: "Requirements Analysis",
       description:
-        "We dive deep into your brand essence, values, and target audience. This includes analyzing your industry, competitors, and understanding your unique brand positioning in the market.",
-      icon: <FaSearch className="text-blue-500" />,
+        "We analyze your business model, sales processes, and specific CRM/MLM requirements to design the perfect solution for your organization.",
+      icon: <FaSearch className="text-white" />,
     },
     {
       step: "2",
-      title: "Concept Development",
+      title: "System Planning",
       description:
-        "We develop multiple creative concepts based on your brand strategy, exploring different visual directions and design approaches that align with your brand identity.",
-      icon: <FaLightbulb className="text-yellow-500" />,
+        "We create a comprehensive plan for your CRM/MLM system, including database structure, user roles, and compensation plans.",
+      icon: <FaClipboardList className="text-white" />,
     },
     {
       step: "3",
-      title: "Design Creation",
+      title: "Development",
       description:
-        "Our designers craft multiple logo variations, experimenting with typography, symbols, colors, and layouts to create a distinctive brand mark.",
-      icon: <FaPencilRuler className="text-purple-500" />,
+        "Our team develops your custom CRM/MLM platform with modern technologies, ensuring scalability and security.",
+      icon: <FaCode className="text-white" />,
     },
     {
       step: "4",
-      title: "Refinement",
+      title: "Integration",
       description:
-        "We refine the chosen concept, perfecting every detail, ensuring scalability across different applications and optimal visual impact.",
-      icon: <FaGem className="text-pink-500" />,
+        "We integrate payment gateways, email systems, and third-party tools to create a complete business solution.",
+      icon: <FaCog className="text-white" />,
     },
     {
       step: "5",
-      title: "Brand Guidelines",
+      title: "Testing & Quality Assurance",
       description:
-        "We create comprehensive brand guidelines including color palettes, typography, usage rules, and applications to maintain brand consistency.",
-      icon: <FaClipboardList className="text-green-500" />,
+        "Rigorous testing ensures your CRM/MLM system works flawlessly across all scenarios and user interactions.",
+      icon: <FaCheckCircle className="text-white" />,
     },
     {
       step: "6",
-      title: "Final Delivery",
+      title: "Launch & Support",
       description:
-        "We deliver all logo files in various formats, complete brand guidelines, and mockups showing your new logo in real-world applications.",
-      icon: <FaPaperPlane className="text-red-500" />,
+        "We deploy your system and provide ongoing support, training, and maintenance to ensure continued success.",
+      icon: <FaRocket className="text-white" />,
     },
   ];
 
   const faqs = [
     {
-      question: "What's included in your logo design service?",
-      answer: "Our comprehensive logo design service includes brand discovery, multiple concept development, logo refinement, complete brand guidelines, and final delivery in all necessary formats (AI, EPS, PNG, JPG, SVG). We also provide usage guidelines and brand applications."
+      question: "What CRM/MLM features do you provide?",
+      answer: "Our CRM/MLM solutions include lead management, sales pipeline automation, commission tracking, downline management, genealogy trees, payment processing, reporting dashboards, and mobile applications. We customize features based on your specific business model."
     },
     {
-      question: "How long does the logo design process take?",
-      answer: "A typical logo design project takes 2-3 weeks from initial consultation to final delivery. This includes discovery phase, concept development, revisions, and brand guideline creation. Rush projects can be completed in 1-2 weeks with our expedited service."
+      question: "How long does it take to develop a CRM/MLM system?",
+      answer: "Development time varies based on complexity. A basic CRM system typically takes 6-8 weeks, while comprehensive MLM platforms with advanced features can take 12-16 weeks. We provide detailed timelines after analyzing your requirements."
     },
     {
-      question: "How many logo concepts do you provide?",
-      answer: "We typically provide 3-5 initial logo concepts based on your brand discovery. Each concept explores different creative directions. After you select your preferred direction, we provide 2-3 refined variations before finalizing your logo."
+      question: "Do you support different MLM compensation plans?",
+      answer: "Yes, we support all major MLM compensation plans including Binary, Matrix, Unilevel, Board, Hybrid plans, and custom compensation structures. Our flexible system can accommodate complex commission calculations and bonuses."
     },
     {
-      question: "Do you provide brand guidelines and style guides?",
-      answer: "Yes! We create comprehensive brand guidelines that include your logo variations, color palettes, typography, spacing rules, dos and don'ts, and application examples. This ensures consistent brand usage across all materials."
+      question: "Is the CRM/MLM system mobile-friendly?",
+      answer: "Absolutely! All our CRM/MLM solutions are fully responsive and include dedicated mobile applications for iOS and Android. Users can manage their business, track commissions, and access reports on the go."
     },
     {
-      question: "What file formats will I receive?",
-      answer: "You'll receive your logo in all necessary formats including vector files (AI, EPS, SVG), high-resolution raster files (PNG, JPG), and web-optimized versions. We also provide black & white versions and different orientations."
+      question: "What security measures do you implement?",
+      answer: "We implement enterprise-level security including SSL encryption, secure payment gateways, user role management, data backup systems, and compliance with industry standards. Your business and customer data is completely secure."
     },
     {
-      question: "Can you redesign an existing logo or create a completely new one?",
-      answer: "We can do both! Whether you need a complete rebrand with a new logo or want to refresh and modernize your existing logo, we'll work with you to create a design that perfectly represents your brand and resonates with your target audience."
+      question: "Do you provide training and ongoing support?",
+      answer: "Yes, we provide comprehensive training for administrators and users, detailed documentation, video tutorials, and ongoing technical support. We also offer maintenance packages to keep your system updated and running smoothly."
     }
   ];
 
   return (
     <>
-      <div className="min-h-screen  bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         <Navbar />
 
         {/* Hero Section */}
@@ -106,15 +141,15 @@ export default function LogoDesign() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}>
                 <div className="flex items-center space-x-3 mb-6">
-                  <FaPalette className="text-4xl text-green-600" />
+                  <FaUsers className="text-4xl text-green-600" />
                   <h1 className="text-5xl md:text-5xl font-bold text-green-600">
-                   Branding & Logo Design
+                    CRM & MLM Solutions
                   </h1>
                 </div>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Create powerful brand identities that leave lasting impressions. We design 
-                  memorable logos and comprehensive brand systems that connect with your 
-                  audience and drive business growth.
+                  Powerful CRM and MLM systems that streamline your business operations, 
+                  automate sales processes, and drive network growth. Scale your business 
+                  with our comprehensive solutions.
                 </p>
 
                 <div className="w-sm">
@@ -131,8 +166,8 @@ export default function LogoDesign() {
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="w-full flex justify-right mb-10  ">
                 <Image
-                  src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
-                  alt="Logo Design Process"
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2415&q=80"
+                  alt="CRM MLM Dashboard"
                   height={600}
                   width={500}
                   className=" h-[400px] rounded-tl-[100px] rounded-br-[100px]  object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
@@ -158,10 +193,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                OUR BRANDING SERVICES
+                OUR CRM/MLM SERVICES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                A Branding Team That Creates Impact
+                Complete Business Solutions
               </h2>
             </motion.div>
 
@@ -175,10 +210,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.1 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Logo Design & Creation
+                    Customer Relationship Management
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create memorable, scalable logos that perfectly represent your brand identity. Through comprehensive research and creative exploration, we design distinctive marks that resonate with your target audience and stand out in competitive markets.
+                    We build comprehensive CRM systems that manage your entire customer lifecycle. From lead capture to customer retention, our solutions provide complete visibility into your sales pipeline and customer interactions, driving business growth.
                   </p>
                 </motion.div>
 
@@ -188,10 +223,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.2 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Identity Systems
+                    Multi-Level Marketing Systems
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop comprehensive brand identity systems including color palettes, typography, visual elements, and brand voice. Our systematic approach ensures consistent brand expression across all touchpoints and applications.
+                    Our MLM platforms support all compensation plans including Binary, Matrix, and Unilevel structures. Advanced genealogy trees, commission tracking, and automated payments ensure your network marketing business runs smoothly.
                   </p>
                 </motion.div>
               </div>
@@ -204,10 +239,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.3 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Guidelines & Standards
+                    Lead Management & Automation
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create detailed brand guidelines that ensure consistent application of your brand across all materials. These comprehensive documents include usage rules, color specifications, typography guidelines, and application examples.
+                    Intelligent lead scoring, automated follow-ups, and nurturing campaigns convert prospects into customers. Our systems track lead sources, behaviors, and interactions to optimize your sales processes and improve conversion rates.
                   </p>
                 </motion.div>
 
@@ -217,10 +252,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.4 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Strategy & Positioning
+                    Sales Pipeline Automation
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop strategic brand positioning that differentiates you from competitors. Through market analysis and brand audits, we create compelling brand stories and messaging that connect emotionally with your audience.
+                    Streamline your sales processes with automated workflows, opportunity tracking, and performance analytics. Our solutions provide real-time insights into sales activities, helping teams close more deals faster.
                   </p>
                 </motion.div>
               </div>
@@ -233,10 +268,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.5 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Applications & Mockups
+                    Mobile CRM Applications
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create realistic mockups showing your brand in real-world applications including business cards, letterheads, signage, and digital platforms. This helps visualize your brand's impact across different mediums.
+                    Access your CRM on the go with native mobile applications for iOS and Android. Sales teams can manage contacts, update opportunities, and track activities from anywhere, ensuring no lead is missed.
                   </p>
                 </motion.div>
 
@@ -246,10 +281,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.6 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Refresh & Rebranding
+                    Analytics & Reporting
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We help evolve existing brands through strategic refreshes or complete rebranding. Our approach balances brand heritage with modern relevance, ensuring smooth transitions while maintaining customer recognition and loyalty.
+                    Comprehensive dashboards and reports provide insights into sales performance, commission tracking, and business metrics. Make data-driven decisions with real-time analytics and customizable reporting features.
                   </p>
                 </motion.div>
               </div>
@@ -266,10 +301,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                CUSTOM BRANDING BUILT AROUND YOU
+                CUSTOM CRM/MLM DEVELOPMENT PROCESS
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Your Brand in Six Creative Steps
+                Your Success in Six Strategic Steps
               </h2>
             </motion.div>
 
@@ -381,7 +416,7 @@ export default function LogoDesign() {
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Find answers to common questions about our logo design and branding services
+                Find answers to common questions about our CRM and MLM development services
               </p>
             </motion.div>
 

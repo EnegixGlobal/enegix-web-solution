@@ -9,92 +9,127 @@ import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Button from "@/components/Button";
-import { FaArrowRight, FaPlus, FaMinus, FaPalette, FaLightbulb, FaClipboardList, FaPencilRuler, FaRocket, FaCogs, FaGem, FaSearch, FaSketch, FaCode, FaCheckCircle, FaPaperPlane } from "react-icons/fa";
+import { FaArrowRight, FaPlus, FaMinus, FaSearch, FaClipboardList, FaUsers, FaPen, FaCheckCircle, FaPaperPlane } from "react-icons/fa";
 
-export default function LogoDesign() {
+export default function ContentWriting() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   useEffect(() => {
     enablePageScroll();
   }, []);
 
-
+  const features = [
+    {
+      title: "User Research & Analysis",
+      description:
+        "In-depth user research to understand your target audience and their needs",
+      icon: "🔍",
+    },
+    {
+      title: "Wireframing & Prototyping",
+      description:
+        "Interactive prototypes to visualize the user journey before development",
+      icon: "📐",
+    },
+    {
+      title: "Visual Design",
+      description:
+        "Beautiful, modern interfaces that reflect your brand identity",
+      icon: "🎨",
+    },
+    {
+      title: "Usability Testing",
+      description:
+        "Testing designs with real users to ensure optimal user experience",
+      icon: "🧪",
+    },
+    {
+      title: "Mobile-First Design",
+      description: "Responsive designs that work perfectly across all devices",
+      icon: "📱",
+    },
+    {
+      title: "Design Systems",
+      description: "Scalable design systems for consistent user experiences",
+      icon: "🔧",
+    },
+  ];
 
   const process = [
     {
       step: "1",
-      title: "Brand Discovery",
+      title: "Discovery",
       description:
-        "We dive deep into your brand essence, values, and target audience. This includes analyzing your industry, competitors, and understanding your unique brand positioning in the market.",
-      icon: <FaSearch className="text-blue-500" />,
+        "We analyze your brand voice, target audience, and content goals. This includes understanding your unique value proposition, competitor analysis, and identifying content opportunities that align with your business objectives.",
+      icon: <FaUsers className="text-4xl text-green-500" />,
     },
     {
       step: "2",
-      title: "Concept Development",
+      title: "Strategy",
       description:
-        "We develop multiple creative concepts based on your brand strategy, exploring different visual directions and design approaches that align with your brand identity.",
-      icon: <FaLightbulb className="text-yellow-500" />,
+        "We develop a comprehensive content strategy tailored to your brand and audience, beginning with content planning, tone of voice guidelines, and messaging frameworks.",
+      icon: <FaClipboardList className="text-4xl text-green-500" />,
     },
     {
       step: "3",
-      title: "Design Creation",
+      title: "Research",
       description:
-        "Our designers craft multiple logo variations, experimenting with typography, symbols, colors, and layouts to create a distinctive brand mark.",
-      icon: <FaPencilRuler className="text-purple-500" />,
+        "Using industry insights and audience research, we gather relevant information and data to create compelling, accurate, and engaging content that resonates with your target market.",
+      icon: "�",
     },
     {
       step: "4",
-      title: "Refinement",
+      title: "Writing",
       description:
-        "We refine the chosen concept, perfecting every detail, ensuring scalability across different applications and optimal visual impact.",
-      icon: <FaGem className="text-pink-500" />,
+        "Our expert writers create high-quality, engaging content optimized for your specific goals, whether it's conversions, engagement, SEO, or brand awareness.",
+      icon: <FaPen className="text-4xl text-green-500" />,
     },
     {
       step: "5",
-      title: "Brand Guidelines",
+      title: "Review",
       description:
-        "We create comprehensive brand guidelines including color palettes, typography, usage rules, and applications to maintain brand consistency.",
-      icon: <FaClipboardList className="text-green-500" />,
+        "We conduct thorough editing and proofreading to ensure accuracy, clarity, and brand consistency. Multiple quality checks guarantee error-free, polished content.",
+      icon: <FaCheckCircle className="text-4xl text-green-500" />,
     },
     {
       step: "6",
-      title: "Final Delivery",
+      title: "Delivery",
       description:
-        "We deliver all logo files in various formats, complete brand guidelines, and mockups showing your new logo in real-world applications.",
-      icon: <FaPaperPlane className="text-red-500" />,
+        "We deliver final content with optimization recommendations and performance tracking setup. Ongoing analysis ensures your content strategy evolves for maximum impact and ROI.",
+      icon: "�",
     },
   ];
 
   const faqs = [
     {
-      question: "What's included in your logo design service?",
-      answer: "Our comprehensive logo design service includes brand discovery, multiple concept development, logo refinement, complete brand guidelines, and final delivery in all necessary formats (AI, EPS, PNG, JPG, SVG). We also provide usage guidelines and brand applications."
+      question: "What types of content writing do you offer?",
+      answer: "We provide comprehensive content writing services including website copy, sales pages, email marketing campaigns, social media content, product descriptions, blog posts, press releases, and marketing materials. Each piece is tailored to your brand voice and business goals."
     },
     {
-      question: "How long does the logo design process take?",
-      answer: "A typical logo design project takes 2-3 weeks from initial consultation to final delivery. This includes discovery phase, concept development, revisions, and brand guideline creation. Rush projects can be completed in 1-2 weeks with our expedited service."
+      question: "How do you ensure content matches our brand voice?",
+      answer: "We start with a detailed brand discovery process, analyzing your existing content, style guides, and communication preferences. We create a brand voice document and provide sample content for approval before proceeding with full projects to ensure perfect alignment."
     },
     {
-      question: "How many logo concepts do you provide?",
-      answer: "We typically provide 3-5 initial logo concepts based on your brand discovery. Each concept explores different creative directions. After you select your preferred direction, we provide 2-3 refined variations before finalizing your logo."
+      question: "Do you optimize content for SEO?",
+      answer: "Yes, SEO optimization is integrated into our writing process when relevant. We conduct keyword research, optimize content structure, include meta descriptions, and ensure proper keyword placement while maintaining natural, engaging readability."
     },
     {
-      question: "Do you provide brand guidelines and style guides?",
-      answer: "Yes! We create comprehensive brand guidelines that include your logo variations, color palettes, typography, spacing rules, dos and don'ts, and application examples. This ensures consistent brand usage across all materials."
+      question: "What's your turnaround time for content projects?",
+      answer: "Turnaround times vary by project scope. Single web pages typically take 3-5 business days, email campaigns 2-3 days, and larger projects like complete website copy 1-2 weeks. We'll provide specific timelines during project planning."
     },
     {
-      question: "What file formats will I receive?",
-      answer: "You'll receive your logo in all necessary formats including vector files (AI, EPS, SVG), high-resolution raster files (PNG, JPG), and web-optimized versions. We also provide black & white versions and different orientations."
+      question: "Do you provide revisions if we're not satisfied?",
+      answer: "Absolutely! We include up to 3 rounds of revisions with every project to ensure complete satisfaction. Our goal is to deliver content that perfectly matches your vision and achieves your business objectives."
     },
     {
-      question: "Can you redesign an existing logo or create a completely new one?",
-      answer: "We can do both! Whether you need a complete rebrand with a new logo or want to refresh and modernize your existing logo, we'll work with you to create a design that perfectly represents your brand and resonates with your target audience."
+      question: "Can you write content for specific industries or niches?",
+      answer: "Yes, our writers have experience across various industries including technology, healthcare, finance, e-commerce, and more. We conduct thorough research to understand industry-specific terminology, trends, and audience expectations for each project."
     }
   ];
 
   return (
     <>
-      <div className="min-h-screen  bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
         <Navbar />
 
         {/* Hero Section */}
@@ -106,15 +141,13 @@ export default function LogoDesign() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}>
                 <div className="flex items-center space-x-3 mb-6">
-                  <FaPalette className="text-4xl text-green-600" />
+                  <span className="text-4xl">📝</span>
                   <h1 className="text-5xl md:text-5xl font-bold text-green-600">
-                   Branding & Logo Design
+                    Content Writing
                   </h1>
                 </div>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Create powerful brand identities that leave lasting impressions. We design 
-                  memorable logos and comprehensive brand systems that connect with your 
-                  audience and drive business growth.
+                  Transform your ideas into powerful content that drives results. We create compelling copy, engaging articles, and persuasive marketing content that connects with your audience and achieves your business goals.
                 </p>
 
                 <div className="w-sm">
@@ -131,8 +164,8 @@ export default function LogoDesign() {
                 transition={{ duration: 0.3, delay: 0.1 }}
                 className="w-full flex justify-right mb-10  ">
                 <Image
-                  src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
-                  alt="Logo Design Process"
+                  src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80"
+                  alt="Content Writing Services"
                   height={600}
                   width={500}
                   className=" h-[400px] rounded-tl-[100px] rounded-br-[100px]  object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
@@ -158,10 +191,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                OUR BRANDING SERVICES
+                OUR CONTENT WRITING SERVICES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                A Branding Team That Creates Impact
+                A Writing Team That Converts
               </h2>
             </motion.div>
 
@@ -175,10 +208,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.1 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Logo Design & Creation
+                    Website Copy & Sales Pages
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create memorable, scalable logos that perfectly represent your brand identity. Through comprehensive research and creative exploration, we design distinctive marks that resonate with your target audience and stand out in competitive markets.
+                    We create compelling website copy through comprehensive conversion research and persuasive writing techniques. Using proven copywriting frameworks, we craft high-converting content your competitors can't match. This strategic foundation targets customer pain points and desires, positioning your business for sustainable sales growth.
                   </p>
                 </motion.div>
 
@@ -188,10 +221,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.2 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Identity Systems
+                    Email Marketing Campaigns
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop comprehensive brand identity systems including color palettes, typography, visual elements, and brand voice. Our systematic approach ensures consistent brand expression across all touchpoints and applications.
+                    We optimize your email content to satisfy both deliverability and engagement. Our balanced approach combines strategic subject lines with compelling email copy that drives action. This enhances your email marketing performance and builds customer relationships.
                   </p>
                 </motion.div>
               </div>
@@ -204,10 +237,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.3 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Guidelines & Standards
+                    Social Media Content
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create detailed brand guidelines that ensure consistent application of your brand across all materials. These comprehensive documents include usage rules, color specifications, typography guidelines, and application examples.
+                    Our experts ensure your social content meets all platform requirements for optimal engagement. We address audience preferences, platform algorithms, posting schedules and content variety to create effective social media strategies. This improves both reach and follower engagement.
                   </p>
                 </motion.div>
 
@@ -217,10 +250,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.4 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Strategy & Positioning
+                    Product Descriptions
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop strategic brand positioning that differentiates you from competitors. Through market analysis and brand audits, we create compelling brand stories and messaging that connect emotionally with your audience.
+                    We boost your product sales through compelling product descriptions that target buyer intent. From feature highlights to benefit-focused copy, we implement proven e-commerce strategies that improve conversion rates and customer understanding to drive qualified purchases.
                   </p>
                 </motion.div>
               </div>
@@ -233,10 +266,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.5 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Applications & Mockups
+                    Press Releases & PR Content
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We create realistic mockups showing your brand in real-world applications including business cards, letterheads, signage, and digital platforms. This helps visualize your brand's impact across different mediums.
+                    We develop newsworthy content from relevant, industry-specific announcements and achievements. Our PR strategies ensure media coverage that drives both credibility and brand awareness. This builds media authority, creating a competitive advantage that's difficult to replicate.
                   </p>
                 </motion.div>
 
@@ -246,10 +279,10 @@ export default function LogoDesign() {
                   transition={{ duration: 0.2, delay: 0.6 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Brand Refresh & Rebranding
+                    Content Strategy & Analytics
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We help evolve existing brands through strategic refreshes or complete rebranding. Our approach balances brand heritage with modern relevance, ensuring smooth transitions while maintaining customer recognition and loyalty.
+                    We track all content performance against clear engagement metrics that matter to your business. Our transparent reporting shows content effectiveness, audience growth and conversion data, allowing continuous content refinement for maximum ROI.
                   </p>
                 </motion.div>
               </div>
@@ -266,10 +299,10 @@ export default function LogoDesign() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                CUSTOM BRANDING BUILT AROUND YOU
+                CUSTOM CONTENT BUILT AROUND YOU
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Your Brand in Six Creative Steps
+                Get Writing in Six Easy Steps
               </h2>
             </motion.div>
 
@@ -299,7 +332,7 @@ export default function LogoDesign() {
                       </div>
                       
                       {/* Icon */}
-                      <div className="text-4xl mb-4">
+                      <div className="mb-4">
                         {step.icon}
                       </div>
                       
@@ -335,7 +368,7 @@ export default function LogoDesign() {
                     {/* Content */}
                     <div className="flex-1">
                       {/* Icon */}
-                      <div className="text-3xl mb-2">
+                      <div className="mb-2">
                         {step.icon}
                       </div>
                       
@@ -381,7 +414,7 @@ export default function LogoDesign() {
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Find answers to common questions about our logo design and branding services
+                Find answers to common questions about our content writing process and services
               </p>
             </motion.div>
 

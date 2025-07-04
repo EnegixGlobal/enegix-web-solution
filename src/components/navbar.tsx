@@ -13,6 +13,25 @@ import {
 } from "@heroicons/react/24/outline";
 import { Route } from "next";
 import { motion, AnimatePresence } from "framer-motion";
+import Button from "./Button";
+import { 
+  FaPalette, 
+  FaCode, 
+  FaMobile, 
+  FaCog, 
+  FaRocket, 
+  FaMapMarkerAlt, 
+  FaAd, 
+  FaShare, 
+  FaPen, 
+  FaEdit, 
+  FaTags, 
+  FaBullseye,
+  FaBuilding,
+  FaUsers,
+  FaBriefcase,
+  FaNewspaper
+} from "react-icons/fa";
 
 const navLinks = [
   {
@@ -23,79 +42,79 @@ const navLinks = [
       {
         label: "UI/UX Designing",
         href: "/services/ui-ux-designing",
-        icon: "🎨",
+        icon: FaPalette,
         description:
           "Design experiences that are both stunning and user-focused.",
       },
       {
         label: "Website Development",
         href: "/services/website-development",
-        icon: "💻",
+        icon: FaCode,
         description:
           "Custom-coded websites that are fast, scalable, and SEO-ready.",
       },
       {
         label: "Mobile Application",
         href: "/services/mobile-application",
-        icon: "📱",
+        icon: FaMobile,
         description:
           "Build powerful Android & iOS apps for your business needs.",
       },
       {
         label: "CRM/MLM",
         href: "/services/crm-mlm",
-        icon: "🧩",
+        icon: FaCog,
         description:
           "Custom CRM & MLM platforms to automate and scale your business.",
       },
       {
         label: "Search Engine Optimization (SEO)",
         href: "/services/search-engine-optimization",
-        icon: "🚀",
+        icon: FaRocket,
         description: "Rank higher on Google with our proven SEO strategies.",
       },
       {
         label: "Google My Business",
         href: "/services/google-my-business",
-        icon: "📍",
+        icon: FaMapMarkerAlt,
         description: "Get discovered locally with optimized GMB listings.",
       },
       {
         label: "Paid Advertising",
         href: "/services/paid-advertising",
-        icon: "💸",
+        icon: FaAd,
         description: "Maximize ROI with strategic Google & Meta ad campaigns.",
       },
       {
         label: "Social Media Marketing",
         href: "/services/social-media-marketing",
-        icon: "📢",
+        icon: FaShare,
         description: "Grow your brand with targeted social media strategies.",
       },
       {
         label: "Blog And Articles",
         href: "/services/blog-and-articles",
-        icon: "📝",
+        icon: FaPen,
         description:
           "Boost engagement and SEO with relevant, fresh blog content.",
       },
       {
         label: "Content Writing",
         href: "/services/content-writing",
-        icon: "✍️",
+        icon: FaEdit,
         description:
           "Clear, persuasive content that speaks your brand’s voice.",
       },
       {
         label: "Branding and Logo Design",
         href: "/services/logo-design",
-        icon: "🏷️",
+        icon: FaTags,
         description: "Create memorable logos and a strong visual identity.",
       },
       {
         label: "Landing Page Design",
         href: "/services/landing-page-design",
-        icon: "🧲",
+        icon: FaBullseye,
         description: "High-converting landing pages built for lead generation.",
       },
     ],
@@ -109,10 +128,30 @@ const navLinks = [
     href: "#",
     hasDropdown: true,
     dropdownItems: [
-      { label: "About Us", href: "/about" },
-      { label: "Our Team", href: "/team" },
-      { label: "Careers", href: "/careers" },
-      { label: "Blogs", href: "/blogs" },
+      {
+        label: "About Us",
+        href: "/about",
+        icon: FaBuilding,
+        description: "Learn more about our company and mission",
+      },
+      {
+        label: "Our Team",
+        href: "/team",
+        icon: FaUsers,
+        description: "Meet the talented people behind our success",
+      },
+      {
+        label: "Careers",
+        href: "/careers",
+        icon: FaBriefcase,
+        description: "Join our team and grow your career with us",
+      },
+      {
+        label: "Blogs",
+        href: "/blogs",
+        icon: FaNewspaper,
+        description: "Stay updated with our latest insights and news",
+      },
     ],
   },
   {
@@ -157,21 +196,18 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed max bg-gray-100 shadow-2xl top-0 left-0 right-0  mx-auto w-full z-50 transition-all duration-500 py-2 px-4 md:px-12">
+    <header className="fixed max bg-gray-100/95 shadow-2xl top-0 left-0 right-0  mx-auto w-full z-50 transition-all duration-500 py-5 px-4 md:px-12">
       <nav className="flex items-center justify-between w-full max-w-7xl mx-auto">
         {/* Logo Section */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2 group">
-            <motion.div
-              className="relative"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Image
-                src="/logo.png"
+                src="/new-logo.png"
                 alt="Enegix Web Solutions"
-                width={70}
-                height={70}
-                className="relative h-10 w-10 md:h-20 md:w-20 rounded-full object-cover transition-all duration-500"
+                width={50}
+                height={30}
+                className="  md:w-18  object-cover transition-all duration-500"
               />
             </motion.div>
             <span className="font-extrabold md:text-3xl text-lg">
@@ -198,7 +234,10 @@ export default function Navbar() {
                 <Link href={link.href as Route}>
                   <motion.button
                     className={cn(
-                      "flex items-center px-4 py-2.5 rounded-lg text-lg font-extrabold transition-all duration-300 cursor-pointer relative group"
+                      "flex items-center px-5 py-2 rounded-lg text-lg font-extrabold transition-all duration-300 cursor-pointer relative group",
+                      isLinkActive(link.href)
+                        ? "text-black border border-green-300 rounded-full"
+                        : "text-black hover:text-gray-800"
                     )}>
                     <span className="relative z-10 font-bold">
                       {link.label}
@@ -209,9 +248,9 @@ export default function Navbar() {
                         activeDropdown === link.label ? "rotate-180" : ""
                       )}
                     />
-                    {hoveredLink === link.label && (
+                    {hoveredLink === link.label && !isLinkActive(link.href) && (
                       <motion.div
-                        className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-green-400 to-green-400 rounded-full"
+                        className="absolute inset-0 border border-green-300 rounded-full"
                         layoutId="navHover"
                         transition={{
                           type: "spring",
@@ -227,18 +266,18 @@ export default function Navbar() {
                   <Link
                     href={link.href as Route}
                     className={cn(
-                      "flex items-center px-4 py-2.5 rounded-lg text-lg transition-all duration-300 cursor-pointer relative",
+                      "flex items-center px-4 py-2 rounded-lg text-lg transition-all duration-300 cursor-pointer relative",
                       isLinkActive(link.href)
-                        ? "text-white bg-gradient-to-r from-green-700/50 to-green-700/50 backdrop-blur-sm border border-teal-600/30 shadow-lg shadow-blue-900/20"
+                        ? "text-black border border-green-300 rounded-full "
                         : "text-black hover:text-gray-800"
                     )}>
                     <span className="relative z-10 font-bold">
                       {link.label}
                     </span>
                   </Link>
-                  {hoveredLink === link.label && (
+                  {hoveredLink === link.label && !isLinkActive(link.href) && (
                     <motion.div
-                      className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-green-400 to-green-400 rounded-full"
+                      className="absolute inset-0 border border-green-300 rounded-full"
                       layoutId="navHover"
                       transition={{
                         type: "spring",
@@ -266,10 +305,12 @@ export default function Navbar() {
                         <Link
                           key={item.label}
                           href={item.href as Route}
-                          className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-100/50 transition-all duration-300 border border-transparent hover:border-blue-200">
-                          <span className="text-2xl mt-1">{item.icon}</span>
+                          className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-100/50 transition-all duration-300 border border-transparent hover:border-green-200">
+                          <div className="text-emerald-600 mt-1">
+                            <item.icon className="w-6 h-6" />
+                          </div>
                           <div>
-                            <h4 className="text-md font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                            <h4 className="text-md font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
                               {item.label}
                             </h4>
                             <p className="text-xs text-gray-600 mt-1 line-clamp-3">
@@ -293,40 +334,49 @@ export default function Navbar() {
                 activeDropdown === link.label &&
                 link.label !== "Services" && (
                   <motion.div
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 w-64 bg-white/95 backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl shadow-gray-900/30 p-2"
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 w-80 bg-white/95 backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl shadow-gray-900/30 p-4"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}>
-                    {link.dropdownItems?.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href as Route}
-                        className="block px-4 py-3 text-sm text-black hover:text-gray-800 hover:bg-gray-100/30 rounded-lg transition-all duration-200 relative group">
-                        <motion.div
-                          whileHover={{ x: 5 }}
-                          transition={{ type: "spring", stiffness: 300 }}>
-                          {item.label}
-                          <div className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></div>
-                        </motion.div>
-                      </Link>
-                    ))}
+                    <div className="space-y-2">
+                      {link.dropdownItems?.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href as Route}
+                          className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-100/50 transition-all duration-300 border border-transparent hover:border-green-200">
+                          <div className="text-emerald-600 mt-1">
+                            <item.icon className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
+                              {item.label}
+                            </h4>
+                            <p className="text-xs text-gray-600 mt-1">
+                              {item.description}
+                            </p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                    <motion.div
+                      className="absolute -top-2 left-1/2 w-4 h-4 bg-white/95 transform -translate-x-1/2 rotate-45 border-l border-t border-gray-200"
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 }}
+                    />
                   </motion.div>
                 )}
             </div>
           ))}
 
           {/* CTA Button */}
-          <motion.div
-            className=""
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}>
-            <Link href="/contact">
-              <div className="">
-                <RainbowButton>Get Started</RainbowButton>
-              </div>
+
+
+            <Link className="ml-6" href="/contact">
+              <Button>Get Started</Button>
             </Link>
-          </motion.div>
+  
         </div>
 
         {/* Mobile Menu Button */}
@@ -409,11 +459,11 @@ export default function Navbar() {
                     href="/contact"
                     onClick={() => setMobileMenuOpen(false)}>
                     <div className="relative group">
-                      <div className=" inset-0 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                      <div className=" inset-0 bg-gradient-to-r from-green-500 to-indigo-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
                       <RainbowButton
                         variant="outline"
                         size="lg"
-                        className="w-full font-semibold relative border-blue-500/30 hover:border-blue-400/50 text-white">
+                        className="w-full font-semibold relative border-green-500/30 hover:border-green-400/50 text-white">
                         Get Started
                       </RainbowButton>
                     </div>
