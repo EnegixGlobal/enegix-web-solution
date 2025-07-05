@@ -3,6 +3,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import Container from "./Container";
+import Button from "./Button";
 
 
 
@@ -207,10 +208,10 @@ const WhyChooseUsSection = () => {
             </div>
 
             {/* CTA Button */}
-            <div className="text-center">
-              <button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full font-semibold transition-colors duration-300">
+            <div className="mx-auto">
+              <Button className="md:w-sm py-3 mx-auto">
                 Start your project →
-              </button>
+              </Button>
             </div>
           </div>
         </div>

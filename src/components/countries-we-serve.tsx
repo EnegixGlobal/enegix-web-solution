@@ -76,22 +76,7 @@ const countries = [
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-3 md:grid-cols-3 md:gap-8 gap-2 text-center">
-          
-          <div className="bg-white rounded-lg p-6 shadow-sm">
-            <div className="md:text-3xl text-2xl font-bold text-teal-600 mb-2">24/7</div>
-            <div className="text-gray-600 text-xs md:text-sm">Global Support</div>
-          </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm">
-            <div className="md:text-3xl text-2xl font-bold text-teal-600 mb-2">100+</div>
-            <div className="text-gray-600 text-xs md:text-sm">International Projects</div>
-          </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm">
-            <div className="md:text-3xl text-2xl font-bold text-teal-600 mb-2">5</div>
-            <div className="text-gray-600 text-xs md:text-sm">Continents</div>
-          </div>
-        </div>
+        
       </div>
 
       <style jsx>{`

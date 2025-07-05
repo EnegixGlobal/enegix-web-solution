@@ -4,17 +4,14 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { AuroraText } from "@/components/magicui/aurora-text";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { Meteors } from "@/components/magicui/meteors";
 import ScrollToTopButton from "@/components/scroll-to-top";
 import ScrollFix from "@/components/scroll-fix";
 import Link from "next/link";
-import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
-import { Dock, DockIcon } from "@/components/magicui/dock";
-import { Home, Settings, Search } from "lucide-react";
 import { DockDemo } from "@/components/dock-demo";
+import Button from "@/components/Button";
 
 const faqs = [
   {
@@ -606,10 +603,10 @@ export default function Contact() {
       {mounted && <ScrollFix />}
       <Navbar />
 
-      <main className="bg-white text-black min-h-screen relative overflow-x-hidden">
+      <main className="bg-white text-black  overflow-x-hidden">
         {/* Hero Section with Background Image */}
         <section
-          className="bg-gradient-to-br from-teal-50 via-emerald-50 to-white relative pt-24 pb-16 px-6 lg:px-8 h-screen flex items-center"
+          className="bg-blue-100 relative pt-24 pb-16 px-6 lg:px-8  flex items-center"
           role="banner">
           <div className="absolute inset-0 z-0">
             <Meteors number={10} />
@@ -623,7 +620,7 @@ export default function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                Let's <AuroraText>Connect</AuroraText>
+                Let's <span className="text-teal-600">Connect</span>
               </motion.h1>
 
               <motion.p
@@ -642,13 +639,9 @@ export default function Contact() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="flex flex-wrap justify-center gap-4">
                 <a href="tel:+919608263050">
-                  <RainbowButton size="lg">Call Us Now</RainbowButton>
+                  <Button className="py-2" size="lg">Call Us Now</Button>
                 </a>
-                <a href="mailto:contact@enegixwebsolutions.com">
-                  <RainbowButton variant="outline" size="lg">
-                    Email Us
-                  </RainbowButton>
-                </a>
+                
               </motion.div>
             </div>
           </div>
@@ -689,7 +682,7 @@ export default function Contact() {
               viewport={{ once: true }}
               className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Find Us <AuroraText>Here</AuroraText>
+                Find Us <span className="text-teal-600">Here</span>
               </h2>
               <p className="text-lg text-gray-700 max-w-2xl mx-auto">
                 Our office is conveniently located in Kadru, Ranchi. Feel free
@@ -723,7 +716,7 @@ export default function Contact() {
               viewport={{ once: true }}
               className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Frequently Asked <AuroraText>Questions</AuroraText>
+                Frequently Asked <span className="text-teal-600">Questions</span>
               </h2>
               <p className="text-lg text-gray-700 max-w-2xl mx-auto">
                 Find answers to the most common questions about our services and

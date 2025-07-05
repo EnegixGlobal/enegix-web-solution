@@ -196,7 +196,7 @@ const ServicesSection = () => {
             ))}
           </div>
           <Link href="/services">
-            <Button className="w-sm mx-auto py-2">View All</Button>
+            <Button className="md:w-sm mx-auto py-2">View All</Button>
           </Link>
         </div>
       </Container>

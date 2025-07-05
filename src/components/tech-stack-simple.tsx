@@ -181,21 +181,6 @@ const techStack = [
 ];
 
 const TechStackSimple = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
-
-  const categories = [
-    "All",
-    "Frontend",
-    "Framework",
-    "Mobile",
-    "Language",
-    "Styling",
-    "CMS",
-    "Backend",
-    "Database",
-    "Cloud",
-  ];
-
   const [noOfStackItems, setNoOfStackItems] = useState(7);
 
   const filteredTech = techStack.slice(0, noOfStackItems);
@@ -218,7 +203,6 @@ const TechStackSimple = () => {
               Modern technologies and frameworks that power our solutions
             </p>
           </div>
-          
 
           {/* Tech Stack Grid - iOS Compatible Design */}
           <div>
@@ -278,9 +262,16 @@ const TechStackSimple = () => {
                 </div>
               ))}
             </div>
-              <div className=" mt-8 md:w-md  mx-auto">
-                <Button onClick={() => setNoOfStackItems(noOfStackItems === techStack.length ? 7 : techStack.length)}>{noOfStackItems === techStack.length ? "See Less" : "See All"}</Button>
-              </div>
+
+            <Button
+              className="py-3 md:w-sm mx-auto mt-10"
+              onClick={() =>
+                setNoOfStackItems(
+                  noOfStackItems === techStack.length ? 7 : techStack.length
+                )
+              }>
+              {noOfStackItems === techStack.length ? "See Less" : "See All"}
+            </Button>
           </div>
         </div>
       </section>

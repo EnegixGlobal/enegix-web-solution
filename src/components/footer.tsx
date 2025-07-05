@@ -104,12 +104,11 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             <div>
               <h5 className="text-xl font-black mb-6 text-white">
-                Enegix Websolutions
+                EnegixWeb Solutions
               </h5>
-              <p className="text-gray-200 font-medium leading-relaxed">
-                Elevating digital experiences through innovative web solutions,
-                creative design, and strategic marketing.
-              </p>
+              <p className="mb-2 text-white ">House No.2, Old AG More, Kadru, Ranchi, Jharkhand , 834002</p>
+                
+                <p className="mb-4"></p>
               <div className="flex space-x-4 mt-6">
                 {socialLinks.map((link) => (
                   <Link
@@ -120,6 +119,23 @@ const Footer = () => {
                   </Link>
                 ))}
               </div>
+            </div>
+
+             <div>
+              <h6 className="text-white font-bold mb-4 font-montserrat tracking-tight">
+                Services
+              </h6>
+              <ul className="space-y-2">
+                {serviceLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-gray-200 hover:text-emerald-300 transition-colors duration-300 font-space-grotesk text-sm font-medium">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <div>
@@ -139,33 +155,14 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div>
-              <h6 className="text-white font-bold mb-4 font-montserrat tracking-tight">
-                Services
-              </h6>
-              <ul className="space-y-2">
-                {serviceLinks.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-200 hover:text-emerald-300 transition-colors duration-300 font-space-grotesk text-sm font-medium">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+           
 
             <div>
               <h6 className="text-white font-bold mb-4 font-montserrat tracking-tight">
                 Contact Us
               </h6>
               <address className="not-italic text-gray-200 font-space-grotesk text-sm font-medium">
-                <p className="mb-2">House No.2, Old AG More</p>
-                <p className="mb-2">
-                  near Bharat Kitchen, above Saryu Son's Jwellers
-                </p>
-                <p className="mb-4">Kadru, Ranchi, Jharkhand</p>
+                
                 <p className="mb-2">
                   <strong className="text-white font-inter font-bold">Email:</strong>{" "}
                   <a

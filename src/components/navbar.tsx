@@ -195,8 +195,11 @@ export default function Navbar() {
     setActiveDropdown(null);
   };
 
+
+  // bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-lg
+
   return (
-    <header className="fixed max bg-gray-100 shadow-2xl top-0 left-0 right-0  mx-auto w-full z-50 transition-all duration-500 py-4 px-4 md:px-12">
+    <header className="fixed max bg-gray-100/75 backdrop-blur-lg shadow-lg top-0 left-0 right-0  mx-auto w-full z-50 transition-all duration-500 py-5 px-4 md:px-12">
       <nav className="flex items-center justify-between w-full max-w-7xl mx-auto">
         {/* Logo Section */}
         <div className="flex items-center">
@@ -207,7 +210,7 @@ export default function Navbar() {
                 alt="Enegix Web Solutions"
                 width={50}
                 height={30}
-                className="  md:w-28  object-cover transition-all duration-500"
+                className="  md:w-26  object-cover transition-all duration-500"
               />
             </motion.div>
             {/* <span className="font-extrabold md:text-3xl text-lg">
@@ -460,12 +463,10 @@ export default function Navbar() {
                     onClick={() => setMobileMenuOpen(false)}>
                     <div className="relative group">
                       <div className=" inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
-                      <RainbowButton
-                        variant="outline"
-                        size="lg"
-                        className="w-full font-semibold relative border-blue-500/30 hover:border-blue-400/50 text-white">
+                      <Button className="py-2"
+                       >
                         Get Started
-                      </RainbowButton>
+                      </Button>
                     </div>
                   </Link>
                 </div>

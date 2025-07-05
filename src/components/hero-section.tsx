@@ -49,7 +49,7 @@ const HeroSection = () => {
                 <Button className="py-2">Connect with Us</Button>
               </Link>
               <Link href="/portfolio">
-                <Button className="py-2 text-teal-600! bg-white! hover:bg-teal-600! hover:text-white!">
+                <Button className="py-2 text-blue-600! bg-white! hover:bg-blue-500! hover:text-white!">
                   View Our Work
                 </Button>
               </Link>
