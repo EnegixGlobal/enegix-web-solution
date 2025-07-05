@@ -5,6 +5,7 @@ import HeroSection from "@/components/hero-section";
 import ServicesSection from "@/components/services-section";
 import StatsSection from "@/components/stats-section";
 import TechStackSimple from "@/components/tech-stack-simple";
+import CountriesWeServe from "@/components/countries-we-serve";
 import VideoShowcase from "@/components/video-showcase";
 import WhyChooseUsSection from "../components/why-choose-us";
 import ContactCTA from "@/components/contact-cta";
@@ -15,6 +16,8 @@ import ScrollFix from "@/components/scroll-fix";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Navbar from "@/components/navbar";
 import { Toaster } from "react-hot-toast";
+import ReviewSection from "@/components/review-section";
+import FAQSearch from "@/components/faq-search";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
@@ -65,10 +68,13 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <ServicesSection />
+      <CountriesWeServe />
+      <ReviewSection/>
       <TechStackSimple />
       <WhyChooseUsSection />
-      <VideoShowcase />
-      <ContactCTA />
+      <FAQSearch />
+      {/* <VideoShowcase /> */}
+      {/* <ContactCTA /> */}
       <Footer />
       {isClient && <ScrollToTopButton />}
     </div>

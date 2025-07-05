@@ -196,23 +196,23 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed max bg-gray-100/95 shadow-2xl top-0 left-0 right-0  mx-auto w-full z-50 transition-all duration-500 py-5 px-4 md:px-12">
+    <header className="fixed max bg-gray-100 shadow-2xl top-0 left-0 right-0  mx-auto w-full z-50 transition-all duration-500 py-4 px-4 md:px-12">
       <nav className="flex items-center justify-between w-full max-w-7xl mx-auto">
         {/* Logo Section */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center space-x-2 group">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Image
-                src="/new-logo.png"
+                src="/3d-logo.png"
                 alt="Enegix Web Solutions"
                 width={50}
                 height={30}
-                className="  md:w-18  object-cover transition-all duration-500"
+                className="  md:w-28  object-cover transition-all duration-500"
               />
             </motion.div>
-            <span className="font-extrabold md:text-3xl text-lg">
+            {/* <span className="font-extrabold md:text-3xl text-lg">
               Enegix Web Solutions
-            </span>
+            </span> */}
           </Link>
         </div>
 
@@ -236,7 +236,7 @@ export default function Navbar() {
                     className={cn(
                       "flex items-center px-5 py-2 rounded-lg text-lg font-extrabold transition-all duration-300 cursor-pointer relative group",
                       isLinkActive(link.href)
-                        ? "text-black border border-green-300 rounded-full"
+                        ? "text-black border border-blue-300 rounded-full"
                         : "text-black hover:text-gray-800"
                     )}>
                     <span className="relative z-10 font-bold">
@@ -250,7 +250,7 @@ export default function Navbar() {
                     />
                     {hoveredLink === link.label && !isLinkActive(link.href) && (
                       <motion.div
-                        className="absolute inset-0 border border-green-300 rounded-full"
+                        className="absolute inset-0 border border-blue-300 rounded-full"
                         layoutId="navHover"
                         transition={{
                           type: "spring",
@@ -262,13 +262,13 @@ export default function Navbar() {
                   </motion.button>
                 </Link>
               ) : (
-                <motion.div whileHover={{ y: -2 }} className="relative">
+                <motion.div  className="relative">
                   <Link
                     href={link.href as Route}
                     className={cn(
                       "flex items-center px-4 py-2 rounded-lg text-lg transition-all duration-300 cursor-pointer relative",
                       isLinkActive(link.href)
-                        ? "text-black border border-green-300 rounded-full "
+                        ? "text-black border border-blue-300 rounded-full "
                         : "text-black hover:text-gray-800"
                     )}>
                     <span className="relative z-10 font-bold">
@@ -277,7 +277,7 @@ export default function Navbar() {
                   </Link>
                   {hoveredLink === link.label && !isLinkActive(link.href) && (
                     <motion.div
-                      className="absolute inset-0 border border-green-300 rounded-full"
+                      className="absolute inset-0 border border-blue-300 rounded-full"
                       layoutId="navHover"
                       transition={{
                         type: "spring",
@@ -305,12 +305,12 @@ export default function Navbar() {
                         <Link
                           key={item.label}
                           href={item.href as Route}
-                          className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-100/50 transition-all duration-300 border border-transparent hover:border-green-200">
-                          <div className="text-emerald-600 mt-1">
+                          className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-100/50 transition-all duration-300 border border-transparent hover:border-blue-200">
+                          <div className="text-blue-600 mt-1">
                             <item.icon className="w-6 h-6" />
                           </div>
                           <div>
-                            <h4 className="text-md font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
+                            <h4 className="text-md font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                               {item.label}
                             </h4>
                             <p className="text-xs text-gray-600 mt-1 line-clamp-3">
@@ -334,7 +334,7 @@ export default function Navbar() {
                 activeDropdown === link.label &&
                 link.label !== "Services" && (
                   <motion.div
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 w-80 bg-white/95 backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl shadow-gray-900/30 p-4"
+                    className="absolute top-full left-1/2  w-80 bg-white/95 backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl shadow-gray-900/30 p-4"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
@@ -344,12 +344,12 @@ export default function Navbar() {
                         <Link
                           key={item.label}
                           href={item.href as Route}
-                          className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-100/50 transition-all duration-300 border border-transparent hover:border-green-200">
-                          <div className="text-emerald-600 mt-1">
+                          className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-100/50 transition-all duration-300 border border-transparent hover:border-blue-200">
+                          <div className="text-blue-600 mt-1">
                             <item.icon className="w-5 h-5" />
                           </div>
                           <div>
-                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
+                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
                               {item.label}
                             </h4>
                             <p className="text-xs text-gray-600 mt-1">
@@ -459,11 +459,11 @@ export default function Navbar() {
                     href="/contact"
                     onClick={() => setMobileMenuOpen(false)}>
                     <div className="relative group">
-                      <div className=" inset-0 bg-gradient-to-r from-green-500 to-indigo-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                      <div className=" inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
                       <RainbowButton
                         variant="outline"
                         size="lg"
-                        className="w-full font-semibold relative border-green-500/30 hover:border-green-400/50 text-white">
+                        className="w-full font-semibold relative border-blue-500/30 hover:border-blue-400/50 text-white">
                         Get Started
                       </RainbowButton>
                     </div>

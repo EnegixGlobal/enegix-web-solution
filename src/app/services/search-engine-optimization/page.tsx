@@ -19,88 +19,6 @@ export default function SearchEngineOptimization() {
     enablePageScroll();
   }, []);
 
-  const features = [
-    {
-      title: "Keyword Research & Strategy",
-      description:
-        "In-depth keyword analysis to target high-value search terms that drive qualified traffic",
-      icon: <FaSearch className="text-4xl text-blue-500" />,
-    },
-    {
-      title: "On-Page SEO Optimization",
-      description:
-        "Complete optimization of content, meta tags, headers, and technical elements",
-      icon: <FaFileAlt className="text-4xl text-green-500" />,
-    },
-    {
-      title: "Technical SEO Audit",
-      description:
-        "Comprehensive website analysis to fix crawlability and indexing issues",
-      icon: <MdSpeed className="text-4xl text-purple-500" />,
-    },
-    {
-      title: "Link Building & Authority",
-      description:
-        "Strategic link building campaigns to increase domain authority and rankings",
-      icon: <FaLink className="text-4xl text-orange-500" />,
-    },
-    {
-      title: "Local SEO Optimization",
-      description: "Google My Business and local search optimization for location-based businesses",
-      icon: <MdLocationOn className="text-4xl text-red-500" />,
-    },
-    {
-      title: "SEO Analytics & Reporting",
-      description: "Detailed performance tracking and monthly reports with actionable insights",
-      icon: <MdAnalytics className="text-4xl text-cyan-500" />,
-    },
-  ];
-
-
-  const process = [
-    {
-      step: "1",
-      title: "SEO Audit & Analysis",
-      description:
-        "We conduct a comprehensive analysis of your website's current SEO performance, identifying opportunities and technical issues that need attention.",
-      icon: <MdInsights className="text-2xl text-blue-500" />,
-    },
-    {
-      step: "2",
-      title: "Keyword Research",
-      description:
-        "In-depth keyword research to identify high-value search terms your target audience uses, focusing on optimal search volume and competition balance.",
-      icon: <FaSearch className="text-2xl text-purple-500" />,
-    },
-    {
-      step: "3",
-      title: "On-Page Optimization",
-      description:
-        "Complete optimization of your website's content, meta tags, headers, and internal structure to align with target keywords and SEO best practices.",
-      icon: <FaFileAlt className="text-2xl text-green-500" />,
-    },
-    {
-      step: "4",
-      title: "Technical Implementation",
-      description:
-        "Fix technical SEO issues including site speed, mobile responsiveness, crawlability, and indexing problems to improve search engine accessibility.",
-      icon: <MdSpeed className="text-2xl text-orange-500" />,
-    },
-    {
-      step: "5",
-      title: "Link Building & Authority",
-      description:
-        "Strategic link building campaigns and content marketing to increase domain authority and earn high-quality backlinks from relevant websites.",
-      icon: <FaLink className="text-2xl text-cyan-500" />,
-    },
-    {
-      step: "6",
-      title: "Monitor & Optimize",
-      description:
-        "Continuous monitoring of rankings, traffic, and conversions with ongoing optimization to maintain and improve search performance.",
-      icon: <MdTrendingUp className="text-2xl text-red-500" />,
-    },
-  ];
 
   const faqs = [
     {
@@ -135,7 +53,7 @@ export default function SearchEngineOptimization() {
         <Navbar />
 
         {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4 md:px-12">
+        <section className="pt-32 pb-10 px-4 md:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
@@ -187,7 +105,7 @@ export default function SearchEngineOptimization() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 px-4 md:px-12 ">
+        <section className=" px-4 md:px-12 ">
           <div className="max-w-7xl mx-auto bg-white md:p-10 p-3 shadow-xl rounded-4xl">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -294,120 +212,10 @@ export default function SearchEngineOptimization() {
           </div>
         </section>
 
-        {/* Process Section */}
-        <section className="py-20 px-4 md:px-12 bg-gradient-to-br from-gray-50 to-gray-100">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="text-center mb-16">
-              <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                PROVEN SEO PROCESS
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                From Analysis to Rankings
-              </h2>
-            </motion.div>
 
-            {/* Timeline */}
-            <div className="relative mb-16">
-              {/* Desktop Timeline */}
-              <div className="hidden lg:block">
-                {/* Dotted Line */}
-                <div className="absolute top-10 left-0 right-0 h-0.5 bg-gradient-to-r from-green-300 via-green-400 to-green-500" 
-                     style={{background: 'repeating-linear-gradient(to right, #22c55e 0px, #22c55e 10px, transparent 10px, transparent 20px)'}}>
-                </div>
-                
-                {/* Step Circles */}
-                <div className="flex justify-between items-start relative">
-                  {process.map((step, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.2, delay: index * 0.03 }}
-                      className="flex flex-col items-center text-center relative z-10"
-                      style={{ width: `${100/6}%` }}>
-                      
-                      {/* Circle */}
-                      <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl mb-8 shadow-lg">
-                        {step.step}
-                      </div>
-                      
-                      {/* Icon */}
-                      <div className="text-4xl mb-4">
-                        {step.icon}
-                      </div>
-                      
-                      {/* Title */}
-                      <h3 className="text-lg font-bold text-gray-900 mb-3">
-                        {step.title}
-                      </h3>
-                      
-                      {/* Description */}
-                      <p className="text-sm text-gray-600 leading-relaxed px-2">
-                        {step.description}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Mobile Timeline */}
-              <div className="lg:hidden space-y-8">
-                {process.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, delay: index * 0.03 }}
-                    className="flex items-start gap-6">
-                    
-                    {/* Circle */}
-                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg flex-shrink-0">
-                      {step.step}
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="flex-1">
-                      {/* Icon */}
-                      <div className="text-3xl mb-2">
-                        {step.icon}
-                      </div>
-                      
-                      {/* Title */}
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">
-                        {step.title}
-                      </h3>
-                      
-                      {/* Description */}
-                      <p className="text-gray-600 leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: 0.2 }}
-              className="text-center w-lg mx-auto">
-              <Link href="/contact">
-                <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-semibold">
-                  Start your project →
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
-        </section>
 
         {/* FAQ Section */}
-        <section className="py-20 px-4 md:px-12 bg-white">
+        <section className="py-20 px-4 md:px-12">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}

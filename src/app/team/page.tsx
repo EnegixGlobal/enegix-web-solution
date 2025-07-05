@@ -5,13 +5,14 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { AuroraText } from "@/components/magicui/aurora-text";
-import { RainbowButton } from "@/components/magicui/rainbow-button";
-import { Meteors } from "@/components/magicui/meteors";
 import ScrollToTopButton from "@/components/scroll-to-top";
 import ScrollFix from "@/components/scroll-fix";
 import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
+import Container from "@/components/Container";
+import Button from "@/components/Button";
+import { Meteors } from "@/components/magicui/meteors";
 
 // Team members data
 const teamMembers = [
@@ -128,41 +129,27 @@ const TeamMemberCard = ({ member }: { member: (typeof teamMembers)[0] }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true, margin: "-100px" }}
-      className="group relative overflow-hidden rounded-xl bg-white border border-gray-200 shadow-lg hover:shadow-xl hover:border-teal-200 transition-all duration-300"
+      className="group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-lg hover:shadow-xl hover:border-teal-300 transition-all duration-300 hover:-translate-y-2"
     >
-      <div className="aspect-[4/5] relative overflow-hidden rounded-t-xl">
+      <div className="aspect-[4/5] relative overflow-hidden rounded-t-2xl">
         <Image
           src={member.image}
           alt={member.name}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
-      </div>
-
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 group-hover:text-teal-600 transition-colors duration-300">
-          {member.name}
-        </h3>
-        <p className="text-teal-600 mb-3">{member.role}</p>
-        <p className="text-gray-600 text-sm mb-4 line-clamp-3">{member.bio}</p>
-
-        <div className="flex space-x-3">
-          {" "}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {/* Social Links Overlay */}
+        <div className="absolute bottom-4 left-4 right-4 flex justify-center space-x-3 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-300">
           {member.socialLinks.linkedin && (
             <a
               href={member.socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-900 transition-colors"
+              className="p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" className="text-teal-600">
                 <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
               </svg>
             </a>
@@ -172,15 +159,9 @@ const TeamMemberCard = ({ member }: { member: (typeof teamMembers)[0] }) => {
               href={member.socialLinks.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-900 transition-colors"
+              className="p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" className="text-teal-600">
                 <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
               </svg>
             </a>
@@ -190,20 +171,22 @@ const TeamMemberCard = ({ member }: { member: (typeof teamMembers)[0] }) => {
               href={member.socialLinks.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-900 transition-colors"
+              className="p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" className="text-teal-600">
                 <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
               </svg>
             </a>
           )}
         </div>
+      </div>
+
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-900 group-hover:text-teal-600 transition-colors duration-300 mb-1">
+          {member.name}
+        </h3>
+        <p className="text-teal-600 font-medium mb-3">{member.role}</p>
+        <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">{member.bio}</p>
       </div>
     </motion.div>
   );
@@ -221,79 +204,62 @@ const FeaturedTeamMemberCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true, margin: "-100px" }}
-      className="relative overflow-hidden rounded-xl bg-white border border-gray-200 shadow-lg p-6 lg:p-8"
+      className="group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-xl hover:shadow-2xl hover:border-teal-300 transition-all duration-300 p-8"
     >
-      <div className="flex flex-col md:flex-row gap-8 items-center">
-        <div className="w-full md:w-1/3 aspect-square relative rounded-full overflow-hidden border-4 border-teal-200">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-teal-100/30 to-blue-100/30 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-700" />
+      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-100/30 to-teal-100/30 rounded-full translate-y-12 -translate-x-12 group-hover:scale-125 transition-transform duration-700" />
+      
+      <div className="relative z-10 flex flex-col lg:flex-row gap-8 items-center">
+        <div className="w-full lg:w-1/3 aspect-square relative rounded-2xl overflow-hidden border-4 border-teal-200 group-hover:border-teal-400 transition-colors duration-300">
           <Image
             src={member.image}
             alt={member.name}
             fill
-            className="object-cover"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
 
-        <div className="w-full md:w-2/3">
-          <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+        <div className="w-full lg:w-2/3 text-center lg:text-left">
+          <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors duration-300">
             {member.name}
           </h3>
-          <p className="text-teal-600 text-lg mb-4">{member.role}</p>
-          <p className="text-gray-600 mb-6">{member.bio}</p>
+          <p className="text-teal-600 text-xl font-semibold mb-4">{member.role}</p>
+          <p className="text-gray-600 mb-6 leading-relaxed">{member.bio}</p>
 
-          <div className="flex space-x-4">
+          <div className="flex justify-center lg:justify-start space-x-4">
             {member.socialLinks.linkedin && (
               <a
                 href={member.socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+                className="group/social p-3 bg-teal-50 hover:bg-teal-600 rounded-full transition-all duration-300 hover:scale-110"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                  className="text-teal-600"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" className="text-teal-600 group-hover/social:text-white transition-colors">
                   <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
                 </svg>
               </a>
-            )}{" "}
+            )}
             {member.socialLinks.facebook && (
               <a
                 href={member.socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+                className="group/social p-3 bg-teal-50 hover:bg-teal-600 rounded-full transition-all duration-300 hover:scale-110"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                  className="text-teal-600"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" className="text-teal-600 group-hover/social:text-white transition-colors">
                   <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
                 </svg>
               </a>
-            )}{" "}
+            )}
             {member.socialLinks.instagram && (
               <a
                 href={member.socialLinks.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+                className="group/social p-3 bg-teal-50 hover:bg-teal-600 rounded-full transition-all duration-300 hover:scale-110"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                  className="text-teal-600"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" className="text-teal-600 group-hover/social:text-white transition-colors">
                   <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
                 </svg>
               </a>
@@ -310,7 +276,7 @@ const filters = [
   { id: "all", label: "All Team" },
   { id: "leadership", label: "Leadership" },
   { id: "development", label: "Development" },
-  { id: "sales", label: "Sales" },
+  { id: "sales", label: "Sales & Business" },
 ];
 
 export default function TeamPage() {
@@ -364,98 +330,99 @@ export default function TeamPage() {
     <>
       <ScrollFix />
       <Navbar />
+      <main className=" text-gray-900 min-h-screen relative overflow-x-hidden">
+        {/* Hero Section */}
+        <section className="pt-24 pb-16 bg-gradient-to-br from-teal-50 via-blue-50 to-white">
+          <Container>
+            {/* Breadcrumb Navigation */}
+            <nav aria-label="Breadcrumb" className="mb-8 mt-5">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600">
+                <li>
+                  <Link href="/" className="hover:text-teal-600 transition-colors">
+                    Home
+                  </Link>
+                </li>
+                <li className="text-gray-400">/</li>
+                <li className="text-teal-600 font-medium" aria-current="page">
+                  Our Team
+                </li>
+              </ol>
+            </nav>
 
-      <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
-        {" "}
-        {/* Hero Banner */}
-        <section id="team-section" className="relative pt-32 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-          <div className="absolute inset-0">
-            <div className="absolute top-10 left-0 right-0 h-[600px] flex items-center justify-center overflow-hidden">
-              <Meteors number={50} />
-            </div>
-          </div>
-
-          <div className="container mx-auto px-4 relative z-10">
+          <Meteors number={20} />
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center max-w-3xl mx-auto"
+              transition={{ duration: 0.8 }}
+              className="text-center max-w-4xl mx-auto"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
-                Meet Our <AuroraText>Team</AuroraText>
+             
+
+              <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-gray-900 mb-6">
+                Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Team</span>
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
-                We're a passionate group of designers, developers, and digital
-                strategists dedicated to helping businesses succeed in the
-                digital world.
+              
+              <p className="text-gray-600 text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto mb-8">
+                We're a passionate group of designers, developers, and digital strategists dedicated to helping businesses succeed in the digital world.
               </p>
+
+             
             </motion.div>
-          </div>
+          </Container>
         </section>
         {/* Featured Members Section */}
-        <section className="py-16 px-4 bg-white">
-          <div className="container mx-auto">
-            <motion.h2
+        <section id="leadership" className="py-20 bg-white">
+          <Container>
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-2xl md:text-3xl font-bold mb-4 text-center text-gray-900"
+              className="text-center mb-16"
             >
-              Our <AuroraText>Leadership</AuroraText>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-gray-600 text-lg max-w-3xl mx-auto text-center mb-12"
-            >
-              Meet the visionaries who drive our mission and shape our company
-              culture
-            </motion.p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
+                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Leadership</span>
+              </h2>
+              <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
+                Meet the visionaries who drive our mission and shape our company culture
+              </p>
+            </motion.div>
 
-            <div className="space-y-8">
+            <div className="space-y-12">
               {featuredMembers.map((member) => (
                 <FeaturedTeamMemberCard key={member.id} member={member} />
               ))}
             </div>
-          </div>
+          </Container>
         </section>
         {/* Team Members Section */}
-        <section className="py-16 px-4 bg-gray-50">
-          <div className="container mx-auto">
-            <motion.h2
+        <section className="py-20 bg-gradient-to-br from-gray-50 to-teal-50">
+          <Container>
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-2xl md:text-3xl font-bold mb-4 text-center text-gray-900"
+              className="text-center mb-16"
             >
-              Our <AuroraText>Talented Team</AuroraText>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-gray-600 text-lg max-w-3xl mx-auto text-center mb-12"
-            >
-              Each member of our team brings unique expertise and passion to
-              every project
-            </motion.p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
+                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Talented Team</span>
+              </h2>
+              <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
+                Each member of our team brings unique expertise and passion to every project
+              </p>
+            </motion.div>
 
             {/* Filters */}
-            <div className="flex justify-center flex-wrap gap-2 mb-12">
+            <div className="flex justify-center flex-wrap gap-3 mb-16">
               {filters.map((filter) => (
                 <button
                   key={filter.id}
                   onClick={() => setActiveFilter(filter.id)}
-                  className={`px-4 py-2 rounded-full text-sm transition-all ${
+                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeFilter === filter.id
-                      ? "bg-gradient-to-r from-teal-600 to-emerald-600 text-white"
-                      : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                      ? "bg-teal-600 text-white shadow-lg shadow-teal-600/25"
+                      : "bg-white text-gray-600 hover:bg-teal-50 hover:text-teal-600 border border-gray-200 hover:border-teal-200"
                   }`}
                 >
                   {filter.label}
@@ -464,48 +431,70 @@ export default function TeamPage() {
             </div>
 
             {/* Team Members Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {regularMembers.map((member) => (
                 <TeamMemberCard key={member.id} member={member} />
               ))}
             </div>
 
             {regularMembers.length === 0 && (
-              <div className="text-center py-8">
-                <p className="text-gray-600">
+              <div className="text-center py-12">
+                <div className="inline-flex p-4 rounded-full bg-gray-100 text-gray-400 mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                  </svg>
+                </div>
+                <p className="text-gray-600 text-lg">
                   No team members match the selected filter.
                 </p>
               </div>
             )}
-          </div>
+          </Container>
         </section>
         {/* Join Our Team Section */}
-        <section className="py-20 px-4 relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-          <div className="container mx-auto relative z-10">
+        <section className="py-20 bg-white">
+          <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="bg-white/95 backdrop-blur-lg rounded-2xl p-12 border border-gray-200 shadow-2xl text-center max-w-4xl mx-auto"
+              className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-600 via-blue-600 to-indigo-600 p-12 lg:p-16 text-center text-white"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-                Join Our Growing Team
-              </h2>
-              <p className="text-gray-600 mb-8 text-lg max-w-2xl mx-auto">
-                We're always looking for talented individuals to join our team.
-                Check out our current openings or send us your resume.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <RainbowButton size="lg">View Open Positions</RainbowButton>
-                <Link href="/contact">
-                  <RainbowButton variant="outline" size="lg">
-                    Contact Us
-                  </RainbowButton>
-                </Link>
+              {/* Background decorative elements */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-20 translate-x-20"></div>
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-16 -translate-x-16"></div>
+              
+              <div className="relative z-10 max-w-4xl mx-auto">
+                {/* Icon */}
+                <div className="inline-flex p-4 rounded-2xl bg-white/20 backdrop-blur-sm mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM3 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 019.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
+                  </svg>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  Join Our Growing Team
+                </h2>
+                <p className="text-white/90 mb-8 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
+                  We're always looking for talented individuals to join our team. Check out our current openings or send us your resume.
+                </p>
+                
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Link href="/contact">
+                    <Button size="lg" className="bg-white text-teal-600 hover:bg-gray-100">
+                      View Open Positions
+                    </Button>
+                  </Link>
+                  <Link href="/contact">
+                    <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-teal-600">
+                      Contact Us
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </motion.div>
-          </div>
+          </Container>
         </section>
       </main>
 

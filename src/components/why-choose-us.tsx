@@ -4,76 +4,14 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import Container from "./Container";
 
-const achievements = [
-  {
-    icon: "🏆",
-    number: "500+",
-    label: "Projects Completed",
-    description: "delivered across industries"
-  },
-  {
-    icon: "⭐",
-    number: "98%",
-    label: "Client Satisfaction",
-    description: "Consistently exceeding expectations"
-  },
-  {
-    icon: "🚀",
-    number: "5+",
-    label: "Years Experience",
-    description: "Building digital solutions since 2019"
-  },
-  {
-    icon: "🌍",
-    number: "2+",
-    label: "Countries Served",
-    description: "Global reach with local expertise"
-  }
-];
 
-const features = [
-  {
-    icon: "⚡",
-    title: "Result-Oriented Strategies",
-    description: "We convert traffic into conversions and clicks into customers",
-    gradient: "from-yellow-400 to-orange-500"
-  },
-  {
-    icon: "🎯",
-    title: "Custom-Fitted Strategy for Every Client",
-    description: " No templates, no shortcuts, just personalized solutions ",
-    gradient: "from-blue-400 to-cyan-500"
-  },
-  {
-    icon: "🔒",
-    title: "An Expert and Certified Team",
-    description: " They bring their insight and experience in every project.",
-    gradient: "from-green-400 to-emerald-500"
-  },
-  {
-    icon: "📱",
-    title: "Transparent Communication & Reports",
-    description: " You always stay in the loop",
-    gradient: "from-purple-400 to-pink-500"
-  },
-  {
-    icon: "🎨",
-    title: "Tactics for Sustainable Growth",
-    description: " We compete for the long-term digital sustainability, not a short-term buzz.",
-    gradient: "from-indigo-400 to-purple-500"
-  },
-  {
-    icon: "⚙️",
-    title: "Client-First Attitude",
-    description: " Your objectives are what we consider in all our actions.",
-    gradient: "from-teal-400 to-blue-500"
-  }
-];
+
+
 
 const WhyChooseUsSection = () => {
   return (
     <section
-      className="relative py-8  mx-auto overflow-hidden"
+      className="relative my-10  mx-auto overflow-hidden"
     >
       {/* Simplified Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
@@ -97,50 +35,188 @@ const WhyChooseUsSection = () => {
       <Container>
       <div className="container mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20 animate-fade-in">
+        <div className="text-center mb-10 animate-fade-in">
           <div className="text-4xl md:text-5xl lg:text-5xl font-bold mb-6">
             Why Choose{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400">
+            <span className="bg-clip-text text-teal-600">
               Enegix Web Solutions?
             </span>
           </div>
-          <p className="text-md text-black max-w-3xl mx-auto leading-relaxed">
-            We don't just build websites and apps—we craft digital experiences that drive results.
-            Here's what sets us apart from the competition.
-          </p>
+         
         </div>
-        {/* Achievement Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 animate-fade-in-up">
-          {achievements.map((achievement) => (
-            <div
-              key={achievement.label}
-              className="text-center group transition-all duration-300 hover:scale-105 hover:-translate-y-2"
-            >
-              <div className="relative p-6 bg-white rounded-2xl shadow-lg border border-teal-100 overflow-hidden group-hover:border-teal-300 transition-all duration-300">
-                {/* Subtle Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <div className="relative z-10">
-                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {achievement.icon}
-                  </div>
-                  <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-emerald-600 mb-2">
-                    {achievement.number}
-                  </div>
-                  <div className="text-lg font-semibold text-gray-900 mb-2">
-                    {achievement.label}
-                  </div>
-                  <p className="text-sm text-gray-600">
-                    {achievement.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
         {/* Features Grid */}
 
-        
+
+        {/* Process Section */}
+        <div className="  -mx-8 px-8  rounded-3xl">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center ">
+              <p className="text-2xl  text-gray-900 mb-6">
+                Get Started in Six Easy Steps
+              </p>
+            </div>
+
+            {/* Timeline */}
+            <div className="relative mb-16">
+              {/* Desktop Timeline */}
+              <div className="hidden lg:block">
+                {/* Dotted Line */}
+                <div className="absolute top-10 left-0 right-0 h-0.5 bg-gradient-to-r from-teal-300 via-teal-400 to-teal-500" 
+                     style={{background: 'repeating-linear-gradient(to right, #0d9488 0px, #0d9488 10px, transparent 10px, transparent 20px)'}}>
+                </div>
+                
+                {/* Step Circles */}
+                <div className="flex justify-between items-start relative">
+                  {[
+                    {
+                      step: "1",
+                      title: "Discovery",
+                      description: "We delve deep to fully understand your business and its goals. This includes analyzing your industry, competitors, and your target audience's preferences and behaviors.",
+                      icon: "💡",
+                    },
+                    {
+                      step: "2",
+                      title: "Planning",
+                      description: "Next, we tailor our strategy to align with your business objectives, beginning with a comprehensive analysis of user needs and market requirements.",
+                      icon: "📋",
+                    },
+                    {
+                      step: "3",
+                      title: "Preparation",
+                      description: "Using the strategy as a roadmap, we assess both your current setup and external elements to ensure they align with the strategic plan.",
+                      icon: "📝",
+                    },
+                    {
+                      step: "4",
+                      title: "Implementation",
+                      description: "Our development framework is designed to provide a consistent flow of optimizations, creating an action plan that respects your internal resources.",
+                      icon: "🚀",
+                    },
+                    {
+                      step: "5",
+                      title: "Growth",
+                      description: "As your project gains momentum, we focus on tracking progress towards your goals and ensuring continued, sustainable success.",
+                      icon: "⚙️",
+                    },
+                    {
+                      step: "6",
+                      title: "Refinement",
+                      description: "We continuously analyze performance data to identify new opportunities and adapt to feedback. This ongoing optimization ensures your strategy evolves with your business.",
+                      icon: "📦",
+                    },
+                  ].map((step, index) => (
+                    <div
+                      key={index}
+                      className="flex flex-col items-center text-center relative z-10"
+                      style={{ width: `${100/6}%` }}>
+                      
+                      {/* Circle */}
+                      <div className="w-20 h-20 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold text-xl mb-8 shadow-lg">
+                        {step.step}
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className="text-4xl mb-4">
+                        {step.icon}
+                      </div>
+                      
+                      {/* Title */}
+                      <h3 className="text-lg font-bold text-gray-900 mb-3">
+                        {step.title}
+                      </h3>
+                      
+                      {/* Description */}
+                      <p className="text-sm text-gray-600 leading-relaxed px-2">
+                        {step.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mobile Timeline */}
+              <div className="lg:hidden space-y-8">
+                {[
+                  {
+                    step: "1",
+                    title: "Discovery",
+                    description: "We delve deep to fully understand your business and its goals. This includes analyzing your industry, competitors, and your target audience's preferences and behaviors.",
+                    icon: "💡",
+                  },
+                  {
+                    step: "2",
+                    title: "Planning",
+                    description: "Next, we tailor our strategy to align with your business objectives, beginning with a comprehensive analysis of user needs and market requirements.",
+                    icon: "📋",
+                  },
+                  {
+                    step: "3",
+                    title: "Preparation",
+                    description: "Using the strategy as a roadmap, we assess both your current setup and external elements to ensure they align with the strategic plan.",
+                    icon: "📝",
+                  },
+                  {
+                    step: "4",
+                    title: "Implementation",
+                    description: "Our development framework is designed to provide a consistent flow of optimizations, creating an action plan that respects your internal resources.",
+                    icon: "🚀",
+                  },
+                  {
+                    step: "5",
+                    title: "Growth",
+                    description: "As your project gains momentum, we focus on tracking progress towards your goals and ensuring continued, sustainable success.",
+                    icon: "⚙️",
+                  },
+                  {
+                    step: "6",
+                    title: "Refinement",
+                    description: "We continuously analyze performance data to identify new opportunities and adapt to feedback. This ongoing optimization ensures your strategy evolves with your business.",
+                    icon: "📦",
+                  },
+                ].map((step, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-6">
+                    
+                    {/* Circle */}
+                    <div className="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg flex-shrink-0">
+                      {step.step}
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1">
+                      {/* Icon */}
+                      <div className="text-3xl mb-2">
+                        {step.icon}
+                      </div>
+                      
+                      {/* Title */}
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        {step.title}
+                      </h3>
+                      
+                      {/* Description */}
+                      <p className="text-gray-600 leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="text-center">
+              <button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full font-semibold transition-colors duration-300">
+                Start your project →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+   
       </div>
 
       <style jsx>{`

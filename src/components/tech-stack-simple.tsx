@@ -3,33 +3,32 @@
 import { cn } from "@/lib/utils";
 import Container from "./Container";
 import { useState } from "react";
-import { 
-  FaReact, 
-  FaNodeJs, 
-  FaWordpress, 
+import {
+  FaReact,
+  FaNodeJs,
+  FaWordpress,
   FaAws,
   FaJs,
-  FaDatabase,
   FaPhp,
   FaHtml5,
   FaCss3Alt,
-  FaPython,
   FaAngular,
-  FaDocker
+  FaDocker,
 } from "react-icons/fa";
-import { 
-  SiNextdotjs, 
-  SiTypescript, 
-  SiTailwindcss, 
-  SiMongodb, 
+import {
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiMongodb,
   SiPostgresql,
   SiVuedotjs,
   SiMysql,
   SiDjango,
   SiElectron,
-  SiExpress
+  SiExpress,
 } from "react-icons/si";
 import { MdPhoneAndroid } from "react-icons/md";
+import Button from "./Button";
 
 const techStack = [
   {
@@ -56,7 +55,7 @@ const techStack = [
   {
     name: "Vue.js",
     icon: SiVuedotjs,
-    color: "text-green-400",
+    color: "text-teal-400",
     description: "Progressive JavaScript framework",
     category: "Frontend",
   },
@@ -91,14 +90,14 @@ const techStack = [
   {
     name: "Node.js",
     icon: FaNodeJs,
-    color: "text-green-500",
+    color: "text-teal-500",
     description: "JavaScript runtime environment",
     category: "Backend",
   },
   {
     name: "MongoDB",
     icon: SiMongodb,
-    color: "text-green-600",
+    color: "text-teal-600",
     description: "NoSQL database solution",
     category: "Database",
   },
@@ -147,7 +146,7 @@ const techStack = [
   {
     name: "Django",
     icon: SiDjango,
-    color: "text-green-800",
+    color: "text-teal-800",
     description: "Python web framework",
     category: "Framework",
   },
@@ -197,97 +196,91 @@ const TechStackSimple = () => {
     "Cloud",
   ];
 
-  const filteredTech =
-    selectedCategory === "All"
-      ? techStack
-      : techStack.filter((tech) => tech.category === selectedCategory);
+  const [noOfStackItems, setNoOfStackItems] = useState(7);
+
+  const filteredTech = techStack.slice(0, noOfStackItems);
 
   return (
     <Container>
-      <section className="py-10 bg-white mx-auto relative w-full">
-        <div className="container mx-auto">
+      <section
+        className="py-10 mt-4 bg-white mx-auto relative w-full"
+        style={{
+          WebkitOverflowScrolling: "touch", // Enable momentum scrolling on iOS
+          overflowX: "hidden", // Prevent horizontal scroll
+        }}>
+        <div className="container mx-auto md:px-4 ">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <div className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+            <div className="text-4xl md:text-8xl lg:text-7xl font-bold mb-6 text-teal-600">
               Our Tech Stack
             </div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-800 font-bold max-w-3xl mx-auto leading-relaxed">
               Modern technologies and frameworks that power our solutions
             </p>
           </div>
-          {/* Category Filter - Simplified */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 border",
-                  selectedCategory === category
-                    ? "bg-teal-600 text-white border-teal-600"
-                    : "bg-white text-gray-600 border-gray-200 hover:bg-teal-50 hover:text-teal-600 hover:border-teal-200"
-                )}>
-                {category}
-              </button>
-            ))}
-          </div>
+          
 
-          {/* Tech Stack Grid - Clean & Modern Design */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-            {filteredTech.map((tech) => (
-              <div
-                key={tech.name}
-                className="group relative flex flex-col items-center p-5 bg-white rounded-xl border border-gray-200 hover:border-emerald-300 transition-all duration-300 hover:shadow-xl shadow-md">
-                
-                {/* Simple hover background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/50 to-teal-50/50 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                {/* Tech Icon */}
-                <div className="relative z-20 text-4xl mb-3 group-hover:scale-105 transition-transform duration-300">
-                  <tech.icon className={cn("w-12 h-12", tech.color)} />
-                </div>
-
-                {/* Tech Name - Clean & Prominent */}
-                <div className="relative z-20 text-center mb-3">
-                  <div
-                    className={cn(
-                      "text-lg font-bold text-center tracking-wide leading-tight",
-                      tech.name === "React" && "text-cyan-600",
-                      tech.name === "Next.js" && "text-gray-800",
-                      tech.name === "React Native" && "text-blue-600",
-                      tech.name === "Vue.js" && "text-green-600",
-                      tech.name === "TypeScript" && "text-blue-700",
-                      tech.name === "JavaScript" && "text-yellow-600",
-                      tech.name === "Tailwind CSS" && "text-teal-600",
-                      tech.name === "WordPress" && "text-blue-600",
-                      tech.name === "Node.js" && "text-green-700",
-                      tech.name === "MongoDB" && "text-green-700",
-                      tech.name === "PostgreSQL" && "text-blue-700",
-                      tech.name === "AWS" && "text-orange-600",
-                      tech.name === "PHP" && "text-purple-600",
-                      tech.name === "MySQL" && "text-blue-600",
-                      tech.name === "HTML" && "text-orange-500",
-                      tech.name === "CSS" && "text-blue-500",
-                      tech.name === "Django" && "text-green-800",
-                      tech.name === "Angular" && "text-red-600",
-                      tech.name === "Electron.js" && "text-cyan-500",
-                      tech.name === "Express.js" && "text-gray-700",
-                      tech.name === "Docker" && "text-blue-500",
-                      "group-hover:text-emerald-700 transition-colors duration-300"
-                    )}
-                    style={{
-                      textShadow: "1px 1px 2px rgba(0,0,0,0.1)"
-                    }}>
-                    {tech.name}
+          {/* Tech Stack Grid - iOS Compatible Design */}
+          <div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 md:gap-6">
+              {filteredTech.map((tech) => (
+                <div
+                  key={tech.name}
+                  className="group flex flex-col items-center p-3 md:p-4 bg-white rounded-xl border border-gray-200 hover:border-emerald-300 transition-all duration-300 hover:shadow-lg shadow-sm"
+                  style={{
+                    WebkitTransform: "translateZ(0)", // Force hardware acceleration for iOS
+                    transform: "translateZ(0)",
+                    WebkitBackfaceVisibility: "hidden",
+                    backfaceVisibility: "hidden",
+                  }}>
+                  {/* Tech Icon */}
+                  <div className="text-4xl mb-2 md:mb-3">
+                    <tech.icon
+                      className={cn("w-8 h-8 md:w-10 md:h-10", tech.color)}
+                    />
                   </div>
-                </div>
 
-                {/* Simple Category Badge */}
-                <span className="relative z-20 px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full group-hover:bg-emerald-200 transition-colors duration-300">
-                  {tech.category}
-                </span>
+                  {/* Tech Name - Clean & Prominent */}
+                  <div className="text-center mb-2 md:mb-3">
+                    <div
+                      className={cn(
+                        "text-sm md:text-lg font-bold text-center tracking-wide leading-tight",
+                        tech.name === "React" && "text-cyan-600",
+                        tech.name === "Next.js" && "text-gray-800",
+                        tech.name === "React Native" && "text-blue-600",
+                        tech.name === "Vue.js" && "text-teal-600",
+                        tech.name === "TypeScript" && "text-blue-700",
+                        tech.name === "JavaScript" && "text-yellow-600",
+                        tech.name === "Tailwind CSS" && "text-teal-600",
+                        tech.name === "WordPress" && "text-blue-600",
+                        tech.name === "Node.js" && "text-teal-700",
+                        tech.name === "MongoDB" && "text-teal-700",
+                        tech.name === "PostgreSQL" && "text-blue-700",
+                        tech.name === "AWS" && "text-orange-600",
+                        tech.name === "PHP" && "text-purple-600",
+                        tech.name === "MySQL" && "text-blue-600",
+                        tech.name === "HTML" && "text-orange-500",
+                        tech.name === "CSS" && "text-blue-500",
+                        tech.name === "Django" && "text-teal-800",
+                        tech.name === "Angular" && "text-red-600",
+                        tech.name === "Electron.js" && "text-cyan-500",
+                        tech.name === "Express.js" && "text-gray-700",
+                        tech.name === "Docker" && "text-blue-500"
+                      )}>
+                      {tech.name}
+                    </div>
+                  </div>
+
+                  {/* Simple Category Badge */}
+                  <span className="px-2 md:px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full">
+                    {tech.category}
+                  </span>
+                </div>
+              ))}
+            </div>
+              <div className=" mt-8 md:w-md  mx-auto">
+                <Button onClick={() => setNoOfStackItems(noOfStackItems === techStack.length ? 7 : techStack.length)}>{noOfStackItems === techStack.length ? "See Less" : "See All"}</Button>
               </div>
-            ))}
           </div>
         </div>
       </section>

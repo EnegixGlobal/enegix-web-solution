@@ -13,6 +13,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import { cn } from "@/lib/utils";
+import Button from "@/components/Button";
+import Container from "@/components/Container";
 
 // Portfolio project data
 const portfolioProjects = [
@@ -120,10 +122,10 @@ const ProjectCard = ({ project, index }: { project: typeof portfolioProjects[0];
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative overflow-hidden rounded-xl bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300"
+      className="group relative overflow-hidden rounded-xl bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
     >
       {/* Project Image */}
-      <div className="relative h-80 w-full overflow-hidden rounded-t-xl">
+      <div className="relative h-64 w-full overflow-hidden rounded-t-xl">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 z-10"></div>
         <Image
           src={project.image}
@@ -133,17 +135,34 @@ const ProjectCard = ({ project, index }: { project: typeof portfolioProjects[0];
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFeAJ7mFT6VQAAAABJRU5ErkJggg=="
         />
+        
+        {/* Featured Badge */}
+        {project.featured && (
+          <div className="absolute top-4 left-4 z-20">
+            <span className="px-3 py-1 text-xs font-medium text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
+              Featured
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Project Info */}
       <div className="p-6">
-        <span className="inline-block px-3 py-1 mb-3 text-xs font-medium text-emerald-700 bg-emerald-100 rounded-full">
-          {project.category}
-        </span>
-        <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 tracking-tight">{project.title}</h3>
-        <p className="text-gray-600 mb-4 text-sm line-clamp-3">{project.description}</p>
+        <div className="flex items-center justify-between mb-3">
+          <span className="inline-block px-3 py-1 text-xs font-medium text-blue-700 bg-blue-100 rounded-full">
+            {project.category}
+          </span>
+        </div>
         
-        <div className="flex gap-2 flex-wrap mb-4">
+        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+          {project.title}
+        </h3>
+        
+        <p className="text-gray-600 mb-4 text-sm line-clamp-3 leading-relaxed">
+          {project.description}
+        </p>
+        
+        <div className="flex gap-2 flex-wrap mb-6">
           {project.tags.slice(0, 3).map((tag, idx) => (
             <span key={idx} className="px-2 py-1 text-xs bg-gray-100 rounded-md text-gray-700">
               {tag}
@@ -157,12 +176,17 @@ const ProjectCard = ({ project, index }: { project: typeof portfolioProjects[0];
         </div>
         
         <Link href={`/portfolio/${project.id}`}>
-          <span className="text-emerald-600 font-medium text-sm hover:text-emerald-700 transition-colors flex items-center gap-1">
-            View Project 
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m9 18 6-6-6-6"/>
+          <Button variant="outline" size="sm" className="w-full group/btn">
+            View Project
+            <svg 
+              className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </span>
+          </Button>
         </Link>
       </div>
     </motion.div>
@@ -176,42 +200,73 @@ const FeaturedProjectCard = ({ project }: { project: typeof portfolioProjects[0]
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
-      className="relative overflow-hidden rounded-xl bg-white border border-gray-200 shadow-lg p-1"
+      className="relative overflow-hidden rounded-xl bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
     >
-      <div className="flex flex-col md:flex-row h-full">
+      <div className="flex flex-col lg:flex-row h-full">
         {/* Project Image */}
-        <div className="relative h-80 md:h-auto md:w-1/2 overflow-hidden rounded-lg">
+        <div className="relative h-80 lg:h-auto lg:w-1/2 overflow-hidden rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none">
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover"
+            className="object-cover hover:scale-105 transition-transform duration-500"
             placeholder="blur"
             blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFeAJ7mFT6VQAAAABJRU5ErkJggg=="
           />
+          
+          {/* Featured Badge */}
+          <div className="absolute top-4 left-4 z-20">
+            <span className="px-3 py-1 text-xs font-medium text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-full">
+              Featured Project
+            </span>
+          </div>
         </div>
         
         {/* Project Info */}
-        <div className="p-6 md:w-1/2 flex flex-col justify-center">
-          <span className="inline-block px-3 py-1 mb-3 text-xs font-medium text-emerald-700 bg-emerald-100 rounded-full">
+        <div className="p-8 lg:w-1/2 flex flex-col justify-center">
+          <span className="inline-block px-3 py-1 mb-4 text-sm font-medium text-blue-700 bg-blue-100 rounded-full w-fit">
             {project.category}
           </span>
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 tracking-tight">{project.title}</h3>
-          <p className="text-gray-600 mb-6">{project.description}</p>
           
-          <div className="flex gap-2 flex-wrap mb-6">
+          <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+            {project.title}
+          </h3>
+          
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            {project.description}
+          </p>
+          
+          <div className="flex gap-2 flex-wrap mb-8">
             {project.tags.map((tag, idx) => (
-              <span key={idx} className="px-2 py-1 text-xs bg-gray-100 rounded-md text-gray-700">
+              <span key={idx} className="px-3 py-1 text-sm bg-gray-100 rounded-md text-gray-700">
                 {tag}
               </span>
             ))}
           </div>
           
-          <Link href={`/portfolio/${project.id}`}>
-            <RainbowButton variant="outline" size="default">
-              View Case Study
-            </RainbowButton>
-          </Link>
+          <div className="flex gap-4">
+            <Link href={`/portfolio/${project.id}`}>
+              <Button size="lg" className="group">
+                View Case Study
+                <svg 
+                  className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Button>
+            </Link>
+            
+            {project.link && (
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="lg">
+                  Live Demo
+                </Button>
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>
@@ -276,77 +331,141 @@ export default function PortfolioPage() {
 
       <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
+        <section className="relative pt-32 pb-20 px-4 bg-gradient-to-br from-blue-50 via-purple-50 to-white">
           {/* Animated background effects */}
-          <div className="absolute top-0 left-0 right-0 bottom-0 z-0 pointer-events-none overflow-hidden">
-            <div className="absolute top-20 flex h-[600px] w-full flex-col items-center justify-center overflow-hidden">
-              <Meteors number={30} />
-            </div>
-            <motion.div
-              initial={{ opacity: 0.3 }}
-              animate={{ opacity: [0.3, 0.6, 0.3] }}
-              transition={{
-                repeat: Infinity,
-                duration: 10,
-                ease: "easeInOut",
-              }}
-              className="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-emerald-500/10 to-teal-500/10 blur-3xl pointer-events-none"
-            />
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <Meteors number={20} />
           </div>
           
-          <div className="container mx-auto relative z-10">
+          <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
-                Our <AuroraText>Portfolio</AuroraText>
+              {/* Breadcrumb Navigation */}
+              <nav aria-label="Breadcrumb" className="mb-8">
+                <ol className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                  <li>
+                    <Link href="/" className="hover:text-blue-600 transition-colors">
+                      Home
+                    </Link>
+                  </li>
+                  <li className="text-gray-400">/</li>
+                  <li className="text-blue-600 font-medium" aria-current="page">
+                    Portfolio
+                  </li>
+                </ol>
+              </nav>
+
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
+                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Portfolio</span>
               </h1>
-              <p className="text-gray-300 text-lg md:text-xl mb-12 max-w-3xl mx-auto font-space-grotesk">
-                Explore our collection of projects that showcase our expertise in web development, 
+              
+              <p className="text-gray-600 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed">
+                Explore our collection of successful projects that showcase our expertise in web development, 
                 branding, e-commerce, and digital marketing solutions.
               </p>
+
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link href="/contact">
+                  <Button size="lg">
+                    Start Your Project
+                  </Button>
+                </Link>
+                <Link href="#featured-projects">
+                  <Button variant="outline" size="lg">
+                    View Featured Work ↓
+                  </Button>
+                </Link>
+              </div>
             </motion.div>
-          </div>
+          </Container>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-16 bg-white">
+          <Container>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {[
+                { value: "50+", label: "Projects Completed" },
+                { value: "40+", label: "Happy Clients" },
+                { value: "4", label: "Service Categories" },
+                { value: "99%", label: "Success Rate" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="text-center bg-gray-50 p-6 rounded-xl hover:shadow-md transition-all duration-300 hover:scale-105">
+                  <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-gray-600 text-sm">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </Container>
         </section>
 
         {/* Featured Projects Section */}
-        <section className="py-10 px-4 bg-white">
-          <div className="container mx-auto">
-            <motion.h2
+        <section id="featured-projects" className="py-20 bg-gradient-to-br from-gray-50 to-white">
+          <Container>
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-3xl font-bold mb-12 text-center text-gray-900"
+              className="text-center mb-16"
             >
-              Featured <AuroraText>Projects</AuroraText>
-            </motion.h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+                Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Projects</span>
+              </h2>
+              <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                Take a closer look at some of our most successful projects that have delivered exceptional results for our clients.
+              </p>
+            </motion.div>
             
-            <div className="space-y-10">
+            <div className="space-y-12">
               {featuredProjects.map((project, index) => (
                 <FeaturedProjectCard key={project.id} project={project} />
               ))}
             </div>
-          </div>
+          </Container>
         </section>
 
         {/* Filter and Search Section */}
-        <section className="py-16 px-4 bg-white">
-          <div className="container mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+        <section className="py-20 bg-white">
+          <Container>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+                All <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Projects</span>
+              </h2>
+              <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                Browse through our complete portfolio and filter by category or search for specific projects.
+              </p>
+            </motion.div>
+
+            <div className="flex flex-col lg:flex-row justify-between items-center mb-12 gap-6">
               {/* Category Filters */}
-              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
                 {categories.map((category, index) => (
                   <button
                     key={category}
                     onClick={() => setActiveCategory(category)}
                     className={cn(
-                      "px-4 py-2 rounded-full text-sm font-medium transition-all",
+                      "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300",
                       activeCategory === category
-                        ? "bg-gradient-to-r from-emerald-500 to-teal-400 text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
                     )}
                   >
                     {category}
@@ -355,7 +474,7 @@ export default function PortfolioPage() {
               </div>
               
               {/* Search Bar */}
-              <div className="relative w-full md:w-64">
+              <div className="relative w-full lg:w-80">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
@@ -375,13 +494,13 @@ export default function PortfolioPage() {
                   placeholder="Search projects..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-full py-2 pl-10 pr-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-transparent"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-full py-3 pl-12 pr-4 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all duration-300"
                 />
               </div>
             </div>
             
             {/* Project Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}
@@ -394,69 +513,77 @@ export default function PortfolioPage() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
+                  className="max-w-md mx-auto"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-16 w-16 mx-auto text-gray-400 mb-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-12 w-12 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">No projects found</h3>
-                  <p className="text-gray-600 mb-6">
-                    We couldn't find any projects matching your current filters.
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    We couldn't find any projects matching your current filters. Try adjusting your search criteria.
                   </p>
-                  <button
+                  <Button
                     onClick={() => {
                       setActiveCategory("All");
                       setSearchQuery("");
                     }}
-                    className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full text-white font-medium hover:opacity-90 transition-opacity"
+                    variant="outline"
                   >
                     Reset Filters
-                  </button>
+                  </Button>
                 </motion.div>
               </div>
             )}
-          </div>
+          </Container>
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 relative bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
-          <div className="container mx-auto relative z-10">
+        <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-white">
+          <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-12 border border-white/10 text-center max-w-4xl mx-auto"
+              className="bg-white rounded-2xl p-12 border border-gray-200 shadow-lg text-center max-w-4xl mx-auto"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Let's Create Something Amazing Together</h2>
-              <p className="text-gray-300 mb-8 text-lg max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+                Let's Create Something 
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> Amazing Together</span>
+              </h2>
+              
+              <p className="text-gray-600 mb-8 text-lg max-w-2xl mx-auto leading-relaxed">
                 Ready to bring your vision to life? We're here to help you create a project that exceeds your expectations
                 and delivers real results for your business.
               </p>
+              
               <div className="flex flex-wrap justify-center gap-4">
-                <Link href="/#contact">
-                  <RainbowButton size="lg">
+                <Link href="/contact">
+                  <Button size="lg">
                     Start a Project
-                  </RainbowButton>
+                  </Button>
                 </Link>
                 <Link href="/services">
-                  <RainbowButton variant="outline" size="lg">
+                  <Button variant="outline" size="lg">
                     Explore Services
-                  </RainbowButton>
+                  </Button>
                 </Link>
               </div>
             </motion.div>
-          </div>
+          </Container>
         </section>
       </main>
 

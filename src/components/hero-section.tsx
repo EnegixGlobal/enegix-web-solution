@@ -24,7 +24,7 @@ const HeroSection = () => {
       <section
         ref={heroRef}
         id="home-section"
-        className=" mt-30 mb-20  w-full flex items-center justify-center overflow-hidden">
+        className=" mt-30 w-full flex items-center justify-center overflow-hidden">
         <div className=" relative z-10 flex flex-col lg:flex-row items-center ">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -32,7 +32,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="w-full text-center lg:text-left mb-12 lg:mb-0">
             <h1 className="text-balance text-3xl font-semibold mb-10 leading-none tracking-tighter md:text-5xl sm:text-5xl text-white">
-              <span className="text-green-600">
+              <span className="text-teal-600">
                 Top Web Design & Marketing{" "}
                 <span className="block">Company in India</span>
               </span>
@@ -42,14 +42,14 @@ const HeroSection = () => {
               and even bigger results. At Enegix Web Solutions, we believe that
               trust isn’t claimed — it’s earned through delivery.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+            <div className="flex my-6 sm:flex-row gap-6 justify-center lg:justify-start">
               <Link
                 href="https://wa.me/919608263050?text=Hi%20I%20am%20interested%20in%20your%20services.%20Can%20you%20share%20more%20details%20about%20your%20offerings?"
                 target="_blank">
                 <Button className="py-2">Connect with Us</Button>
               </Link>
               <Link href="/portfolio">
-                <Button className="py-2 text-green-600! bg-white! hover:bg-green-500! hover:text-white!">
+                <Button className="py-2 text-teal-600! bg-white! hover:bg-teal-600! hover:text-white!">
                   View Our Work
                 </Button>
               </Link>
@@ -65,7 +65,7 @@ const HeroSection = () => {
               alt="Hero Image"
               height={600}
               width={500}
-              className=" h-[500px] rounded-tl-[100px] rounded-br-[100px]  object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
+              className=" h-[500px] md:rounded-tl-[100px] rounded-tl-[50px] md:rounded-br-[100px] rounded-br-[50px] object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
             />
             <Image
               src="/pattern.png"

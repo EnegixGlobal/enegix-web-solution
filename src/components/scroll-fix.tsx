@@ -7,16 +7,34 @@ export default function ScrollFix() {
   useEffect(() => {
     // Fix for scroll issues on initial load and during navigation
     const fixScrollIssues = () => {
+      // iOS Safari specific fixes
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      
       // Allow scrolling
       document.body.style.overflow = 'auto';
       document.body.style.height = 'auto';
+      document.body.style.position = 'relative'; // Ensure position is not fixed
       document.documentElement.style.overflowY = 'auto';
       document.documentElement.style.overflowX = 'hidden';
       document.documentElement.style.overscrollBehaviorY = 'none';
       
+      // iOS specific fixes
+      if (isIOS || isSafari) {
+        (document.body.style as any).webkitOverflowScrolling = 'touch';
+        document.body.style.transform = 'translateZ(0)'; // Force hardware acceleration
+        (document.documentElement.style as any).webkitOverflowScrolling = 'touch';
+        
+        // Remove any height constraints that might interfere
+        document.body.style.minHeight = '100vh';
+        document.body.style.maxHeight = 'none';
+        document.documentElement.style.height = 'auto';
+      }
+      
       // Remove any pointer-events-none from body or main elements that might block scrolling
       document.body.style.pointerEvents = 'auto';
-        // Reset any CSS properties that might interfere with scrolling
+      
+      // Reset any CSS properties that might interfere with scrolling
       const mainElements = [
         document.getElementById('__next'),
         document.querySelector('main'),
@@ -29,6 +47,13 @@ export default function ScrollFix() {
           htmlEl.style.transform = 'none';
           htmlEl.style.height = 'auto';
           htmlEl.style.overflowY = 'visible';
+          htmlEl.style.position = 'relative'; // Ensure not fixed positioned
+          
+          // iOS specific fixes for main elements
+          if (isIOS || isSafari) {
+            (htmlEl.style as any).webkitOverflowScrolling = 'touch';
+            htmlEl.style.willChange = 'auto'; // Reset will-change
+          }
         }
       });
       

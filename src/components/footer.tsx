@@ -93,7 +93,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-br from-emerald-900 via-teal-900 to-green-900 overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-emerald-900 via-teal-900 to-teal-900 overflow-hidden">
         <Container>
         {/* Subtle top gradient for smooth transition */}
         <div className="absolute inset-0">

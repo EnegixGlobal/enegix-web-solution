@@ -11,6 +11,21 @@ import ScrollFix from "@/components/scroll-fix";
 import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
+import { 
+  FaPalette, 
+  FaCode, 
+  FaMobile, 
+  FaCog, 
+  FaRocket, 
+  FaMapMarkerAlt, 
+  FaAd, 
+  FaShare, 
+  FaPen, 
+  FaEdit, 
+  FaTags, 
+  FaBullseye 
+} from "react-icons/fa";
+import Button from "@/components/Button";
 
 // SEO Metadata for Services page
 const seoData = {
@@ -39,194 +54,200 @@ const seoData = {
   },
 };
 
-// Services data array
+// Services data array based on navbar
 const services = [
   {
-    id: "web-development",
-    title: "Web Development",
-    shortDescription:
-      "Modern, responsive websites and web applications built with cutting-edge technologies.",
-    description:
-      "Custom web solutions that drive business growth with responsive design, fast performance, and seamless user experience.",
+    id: "ui-ux-designing",
+    title: "UI/UX Designing",
+    shortDescription: "Design experiences that are both stunning and user-focused.",
+    description: "User-centered design solutions that combine aesthetics with functionality to create memorable digital experiences.",
+    features: [
+      "User Experience Research",
+      "Interactive Prototyping", 
+      "Visual Design Systems",
+      "Usability Testing"
+    ],
+    image: "/web-development.jpg",
+    icon: FaPalette,
+    color: "from-purple-500 to-pink-600",
+    href: "/services/ui-ux-designing"
+  },
+  {
+    id: "website-development", 
+    title: "Website Development",
+    shortDescription: "Custom-coded websites that are fast, scalable, and SEO-ready.",
+    description: "Modern, responsive websites built with cutting-edge technologies for optimal performance and user experience.",
     features: [
       "Custom Web Applications",
       "Responsive Design",
-      "E-commerce Platforms",
-      "CMS Development",
+      "Performance Optimization", 
+      "SEO-Ready Code"
     ],
     image: "/web-development.jpg",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-8 h-8">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
-        />
-      </svg>
-    ),
-    color: "from-teal-500 to-emerald-600",
+    icon: FaCode,
+    color: "from-blue-500 to-cyan-600",
+    href: "/services/website-development"
   },
   {
-    id: "ecommerce-solutions",
-    title: "E-commerce Solutions",
-    shortDescription:
-      "Complete online store development with payment integration and inventory management.",
-    description:
-      "Full-featured e-commerce platforms that convert visitors into customers with secure payments and smooth checkout.",
+    id: "mobile-application",
+    title: "Mobile Application",
+    shortDescription: "Build powerful Android & iOS apps for your business needs.",
+    description: "Native and cross-platform mobile applications that deliver exceptional user experiences on all devices.",
     features: [
-      "Online Store Development",
-      "Payment Integration",
-      "Inventory Management",
-      "Order Tracking",
+      "iOS & Android Development",
+      "Cross-Platform Solutions",
+      "App Store Optimization",
+      "Push Notifications"
     ],
-    image: "/ecommerce-solutions.jpg",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-8 h-8">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-        />
-      </svg>
-    ),
-    color: "from-emerald-500 to-teal-600",
+    image: "/web-development.jpg",
+    icon: FaMobile,
+    color: "from-green-500 to-emerald-600",
+    href: "/services/mobile-application"
   },
   {
-    id: "digital-marketing",
-    title: "Digital Marketing",
-    shortDescription:
-      "Comprehensive digital marketing strategies to grow your online presence and reach.",
-    description:
-      "Data-driven marketing campaigns across multiple channels to maximize your brand's online visibility and engagement.",
+    id: "crm-mlm",
+    title: "CRM/MLM Systems",
+    shortDescription: "Custom CRM & MLM platforms to automate and scale your business.",
+    description: "Comprehensive business management solutions with advanced automation and analytics capabilities.",
     features: [
-      "Social Media Marketing",
-      "Content Strategy",
-      "Email Marketing",
-      "Brand Development",
+      "Customer Relationship Management",
+      "Multi-Level Marketing Tools",
+      "Sales Automation",
+      "Analytics Dashboard"
     ],
-    image: "/digital-marketing.jpg",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-8 h-8">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 0 8.835-2.535m0 0A23.74 23.74 0 0 0 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46"
-        />
-      </svg>
-    ),
-    color: "from-teal-600 to-emerald-500",
+    image: "/web-development.jpg",
+    icon: FaCog,
+    color: "from-orange-500 to-red-600",
+    href: "/services/crm-mlm"
   },
   {
-    id: "ppc-advertising",
-    title: "PPC Advertising",
-    shortDescription:
-      "Performance-driven paid advertising campaigns for immediate traffic and lead generation.",
-    description:
-      "Strategic PPC campaigns across Google Ads, Facebook, and LinkedIn that maximize ROI and drive qualified leads.",
-    features: [
-      "Google Ads Management",
-      "Social Media Ads",
-      "Landing Page Optimization",
-      "Conversion Tracking",
-    ],
-    image: "/ppc-advertising.jpg",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-8 h-8">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"
-        />
-      </svg>
-    ),
-    color: "from-emerald-600 to-teal-500",
-  },
-  {
-    id: "seo-optimization",
-    title: "SEO Optimization",
-    shortDescription:
-      "Technical SEO and content strategies for better search engine rankings and visibility.",
-    description:
-      "Comprehensive SEO strategies that improve your website's visibility and drive organic traffic from search engines.",
+    id: "search-engine-optimization",
+    title: "Search Engine Optimization",
+    shortDescription: "Rank higher on Google with our proven SEO strategies.",
+    description: "Data-driven SEO strategies that improve your search rankings and drive organic traffic to your website.",
     features: [
       "Technical SEO Audit",
-      "Keyword Research",
+      "Keyword Research & Strategy",
       "Content Optimization",
-      "Local SEO",
+      "Local SEO"
     ],
     image: "/seo-optimization.jpg",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-8 h-8">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-        />
-      </svg>
-    ),
-    color: "from-teal-500 to-emerald-600",
+    icon: FaRocket,
+    color: "from-teal-500 to-blue-600",
+    href: "/services/search-engine-optimization"
+  },
+  {
+    id: "google-my-business",
+    title: "Google My Business",
+    shortDescription: "Get discovered locally with optimized GMB listings.",
+    description: "Local SEO optimization that helps your business get found by nearby customers searching for your services.",
+    features: [
+      "GMB Profile Optimization",
+      "Local Citation Building",
+      "Review Management",
+      "Local SEO Strategy"
+    ],
+    image: "/web-development.jpg",
+    icon: FaMapMarkerAlt,
+    color: "from-red-500 to-pink-600",
+    href: "/services/google-my-business"
+  },
+  {
+    id: "paid-advertising",
+    title: "Paid Advertising",
+    shortDescription: "Maximize ROI with strategic Google & Meta ad campaigns.",
+    description: "Performance-driven advertising campaigns that deliver measurable results and qualified leads for your business.",
+    features: [
+      "Google Ads Management",
+      "Social Media Advertising",
+      "Landing Page Optimization",
+      "Conversion Tracking"
+    ],
+    image: "/ppc-advertising.jpg",
+    icon: FaAd,
+    color: "from-yellow-500 to-orange-600",
+    href: "/services/paid-advertising"
+  },
+  {
+    id: "social-media-marketing",
+    title: "Social Media Marketing",
+    shortDescription: "Grow your brand with targeted social media strategies.",
+    description: "Strategic social media campaigns that build brand awareness, engage audiences, and drive conversions.",
+    features: [
+      "Social Media Strategy",
+      "Content Creation",
+      "Community Management",
+      "Influencer Marketing"
+    ],
+    image: "/digital-marketing.jpg",
+    icon: FaShare,
+    color: "from-indigo-500 to-purple-600",
+    href: "/services/social-media-marketing"
+  },
+  {
+    id: "blog-and-articles",
+    title: "Blog & Articles",
+    shortDescription: "Boost engagement and SEO with relevant, fresh blog content.",
+    description: "High-quality content creation that establishes your expertise, improves SEO, and engages your target audience.",
+    features: [
+      "SEO Content Writing",
+      "Blog Strategy",
+      "Content Calendar",
+      "Performance Analytics"
+    ],
+    image: "/web-development.jpg",
+    icon: FaPen,
+    color: "from-emerald-500 to-green-600",
+    href: "/services/blog-and-articles"
+  },
+  {
+    id: "content-writing",
+    title: "Content Writing",
+    shortDescription: "Clear, persuasive content that speaks your brand's voice.",
+    description: "Professional copywriting services that convert readers into customers with compelling, brand-aligned content.",
+    features: [
+      "Website Copywriting",
+      "Marketing Content",
+      "Brand Voice Development",
+      "Content Strategy"
+    ],
+    image: "/web-development.jpg",
+    icon: FaEdit,
+    color: "from-cyan-500 to-blue-600",
+    href: "/services/content-writing"
   },
   {
     id: "logo-design",
     title: "Logo Design",
-    shortDescription:
-      "Professional brand identity and logo design services for memorable brand recognition.",
-    description:
-      "Creative logo design and brand identity solutions that capture your brand's essence and leave lasting impressions.",
+    shortDescription: "Create memorable logos and a strong visual identity.",
+    description: "Professional brand identity design that captures your company's essence and creates lasting impressions.",
     features: [
       "Custom Logo Design",
-      "Brand Identity",
-      "Business Cards",
-      "Brand Guidelines",
+      "Brand Identity Systems",
+      "Business Card Design",
+      "Brand Guidelines"
     ],
     image: "/logo-design.jpg",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-8 h-8">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"
-        />
-      </svg>
-    ),
-    color: "from-emerald-500 to-teal-600",
+    icon: FaTags,
+    color: "from-pink-500 to-red-600",
+    href: "/services/logo-design"
   },
+  {
+    id: "landing-page-design",
+    title: "Landing Page Design",
+    shortDescription: "High-converting landing pages built for lead generation.",
+    description: "Conversion-optimized landing pages designed to turn visitors into leads and customers effectively.",
+    features: [
+      "Conversion Optimization",
+      "A/B Testing",
+      "Lead Generation Forms",
+      "Mobile Optimization"
+    ],
+    image: "/web-development.jpg",
+    icon: FaBullseye,
+    color: "from-violet-500 to-purple-600",
+    href: "/services/landing-page-design"
+  }
 ];
 
 // Service Card Component
@@ -237,57 +258,60 @@ const ServiceCard = ({
   service: (typeof services)[0];
   index: number;
 }) => {
+  const IconComponent = service.icon;
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative bg-white rounded-2xl border border-teal-100 hover:border-teal-300 transition-all duration-500 hover:shadow-xl hover:shadow-teal-100/50 overflow-hidden">
-      {/* Service Image */}
-      <div className="relative h-48 bg-gradient-to-br from-teal-50 to-emerald-50 overflow-hidden">
+      className="group relative bg-white rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-500 hover:shadow-xl hover:shadow-gray-100/50 overflow-hidden">
+      
+      {/* Service Icon Header */}
+      <div className="relative h-32 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
           <div
-            className={`w-16 h-16 rounded-full bg-gradient-to-r ${service.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-            {service.icon}
+            className={`w-12 h-12 rounded-full bg-gradient-to-r ${service.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+            <IconComponent className="w-6 h-6" />
           </div>
         </div>
         {/* Decorative elements */}
-        <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/30 backdrop-blur-sm"></div>
-        <div className="absolute bottom-4 left-4 w-6 h-6 rounded-full bg-white/20 backdrop-blur-sm"></div>
+        <div className="absolute top-2 right-2 w-4 h-4 rounded-full bg-white/30 backdrop-blur-sm"></div>
+        <div className="absolute bottom-2 left-2 w-3 h-3 rounded-full bg-white/20 backdrop-blur-sm"></div>
       </div>
 
       {/* Content */}
-      <div className="p-6 space-y-4">
+      <div className="p-4 space-y-3">
         <div>
-          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors duration-300">
+          <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300 leading-tight">
             {service.title}
           </h3>
-          <p className="text-gray-600 text-sm leading-relaxed">
+          <p className="text-gray-600 text-xs leading-relaxed mb-3">
             {service.shortDescription}
           </p>
         </div>
 
         {/* Features */}
-        <div className="space-y-2">
+        <div className="space-y-1 mb-4">
           {service.features.slice(0, 3).map((feature, i) => (
             <div
               key={i}
-              className="flex items-center gap-2 text-sm text-gray-600">
-              <div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div>
-              <span>{feature}</span>
+              className="flex items-center gap-2 text-xs text-gray-600">
+              <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.color}`}></div>
+              <span className="truncate">{feature}</span>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="pt-4">
+        {/* Read More Button */}
+        <div className="pt-3 border-t border-gray-100">
           <Link
-            href={`/services/${service.id}`}
-            className="inline-flex items-center gap-2 text-teal-600 font-medium text-sm hover:text-teal-800 transition-colors group/link">
-            Learn More
+            href={service.href}
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r ${service.color} text-white font-medium text-xs hover:shadow-lg hover:scale-105 transition-all duration-300 group/btn w-full justify-center`}>
+            Read More
             <svg
-              className="w-4 h-4 group-hover/link:translate-x-1 transition-transform"
+              className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor">
@@ -303,7 +327,7 @@ const ServiceCard = ({
       </div>
 
       {/* Hover effect overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-teal-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
     </motion.div>
   );
 };
@@ -380,25 +404,24 @@ export default function ServicesPage() {
 
       <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
         <header
-          className="relative pt-24 pb-16 px-6 lg:px-8 bg-gradient-to-br from-teal-50 via-emerald-50 to-white"
+          className="relative pt-24 pb-16 px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-purple-50 to-white"
           role="banner">
           {/* Background decorative elements */}
-
-          <Meteors number={10} />
+          <Meteors number={15} />
 
           <div className="max-w-7xl mx-auto relative z-10">
             {/* Breadcrumb Navigation */}
             <nav aria-label="Breadcrumb" className="mb-8 mt-5">
-              <ol className="flex items-center space-x-2 text-sm text-teal-800/80">
+              <ol className="flex items-center space-x-2 text-sm text-gray-600">
                 <li>
                   <Link
                     href="/"
-                    className="hover:text-teal-600 transition-colors">
+                    className="hover:text-blue-600 transition-colors">
                     Home
                   </Link>
                 </li>
-                <li className="text-teal-600/50">/</li>
-                <li className="text-teal-700 font-medium" aria-current="page">
+                <li className="text-gray-400">/</li>
+                <li className="text-blue-600 font-medium" aria-current="page">
                   Services
                 </li>
               </ol>
@@ -411,8 +434,9 @@ export default function ServicesPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="space-y-6">
+                
                 {/* Service Icon */}
-                <div className="inline-flex p-4 rounded-3xl bg-white/60 backdrop-blur-sm border border-teal-200/50 text-teal-600 shadow-lg">
+                <div className="inline-flex p-4 rounded-3xl bg-white/60 backdrop-blur-sm border border-blue-200/50 text-blue-600 shadow-lg">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -431,29 +455,27 @@ export default function ServicesPage() {
                 {/* Title */}
                 <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-gray-900">
                   Our{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-emerald-600">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                     Services
                   </span>
                 </h1>
 
                 {/* Description */}
                 <p className="text-gray-600 text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto">
-                  Comprehensive digital solutions designed to accelerate your
-                  business growth. From web development to digital marketing, we
-                  deliver results that matter.
+                  Comprehensive digital solutions designed to transform your business. From stunning designs to powerful development, we deliver excellence in every project.
                 </p>
 
                 {/* CTA Buttons */}
                 <div className="pt-6 flex flex-wrap justify-center gap-4">
-                  <Link href="/#contact">
-                    <RainbowButton size="lg" className="text-sm px-8 py-3">
-                      Get Started
-                    </RainbowButton>
+                  <Link href="/contact">
+                    <Button size="lg" className="text-sm px-8 py-3">
+                      Get Started Today
+                    </Button>
                   </Link>
                   <Link href="#our-services">
-                    <button className="px-6 py-3 text-sm font-medium text-teal-600 hover:text-teal-800 transition-colors bg-white/60 backdrop-blur-sm rounded-lg border border-white/50 hover:bg-white/80 shadow-lg">
+                    <Button className="text-sm px-8 py-3 bg-white hover:bg-blue-500! text-blue-500! hover:text-white!">
                       Explore Services ↓
-                    </button>
+                    </Button>
                   </Link>
                 </div>
               </motion.div>
@@ -461,35 +483,9 @@ export default function ServicesPage() {
           </div>
         </header>
 
-        {/* Stats Section */}
-        <section className="py-16 bg-white/50 backdrop-blur-sm">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                { value: "100+", label: "Projects Completed" },
-                { value: "50+", label: "Happy Clients" },
-                { value: "6", label: "Service Categories" },
-                { value: "24/7", label: "Support Available" },
-              ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  className="text-center bg-white p-6 rounded-xl border border-teal-100 shadow-sm hover:shadow-md transition-shadow duration-300">
-                  <div className="text-3xl font-bold text-teal-600 mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-600 text-sm">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Services Grid Section */}
-        <section id="our-services" className="py-20 px-4 relative">
+        <section id="our-services" className="py-20 md:px-4 px-2 relative">
           <div className="container mx-auto max-w-7xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -499,18 +495,17 @@ export default function ServicesPage() {
               className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
                 What We{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-emerald-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                   Offer
                 </span>
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
-                From concept to launch, we provide end-to-end digital solutions
-                that help your business thrive in the digital landscape.
+                From innovative design to powerful development, we provide comprehensive digital solutions that transform your business and drive growth.
               </p>
             </motion.div>
 
             {/* Services Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1 md:gap-6">
               {services.map((service, index) => (
                 <ServiceCard key={service.id} service={service} index={index} />
               ))}
@@ -519,7 +514,7 @@ export default function ServicesPage() {
         </section>
 
         {/* Why Choose Us Section */}
-        <section className="py-20 px-4 bg-gradient-to-br from-teal-50 via-emerald-50 to-white">
+        <section className="py-20 px-4 bg-gradient-to-br from-blue-50 via-purple-50 to-white">
           <div className="container mx-auto max-w-6xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -529,13 +524,12 @@ export default function ServicesPage() {
               className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
                 Why Choose{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-emerald-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                   Enegix
                 </span>
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
-                We combine technical expertise with creative vision to deliver
-                solutions that exceed expectations.
+                We combine technical expertise with creative vision to deliver solutions that exceed expectations and drive real business results.
               </p>
             </motion.div>
 
@@ -673,8 +667,8 @@ export default function ServicesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white rounded-xl p-6 border border-teal-100 hover:border-teal-300 transition-all duration-300 hover:shadow-lg">
-                  <div className="w-12 h-12 rounded-lg bg-teal-100 flex items-center justify-center text-teal-600 mb-4">
+                  className="bg-white rounded-xl p-6 border border-gray-100 hover:border-blue-300 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-100 to-purple-100 flex items-center justify-center text-blue-600 mb-4">
                     {feature.icon}
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">
@@ -689,42 +683,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 px-4 relative bg-gradient-to-r from-teal-600 to-emerald-700 text-white">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')]"></div>
-          </div>
-          <div className="container mx-auto relative z-10 max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-12 border border-white/20 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Ready to Get Started?
-              </h2>
-              <p className="text-teal-100 mb-8 text-lg max-w-2xl mx-auto">
-                Let's discuss your project and create a digital solution that
-                drives real results for your business.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link href="/#contact">
-                  <RainbowButton
-                    size="lg"
-                    className="bg-white text-teal-600 hover:bg-gray-100">
-                    Start Your Project
-                  </RainbowButton>
-                </Link>
-                <Link href="/portfolio">
-                  <button className="px-6 py-3 text-sm font-medium text-white hover:text-teal-100 transition-colors border border-white/30 rounded-lg hover:border-white/50">
-                    View Our Work
-                  </button>
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+     
       </main>
 
       <Footer />

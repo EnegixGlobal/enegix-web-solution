@@ -7,6 +7,7 @@ import Link from "next/link";
 
 import { Inter } from "next/font/google";
 import Container from "./Container";
+import Button from "./Button";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -96,15 +97,15 @@ const ServiceCard = ({
       whileHover={{ y: -8, scale: 1.02 }}
       className="relative bg-white rounded-2xl p-8 border border-gray-300 hover:border-transparent group transition-all duration-500 hover:shadow-2xl hover:shadow-teal-500/10 overflow-hidden">
       {/* Background gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-emerald-50 to-teal-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-teal-50 to-teal-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
 
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-teal-100/20 to-emerald-100/20 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-700" />
-      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-emerald-100/20 to-teal-100/20 rounded-full translate-y-12 -translate-x-12 group-hover:scale-125 transition-transform duration-700" />
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-teal-100/20 to-teal-200/20 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-700" />
+      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-100/20 to-teal-200/20 rounded-full translate-y-12 -translate-x-12 group-hover:scale-125 transition-transform duration-700" />
 
       <div className="relative z-10">
         {/* Icon with enhanced styling */}
-        <div className="mb-6 p-4 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 w-fit text-white shadow-lg shadow-teal-500/25 group-hover:shadow-xl group-hover:shadow-teal-500/40 group-hover:scale-110 transition-all duration-300">
+        <div className="mb-6 p-4 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 w-fit text-white shadow-lg shadow-teal-500/25 group-hover:shadow-xl group-hover:shadow-teal-500/40 group-hover:scale-110 transition-all duration-300">
           {React.cloneElement(service.icon, { className: "w-7 h-7" })}
         </div>
 
@@ -117,28 +118,6 @@ const ServiceCard = ({
         <p className="text-gray-600 text-sm leading-relaxed mb-6 font-inter">
           {service.description}
         </p>
-
-        {/* Enhanced CTA */}
-        <Link href={`/services/${service.id}`} className="inline-block">
-          <div className="inline-flex items-center gap-2 text-teal-600 font-semibold text-sm hover:text-teal-700 transition-all duration-300 group-hover:gap-3">
-            <span>Learn More</span>
-            <div className="w-5 h-5 rounded-full bg-teal-100 flex items-center justify-center group-hover:bg-teal-600 transition-all duration-300">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="group-hover:text-white transition-colors duration-300">
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </div>
-          </div>
-        </Link>
       </div>
     </motion.div>
   );
@@ -146,15 +125,13 @@ const ServiceCard = ({
 
 const ServicesSection = () => {
   return (
-    <section
-      className=" w-full py-10 bg-gradient-to-br from-slate-50 via-teal-50/30 to-emerald-50/50 overflow-hidden"
-      id="services-section">
+    <section className=" w-full py-10 bg-blue-100" id="services-section">
       <Container>
         {/* Enhanced background effects */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Large decorative circles */}
-          <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-gradient-to-br from-teal-100/30 to-emerald-200/30 blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-tr from-emerald-100/30 to-teal-200/30 blur-3xl" />
+          <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-gradient-to-br from-teal-100/30 to-teal-200/30 blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-tr from-teal-100/30 to-teal-200/30 blur-3xl" />
 
           {/* Grid pattern overlay */}
           <div className="absolute inset-0 opacity-30">
@@ -179,7 +156,7 @@ const ServicesSection = () => {
               className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 font-inter tracking-tight">
               <span className="text-gray-900">Crafting </span>
 
-              <span className="bg-gradient-to-r from-teal-600 via-teal-500 to-emerald-600 bg-clip-text text-transparent">
+              <span className="text-teal-600 font-bold">
                 Digital Experiences
               </span>
               <br />
@@ -193,7 +170,7 @@ const ServicesSection = () => {
               viewport={{ once: true }}
               className="text-gray-900 text-sm md:text-lg max-w-4xl mx-auto font-inter leading-relaxed">
               As a passionate{" "}
-              <span className="text-teal-600 font-extrabold">
+              <span className="text-teal-600 font-bold">
                 {" "}
                 Designing and Marketing agency in India
               </span>
@@ -218,39 +195,9 @@ const ServicesSection = () => {
               <ServiceCard key={service.id} service={service} index={index} />
             ))}
           </div>
-
-          {/* <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 border border-gray-200 shadow-xl shadow-teal-500/5 inline-block">
-            <p className="text-gray-600 mb-6 font-inter">
-              Ready to transform your digital presence?
-            </p>
-            <Link href="/services">
-              <button className="relative inline-flex items-center gap-3 bg-gradient-to-r from-teal-600 to-emerald-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-teal-500/25 hover:scale-105 group overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-700 to-emerald-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10">View All Services</span>
-                <div className="relative z-10 w-5 h-5 bg-white/20 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform duration-300">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round">
-                    <path d="m9 18 6-6-6-6" />
-                  </svg>
-                </div>
-              </button>
-            </Link>
-          </div>
-        </motion.div> */}
+          <Link href="/services">
+            <Button className="w-sm mx-auto py-2">View All</Button>
+          </Link>
         </div>
       </Container>
     </section>

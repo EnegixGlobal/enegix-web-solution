@@ -9,7 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Button from "@/components/Button";
-import { FaArrowRight, FaPlus, FaMinus, FaRocket, FaBullseye, FaClipboardList, FaPalette, FaCode, FaFlask, FaChartLine } from "react-icons/fa";
+import { FaArrowRight, FaPlus, FaMinus, FaRocket } from "react-icons/fa";
 
 export default function LandingPageDesign() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -18,50 +18,7 @@ export default function LandingPageDesign() {
     enablePageScroll();
   }, []);
 
-  const process = [
-    {
-      step: "1",
-      title: "Discovery",
-      description:
-        "We analyze your target audience, business goals, and current conversion challenges. This includes studying your competitors, understanding your value proposition, and identifying key conversion barriers.",
-      icon: <FaBullseye className="text-blue-500" />,
-    },
-    {
-      step: "2",
-      title: "Strategy",
-      description:
-        "We develop a conversion-focused strategy tailored to your specific audience and objectives, beginning with wireframes and user journey mapping.",
-      icon: <FaClipboardList className="text-purple-500" />,
-    },
-    {
-      step: "3",
-      title: "Design",
-      description:
-        "Using conversion best practices, we create visually compelling designs that guide visitors toward your desired action while maintaining brand consistency.",
-      icon: <FaPalette className="text-pink-500" />,
-    },
-    {
-      step: "4",
-      title: "Development",
-      description:
-        "Our development team builds fast-loading, mobile-responsive landing pages optimized for conversions and search engines.",
-      icon: <FaCode className="text-green-500" />,
-    },
-    {
-      step: "5",
-      title: "Testing",
-      description:
-        "We conduct thorough testing across devices and browsers, then set up A/B tests to optimize headlines, CTAs, and form placement for maximum conversions.",
-      icon: <FaFlask className="text-orange-500" />,
-    },
-    {
-      step: "6",
-      title: "Optimization",
-      description:
-        "We continuously monitor performance data and user behavior to identify optimization opportunities. This ongoing refinement ensures your landing pages evolve to maximize ROI.",
-      icon: <FaChartLine className="text-red-500" />,
-    },
-  ];
+
 
   const faqs = [
     {
@@ -96,7 +53,7 @@ export default function LandingPageDesign() {
         <Navbar />
 
         {/* Hero Section */}
-        <section className="pt-32 pb-20 px-4 md:px-12">
+        <section className="pt-32 pb-10 px-4 md:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <motion.div
@@ -146,7 +103,7 @@ export default function LandingPageDesign() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 px-4 md:px-12 ">
+        <section className=" px-4 md:px-12 ">
           <div className="max-w-7xl mx-auto bg-white md:p-10 p-3 shadow-xl rounded-4xl">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -253,120 +210,9 @@ export default function LandingPageDesign() {
           </div>
         </section>
 
-        {/* Process Section */}
-        <section className="py-20 px-4 md:px-12 bg-gradient-to-br from-gray-50 to-gray-100">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="text-center mb-16">
-              <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                CUSTOM LANDING PAGES BUILT AROUND YOU
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Get Converting in Six Easy Steps
-              </h2>
-            </motion.div>
-
-            {/* Timeline */}
-            <div className="relative mb-16">
-              {/* Desktop Timeline */}
-              <div className="hidden lg:block">
-                {/* Dotted Line */}
-                <div className="absolute top-10 left-0 right-0 h-0.5 bg-gradient-to-r from-green-300 via-green-400 to-green-500" 
-                     style={{background: 'repeating-linear-gradient(to right, #22c55e 0px, #22c55e 10px, transparent 10px, transparent 20px)'}}>
-                </div>
-                
-                {/* Step Circles */}
-                <div className="flex justify-between items-start relative">
-                  {process.map((step, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.2, delay: index * 0.03 }}
-                      className="flex flex-col items-center text-center relative z-10"
-                      style={{ width: `${100/6}%` }}>
-                      
-                      {/* Circle */}
-                      <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl mb-8 shadow-lg">
-                        {step.step}
-                      </div>
-                      
-                      {/* Icon */}
-                      <div className="text-4xl mb-4">
-                        {step.icon}
-                      </div>
-                      
-                      {/* Title */}
-                      <h3 className="text-lg font-bold text-gray-900 mb-3">
-                        {step.title}
-                      </h3>
-                      
-                      {/* Description */}
-                      <p className="text-sm text-gray-600 leading-relaxed px-2">
-                        {step.description}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Mobile Timeline */}
-              <div className="lg:hidden space-y-8">
-                {process.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, delay: index * 0.03 }}
-                    className="flex items-start gap-6">
-                    
-                    {/* Circle */}
-                    <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg flex-shrink-0">
-                      {step.step}
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="flex-1">
-                      {/* Icon */}
-                      <div className="text-3xl mb-2">
-                        {step.icon}
-                      </div>
-                      
-                      {/* Title */}
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">
-                        {step.title}
-                      </h3>
-                      
-                      {/* Description */}
-                      <p className="text-gray-600 leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.2, delay: 0.2 }}
-              className="text-center w-lg mx-auto">
-              <Link href="/contact">
-                <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-semibold">
-                  Start your project →
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
-        </section>
 
         {/* FAQ Section */}
-        <section className="py-20 px-4 md:px-12 bg-white">
+        <section className="py-20 px-4 md:px-12 ">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
