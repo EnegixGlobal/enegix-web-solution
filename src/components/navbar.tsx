@@ -199,23 +199,23 @@ export default function Navbar() {
   // bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-lg
 
   return (
-    <header className="fixed max bg-gray-100/75 backdrop-blur-lg shadow-lg top-0 left-0 right-0  mx-auto w-full z-50 transition-all duration-500 py-5 px-4 md:px-12">
+    <header className="fixed max bg-gray-100/75 backdrop-blur-lg shadow-lg top-0 left-0 right-0  mx-auto w-full z-50 transition-all duration-500 py-2 px-4 md:px-12">
       <nav className="flex items-center justify-between w-full max-w-7xl mx-auto">
         {/* Logo Section */}
         <div className="flex items-center">
-          <Link href="/" className="flex items-center space-x-2 group">
+          <Link href="/" className="flex items-center group">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Image
-                src="/3d-logo.png"
+                src="/logo7.png"
                 alt="Enegix Web Solutions"
-                width={50}
+                width={60}
                 height={30}
-                className="  md:w-26  object-cover transition-all duration-500"
+                className="  md:w-16  object-cover transition-all duration-500"
               />
             </motion.div>
-            {/* <span className="font-extrabold md:text-3xl text-lg">
-              Enegix Web Solutions
-            </span> */}
+            <span className="font-extrabold relative top-2 md:text-4xl text-lg">
+              negix Web Solutions
+            </span>
           </Link>
         </div>
 

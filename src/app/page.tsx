@@ -1,16 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import HeroSection from "@/components/hero-section";
+import HeroSectionStyle2 from "@/components/hero-section-style2";
 import ServicesSection from "@/components/services-section";
-import StatsSection from "@/components/stats-section";
 import TechStackSimple from "@/components/tech-stack-simple";
 import CountriesWeServe from "@/components/countries-we-serve";
-import VideoShowcase from "@/components/video-showcase";
 import WhyChooseUsSection from "../components/why-choose-us";
-import ContactCTA from "@/components/contact-cta";
 import Footer from "@/components/footer";
-import LoadingScreen from "@/components/loading";
 import ScrollToTopButton from "@/components/scroll-to-top";
 import ScrollFix from "@/components/scroll-fix";
 import { enablePageScroll } from "@/utils/scroll-helper";
@@ -18,6 +14,7 @@ import Navbar from "@/components/navbar";
 import { Toaster } from "react-hot-toast";
 import ReviewSection from "@/components/review-section";
 import FAQSearch from "@/components/faq-search";
+import HeroSectionNew from "@/components/hero-section-new";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
@@ -66,10 +63,13 @@ export default function Home() {
       {/* {isClient && <LoadingScreen />} */}
       {isClient && <ScrollFix />}
       <Navbar />
-      <HeroSection />
+
+
+      <HeroSectionNew />
+
       <ServicesSection />
       <CountriesWeServe />
-      <ReviewSection/>
+      <ReviewSection />
       <TechStackSimple />
       <WhyChooseUsSection />
       <FAQSearch />

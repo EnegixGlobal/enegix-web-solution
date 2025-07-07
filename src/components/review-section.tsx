@@ -270,7 +270,7 @@ function ReviewSection() {
             {[...reviews, ...reviews].map((review, index) => (
               <div
                 key={`${review.id}-${index}`}
-                className="flex-shrink-0 bg-gray-50 p-4 md:p-6 rounded-lg border border-gray-200 min-w-[280px] w-[280px] h-[280px] md:min-w-[350px] md:w-[350px] md:h-[300px] lg:min-w-[380px] lg:w-[500px] lg:h-[250px] flex flex-col justify-between">
+                className="flex-shrink-0 bg-gray-50 p-4 md:p-6 rounded-lg border border-gray-200 min-w-[280px] w-[280px] h-[280px] md:min-w-[350px] md:w-[350px] md:h-[300px] lg:min-w-[380px]  flex flex-col justify-between">
                 <div>
                   <div className="flex text-yellow-500 items-center mb-3">
                     {renderStars(review.rating)}
