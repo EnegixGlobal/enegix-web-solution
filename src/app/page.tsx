@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import HeroSectionStyle2 from "@/components/hero-section-style2";
 import ServicesSection from "@/components/services-section";
 import TechStackSimple from "@/components/tech-stack-simple";
 import CountriesWeServe from "@/components/countries-we-serve";
@@ -15,6 +14,7 @@ import { Toaster } from "react-hot-toast";
 import ReviewSection from "@/components/review-section";
 import FAQSearch from "@/components/faq-search";
 import HeroSectionNew from "@/components/hero-section-new";
+import NewReviewSection from "@/components/new-review-section";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
@@ -69,7 +69,8 @@ export default function Home() {
 
       <ServicesSection />
       <CountriesWeServe />
-      <ReviewSection />
+      {/* <ReviewSection /> */}
+      <NewReviewSection/>
       <TechStackSimple />
       <WhyChooseUsSection />
       <FAQSearch />

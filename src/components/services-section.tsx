@@ -147,7 +147,7 @@ const ServicesSection = () => {
 
         <div className=" mx-auto relative z-10">
           {/* Enhanced header section */}
-          <div className="text-center mb-20">
+          <div className="text-center mb-10">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -184,13 +184,13 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
-              className={`text-black mt-4 max-w-3xl font-extrabold text-2xl mx-auto ${inter.className}`}>
-              Your success is not just our goal, it's our commitment.
+              className={` mt-4 max-w-4xl font-bold text-xl mx-auto ${inter.className}`}>
+              Your success is not just our Goal, <span> It's our commitment.</span>
             </motion.p>
           </div>
 
           {/* Services grid with enhanced spacing */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-6 mb-10">
             {services.map((service, index) => (
               <ServiceCard key={service.id} service={service} index={index} />
             ))}

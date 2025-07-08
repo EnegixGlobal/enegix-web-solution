@@ -181,7 +181,7 @@ const techStack = [
 ];
 
 const TechStackSimple = () => {
-  const [noOfStackItems, setNoOfStackItems] = useState(7);
+  const [noOfStackItems, setNoOfStackItems] = useState(14);
 
   const filteredTech = techStack.slice(0, noOfStackItems);
 
@@ -196,21 +196,21 @@ const TechStackSimple = () => {
         <div className="container mx-auto md:px-4 ">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <div className="text-4xl md:text-8xl lg:text-7xl font-bold mb-6 text-teal-600">
+            <div className="text-3xl md:text-8xl lg:text-7xl font-bold mb-4 text-teal-600">
               Our Tech Stack
             </div>
-            <p className="text-xl text-gray-800 font-bold max-w-3xl mx-auto leading-relaxed">
+            <p className="text-md text-gray-800  max-w-3xl mx-auto leading-relaxed">
               Modern technologies and frameworks that power our solutions
             </p>
           </div>
 
           {/* Tech Stack Grid - iOS Compatible Design */}
           <div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 md:gap-6">
+            <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 md:gap-6">
               {filteredTech.map((tech) => (
                 <div
                   key={tech.name}
-                  className="group flex flex-col items-center p-3 md:p-4 bg-white rounded-xl border border-gray-200 hover:border-emerald-300 transition-all duration-300 hover:shadow-lg shadow-sm"
+                  className="group flex flex-col items-center p-3 md:p-4 bg-white rounded-xl  hover:border-emerald-300 transition-all duration-300 hover:shadow-sm "
                   style={{
                     WebkitTransform: "translateZ(0)", // Force hardware acceleration for iOS
                     transform: "translateZ(0)",
@@ -218,9 +218,9 @@ const TechStackSimple = () => {
                     backfaceVisibility: "hidden",
                   }}>
                   {/* Tech Icon */}
-                  <div className="text-4xl mb-2 md:mb-3">
+                  <div className="text-4xl mb-2 md:mb-2">
                     <tech.icon
-                      className={cn("w-8 h-8 md:w-10 md:h-10", tech.color)}
+                      className={cn("w-8 h-8 md:w-8 md:h-8", tech.color)}
                     />
                   </div>
 
@@ -267,7 +267,7 @@ const TechStackSimple = () => {
               className="py-3 md:w-sm mx-auto mt-10"
               onClick={() =>
                 setNoOfStackItems(
-                  noOfStackItems === techStack.length ? 7 : techStack.length
+                  noOfStackItems === techStack.length ? 14 : techStack.length
                 )
               }>
               {noOfStackItems === techStack.length ? "See Less" : "See All"}

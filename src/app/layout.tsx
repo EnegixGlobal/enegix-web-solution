@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   title: "Top Web Design Company in Ranchi, Digital Marketing Agency in India",
   description:
     "Enegix Web Solutions Pvt. Ltd. builds top-ranking websites, delivers result-driven SEO, and powers growth with digital marketing strategies tailored for Indian businesses. Book a free consultation today!",
+  icons: {
+    icon: "/favicon.ico", // path relative to /public
+  },
   keywords: [
     "web development",
     "logo design",
@@ -53,8 +56,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={` font-montserrat antialiased overscroll-none`}>
+      <body className={` font-montserrat antialiased overscroll-none`}>
         {/* The loading component is client-side only, so we don't include it directly in layout */}
         {children}
       </body>

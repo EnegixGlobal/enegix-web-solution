@@ -5,13 +5,10 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Container from "@/components/Container";
-import Button from "@/components/Button";
 import { AuroraText } from "@/components/magicui/aurora-text";
-import { RainbowButton } from "@/components/magicui/rainbow-button";
 import { Meteors } from "@/components/magicui/meteors";
 import ScrollToTopButton from "@/components/scroll-to-top";
 import ScrollFix from "@/components/scroll-fix";
-import Link from "next/link";
 import Image from "next/image";
 import { enablePageScroll } from "@/utils/scroll-helper";
 
@@ -307,7 +304,7 @@ export default function About() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900">
-                About <AuroraText>Enegix Web Solutions</AuroraText>
+                About <span className="text-teal-600">Enegix Web Solutions</span>
               </motion.h1>
 
               <motion.p
@@ -536,7 +533,7 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
                 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-                <AuroraText>Enegix Global</AuroraText>
+                Enegix Global
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -599,7 +596,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="inline-block px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-semibold mb-4">
+                className="inline-block px-3 py-1 rounded-full bg-teal-100 text-teal-700 text-sm font-semibold mb-4">
                 Our Core Values
               </motion.span>
               <motion.h2
@@ -608,7 +605,7 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
                 className="text-3xl md:text-4xl text-gray-900 font-bold mb-6">
-                The <AuroraText>Principles</AuroraText> That Guide Us
+                The <span className="text-teal-600">Principles</span> That Guide Us
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -660,7 +657,7 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
                 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-                Better <AuroraText>Design</AuroraText> for Your Digital Products
+                Better <span className="text-teal-600">Design</span> for Your Digital Products
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
