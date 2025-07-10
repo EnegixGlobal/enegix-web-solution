@@ -207,8 +207,8 @@ const FeaturedTeamMemberCard = ({
       className="group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-xl hover:shadow-2xl hover:border-teal-300 transition-all duration-300 p-8"
     >
       {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-teal-100/30 to-blue-100/30 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-700" />
-      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-100/30 to-teal-100/30 rounded-full translate-y-12 -translate-x-12 group-hover:scale-125 transition-transform duration-700" />
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-teal-100/30 to-teal-100/30 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-700" />
+      <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-teal-100/30 to-teal-100/30 rounded-full translate-y-12 -translate-x-12 group-hover:scale-125 transition-transform duration-700" />
       
       <div className="relative z-10 flex flex-col lg:flex-row gap-8 items-center">
         <div className="w-full lg:w-1/3 aspect-square relative rounded-2xl overflow-hidden border-4 border-teal-200 group-hover:border-teal-400 transition-colors duration-300">
@@ -332,10 +332,14 @@ export default function TeamPage() {
       <Navbar />
       <main className=" text-gray-900 min-h-screen relative overflow-x-hidden">
         {/* Hero Section */}
-        <section className="pt-24 pb-16 bg-gradient-to-br from-teal-50 via-blue-50 to-white">
+        <section className="relative isolate overflow-hidden pt-28 pb-10 bg-gradient-to-br from-teal-50 via-white to-white">
+          {/* Decorative Aurora/Meteors */}
+          <div className="absolute inset-0 pointer-events-none z-0">
+            {/* <Meteors number={18} /> */}
+          </div>
           <Container>
             {/* Breadcrumb Navigation */}
-            <nav aria-label="Breadcrumb" className="mb-8 mt-5">
+            <nav aria-label="Breadcrumb" className="mb-8 mt-5 relative z-10">
               <ol className="flex items-center space-x-2 text-sm text-gray-600">
                 <li>
                   <Link href="/" className="hover:text-teal-600 transition-colors">
@@ -349,24 +353,77 @@ export default function TeamPage() {
               </ol>
             </nav>
 
-          <Meteors number={20} />
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto"
+              transition={{ duration: 0.9 }}
+              className="relative z-10 flex flex-col lg:flex-row items-center gap-12  mx-auto"
             >
-             
-
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-gray-900 mb-6">
-                Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Team</span>
-              </h1>
-              
-              <p className="text-gray-600 text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto mb-8">
-                We're a passionate group of designers, developers, and digital strategists dedicated to helping businesses succeed in the digital world.
-              </p>
-
-             
+              {/* Left: Text */}
+              <div className="flex-1 text-center lg:text-left">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-gray-900">
+                  <span className="inline-block bg-gradient-to-r from-teal-600 via-teal-400 to-teal-600 text-transparent bg-clip-text animate-gradient-x">Meet the Minds</span>
+                  <br />
+                  <span className="inline-block">Behind <span className="text-teal-600">Enegix</span></span>
+                </h1>
+                <p className="text-gray-700 text-lg lg:text-xl leading-relaxed max-w-2xl mb-8 mx-auto lg:mx-0">
+                  Our team is a blend of creative thinkers, tech innovators, and digital strategists. Together, we turn ideas into impactful digital experiences for brands that want to lead.
+                </p>
+                <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+                  <Link href="#leadership">
+                    <Button size="lg" className="bg-teal-600 text-white hover:bg-teal-700 shadow-lg shadow-teal-200/30">
+                      Meet Our Leaders
+                    </Button>
+                  </Link>
+                  <Link href="#team">
+                    <Button size="lg" variant="outline" className="text-teal-600 border-teal-600 hover:bg-teal-50 hover:text-teal-700 shadow-sm">
+                      View Full Team
+                    </Button>
+                  </Link> 
+                </div>
+              </div>
+              {/* Right: Hero Image/Collage */}
+              <div className="flex-1 flex items-center justify-center relative min-w-[280px]">
+                <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                  {/* Main circle with 2 featured faces */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-56 md:h-56 rounded-full border-4 border-teal-200 bg-white shadow-xl flex items-center justify-center overflow-hidden">
+                    <Image
+                      src={teamMembers[0].image}
+                      alt={teamMembers[0].name}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+                  {/* Overlapping smaller circles for other featured */}
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-white shadow-lg overflow-hidden bg-white">
+                    <Image
+                      src={teamMembers[1].image}
+                      alt={teamMembers[1].name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="absolute bottom-0 -right-6 w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-lg overflow-hidden bg-white">
+                    <Image
+                      src={teamMembers[2].image}
+                      alt={teamMembers[2].name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="absolute top-1/2 -left-8 -translate-y-1/2 w-14 h-14 md:w-16 md:h-16 rounded-full border-4 border-white shadow-md overflow-hidden bg-white">
+                    <Image
+                      src={teamMembers[3].image}
+                      alt={teamMembers[3].name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  {/* Decorative ring */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 md:w-80 md:h-80 border-2 border-dashed border-teal-100 rounded-full animate-spin-slow pointer-events-none" style={{animationDuration:'12s'}} />
+                </div>
+              </div>
             </motion.div>
           </Container>
         </section>
@@ -381,7 +438,7 @@ export default function TeamPage() {
               className="text-center mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
-                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Leadership</span>
+                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-600">Leadership</span>
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
                 Meet the visionaries who drive our mission and shape our company culture
@@ -396,7 +453,7 @@ export default function TeamPage() {
           </Container>
         </section>
         {/* Team Members Section */}
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-teal-50">
+        <section id="team" className="py-20 bg-gradient-to-br from-gray-50 to-teal-50">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -406,7 +463,7 @@ export default function TeamPage() {
               className="text-center mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
-                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Talented Team</span>
+                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-600">Talented Team</span>
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
                 Each member of our team brings unique expertise and passion to every project
@@ -459,7 +516,7 @@ export default function TeamPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-600 via-blue-600 to-indigo-600 p-12 lg:p-16 text-center text-white"
+              className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-600 via-teal-600 to-teal-600 p-12 lg:p-16 text-center text-white"
             >
               {/* Background decorative elements */}
               <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-20 translate-x-20"></div>

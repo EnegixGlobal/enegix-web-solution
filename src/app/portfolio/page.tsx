@@ -26,6 +26,10 @@ const portfolioProjects = [
     tags: ["React", "Node.js", "MongoDB", "Express"],
     link: "https://healthier-you.com",
     featured: true,
+    stats: {
+      organicGrowth: 1200,
+      paidGrowth: 300,
+    },
   },
   {
     id: "urban-taste",
@@ -228,28 +232,9 @@ const FeaturedProjectCard = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
       className="relative overflow-hidden rounded-xl bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
-      <div className="flex flex-col lg:flex-row h-full">
-        {/* Project Image */}
-        <div className="relative h-80 lg:h-auto lg:w-1/2 overflow-hidden rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover hover:scale-105 transition-transform duration-500"
-            placeholder="blur"
-            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFeAJ7mFT6VQAAAABJRU5ErkJggg=="
-          />
-
-          {/* Featured Badge */}
-          <div className="absolute top-4 left-4 z-20">
-            <span className="px-3 py-1 text-xs font-medium text-white bg-gradient-to-r from-teal-500 to-blue-600 rounded-full">
-              Featured Project
-            </span>
-          </div>
-        </div>
-
+      <div className="flex flex-col lg:flex-row h-[400px]">
         {/* Project Info */}
-        <div className="p-8 lg:w-1/2 flex flex-col justify-center">
+        <div className="p-8  flex-7 flex-col justify-center">
           <span className="inline-block px-3 py-1 mb-4 text-sm font-medium text-teal-700 bg-teal-100 rounded-full w-fit">
             {project.category}
           </span>
@@ -298,6 +283,23 @@ const FeaturedProjectCard = ({
                 </Button>
               </a>
             )}
+          </div>
+        </div>
+        {/* Project Image */}
+        <div className=" flex-5">
+          <div className="relative h-60 top-4 right-4 rounded-xl">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover hover:scale-105 transition-transform rounded-2xl duration-500"
+            />
+          </div>
+
+          {/* Featured Badge */}
+          <div className="mt-16 space-x-3">
+            <span className=" bg-gray-300 px-16 py-10 rounded-xl">{project.stats && project.stats.organicGrowth}</span>
+            <span className=" bg-gray-300 px-16 py-10 rounded-xl">{project.stats && project.stats.organicGrowth}</span>
           </div>
         </div>
       </div>
@@ -368,60 +370,74 @@ export default function PortfolioPage() {
 
       <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
         <Container>
-          {/* Hero Section */}
-          <section className="relative  px-4 ">
-            {/* Hero Section */}
-            <section className="pt-32 pb-10">
-              <div className="max-w-7xl mx-auto">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                  <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3 }}>
-                    <div className="flex items-center space-x-3 mb-6">
-                      <h1 className="text-5xl md:text-5xl font-bold text-teal-600">
-                        Our Portfolio
-                      </h1>
-                    </div>
-                    <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                      Explore our collection of successful projects that
-                      showcase our expertise in web development, branding,
-                      e-commerce, and digital marketing solutions.
-                    </p>
-
-                    <div className="w-sm">
-                      <Link
-                        href="https://wa.me/919608263050?text=Hi%20I%20am%20interested%20in%20your%20services.%20Can%20you%20share%20more%20details%20about%20your%20offerings?"
-                        target="_blank">
-                        <Button className="py-2 gap-3">
-                          Connect with Us <FaArrowRight />
-                        </Button>
-                      </Link>
-                    </div>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                    className="w-full flex justify-right mb-10  ">
-                    <Image
-                      src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="Hero Image"
-                      height={600}
-                      width={500}
-                      className=" h-[400px] rounded-tl-[100px] rounded-br-[100px]  object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
-                    />
-                    <Image
-                      src="/pattern.png"
-                      alt="Hero Image"
-                      height={600}
-                      width={600}
-                      className=" h-[400px] -top-15  relative md:-left-[200px] -left-[350px] object-cover  "
-                    />
-                  </motion.div>
+          {/* Hero Section - Edge-to-edge, big tilted image cards */}
+          <section className="relative md:pt-12 pt-30  bg-white border-b border-teal-100">
+            <div className="w-full flex flex-col md:flex-row items-center md:items-stretch md:gap-0 gap-10">
+              {/* Left: Text */}
+              <div className="flex-1 flex flex-col justify-center ">
+                <h1 className="text-4xl md:text-5xl font-bold text-teal-700 mb-4">
+                  Our Portfolio
+                </h1>
+                <p className="text-lg md:text-xl text-gray-600 mb-6 max-w-xl">
+                  Explore a curated selection of our best work in web,
+                  e-commerce, branding, and marketing. Simple, effective, and
+                  results-driven.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link href="/contact">
+                    <Button
+                      size="lg"
+                      className="bg-teal-600 text-white hover:bg-teal-700">
+                      Start Your Project
+                    </Button>
+                  </Link>
+                  <Link href="/services">
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="border-teal-600 text-teal-700 hover:bg-teal-50">
+                      Explore Services
+                    </Button>
+                  </Link>
                 </div>
               </div>
-            </section>
+              {/* Right: Three big tilted images like cards */}
+              <div className="flex-1 flex justify-center items-center relative min-h-[420px] md:min-h-[520px] lg:min-h-[600px] w-full">
+                {/* Card 1 (bottom, left) */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-[60%] -translate-y-[55%] rotate-[-12deg] shadow-2xl rounded-3xl overflow-hidden border-2 border-teal-100 w-[320px] h-[220px] md:w-[440px] md:h-[300px] lg:w-[520px] lg:h-[340px] bg-gray-100 z-10">
+                  <Image
+                    src={portfolioProjects[1].image}
+                    alt={portfolioProjects[1].title}
+                    width={520}
+                    height={340}
+                    className="object-cover w-full h-full"
+                    priority
+                  />
+                </div>
+                {/* Card 2 (middle, main) */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[3deg] shadow-2xl rounded-3xl overflow-hidden border-2 border-teal-200 w-[340px] h-[240px] md:w-[480px] md:h-[340px] lg:w-[560px] lg:h-[380px] bg-white z-20">
+                  <Image
+                    src={portfolioProjects[0].image}
+                    alt={portfolioProjects[0].title}
+                    width={560}
+                    height={380}
+                    className="object-cover w-full h-full"
+                    priority
+                  />
+                </div>
+                {/* Card 3 (top, right) */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-[40%] -translate-y-[45%] rotate-[15deg] shadow-2xl rounded-3xl overflow-hidden border-2 border-teal-100 w-[320px] h-[220px] md:w-[440px] md:h-[300px] lg:w-[520px] lg:h-[340px] bg-gray-100 z-10">
+                  <Image
+                    src={portfolioProjects[2].image}
+                    alt={portfolioProjects[2].title}
+                    width={520}
+                    height={340}
+                    className="object-cover w-full h-full"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
           </section>
 
           {/* Stats Section */}
@@ -440,7 +456,7 @@ export default function PortfolioPage() {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   viewport={{ once: true }}
                   className="text-center bg-gray-50 p-6 rounded-xl hover:shadow-md transition-all duration-300 hover:scale-105">
-                  <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600 mb-2">
+                  <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-600 mb-2">
                     {stat.value}
                   </div>
                   <div className="text-gray-600 text-sm">{stat.label}</div>
@@ -465,10 +481,23 @@ export default function PortfolioPage() {
               </p>
             </motion.div>
 
-            <div className="space-y-12">
-              {featuredProjects.map((project, index) => (
-                <FeaturedProjectCard key={project.id} project={project} />
-              ))}
+            <div className="flex gap-4 relative">
+              {/* Sticky Left Button */}
+              <div className="w-[200px] z-20 h-fit space-y-3 sticky top-24 self-start">
+                <Button className="w-fit">All</Button>
+                <Button className="w-fit">Gym Website</Button>
+                <Button className="w-fit">E-commerce Store</Button>
+                <Button className="w-fit">Portfolio Website</Button>
+                <Button className="w-fit">Landing Page</Button>
+                <Button className="w-fit">Blog</Button>
+              </div>
+
+              {/* Scrollable Cards */}
+              <div className="flex-1 max-h-[600px] overflow-y-auto pr-2 space-y-4">
+                {featuredProjects.map((project) => (
+                  <FeaturedProjectCard key={project.id} project={project} />
+                ))}
+              </div>
             </div>
           </section>
 
@@ -499,7 +528,7 @@ export default function PortfolioPage() {
                     className={cn(
                       "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300",
                       activeCategory === category
-                        ? "bg-gradient-to-r from-teal-500 to-blue-600 text-white shadow-lg"
+                        ? "bg-gradient-to-r from-teal-500 to-teal-600 text-white shadow-lg"
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
                     )}>
                     {category}

@@ -31,7 +31,7 @@ const HeroSectionNew = () => {
         <section
           ref={heroRef}
           id="home-section"
-          className="relative z-10 md:pt-20 pt-26 pb-16 lg:pt-32 lg:pb-24">
+          className="relative z-10 md:pt-26 pt-26 pb-16 ">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Content Section */}
             <motion.div
@@ -54,7 +54,7 @@ const HeroSectionNew = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+                className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight tracking-tight">
                 <span className="text-gray-900">Top Web Design &</span>
                 <br />
                 <span className="bg-gradient-to-r from-teal-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">
@@ -71,7 +71,7 @@ const HeroSectionNew = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                className="text-lg md:text-md text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 We're a young, driven, and dynamic startup with big ambitions —
                 and even bigger results. At Enegix Web Solutions, we believe
                 that trust isn't claimed — it's earned through delivery.
@@ -106,13 +106,13 @@ const HeroSectionNew = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="flex flex-wrap justify-center lg:justify-start gap-8 pt-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">50+</div>
+                  <div className="text-2xl font-bold text-gray-900">245+</div>
                   <div className="text-sm text-gray-600">
                     Projects Delivered
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">100%</div>
+                  <div className="text-2xl font-bold text-gray-900">98%</div>
                   <div className="text-sm text-gray-600">
                     Client Satisfaction
                   </div>
@@ -139,7 +139,7 @@ const HeroSectionNew = () => {
                     alt="Hero Image"
                     height={600}
                     width={500}
-                    className="w-full h-[500px] object-cover rounded-2xl"
+                    className="w-full h-[450px] object-cover rounded-2xl"
                   />
                 </div>
               </div>

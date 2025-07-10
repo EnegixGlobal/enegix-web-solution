@@ -282,40 +282,43 @@ export default function About() {
       <Navbar />
 
       <main className="bg-white">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden py-20 md:py-28 bg-gradient-to-br from-gray-50 via-white to-gray-100">
-          <Meteors number={10}/>
-
-
+        {/* Hero Section - "Wow" About Page */}
+        <section className="relative overflow-hidden pt-26 pb-10 bg-gradient-to-br from-teal-50 via-white to-emerald-50">
+         
           <Container>
-            <div className="max-w-3xl mx-auto text-center pt-10">
+            <div className="relative mx-auto z-10 flex max-w-3xl flex-col lg:flex-row items-center justify-between min-h-[300px] py-4">
+              {/* Left: Text */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="mb-6">
-                <span className="inline-block px-3 py-1 rounded-full bg-teal-100 text-teal-700 text-sm font-semibold mb-4">
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.9 }}
+                className="w-full  text-center"
+              >
+                <span className="inline-block  px-3 py-1 rounded-full bg-gradient-to-r from-teal-100 to-emerald-100 text-teal-700 text-sm font-semibold mb-4 shadow">
                   Our Story
                 </span>
+                <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4 text-gray-900 drop-shadow-lg">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-emerald-500 to-teal-700 animate-gradient-x">About Enegix</span>
+                  <span className="block text-gray-800 mt-1">Web Solutions</span>
+                </h1>
+                <p className="text-gray-800 text-base md:text-lg leading-relaxed  mb-6 mx-auto lg:mx-0">
+                  We are your digital growth partners, committed to transforming your online presence with innovation and creativity.
+                </p>
+                <div className="flex flex-wrap justify-center  gap-3">
+                  <a href="#about-enegix">
+                    <button className="px-6 py-2 rounded-full bg-teal-600 text-white font-semibold text-base shadow-lg hover:bg-teal-700 transition-all duration-300">
+                      Discover Our Mission
+                    </button>
+                  </a>
+                  <a href="#values">
+                    <button className="px-6 py-2 rounded-full bg-white border-2 border-teal-600 text-teal-600 font-semibold text-base hover:bg-teal-50 transition-all duration-300">
+                      Our Values
+                    </button>
+                  </a>
+                </div>
               </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900">
-                About <span className="text-teal-600">Enegix Web Solutions</span>
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg text-gray-600 mb-8">
-                We're more than just a web development company—we're your
-                digital growth partners, committed to transforming your online
-                presence.
-              </motion.p>
+              {/* Right: Half-screen graphic, only on large screens */}
+              
             </div>
           </Container>
         </section>

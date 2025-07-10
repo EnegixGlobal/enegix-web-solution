@@ -3,6 +3,7 @@
 import React from "react";
 import Container from "./Container";
 import Button from "./Button";
+import Link from "next/link";
 
 const WhyChooseUsSection = () => {
   return (
@@ -137,9 +138,9 @@ const WhyChooseUsSection = () => {
                         </h3>
 
                         {/* Description */}
-                        <p className="text-sm text-gray-600 leading-relaxed px-2">
+                        {/* <p className="text-sm text-gray-600 leading-relaxed px-2">
                           {step.description}
-                        </p>
+                        </p> */}
                       </div>
                     ))}
                   </div>
@@ -147,77 +148,78 @@ const WhyChooseUsSection = () => {
 
                 {/* Mobile Timeline */}
                 <div className="lg:hidden space-y-6">
-                  {[
-                    {
-                      step: "1",
-                      title: "Discovery",
-                      description:
-                        "We delve deep to fully understand your business and its goals. This includes analyzing your industry, competitors, and your target audience's preferences and behaviors.",
-                      icon: "💡",
-                    },
-                    {
-                      step: "2",
-                      title: "Planning",
-                      description:
-                        "Next, we tailor our strategy to align with your business objectives, beginning with a comprehensive analysis of user needs and market requirements.",
-                      icon: "📋",
-                    },
-                    {
-                      step: "3",
-                      title: "Preparation",
-                      description:
-                        "Using the strategy as a roadmap, we assess both your current setup and external elements to ensure they align with the strategic plan.",
-                      icon: "📝",
-                    },
-                    {
-                      step: "4",
-                      title: "Implementation",
-                      description:
-                        "Our development framework is designed to provide a consistent flow of optimizations, creating an action plan that respects your internal resources.",
-                      icon: "🚀",
-                    },
-                    {
-                      step: "5",
-                      title: "Growth",
-                      description:
-                        "As your project gains momentum, we focus on tracking progress towards your goals and ensuring continued, sustainable success.",
-                      icon: "⚙️",
-                    },
-                    {
-                      step: "6",
-                      title: "Refinement",
-                      description:
-                        "We continuously analyze performance data to identify new opportunities and adapt to feedback. This ongoing optimization ensures your strategy evolves with your business.",
-                      icon: "📦",
-                    },
-                  ].map((step, index) => (
-                    <div key={index} className="flex items-start gap-3 sm:gap-5 bg-white/80 rounded-2xl shadow-md px-3 py-4 sm:px-5 sm:py-6 border border-teal-50">
-                      {/* Circle + Icon */}
-                      <div className="flex flex-col items-center mr-2 sm:mr-4">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-teal-500 to-emerald-400 rounded-full flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-lg mb-1">
-                          {step.step}
+                  {/* Mobile Timeline with improved design */}
+                  <div className="relative">
+                    {/* Vertical Accent Line */}
+                    <div className="absolute left-7 top-0 bottom-0 w-1 bg-gradient-to-b from-teal-300 via-emerald-200 to-teal-100 rounded-full opacity-70 z-0"></div>
+                    {[
+                      {
+                        step: "1",
+                        title: "Discovery",
+                        icon: "💡",
+                      },
+                      {
+                        step: "2",
+                        title: "Planning",
+                        icon: "📋",
+                      },
+                      {
+                        step: "3",
+                        title: "Preparation",
+                        icon: "📝",
+                      },
+                      {
+                        step: "4",
+                        title: "Implementation",
+                        icon: "🚀",
+                      },
+                      {
+                        step: "5",
+                        title: "Growth",
+                        icon: "⚙️",
+                      },
+                      {
+                        step: "6",
+                        title: "Refinement",
+                        icon: "📦",
+                      },
+                    ].map((step, index, arr) => (
+                      <div
+                        key={index}
+                        className="relative flex items-center gap-4 bg-gradient-to-br from-white/90 to-teal-50/60 rounded-2xl shadow-lg px-4 py-5 border border-teal-100 mb-6 last:mb-0 z-10"
+                        style={{ marginLeft: '1.5rem' }}
+                      >
+                        {/* Step Circle with Icon */}
+                        <div className="relative flex flex-col items-center mr-2">
+                          <div className="w-14 h-14 bg-gradient-to-br from-teal-500 to-emerald-400 rounded-full flex items-center justify-center text-white font-extrabold text-lg shadow-xl border-4 border-white mb-1 animate-fade-in-up">
+                            {step.step}
+                          </div>
+                          <div className="text-3xl mb-0.5 drop-shadow-sm animate-fade-in-up delay-100">{step.icon}</div>
+                          {/* Connector Dot */}
+                          {index !== arr.length - 1 && (
+                            <div className="w-2 h-6 bg-gradient-to-b from-teal-400 to-emerald-200 rounded-full mt-1"></div>
+                          )}
                         </div>
-                        <div className="text-2xl sm:text-3xl mb-0.5">{step.icon}</div>
+                        {/* Content */}
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-lg font-bold text-gray-900 mb-0.5 tracking-tight animate-fade-in-up">
+                            {step.title}
+                          </h3>
+                        </div>
                       </div>
-                      {/* Content */}
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">
-                          {step.title}
-                        </h3>
-                        <p className="text-sm sm:text-sm text-gray-600 leading-relaxed break-words">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
 
               {/* CTA Button */}
-              <div className="mx-auto">
-                <Button className="md:w-sm py-3 mx-auto">
-                  Start your project →
-                </Button>
+
+              <div className="mx-auto w-fit">
+                <a href="/enquiry-form" >
+                  <Button className="md:w-sm py-3 mx-auto">
+                    Start your project →
+                  </Button>
+                </a>
               </div>
             </div>
           </div>

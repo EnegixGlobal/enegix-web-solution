@@ -335,9 +335,9 @@ export default function Navbar() {
               {/* Default Dropdown for Company */}
               {link.hasDropdown &&
                 activeDropdown === link.label &&
-                link.label !== "Services" && (
+                link.label == "Company" && (
                   <motion.div
-                    className="absolute top-full left-1/2  w-80 bg-white/95 backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl shadow-gray-900/30 p-4"
+                    className="absolute top-full -left-1/2 w-80 bg-white backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl shadow-gray-900/30 p-4"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}

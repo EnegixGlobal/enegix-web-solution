@@ -11,7 +11,7 @@ import ScrollFix from "@/components/scroll-fix";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Navbar from "@/components/navbar";
 import { Toaster } from "react-hot-toast";
-import ReviewSection from "@/components/review-section";
+import ReviewSection from "@/components/new-review-section";
 import FAQSearch from "@/components/faq-search";
 import HeroSectionNew from "@/components/hero-section-new";
 import NewReviewSection from "@/components/new-review-section";
@@ -69,8 +69,7 @@ export default function Home() {
 
       <ServicesSection />
       <CountriesWeServe />
-      {/* <ReviewSection /> */}
-      <NewReviewSection/>
+      <NewReviewSection />
       <TechStackSimple />
       <WhyChooseUsSection />
       <FAQSearch />

@@ -176,37 +176,37 @@ export default function ProjectDetailPage() {
 
       <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-4 bg-gradient-to-br from-blue-50 via-purple-50 to-white">
+        <section className="relative pt-32 pb-20 px-4 bg-gradient-to-br from-purple-50 via-teal-50 to-white">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="max-w-4xl mx-auto"
+              className=" mx-auto"
             >
               {/* Breadcrumb Navigation */}
               <nav aria-label="Breadcrumb" className="mb-8">
                 <ol className="flex items-center space-x-2 text-sm text-gray-600">
                   <li>
-                    <Link href="/" className="hover:text-blue-600 transition-colors">
+                    <Link href="/" className="hover:text-teal-600 transition-colors">
                       Home
                     </Link>
                   </li>
                   <li className="text-gray-400">/</li>
                   <li>
-                    <Link href="/portfolio" className="hover:text-blue-600 transition-colors">
+                    <Link href="/portfolio" className="hover:text-teal-600 transition-colors">
                       Portfolio
                     </Link>
                   </li>
                   <li className="text-gray-400">/</li>
-                  <li className="text-blue-600 font-medium" aria-current="page">
+                  <li className="text-teal-600 font-medium" aria-current="page">
                     {project.title}
                   </li>
                 </ol>
               </nav>
 
               <div className="text-center">
-                <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-blue-700 bg-blue-100 rounded-full">
+                <span className="inline-block px-4 py-2 mb-6 text-sm font-medium text-teal-700 bg-teal-100 rounded-full">
                   {project.category}
                 </span>
                 
@@ -311,7 +311,7 @@ export default function ProjectDetailPage() {
                     {project.technologies?.map((tech, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full"
+                        className="px-3 py-1 text-sm bg-teal-100 text-teal-700 rounded-full"
                       >
                         {tech}
                       </span>
@@ -371,7 +371,7 @@ export default function ProjectDetailPage() {
               className="text-center mb-12"
             >
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                Project <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Results</span>
+                Project <span className="text-teal-600">Results</span>
               </h2>
             </motion.div>
 
@@ -383,7 +383,7 @@ export default function ProjectDetailPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-xl text-center"
+                  className="bg-gradient-to-br from-teal-50 to-purple-50 p-6 rounded-xl text-center"
                 >
                   <div className="text-gray-800 font-semibold">{result}</div>
                 </motion.div>
@@ -393,7 +393,7 @@ export default function ProjectDetailPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-white">
+        <section className="py-20 bg-gradient-to-br from-teal-50 via-purple-50 to-white">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -404,7 +404,7 @@ export default function ProjectDetailPage() {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
                 Ready to Start Your 
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> Project?</span>
+                <span className="text-teal-600"> Project?</span>
               </h2>
               
               <p className="text-gray-600 mb-8 text-lg max-w-2xl mx-auto leading-relaxed">

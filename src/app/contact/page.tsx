@@ -12,6 +12,7 @@ import Link from "next/link";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import { DockDemo } from "@/components/dock-demo";
 import Button from "@/components/Button";
+import { useRouter } from "next/navigation";
 
 const faqs = [
   {
@@ -151,8 +152,19 @@ const ContactForm = () => {
     }, 5000);
   };
 
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const id = window.location.hash.substring(1);
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
+
   return (
-    <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-blue-500/30 transition-all duration-300">
+    <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-teal-500/30 transition-all duration-300">
       <h3 className="text-2xl font-semibold mb-6 text-black">
         Send Us A Message
       </h3>
@@ -183,7 +195,7 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Your Name"
             />
           </div>
@@ -201,7 +213,7 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Your Email"
             />
           </div>
@@ -218,7 +230,7 @@ const ContactForm = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Your Phone Number"
             />
           </div>
@@ -235,7 +247,7 @@ const ContactForm = () => {
               value={formData.service}
               onChange={handleChange}
               required
-              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
               <option value="Select a service" disabled>
                 Select a service
               </option>
@@ -261,7 +273,7 @@ const ContactForm = () => {
               value={formData.subject}
               onChange={handleChange}
               required
-              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Subject of your message"
             />
           </div>
@@ -279,7 +291,7 @@ const ContactForm = () => {
               onChange={handleChange}
               required
               rows={5}
-              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="How can we help you?"
             />
           </div>
@@ -288,7 +300,7 @@ const ContactForm = () => {
         <div className="flex items-center justify-between">
           <button
             type="submit"
-            className="py-3 px-8 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-medium transition-transform hover:scale-[1.02] active:scale-[0.98] tracking-wide text-sm">
+            className="py-3 px-8 rounded-lg bg-gradient-to-r from-teal-600 to-indigo-700 text-white font-medium transition-transform hover:scale-[1.02] active:scale-[0.98] tracking-wide text-sm">
             Send Message
           </button>
 
@@ -315,17 +327,17 @@ const ContactForm = () => {
 const ContactInfo = () => {
   return (
     <div className="space-y-8">
-      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-blue-500/30 transition-all duration-300">
+      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-teal-500/30 transition-all duration-300">
         <h4 className="text-black text-xl font-semibold mb-6">
           Contact Information
         </h4>
 
         <div className="space-y-6">
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-blue-100/20 rounded-lg">
+            <div className="p-3 bg-teal-100/20 rounded-lg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-blue-600"
+                className="h-6 w-6 text-teal-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -354,17 +366,17 @@ const ContactInfo = () => {
               <a
                 href="https://www.google.com/maps/place/Enegix+Web+Solutions/@23.3514491,85.3163412,21z/"
                 target="_blank"
-                className="inline-block mt-2 text-blue-600 hover:text-blue-500 transition-colors">
+                className="inline-block mt-2 text-teal-600 hover:text-teal-500 transition-colors">
                 View on map →
               </a>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-blue-100/20 rounded-lg">
+            <div className="p-3 bg-teal-100/20 rounded-lg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-blue-600"
+                className="h-6 w-6 text-teal-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -381,22 +393,22 @@ const ContactInfo = () => {
               <h4 className="text-black font-semibold mb-2">Email</h4>
               <a
                 href="mailto:contact@enegixwebsolutions.com"
-                className="block text-gray-700 hover:text-blue-600 transition-colors">
+                className="block text-gray-700 hover:text-teal-600 transition-colors">
                 contact@enegixwebsolutions.com
               </a>
               <a
                 href="mailto:support@enegixwebsolutions.com"
-                className="block text-gray-700 hover:text-blue-600 transition-colors">
+                className="block text-gray-700 hover:text-teal-600 transition-colors">
                 support@enegixwebsolutions.com
               </a>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-blue-100/20 rounded-lg">
+            <div className="p-3 bg-teal-100/20 rounded-lg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-blue-600"
+                className="h-6 w-6 text-teal-600"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -413,12 +425,12 @@ const ContactInfo = () => {
               <h4 className="text-black font-semibold mb-2">Call Us</h4>
               <a
                 href="tel:+919608263050"
-                className="block text-gray-700 hover:text-blue-600 transition-colors">
+                className="block text-gray-700 hover:text-teal-600 transition-colors">
                 +91 96082 63050
               </a>
               <a
                 href="tel:+919801828117"
-                className="block text-gray-700 hover:text-blue-600 transition-colors">
+                className="block text-gray-700 hover:text-teal-600 transition-colors">
                 +91 98018 28117
               </a>
             </div>
@@ -426,7 +438,7 @@ const ContactInfo = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-blue-500/30 transition-all duration-300">
+      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-teal-500/30 transition-all duration-300">
         <h4 className="text-black text-xl font-semibold mb-6">
           Business Hours
         </h4>
@@ -434,13 +446,13 @@ const ContactInfo = () => {
         <ul className="space-y-4">
           <li className="flex justify-between items-center pb-2 border-b border-gray-200">
             <span className="text-gray-700">Monday - Friday:</span>
-            <span className="text-black bg-blue-100 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-teal-100 px-3 py-1 rounded-full text-sm">
               10:00 AM - 7:00 PM
             </span>
           </li>
           <li className="flex justify-between items-center pb-2 border-b border-gray-200">
             <span className="text-gray-700">Saturday (odd):</span>
-            <span className="text-black bg-blue-100 px-3 py-1 rounded-full text-sm">
+            <span className="text-black bg-teal-100 px-3 py-1 rounded-full text-sm">
               10:00 AM - 7:00 PM
             </span>
           </li>
@@ -453,7 +465,7 @@ const ContactInfo = () => {
         </ul>
       </div>
 
-      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-blue-500/30 transition-all duration-300">
+      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-xl hover:border-teal-500/30 transition-all duration-300">
         <h4 className="text-black text-xl font-semibold">Connect With Us</h4>
 
         <div className="flex justify-normal">
@@ -484,18 +496,18 @@ const FAQ = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
             className={`relative rounded-xl overflow-hidden ${
-              openIndex === index ? "bg-blue-50/50" : "hover:bg-gray-50/70"
+              openIndex === index ? "bg-teal-50/50" : "hover:bg-gray-50/70"
             } transition-colors duration-200`}
           >
             <button
               className="flex items-center justify-between w-full px-6 py-5 text-left focus:outline-none group"
               onClick={() => toggleFAQ(index)}
             >
-              <span className="text-lg font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+              <span className="text-lg font-semibold text-gray-800 group-hover:text-teal-600 transition-colors">
                 {faq.question}
               </span>
               <motion.div
-                className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center ml-4"
+                className="w-8 h-8 rounded-full bg-gradient-to-br from-teal-50 to-teal-100 flex items-center justify-center ml-4"
                 animate={{
                   rotate: openIndex === index ? 180 : 0,
                   backgroundColor: openIndex === index ? "#3b82f6" : "#eff6ff"
@@ -504,7 +516,7 @@ const FAQ = () => {
               >
                 <svg
                   className={`w-5 h-5 ${
-                    openIndex === index ? "text-white" : "text-blue-500"
+                    openIndex === index ? "text-white" : "text-teal-500"
                   } transition-colors`}
                   viewBox="0 0 24 24"
                   fill="none"
@@ -569,7 +581,7 @@ const FAQSearch = () => {
         value={searchTerm}
         onChange={handleSearch}
         placeholder="Search FAQs..."
-        className="w-full p-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black placeholder-gray-500 bg-white shadow-md transition-all duration-300"
+        className="w-full p-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-teal-500 focus:border-transparent text-black placeholder-gray-500 bg-white shadow-md transition-all duration-300"
       />
       {searchTerm && filteredFAQs.length > 0 && (
         <div className="mt-4 bg-white rounded-xl p-4 border border-gray-200 shadow-lg">
@@ -606,7 +618,7 @@ export default function Contact() {
       <main className="bg-white text-black  overflow-x-hidden">
         {/* Hero Section with Background Image */}
         <section
-          className="bg-blue-100 relative pt-24 pb-16 px-6 lg:px-8  flex items-center"
+          className="bg-teal-100 relative pt-24 pb-16 px-6 lg:px-8  flex items-center"
           role="banner">
           <div className="absolute inset-0 z-0">
             <Meteors number={10} />
@@ -648,7 +660,7 @@ export default function Contact() {
         </section>
 
         {/* Contact Form Section */}
-        <section className="py-20 px-4">
+        <section id="form" className="py-20 px-4">
           <div className="container mx-auto">
             <div className="flex flex-col lg:flex-row gap-10">
               <motion.div
