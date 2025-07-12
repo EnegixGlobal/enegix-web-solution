@@ -4,6 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { DockDemo } from "./dock-demo";
 import Container from "./Container";
+import { MdOutlineMail } from "react-icons/md";
+import { FaPhone } from "react-icons/fa";
 
 const Footer = () => {
   const companyLinks = [
@@ -14,12 +16,54 @@ const Footer = () => {
   ];
 
   const serviceLinks = [
-    { label: "Web Development", href: "/services#web-development" },
-    { label: "Logo Design", href: "/services#logo-design" },
-    { label: "SEO Optimization", href: "/services#seo-optimization" },
-    { label: "Digital Marketing", href: "/services#digital-marketing" },
-    { label: "E-commerce", href: "/services#ecommerce-solutions" },
-    { label: "PPC Advertising", href: "/services#ppc-advertising" },
+    {
+      label: "UI/UX Designing",
+      href: "/services/ui-ux-designing",
+    },
+    {
+      label: "Website Development",
+      href: "/services/website-development",
+    },
+    {
+      label: "Mobile Application",
+      href: "/services/mobile-application",
+    },
+    {
+      label: "CRM/MLM",
+      href: "/services/crm-mlm",
+    },
+    {
+      label: "Search Engine Optimization (SEO)",
+      href: "/services/search-engine-optimization",
+    },
+    {
+      label: "Google My Business",
+      href: "/services/google-my-business",
+    },
+    {
+      label: "Paid Advertising",
+      href: "/services/paid-advertising",
+    },
+    {
+      label: "Social Media Marketing",
+      href: "/services/social-media-marketing",
+    },
+    {
+      label: "Blog And Articles",
+      href: "/services/blog-and-articles",
+    },
+    {
+      label: "Content Writing",
+      href: "/services/content-writing",
+    },
+    {
+      label: "Branding and Logo Design",
+      href: "/services/logo-design",
+    },
+    {
+      label: "Landing Page Design",
+      href: "/services/landing-page-design",
+    },
   ];
 
   const socialLinks = [
@@ -94,21 +138,23 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-gradient-to-br from-emerald-900 via-teal-900 to-teal-900 overflow-hidden">
-        <Container>
+      <Container>
         {/* Subtle top gradient for smooth transition */}
         <div className="absolute inset-0">
           <div className="absolute top-0 w-full h-24 bg-gradient-to-b from-emerald-800/50 to-transparent" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8">
             <div>
               <h5 className="text-xl font-black mb-6 text-white">
                 EnegixWeb Solutions
               </h5>
-              <p className="mb-2 text-white ">House No.2, Old AG More, Kadru, Ranchi, Jharkhand , 834002</p>
-                
-                <p className="mb-4"></p>
+              <p className="mb-2 text-white ">
+                House No.2, Old AG More, Kadru, Ranchi, Jharkhand , 834002
+              </p>
+
+              <p className="mb-4"></p>
               <div className="flex space-x-4 mt-6">
                 {socialLinks.map((link) => (
                   <Link
@@ -121,16 +167,16 @@ const Footer = () => {
               </div>
             </div>
 
-             <div>
+            <div>
               <h6 className="text-white font-bold mb-4 font-montserrat tracking-tight">
                 Services
               </h6>
-              <ul className="space-y-2">
+              <ul className="grid grid-cols-2 ">
                 {serviceLinks.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-gray-200 hover:text-emerald-300 transition-colors duration-300 font-space-grotesk text-sm font-medium">
+                      className="text-gray-200 text-xs hover:text-emerald-300 transition-colors duration-300 font-space-grotesk  font-medium">
                       {link.label}
                     </Link>
                   </li>
@@ -138,7 +184,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div>
+            <div >
               <h6 className="text-white font-bold mb-4 font-poppins tracking-tight">
                 Company
               </h6>
@@ -155,24 +201,26 @@ const Footer = () => {
               </ul>
             </div>
 
-           
-
             <div>
               <h6 className="text-white font-bold mb-4 font-montserrat tracking-tight">
                 Contact Us
               </h6>
               <address className="not-italic text-gray-200 font-space-grotesk text-sm font-medium">
-                
                 <p className="mb-2">
-                  <strong className="text-white font-inter font-bold">Email:</strong>{" "}
                   <a
                     href="mailto:contact@enegixwebsolutions.com"
-                    className="hover:text-emerald-300 transition-colors">
+                    className="hover:text-emerald-300 transition-colors ">
+                    <strong className="text-white font-inter font-bold">
+                      {" "}
+                      <MdOutlineMail className="inline text-lg font-black" />
+                    </strong>{" "}
                     contact@enegixwebsolutions.com
                   </a>
                 </p>
                 <p>
-                  <strong className="text-white font-inter font-bold">Phone:</strong>{" "}
+                  <strong className="text-white font-inter font-bold">
+                    <FaPhone className="inline  font-black" />
+                  </strong>{" "}
                   <a
                     href="tel:+919608263050"
                     className="hover:text-emerald-300 transition-colors">
@@ -209,8 +257,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-    </Container>
-      </footer>
+      </Container>
+    </footer>
   );
 };
 

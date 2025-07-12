@@ -441,7 +441,7 @@ export default function PortfolioPage() {
           </section>
 
           {/* Stats Section */}
-          <section className="py-5 bg-white">
+          {/* <section className="py-5 bg-white">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
                 { value: "50+", label: "Projects Completed" },
@@ -463,7 +463,7 @@ export default function PortfolioPage() {
                 </motion.div>
               ))}
             </div>
-          </section>
+          </section> */}
 
           {/* Featured Projects Section */}
           <section id="featured-projects" className="py-5 ">
@@ -483,7 +483,7 @@ export default function PortfolioPage() {
 
             <div className="flex gap-4 relative">
               {/* Sticky Left Button */}
-              <div className="w-[200px] z-20 h-fit space-y-3 sticky top-24 self-start">
+              <div className="w-[200px] z-20 h-fit space-y-3 sticky top-24">
                 <Button className="w-fit">All</Button>
                 <Button className="w-fit">Gym Website</Button>
                 <Button className="w-fit">E-commerce Store</Button>
@@ -493,7 +493,7 @@ export default function PortfolioPage() {
               </div>
 
               {/* Scrollable Cards */}
-              <div className="flex-1 max-h-[600px] overflow-y-auto pr-2 space-y-4">
+              <div className="flex-1 pr-2 space-y-4">
                 {featuredProjects.map((project) => (
                   <FeaturedProjectCard key={project.id} project={project} />
                 ))}
