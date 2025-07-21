@@ -134,123 +134,247 @@ const Footer = () => {
     }
   };
 
-  return (
-    <footer className="relative bg-gradient-to-br from-emerald-900 via-teal-900 to-teal-900 overflow-hidden">
-      <Container>
-        {/* Subtle top gradient for smooth transition */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 w-full h-24 bg-gradient-to-b from-emerald-800/50 to-transparent" />
-        </div>
+  // Organize services into categories for better presentation
+  const servicesCategories = {
+    "Development": [
+      { label: "UI/UX Designing", href: "/services/ui-ux-designing" },
+      { label: "Website Development", href: "/services/website-development" },
+      { label: "Mobile Application", href: "/services/mobile-application" },
+      { label: "CRM/MLM Solutions", href: "/services/crm-mlm" }
+    ],
+    "Digital Marketing": [
+      { label: "Search Engine Optimization", href: "/services/search-engine-optimization" },
+      { label: "Google My Business", href: "/services/google-my-business" },
+      { label: "Paid Advertising", href: "/services/paid-advertising" },
+      { label: "Social Media Marketing", href: "/services/social-media-marketing" }
+    ],
+    "Content & Design": [
+      { label: "Blog And Articles", href: "/services/blog-and-articles" },
+      { label: "Content Writing", href: "/services/content-writing" },
+      { label: "Logo Design", href: "/services/logo-design" },
+      { label: "Landing Page Design", href: "/services/landing-page-design" }
+    ]
+  };
 
-        <div className="container mx-auto px-4 relative z-10 py-8 md:py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
-            <div>
-              <h5 className="text-lg font-bold mb-4 text-white">
-                EnegixWeb Solutions
-              </h5>
-              <p className="mb-3 text-white text-sm leading-relaxed">
-                House No.2, Old AG More, Kadru, Ranchi, Jharkhand, 834002
-              </p>
-              <div className="flex space-x-3 mt-4">
-                {socialLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className="text-gray-300 hover:text-emerald-300 transition-colors duration-300 p-1 hover:scale-110 transform">
-                    {renderSocialIcon(link.icon)}
-                  </Link>
+  return (
+    <footer className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-black overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
+      </div>
+
+      {/* Gradient Overlays */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 w-full h-32 bg-gradient-to-b from-teal-500/10 to-transparent" />
+        <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-black/50 to-transparent" />
+      </div>
+
+      <Container>
+        <div className="container mx-auto px-4 relative z-10 pt-16 pb-8">
+          {/* Main Footer Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 mb-12">
+            
+            {/* Company Info - Takes 2 columns */}
+            <div className="lg:col-span-2">
+              <div className="mb-6">
+                <h5 className="text-2xl font-bold mb-4 bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent">
+                  EnegixWeb Solutions
+                </h5>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                  Transforming digital dreams into reality. We create innovative web solutions, 
+                  stunning designs, and powerful marketing strategies that drive business growth.
+                </p>
+                <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
+                  <svg className="w-4 h-4 text-teal-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                  </svg>
+                  House No.2, Old AG More, Kadru, Ranchi, Jharkhand, 834002
+                </div>
+              </div>
+
+              {/* Social Links with modern design */}
+              <div>
+                <h6 className="text-white font-semibold mb-3 text-sm uppercase tracking-wide">
+                  Follow Us
+                </h6>
+                <div className="flex space-x-3">
+                  {socialLinks.map((link) => (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      className="group relative w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-teal-500 hover:to-blue-500 transition-all duration-300 transform hover:scale-110"
+                    >
+                      <div className="text-gray-400 group-hover:text-white transition-colors duration-300">
+                        {renderSocialIcon(link.icon)}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Services Categories - Takes 3 columns */}
+            <div className="lg:col-span-3">
+              <h6 className="text-white font-bold mb-6 text-lg">Our Services</h6>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {Object.entries(servicesCategories).map(([category, services]) => (
+                  <div key={category}>
+                    <h6 className="text-teal-400 font-semibold mb-3 text-sm uppercase tracking-wide">
+                      {category}
+                    </h6>
+                    <ul className="space-y-2">
+                      {services.map((service) => (
+                        <li key={service.label}>
+                          <Link
+                            href={service.href}
+                            className="text-gray-400 hover:text-white text-sm transition-colors duration-300 hover:translate-x-1 transform block"
+                          >
+                            {service.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
               </div>
             </div>
 
-            <div>
-              <h6 className="text-white font-semibold mb-3 text-base tracking-tight">
-                Services
-              </h6>
-              <ul className="grid grid-cols-1 space-y-1">
-                {serviceLinks.slice(0, 6).map((link) => (
-                  <li key={link.label}>
+            {/* Contact & Company Links - Takes 1 column */}
+            <div className="lg:col-span-1">
+              <div className="mb-8">
+                <h6 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">
+                  Company
+                </h6>
+                <ul className="space-y-2">
+                  {companyLinks.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="text-gray-400 hover:text-white text-sm transition-colors duration-300 hover:translate-x-1 transform block"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                  <li>
                     <Link
-                      href={link.href}
-                      className="text-gray-300 text-xs hover:text-emerald-300 transition-colors duration-300 font-medium block py-1">
-                      {link.label}
+                      href="/careers"
+                      className="text-gray-400 hover:text-white text-sm transition-colors duration-300 hover:translate-x-1 transform block"
+                    >
+                      Careers
                     </Link>
                   </li>
-                ))}
-                <li>
-                  <Link
-                    href="/services"
-                    className="text-emerald-400 text-xs font-semibold hover:text-emerald-300 transition-colors duration-300">
-                    View All Services →
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h6 className="text-white font-semibold mb-3 text-base tracking-tight">
-                Company
-              </h6>
-              <ul className="space-y-1">
-                {companyLinks.map((link) => (
-                  <li key={link.label}>
+                  <li>
                     <Link
-                      href={link.href}
-                      className="text-gray-300 hover:text-emerald-300 transition-colors duration-300 text-sm font-medium block py-1">
-                      {link.label}
+                      href="/portfolio"
+                      className="text-gray-400 hover:text-white text-sm transition-colors duration-300 hover:translate-x-1 transform block"
+                    >
+                      Portfolio
                     </Link>
                   </li>
-                ))}
-              </ul>
-            </div>
+                  <li>
+                    <Link
+                      href="/blogs"
+                      className="text-gray-400 hover:text-white text-sm transition-colors duration-300 hover:translate-x-1 transform block"
+                    >
+                      Blog
+                    </Link>
+                  </li>
+                </ul>
+              </div>
 
-            <div>
-              <h6 className="text-white font-semibold mb-3 text-base tracking-tight">
-                Contact Us
-              </h6>
-              <address className="not-italic text-gray-300 text-sm font-medium space-y-2">
-                <p>
+              <div>
+                <h6 className="text-white font-semibold mb-4 text-sm uppercase tracking-wide">
+                  Contact
+                </h6>
+                <div className="space-y-3">
                   <a
                     href="mailto:contact@enegixwebsolutions.com"
-                    className="hover:text-emerald-300 transition-colors flex items-center gap-2">
-                    <MdOutlineMail className="text-base flex-shrink-0" />
-                    <span className="break-all">contact@enegixwebsolutions.com</span>
+                    className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-300 group"
+                  >
+                    <div className="">
+                      <MdOutlineMail className="text-sm" />
+                    </div>
+                    <span className="text-xs">contact@enegixwebsolutions.com</span>
                   </a>
-                </p>
-                <p>
                   <a
                     href="tel:+919608263050"
-                    className="hover:text-emerald-300 transition-colors flex items-center gap-2">
-                    <FaPhone className="text-sm flex-shrink-0" />
-                    +91 96082 63050
+                    className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-300 group"
+                  >
+                    <div className="">
+                      <FaPhone className="text-xs" />
+                    </div>
+                    <span className="text-sm">+91 96082 63050</span>
                   </a>
-                </p>
-              </address>
+                </div>
+              </div>
             </div>
           </div>
 
-          <hr className="border-gray-500/30 my-6" />
+          {/* Newsletter Section */}
+          {/* <div className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 rounded-2xl p-6 mb-8 border border-gray-700/50">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div>
+                <h6 className="text-white font-semibold mb-2">Stay Updated</h6>
+                <p className="text-gray-400 text-sm">Get the latest updates on our services and industry insights.</p>
+              </div>
+              <div className="flex gap-2 w-full md:w-auto">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 md:w-64 px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
+                />
+                <button className="px-6 py-2 bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-lg hover:from-teal-600 hover:to-blue-600 transition-all duration-300 font-medium">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div> */}
 
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-300 text-xs md:text-sm font-medium">
-              © {new Date().getFullYear()} EnegixWeb Solutions. All rights reserved.
-            </p>
-            <div className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6">
-              <Link
-                href="/privacy-policy"
-                className="text-gray-300 hover:text-emerald-300 text-xs md:text-sm transition-colors duration-300 font-medium">
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms-of-service"
-                className="text-gray-300 hover:text-emerald-300 text-xs md:text-sm transition-colors duration-300 font-medium">
-                Terms of Service
-              </Link>
-              <Link
-                href="/cookie-policy"
-                className="text-gray-300 hover:text-emerald-300 text-xs md:text-sm transition-colors duration-300 font-medium">
-                Cookie Policy
-              </Link>
+          {/* Bottom Section */}
+          <div className="border-t border-gray-700/50 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="flex items-center gap-4">
+                <p className="text-gray-400 text-sm">
+                  © {new Date().getFullYear()} EnegixWeb Solutions. All rights reserved.
+                </p>
+                <div className="hidden md:flex items-center gap-1 text-gray-500 text-sm">
+                  <span>Made with</span>
+                  <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                  </svg>
+                  <span>in India</span>
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap justify-center md:justify-end gap-6">
+                <Link
+                  href="/privacy-policy"
+                  className="text-gray-400 hover:text-white text-sm transition-colors duration-300"
+                >
+                  Privacy Policy
+                </Link>
+                <Link
+                  href="/terms-of-service"
+                  className="text-gray-400 hover:text-white text-sm transition-colors duration-300"
+                >
+                  Terms of Service
+                </Link>
+                <Link
+                  href="/cookie-policy"
+                  className="text-gray-400 hover:text-white text-sm transition-colors duration-300"
+                >
+                  Cookie Policy
+                </Link>
+                <Link
+                  href="/sitemap"
+                  className="text-gray-400 hover:text-white text-sm transition-colors duration-300"
+                >
+                  Sitemap
+                </Link>
+              </div>
             </div>
           </div>
         </div>
