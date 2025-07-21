@@ -18,8 +18,8 @@ const teamMemberSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    required: [true, "Image URL is required"],
-    default: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face&faceindex=1",
+    required: false, // Made optional since it will be uploaded via Cloudinary
+    default: "",
   },
   socialLinks: {
     facebook: {

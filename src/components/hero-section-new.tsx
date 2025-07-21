@@ -164,7 +164,7 @@ const HeroSectionNew = () => {
                 transition={{ duration: 0.6, delay: 1.2 }}
                 className="absolute -bottom-6 -right-6 bg-gradient-to-r from-teal-500 to-blue-500 p-4 rounded-xl shadow-lg text-white">
                 <div className="text-center">
-                  <div className="text-lg font-bold">5★</div>
+                  <div className="text-lg font-bold">4.9★</div>
                   <div className="text-xs">Rating</div>
                 </div>
               </motion.div>

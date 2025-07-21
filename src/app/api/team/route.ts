@@ -106,6 +106,11 @@ export async function POST(request: NextRequest) {
       return errorResponse("Name, role, and bio are required");
     }
     
+    // Validate image URL if provided
+    if (image && !image.startsWith('http')) {
+      return errorResponse("Image must be a valid URL");
+    }
+    
     // Check if name already exists
     const existingMember = await TeamMember.findOne({ 
       name: { $regex: new RegExp(`^${name}$`, 'i') } 

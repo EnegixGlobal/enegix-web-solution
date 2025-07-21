@@ -273,7 +273,7 @@ export default function Navbar() {
                       "flex items-center px-5 py-2 rounded-lg text-lg font-extrabold transition-all duration-300 cursor-pointer relative group",
                       isLinkActive(link.href)
                         ? "text-black border border-teal-300 rounded-full"
-                        : "text-black hover:text-teal-800"
+                        : "text-black hover:text-gray-800"
                     )}>
                     <span className="relative z-10 font-bold">
                       {link.label}
@@ -305,7 +305,7 @@ export default function Navbar() {
                       "flex items-center px-4 py-2 rounded-lg text-lg transition-all duration-300 cursor-pointer relative",
                       isLinkActive(link.href)
                         ? "text-black border border-teal-300 rounded-full "
-                        : "text-black hover:text-teal-800"
+                        : "text-black hover:text-gray-800"
                     )}>
                     <span className="relative z-10 font-bold">
                       {link.label}
@@ -330,7 +330,7 @@ export default function Navbar() {
                 activeDropdown === link.label &&
                 link.label === "Services" && (
                   <motion.div
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 w-[calc(100vw-2rem)] max-w-4xl bg-white backdrop-blur-xl border border-teal-200 rounded-xl shadow-2xl shadow-teal-900/20 p-4 mt-1"
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 w-[calc(100vw-2rem)] max-w-4xl bg-white backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl shadow-gray-900/20 p-4 mt-1"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
@@ -339,8 +339,8 @@ export default function Navbar() {
                     
                     <div className="flex">
                       {/* Left side - Main Categories */}
-                      <div className="w-1/2 pr-4 border-r border-teal-200">
-                        <h3 className="text-lg font-bold text-teal-900 mb-4 px-3">Service Categories</h3>
+                      <div className="w-1/2 pr-4 border-r border-gray-200">
+                        <h3 className="text-lg font-bold text-gray-900 mb-4 px-3">Service Categories</h3>
                         <div className="space-y-1">
                           {link.dropdownItems?.map((category) => (
                             <div
@@ -350,31 +350,31 @@ export default function Navbar() {
                                 "group flex items-center justify-between p-3 rounded-lg transition-all duration-300 cursor-pointer",
                                 hoveredCategory === category.label
                                   ? "bg-teal-50 border-teal-200 border"
-                                  : "hover:bg-teal-50 border border-transparent"
+                                  : "hover:bg-gray-50 border border-transparent"
                               )}
                             >
                               <div className="flex items-center space-x-3">
                                 <div className={cn(
                                   "transition-colors duration-300",
-                                  hoveredCategory === category.label ? "text-teal-600" : "text-teal-500"
+                                  hoveredCategory === category.label ? "text-teal-600" : "text-gray-500"
                                 )}>
                                   <category.icon className="w-6 h-6" />
                                 </div>
                                 <div>
                                   <h4 className={cn(
                                     "font-semibold transition-colors duration-300",
-                                    hoveredCategory === category.label ? "text-teal-700" : "text-teal-900"
+                                    hoveredCategory === category.label ? "text-teal-700" : "text-gray-900"
                                   )}>
                                     {category.label}
                                   </h4>
-                                  <p className="text-xs text-teal-600 mt-1">
+                                  <p className="text-xs text-gray-600 mt-1">
                                     {category.description}
                                   </p>
                                 </div>
                               </div>
                               <ChevronRightIcon className={cn(
                                 "w-4 h-4 transition-all duration-300",
-                                hoveredCategory === category.label ? "text-teal-600 translate-x-1" : "text-teal-400"
+                                hoveredCategory === category.label ? "text-teal-600 translate-x-1" : "text-gray-400"
                               )} />
                             </div>
                           ))}
@@ -395,12 +395,12 @@ export default function Navbar() {
                                 <Link
                                   key={subcategory.label}
                                   href={subcategory.href as Route}
-                                  className="group block p-3 rounded-lg hover:bg-teal-50 transition-all duration-300 border border-transparent hover:border-teal-200"
+                                  className="group block p-3 rounded-lg hover:bg-gray-50 transition-all duration-300 border border-transparent hover:border-teal-200"
                                 >
-                                  <h5 className="font-semibold text-teal-900 group-hover:text-teal-600 transition-colors mb-1">
+                                  <h5 className="font-semibold text-gray-900 group-hover:text-teal-600 transition-colors mb-1">
                                     {subcategory.label}
                                   </h5>
-                                  <p className="text-xs text-teal-600 leading-relaxed">
+                                  <p className="text-xs text-gray-600 leading-relaxed">
                                     {subcategory.description}
                                   </p>
                                 </Link>
@@ -409,8 +409,8 @@ export default function Navbar() {
                           </div>
                         ) : (
                           <div className="flex items-center justify-center h-full">
-                            <div className="text-center text-teal-500">
-                              <FaRocket className="w-12 h-12 mx-auto mb-3 text-teal-300" />
+                            <div className="text-center text-gray-500">
+                              <FaRocket className="w-12 h-12 mx-auto mb-3 text-gray-300" />
                               <p className="text-sm">Hover over a category to see services</p>
                             </div>
                           </div>
@@ -419,7 +419,7 @@ export default function Navbar() {
                     </div>
 
                     <motion.div
-                      className="absolute -top-2 left-1/2 w-4 h-4 bg-white/95 transform -translate-x-1/2 rotate-45 border-l border-t border-teal-200"
+                      className="absolute -top-2 left-1/2 w-4 h-4 bg-white/95 transform -translate-x-1/2 rotate-45 border-l border-t border-gray-200"
                       initial={{ opacity: 0, y: -5 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 }}
@@ -432,7 +432,7 @@ export default function Navbar() {
                 activeDropdown === link.label &&
                 link.label === "Company" && (
                   <motion.div
-                    className="absolute top-full -left-1/2 w-80 bg-white backdrop-blur-xl border border-teal-200 rounded-xl shadow-2xl shadow-teal-900/30 p-4"
+                    className="absolute top-full -left-1/2 w-80 bg-white backdrop-blur-xl border border-gray-200 rounded-xl shadow-2xl shadow-gray-900/30 p-4"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
@@ -442,15 +442,15 @@ export default function Navbar() {
                         <Link
                           key={item.label}
                           href={item.href as Route}
-                          className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-teal-100/50 transition-all duration-300 border border-transparent hover:border-teal-200">
+                          className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-100/50 transition-all duration-300 border border-transparent hover:border-teal-200">
                           <div className="text-teal-600 mt-1">
                             <item.icon className="w-5 h-5" />
                           </div>
                           <div>
-                            <h4 className="text-sm font-semibold text-teal-900 group-hover:text-teal-600 transition-colors">
+                            <h4 className="text-sm font-semibold text-gray-900 group-hover:text-teal-600 transition-colors">
                               {item.label}
                             </h4>
-                            <p className="text-xs text-teal-600 mt-1">
+                            <p className="text-xs text-gray-600 mt-1">
                               {item.description}
                             </p>
                           </div>
@@ -458,7 +458,7 @@ export default function Navbar() {
                       ))}
                     </div>
                     <motion.div
-                      className="absolute -top-2 left-1/2 w-4 h-4 bg-white/95 transform -translate-x-1/2 rotate-45 border-l border-t border-teal-200"
+                      className="absolute -top-2 left-1/2 w-4 h-4 bg-white/95 transform -translate-x-1/2 rotate-45 border-l border-t border-gray-200"
                       initial={{ opacity: 0, y: -5 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 }}
@@ -477,7 +477,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <motion.button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden flex flex-col items-center justify-center p-2 rounded-lg bg-teal-100/30 hover:bg-teal-200/50 transition-colors duration-200 border border-teal-200"
+          className="lg:hidden flex flex-col items-center justify-center p-2 rounded-lg bg-gray-100/30 hover:bg-gray-200/50 transition-colors duration-200 border border-gray-200"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}>
           {mobileMenuOpen ? (
@@ -509,7 +509,7 @@ export default function Navbar() {
                               activeDropdown === link.label ? null : link.label
                             )
                           }
-                          className="w-full flex items-center justify-between px-4 py-3 text-black hover:text-teal-800 hover:bg-teal-100/30 rounded-lg transition-all duration-200 border border-teal-200">
+                          className="w-full flex items-center justify-between px-4 py-3 text-black hover:text-gray-800 hover:bg-gray-100/30 rounded-lg transition-all duration-200 border border-gray-200">
                           <span>{link.label}</span>
                           <ChevronDownIcon
                             className={cn(
@@ -537,7 +537,7 @@ export default function Navbar() {
                                       <Link
                                         key={subcategory.label}
                                         href={subcategory.href as Route}
-                                        className="block px-2 py-1 text-xs text-black/80 hover:text-teal-800 hover:bg-teal-100/20 rounded transition-all duration-200"
+                                        className="block px-2 py-1 text-xs text-black/80 hover:text-gray-800 hover:bg-gray-100/20 rounded transition-all duration-200"
                                         onClick={() => setMobileMenuOpen(false)}>
                                         {subcategory.label}
                                       </Link>
@@ -550,7 +550,7 @@ export default function Navbar() {
                                   <Link
                                     key={item.label}
                                     href={item.href as Route}
-                                    className="block px-4 py-2 text-sm text-black/80 hover:text-teal-800 hover:bg-teal-100/20 rounded-lg transition-all duration-200"
+                                    className="block px-4 py-2 text-sm text-black/80 hover:text-gray-800 hover:bg-gray-100/20 rounded-lg transition-all duration-200"
                                     onClick={() => setMobileMenuOpen(false)}>
                                     {item.label}
                                   </Link>
@@ -563,7 +563,7 @@ export default function Navbar() {
                     ) : (
                       <Link
                         href={link.href as Route}
-                        className="block px-4 py-3 text-black hover:text-teal-800 hover:bg-teal-100/30 rounded-lg transition-all duration-200 border border-teal-200"
+                        className="block px-4 py-3 text-black hover:text-gray-800 hover:bg-gray-100/30 rounded-lg transition-all duration-200 border border-gray-200"
                         onClick={() => setMobileMenuOpen(false)}>
                         {link.label}
                       </Link>

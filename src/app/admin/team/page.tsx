@@ -8,9 +8,7 @@ import {
   Edit2, 
   Trash2, 
   Search, 
-  Filter,
   Star,
-  Eye,
   ChevronLeft,
   ChevronRight,
   X,
@@ -623,12 +621,16 @@ const TeamMemberModal: React.FC<TeamMemberModalProps> = ({ isOpen, onClose, memb
         body: formData,
       });
       
+      const result = await response.json();
+      
       if (!response.ok) {
-        throw new Error('Upload failed');
+        throw new Error(result.error || 'Upload failed');
       }
       
-      const result = await response.json();
-      return result.imageUrl;
+      console.log('Image uploaded successfully:', result);
+      
+      // The upload API returns 'url' not 'imageUrl'
+      return result.url;
     } catch (error) {
       console.error('Upload error:', error);
       throw error;

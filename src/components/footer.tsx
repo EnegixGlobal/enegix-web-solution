@@ -131,7 +131,7 @@ const Footer = () => {
             <div className="lg:col-span-2">
               <div className="mb-6">
                 <h5 className="text-2xl font-bold mb-4 bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent">
-                  EnegixWeb Solutions
+                  Enegix Web Solutions
                 </h5>
                 <p className="text-gray-300 text-sm leading-relaxed mb-4">
                   Transforming digital dreams into reality. We create innovative web solutions, 
@@ -289,7 +289,7 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-4">
                 <p className="text-gray-400 text-sm">
-                  © {new Date().getFullYear()} EnegixWeb Solutions. All rights reserved.
+                  © {new Date().getFullYear()} Enegix Web Solutions. All rights reserved.
                 </p>
                 <div className="hidden md:flex items-center gap-1 text-gray-500 text-sm">
                   <span>Made with</span>
