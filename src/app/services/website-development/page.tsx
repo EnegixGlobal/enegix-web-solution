@@ -23,72 +23,72 @@ export default function WebDevelopment() {
   const process = [
     {
       step: "1",
-      title: "Discovery",
+      title: "Planning & Analysis",
       description:
-        "We delve deep to fully understand your business and its goals. This includes analyzing your industry, competitors, and your target audience's preferences and behaviors.",
+        "We analyze your business requirements, target audience, and technical specifications. This includes competitor research, feature planning, and creating a comprehensive development roadmap.",
       icon: "💡",
     },
     {
       step: "2",
-      title: "Planning",
+      title: "Design & Architecture",
       description:
-        "Next, we tailor our strategy to align with your business objectives, beginning with a comprehensive analysis of user needs and market requirements.",
+        "We create wireframes, design mockups, and plan the technical architecture. This phase includes database design, API planning, and establishing the overall system structure.",
       icon: "📋",
     },
     {
       step: "3",
-      title: "Preparation",
+      title: "Development Setup",
       description:
-        "Using the strategy as a roadmap, we assess both your current design and external elements to ensure they align with the strategic plan.",
+        "We set up the development environment, configure servers, and establish version control. This includes selecting the right technology stack and setting up development workflows.",
       icon: "📝",
     },
     {
       step: "4",
-      title: "Implementation",
+      title: "Coding & Integration",
       description:
-        "Our design framework is designed to provide a consistent flow of optimizations, creating an action plan that respects your internal resources.",
+        "Our developers build your website using modern frameworks and best practices. We implement features, integrate APIs, and ensure code quality through regular testing and reviews.",
       icon: "🚀",
     },
     {
       step: "5",
-      title: "Growth",
+      title: "Testing & Optimization",
       description:
-        "As your project gains momentum, we focus on tracking progress towards your goals and ensuring continued, sustainable design success.",
+        "We conduct comprehensive testing including functionality, performance, security, and cross-browser compatibility. We optimize for speed, SEO, and user experience.",
       icon: "⚙️",
     },
     {
       step: "6",
-      title: "Refinement",
+      title: "Launch & Maintenance",
       description:
-        "We continuously analyze performance data to identify new opportunities and adapt to user feedback. This ongoing optimization ensures your design strategy evolves with your business and market conditions.",
+        "We deploy your website to production servers and provide ongoing maintenance. This includes monitoring, updates, security patches, and performance optimization to ensure long-term success.",
       icon: "📦",
     },
   ];
 
   const faqs = [
     {
-      question: "What's included in your UI/UX design service?",
-      answer: "Our comprehensive UI/UX design service includes user research, wireframing, visual design, prototyping, usability testing, and design system creation. We provide all design files, assets, and detailed specifications for development."
+      question: "What technologies do you use for website development?",
+      answer: "We use modern technologies including React.js, Next.js, Node.js, Python, PHP, and various databases like MongoDB and PostgreSQL. We select the best technology stack based on your specific project requirements and goals."
     },
     {
-      question: "How long does a typical UI/UX design project take?",
-      answer: "Project timelines vary based on complexity. A simple website redesign typically takes 4-6 weeks, while complex applications can take 8-12 weeks. We provide detailed timelines during our initial consultation based on your specific requirements."
+      question: "How long does it take to develop a website?",
+      answer: "Development time varies based on complexity. A simple business website takes 2-4 weeks, while complex e-commerce or web applications can take 6-12 weeks. We provide detailed timelines during project planning."
     },
     {
-      question: "Do you provide design files and assets for development?",
-      answer: "Yes, we provide all necessary design files including Figma/Sketch files, exported assets, style guides, and detailed specifications. We also offer developer handoff sessions to ensure smooth implementation of the designs."
+      question: "Do you provide ongoing maintenance and support?",
+      answer: "Yes, we offer comprehensive maintenance packages including security updates, performance monitoring, content updates, and technical support. We ensure your website stays secure, fast, and up-to-date."
     },
     {
-      question: "Can you redesign an existing website or app?",
-      answer: "Absolutely! We specialize in both new designs and redesigns. We'll analyze your current design, identify pain points, and create an improved user experience while maintaining your brand identity and business goals."
+      question: "Will my website be mobile-friendly and responsive?",
+      answer: "Absolutely! All our websites are built with responsive design principles, ensuring they work perfectly on all devices including smartphones, tablets, and desktops with optimal user experience."
     },
     {
-      question: "Do you conduct user testing?",
-      answer: "Yes, user testing is a crucial part of our process. We conduct usability testing with real users to validate design decisions, identify potential issues, and ensure the final product meets user expectations and business objectives."
+      question: "Can you integrate third-party services and APIs?",
+      answer: "Yes, we specialize in integrating various third-party services including payment gateways, CRM systems, email marketing tools, social media platforms, and custom APIs to enhance your website's functionality."
     },
     {
-      question: "What's the difference between UI and UX design?",
-      answer: "UX (User Experience) focuses on the overall feel and user journey, including research, wireframing, and user flow. UI (User Interface) focuses on the visual elements like colors, typography, and interactive components. We provide both services as an integrated approach."
+      question: "Do you provide hosting and domain services?",
+      answer: "Yes, we offer reliable hosting solutions and can help with domain registration. We provide various hosting options including shared hosting, VPS, and cloud hosting based on your website's requirements and traffic."
     }
   ];
 
@@ -106,15 +106,15 @@ export default function WebDevelopment() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}>
                 <div className="flex items-center space-x-3 mb-6">
-                  <span className="text-4xl">🎨</span>
+                  <span className="text-4xl">💻</span>
                   <h1 className="text-5xl md:text-5xl font-bold text-teal-600">
-                    UI/UX Designing
+                    Website Development
                   </h1>
                 </div>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Design experiences that are both stunning and user-focused. We
-                  create intuitive interfaces that delight users and drive
-                  business results.
+                  Build powerful, scalable websites that drive business growth. We
+                  create custom web solutions using modern technologies and best
+                  practices for optimal performance.
                 </p>
 
                 <div className="w-sm">
@@ -158,10 +158,10 @@ export default function WebDevelopment() {
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
               <div className="text-teal-500 font-semibold text-sm uppercase tracking-wider mb-4">
-                OUR UI/UX SERVICES
+                OUR DEVELOPMENT SERVICES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                A Design Team That Delivers
+                Development Team That Builds Excellence
               </h2>
             </motion.div>
 
@@ -175,10 +175,10 @@ export default function WebDevelopment() {
                   transition={{ duration: 0.2, delay: 0.1 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    User Research & Analysis
+                    Custom Web Development
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We identify valuable user insights through comprehensive research analysis. Using advanced tools, we uncover behavioral patterns your competitors miss. This strategic foundation targets users your customers actually represent, positioning your business for sustainable design growth.
+                    We build tailor-made websites from scratch using cutting-edge technologies. Our custom solutions are designed to meet your specific business requirements, ensuring scalability, security, and optimal performance across all devices and platforms.
                   </p>
                 </motion.div>
 
@@ -188,10 +188,10 @@ export default function WebDevelopment() {
                   transition={{ duration: 0.2, delay: 0.2 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Wireframing & Prototyping
+                    E-commerce Development
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We optimize your user flows to satisfy both functionality and users. Our balanced approach combines strategic layout planning with engaging interactions that answer visitor questions. This enhances existing interfaces and builds your design authority.
+                    We create powerful online stores with secure payment gateways, inventory management, and user-friendly shopping experiences. Our e-commerce solutions are built to handle high traffic and drive conversions with seamless checkout processes.
                   </p>
                 </motion.div>
               </div>
@@ -204,10 +204,10 @@ export default function WebDevelopment() {
                   transition={{ duration: 0.2, delay: 0.3 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Visual Design
+                    CMS Development
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    Our experts ensure your interface meets all design requirements for optimal usability. We address visual hierarchy, brand consistency, accessibility issues and aesthetics to create a solid design foundation. This improves both appeal and user experience.
+                    We develop content management systems that make it easy for you to update and manage your website content. Our CMS solutions are user-friendly, secure, and provide full control over your website without requiring technical expertise.
                   </p>
                 </motion.div>
 
@@ -217,10 +217,10 @@ export default function WebDevelopment() {
                   transition={{ duration: 0.2, delay: 0.4 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Usability Testing
+                    API Integration
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We boost your design effectiveness through comprehensive user testing to reach target users. From prototype validation to interface optimization, we implement proven tactics that improve user satisfaction and design performance to drive qualified engagement.
+                    We seamlessly integrate third-party APIs and services to enhance your website functionality. From payment gateways to social media integration, we connect your website with essential business tools and external services.
                   </p>
                 </motion.div>
               </div>
@@ -233,10 +233,10 @@ export default function WebDevelopment() {
                   transition={{ duration: 0.2, delay: 0.5 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Mobile-First Design
+                    Responsive Development
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We develop responsive designs from relevant, mobile-first websites in your industry. Our ethical strategies ensure compatibility that drives both functionality and mobile traffic. This builds device authority, creating a competitive advantage that's difficult to replicate.
+                    We ensure your website works flawlessly across all devices and screen sizes. Our responsive development approach guarantees optimal user experience on desktop, tablet, and mobile devices with fast loading times and smooth functionality.
                   </p>
                 </motion.div>
 
@@ -246,10 +246,10 @@ export default function WebDevelopment() {
                   transition={{ duration: 0.2, delay: 0.6 }}
                   className="space-y-4">
                   <h3 className="text-xl font-bold text-gray-900">
-                    Design Systems & Analytics
+                    Performance Optimization
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
-                    We track all design activities against clear performance metrics that matter to your business. Our transparent methodology shows usability improvements, engagement growth and conversion data, allowing continuous refinement for maximum ROI.
+                    We optimize website performance through advanced caching, code optimization, and server configuration. Our performance-focused approach ensures fast loading speeds, better SEO rankings, and improved user engagement rates.
                   </p>
                 </motion.div>
               </div>
@@ -271,7 +271,7 @@ export default function WebDevelopment() {
                 Frequently Asked Questions
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Find answers to common questions about our UI/UX design process and services
+                Find answers to common questions about our website development process and services
               </p>
             </motion.div>
 
