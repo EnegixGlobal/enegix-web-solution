@@ -14,56 +14,7 @@ const Footer = () => {
     { label: "Contact", href: "/contact" },
   ];
 
-  const serviceLinks = [
-    {
-      label: "UI/UX Designing",
-      href: "/services/ui-ux-designing",
-    },
-    {
-      label: "Website Development",
-      href: "/services/website-development",
-    },
-    {
-      label: "Mobile Application",
-      href: "/services/mobile-application",
-    },
-    {
-      label: "CRM/MLM",
-      href: "/services/crm-mlm",
-    },
-    {
-      label: "Search Engine Optimization (SEO)",
-      href: "/services/search-engine-optimization",
-    },
-    {
-      label: "Google My Business",
-      href: "/services/google-my-business",
-    },
-    {
-      label: "Paid Advertising",
-      href: "/services/paid-advertising",
-    },
-    {
-      label: "Social Media Marketing",
-      href: "/services/social-media-marketing",
-    },
-    {
-      label: "Blog And Articles",
-      href: "/services/blog-and-articles",
-    },
-    {
-      label: "Content Writing",
-      href: "/services/content-writing",
-    },
-    {
-      label: "Branding and Logo Design",
-      href: "/services/logo-design",
-    },
-    {
-      label: "Landing Page Design",
-      href: "/services/landing-page-design",
-    },
-  ];
+
 
   const socialLinks = [
     {
