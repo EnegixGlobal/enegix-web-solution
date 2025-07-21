@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { DockDemo } from "./dock-demo";
 import Container from "./Container";
 import { MdOutlineMail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa";
@@ -67,7 +66,6 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { label: "Twitter", href: "https://x.com/enegixweb", icon: "twitter" },
     {
       label: "Facebook",
       href: "https://www.facebook.com/enegixwebsolution/",
@@ -75,7 +73,7 @@ const Footer = () => {
     },
     {
       label: "Instagram",
-      href: "https://www.instagram.com/enegixwebsolution/",
+      href: "https://www.instagram.com/enegixwebsolutions/",
       icon: "instagram",
     },
     {
@@ -144,23 +142,21 @@ const Footer = () => {
           <div className="absolute top-0 w-full h-24 bg-gradient-to-b from-emerald-800/50 to-transparent" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8">
+        <div className="container mx-auto px-4 relative z-10 py-8 md:py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
             <div>
-              <h5 className="text-xl font-black mb-6 text-white">
+              <h5 className="text-lg font-bold mb-4 text-white">
                 EnegixWeb Solutions
               </h5>
-              <p className="mb-2 text-white ">
-                House No.2, Old AG More, Kadru, Ranchi, Jharkhand , 834002
+              <p className="mb-3 text-white text-sm leading-relaxed">
+                House No.2, Old AG More, Kadru, Ranchi, Jharkhand, 834002
               </p>
-
-              <p className="mb-4"></p>
-              <div className="flex space-x-4 mt-6">
+              <div className="flex space-x-3 mt-4">
                 {socialLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="text-gray-200 hover:text-emerald-300 transition-colors duration-300">
+                    className="text-gray-300 hover:text-emerald-300 transition-colors duration-300 p-1 hover:scale-110 transform">
                     {renderSocialIcon(link.icon)}
                   </Link>
                 ))}
@@ -168,32 +164,39 @@ const Footer = () => {
             </div>
 
             <div>
-              <h6 className="text-white font-bold mb-4 font-montserrat tracking-tight">
+              <h6 className="text-white font-semibold mb-3 text-base tracking-tight">
                 Services
               </h6>
-              <ul className="grid grid-cols-2 ">
-                {serviceLinks.map((link) => (
+              <ul className="grid grid-cols-1 space-y-1">
+                {serviceLinks.slice(0, 6).map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-gray-200 text-xs hover:text-emerald-300 transition-colors duration-300 font-space-grotesk  font-medium">
+                      className="text-gray-300 text-xs hover:text-emerald-300 transition-colors duration-300 font-medium block py-1">
                       {link.label}
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    href="/services"
+                    className="text-emerald-400 text-xs font-semibold hover:text-emerald-300 transition-colors duration-300">
+                    View All Services →
+                  </Link>
+                </li>
               </ul>
             </div>
 
-            <div >
-              <h6 className="text-white font-bold mb-4 font-poppins tracking-tight">
+            <div>
+              <h6 className="text-white font-semibold mb-3 text-base tracking-tight">
                 Company
               </h6>
-              <ul className="space-y-2">
+              <ul className="space-y-1">
                 {companyLinks.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-gray-200 hover:text-emerald-300 transition-colors duration-300 font-outfit text-sm font-medium">
+                      className="text-gray-300 hover:text-emerald-300 transition-colors duration-300 text-sm font-medium block py-1">
                       {link.label}
                     </Link>
                   </li>
@@ -202,28 +205,23 @@ const Footer = () => {
             </div>
 
             <div>
-              <h6 className="text-white font-bold mb-4 font-montserrat tracking-tight">
+              <h6 className="text-white font-semibold mb-3 text-base tracking-tight">
                 Contact Us
               </h6>
-              <address className="not-italic text-gray-200 font-space-grotesk text-sm font-medium">
-                <p className="mb-2">
+              <address className="not-italic text-gray-300 text-sm font-medium space-y-2">
+                <p>
                   <a
                     href="mailto:contact@enegixwebsolutions.com"
-                    className="hover:text-emerald-300 transition-colors ">
-                    <strong className="text-white font-inter font-bold">
-                      {" "}
-                      <MdOutlineMail className="inline text-lg font-black" />
-                    </strong>{" "}
-                    contact@enegixwebsolutions.com
+                    className="hover:text-emerald-300 transition-colors flex items-center gap-2">
+                    <MdOutlineMail className="text-base flex-shrink-0" />
+                    <span className="break-all">contact@enegixwebsolutions.com</span>
                   </a>
                 </p>
                 <p>
-                  <strong className="text-white font-inter font-bold">
-                    <FaPhone className="inline  font-black" />
-                  </strong>{" "}
                   <a
                     href="tel:+919608263050"
-                    className="hover:text-emerald-300 transition-colors">
+                    className="hover:text-emerald-300 transition-colors flex items-center gap-2">
+                    <FaPhone className="text-sm flex-shrink-0" />
                     +91 96082 63050
                   </a>
                 </p>
@@ -231,27 +229,26 @@ const Footer = () => {
             </div>
           </div>
 
-          <hr className="border-gray-500/50 my-8" />
+          <hr className="border-gray-500/30 my-6" />
 
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-200 text-sm mb-4 md:mb-0 font-space-grotesk font-medium">
-              © {new Date().getFullYear()} Enegix Websolutions. All rights
-              reserved.
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-300 text-xs md:text-sm font-medium">
+              © {new Date().getFullYear()} EnegixWeb Solutions. All rights reserved.
             </p>
-            <div className="flex space-x-6">
+            <div className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6">
               <Link
                 href="/privacy-policy"
-                className="text-gray-200 hover:text-emerald-300 text-sm transition-colors duration-300 font-inter font-medium">
+                className="text-gray-300 hover:text-emerald-300 text-xs md:text-sm transition-colors duration-300 font-medium">
                 Privacy Policy
               </Link>
               <Link
                 href="/terms-of-service"
-                className="text-gray-200 hover:text-emerald-300 text-sm transition-colors duration-300 font-inter font-medium">
+                className="text-gray-300 hover:text-emerald-300 text-xs md:text-sm transition-colors duration-300 font-medium">
                 Terms of Service
               </Link>
               <Link
                 href="/cookie-policy"
-                className="text-gray-200 hover:text-emerald-300 text-sm transition-colors duration-300 font-inter font-medium">
+                className="text-gray-300 hover:text-emerald-300 text-xs md:text-sm transition-colors duration-300 font-medium">
                 Cookie Policy
               </Link>
             </div>

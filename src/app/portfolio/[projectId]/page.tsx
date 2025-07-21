@@ -17,120 +17,362 @@ import { notFound } from "next/navigation";
 // Portfolio project data (same as in main portfolio page)
 const portfolioProjects = [
   {
-    id: "healthier-you",
-    title: "Healthier You",
-    category: "Web Development",
-    description: "A dynamic health and wellness platform featuring personalized nutrition plans, workout routines, and health tracking tools.",
-    fullDescription: "Healthier You is a comprehensive wellness platform that combines modern web technologies with personalized health solutions. The platform features advanced user profiling, AI-powered nutrition recommendations, interactive workout planning, and detailed progress tracking. Built with a mobile-first approach, it provides seamless experiences across all devices while maintaining high performance and user engagement.",
-    image: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1",
+    id: "cozy-trunk",
+    title: "Cozy Trunk",
+    category: "Clothing",
+    type: "E-commerce",
+    description: "Cozy Trunk is your one-stop destination for trendy, comfy, and affordable fashion. From cozy everyday wear to statement outfits, we bring handpicked styles right to your doorstep. Explore fresh collections that blend comfort with confidence—because you deserve to look good and feel even better.",
+    fullDescription: "Cozy Trunk revolutionizes online fashion retail by combining comfort with style. The platform features an intuitive shopping experience, advanced filtering systems, personalized recommendations, and seamless checkout processes. Built with WordPress and Elementor, it provides a scalable solution for growing fashion businesses while maintaining excellent performance and user experience.",
+    image: "/portfolio/cozy.png",
     images: [
-      "https://images.unsplash.com/photo-1605296867304-46d5465a13f1",
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b",
-      "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65"
+      "/portfolio/cozy.png",
+      "/portfolio/cozy-1.png",
+      "/portfolio/cozy-2.png",
+      "/portfolio/cozy-3.png"
     ],
-    tags: ["React", "Node.js", "MongoDB", "Express"],
-    technologies: ["React.js", "Node.js", "MongoDB", "Express.js", "JWT Auth", "Stripe API", "Chart.js"],
-    link: "https://healthier-you.com",
+    tags: ["Wordpress", "PHP", "MySQL", "Elementor"],
+    technologies: ["WordPress", "PHP", "MySQL", "Elementor", "WooCommerce", "Payment Gateway", "SEO"],
+    link: "https://cozytrunk.in/",
     featured: true,
-    client: "Wellness Corp",
+    client: "Cozy Trunk Fashion",
+    duration: "2 months",
+    year: "2024",
+    challenges: [
+      "Creating intuitive product discovery",
+      "Optimizing for mobile commerce",
+      "Integrating multiple payment options",
+      "Building scalable inventory management"
+    ],
+    solutions: [
+      "Implemented advanced filtering system",
+      "Designed mobile-first responsive layout",
+      "Integrated secure payment gateways",
+      "Built custom inventory tracking"
+    ],
+    results: [
+      "300% increase in online sales",
+      "65% mobile conversion rate",
+      "45% reduction in cart abandonment",
+      "4.7/5 customer satisfaction score"
+    ],
+    stats: {
+      organicGrowth: 1200,
+      paidGrowth: 300,
+    },
+  },
+  {
+    id: "thakurain",
+    title: "Thakurain",
+    category: "Clothing",
+    type: "E-commerce",
+    description: "Thakurain.in is your go‑to hub for stylish and affordable ethnic fashion—desi vibes, global appeal. Whether you need festive lehengas, chic kurtis, or everyday designer sarees, this store wraps traditional craftsmanship in a modern silhouette.",
+    fullDescription: "Thakurain represents the perfect blend of traditional Indian craftsmanship and modern e-commerce technology. The platform showcases ethnic fashion with detailed product galleries, size guides, and cultural context for each piece. Built with WordPress and enhanced with custom functionality for ethnic wear sizing and regional preferences.",
+    image: "/portfolio/thakurain.png",
+    images: [
+      "/portfolio/thakurain.png",
+      "/portfolio/thakurain-1.png",
+      "/portfolio/thakurain-2.png",
+      "/portfolio/thakurain-3.png"
+    ],
+    tags: ["Wordpress", "PHP", "Elementor", "MySQL"],
+    technologies: ["WordPress", "PHP", "Elementor", "MySQL", "WooCommerce", "Custom Post Types", "ACF"],
+    link: "https://thakurain.in/",
+    featured: true,
+    client: "Thakurain Fashion",
     duration: "3 months",
-    year: "2023",
+    year: "2024",
     challenges: [
-      "Creating personalized user experiences at scale",
-      "Integrating complex nutrition databases",
-      "Building real-time progress tracking",
-      "Ensuring data privacy and security"
+      "Showcasing intricate ethnic designs",
+      "Managing complex sizing variations",
+      "Cultural context presentation",
+      "Regional shipping optimization"
     ],
     solutions: [
-      "Implemented AI-powered recommendation engine",
-      "Designed scalable microservices architecture",
-      "Created interactive data visualization components",
-      "Implemented comprehensive security measures"
+      "Created detailed product galleries",
+      "Built custom sizing system",
+      "Added cultural information sections",
+      "Optimized logistics integration"
     ],
     results: [
-      "85% user retention rate after 3 months",
-      "40% increase in user engagement",
-      "99.9% uptime since launch",
-      "Featured in top wellness apps"
+      "250% increase in ethnic wear sales",
+      "80% customer retention rate",
+      "40% improvement in size accuracy",
+      "Expansion to 15 Indian states"
     ]
   },
   {
-    id: "urban-taste",
-    title: "Urban Taste",
-    category: "E-commerce",
-    description: "An elegant food delivery platform connecting users with local restaurants offering gourmet dining experiences.",
-    fullDescription: "Urban Taste revolutionizes the food delivery experience by focusing on premium dining options and seamless user interactions. The platform features advanced restaurant discovery, real-time order tracking, integrated payment systems, and a sophisticated recommendation engine that learns from user preferences.",
-    image: "https://images.unsplash.com/photo-1551218808-94e220e084d2",
+    id: "aussie-voyages",
+    title: "Aussie Voyages",
+    category: "Travel",
+    description: "Aussie Voyages is a Victoria-based inbound tour operator offering custom travel experiences across Australia and New Zealand. From private coach tours to flexible holiday packages, they make exploring easy and unforgettable.",
+    fullDescription: "Aussie Voyages needed a comprehensive digital presence to showcase their premium travel experiences. We created a visually stunning website that captures the beauty of Australia and New Zealand while providing easy booking functionality and detailed itinerary presentations.",
+    image: "/portfolio/ausi.png",
     images: [
-      "https://images.unsplash.com/photo-1551218808-94e220e084d2",
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b",
-      "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445"
-    ],
-    tags: ["Next.js", "Stripe", "Tailwind CSS", "Firebase"],
-    technologies: ["Next.js", "Stripe", "Tailwind CSS", "Firebase", "Google Maps API", "Socket.io"],
-    link: "https://urban-taste.com",
-    featured: true,
-    client: "Urban Dining Group",
-    duration: "4 months",
-    year: "2023",
-    challenges: [
-      "Real-time order tracking and updates",
-      "Complex payment processing",
-      "Restaurant management dashboard",
-      "Mobile-responsive design"
-    ],
-    solutions: [
-      "Implemented WebSocket connections for live updates",
-      "Integrated Stripe for secure payments",
-      "Built comprehensive admin panel",
-      "Used responsive design principles"
-    ],
-    results: [
-      "200+ restaurant partnerships",
-      "50,000+ orders processed",
-      "4.8/5 average user rating",
-      "30% month-over-month growth"
-    ]
-  },
-  {
-    id: "echo-studios",
-    title: "Echo Studios",
-    category: "Branding",
-    description: "Complete brand identity for a recording studio, including logo design, color palette, typography, and marketing materials.",
-    fullDescription: "Echo Studios required a complete brand overhaul to reflect their modern approach to music production. We created a comprehensive visual identity that captures the essence of sound waves and musical creativity while maintaining professional appeal for both artists and corporate clients.",
-    image: "https://images.unsplash.com/photo-1511376777868-611b54f68947",
-    images: [
-      "https://images.unsplash.com/photo-1511376777868-611b54f68947",
-      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f",
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3"
+      "/portfolio/ausi.png",
+      "/portfolio/ausi-1.png",
+      "/portfolio/ausi-2.png",
+      "/portfolio/ausi-3.png"
     ],
     tags: ["Logo Design", "Brand Identity", "Typography"],
-    technologies: ["Adobe Illustrator", "Adobe Photoshop", "Figma", "Adobe InDesign"],
-    link: "https://echo-studios.com",
+    technologies: ["WordPress", "Custom Design", "Booking System", "Google Maps", "SEO", "Analytics"],
+    link: "https://aussievoyages.com.au/",
     featured: true,
-    client: "Echo Recording Studios",
-    duration: "2 months",
-    year: "2023",
+    client: "Aussie Voyages Travel",
+    duration: "4 months",
+    year: "2024",
     challenges: [
-      "Creating versatile logo for various applications",
-      "Balancing modern and timeless design",
-      "Developing cohesive marketing materials",
-      "Ensuring brand consistency across platforms"
+      "Showcasing diverse travel experiences",
+      "Complex booking system integration",
+      "Multi-destination itinerary display",
+      "Mobile-responsive gallery design"
     ],
     solutions: [
-      "Designed modular logo system",
-      "Created comprehensive brand guidelines",
-      "Developed template library",
-      "Established clear usage protocols"
+      "Created immersive visual galleries",
+      "Integrated custom booking platform",
+      "Built interactive itinerary builder",
+      "Optimized for mobile experiences"
     ],
     results: [
-      "40% increase in brand recognition",
-      "Successful rebrand launch",
-      "Consistent brand application",
-      "Positive client feedback"
+      "150% increase in online bookings",
+      "60% improvement in user engagement",
+      "35% growth in repeat customers",
+      "Recognition as top Australian tour operator"
     ]
   },
-  // Add other projects as needed...
+  {
+    id: "bharat-edge",
+    title: "Bharat Edge",
+    category: "Web Development",
+    description: "Bharat Edge helps startups and MSMEs grow with expert services like company registration, certifications, and funding support. From launch to scale, their tailored solutions simplify business compliance and boost credibility.",
+    fullDescription: "Bharat Edge required a professional platform to showcase their comprehensive business services. We developed a user-friendly website with service catalogues, application tracking, and client portals to streamline the business registration and compliance process.",
+    image: "/portfolio/bharat.png",
+    images: [
+      "/portfolio/bharat.png",
+      "/portfolio/bharat-1.png",
+      "/portfolio/bharat-2.png",
+      "/portfolio/bharat-3.png"
+    ],
+    tags: ["WordPress", "PHP", "Elementor", "MySQL"],
+    technologies: ["WordPress", "PHP", "Elementor", "MySQL", "Custom Forms", "CRM Integration", "Security"],
+    link: "https://bharat-edge.com",
+    featured: false,
+    client: "Bharat Edge Consulting",
+    duration: "2.5 months",
+    year: "2024",
+    challenges: [
+      "Complex service categorization",
+      "Document management system",
+      "Client application tracking",
+      "Compliance information display"
+    ],
+    solutions: [
+      "Built hierarchical service structure",
+      "Integrated document upload system",
+      "Created application status dashboard",
+      "Designed compliance resource center"
+    ],
+    results: [
+      "200% increase in service inquiries",
+      "75% improvement in client onboarding",
+      "50% reduction in processing time",
+      "99% client satisfaction rate"
+    ]
+  },
+  {
+    id: "bagwan-interiors",
+    title: "Bagwan Interiors",
+    category: "Interior Design",
+    description: "Online store for premium interior design services with detailed project portfolios and personalized consultations.",
+    fullDescription: "Bagwan Interiors needed a sophisticated platform to showcase their premium interior design work. We created an elegant website featuring detailed project portfolios, service catalogs, and consultation booking systems that reflect their high-end brand positioning.",
+    image: "/portfolio/bagwan.png",
+    images: [
+      "/portfolio/bagwan.png",
+      "/portfolio/bagwan-1.png",
+      "/portfolio/bagwan-2.png",
+      "/portfolio/bagwan-3.png"
+    ],
+    tags: ["WordPress", "Custom Theme", "WooCommerce"],
+    technologies: ["WordPress", "Custom Theme", "WooCommerce", "Gallery Systems", "Booking Calendar", "SEO"],
+    link: "https://bagwaninterior.com/",
+    featured: false,
+    client: "Bagwan Interior Design",
+    duration: "3 months",
+    year: "2024",
+    challenges: [
+      "High-quality image optimization",
+      "Complex project categorization",
+      "Consultation booking system",
+      "Portfolio presentation design"
+    ],
+    solutions: [
+      "Implemented advanced image compression",
+      "Created filterable portfolio system",
+      "Built custom booking calendar",
+      "Designed immersive project galleries"
+    ],
+    results: [
+      "180% increase in consultation requests",
+      "90% improvement in portfolio engagement",
+      "65% growth in project inquiries",
+      "Featured in design industry publications"
+    ]
+  },
+  {
+    id: "rjholidays",
+    title: "RJ Holidays",
+    category: "Travel",
+    description: "RJ Holidays offers expert travel packages to South Korea with everything from flights and hotels to guided tours. Explore Seoul, Jeju, and more with hassle-free planning and personalized service.",
+    fullDescription: "RJ Holidays specializes in South Korean travel experiences, requiring a platform that captures the excitement of Korean culture while providing comprehensive booking capabilities. We created an engaging website with detailed destination guides and seamless booking integration.",
+    image: "/portfolio/travel.png",
+    images: [
+      "/portfolio/travel.png",
+      "/portfolio/travel-1.png",
+      "/portfolio/travel-2.png",
+      "/portfolio/travel-3.png"
+    ],
+    tags: ["SEO", "Content Marketing", "PPC", "Analytics"],
+    technologies: ["WordPress", "Booking Integration", "Payment Gateway", "SEO", "Analytics", "Social Media"],
+    link: "https://rjholidays.co.in/",
+    featured: false,
+    client: "RJ Holidays Travel",
+    duration: "3.5 months",
+    year: "2024",
+    challenges: [
+      "Destination-specific content creation",
+      "Multi-currency payment processing",
+      "Cultural guide integration",
+      "Seasonal package management"
+    ],
+    solutions: [
+      "Created comprehensive destination guides",
+      "Integrated multi-currency support",
+      "Built cultural information sections",
+      "Developed dynamic package system"
+    ],
+    results: [
+      "300% increase in South Korea bookings",
+      "85% customer satisfaction score",
+      "40% growth in repeat travelers",
+      "Recognition as top Korea specialist"
+    ]
+  },
+  {
+    id: "well-pit",
+    title: "Well Pit",
+    category: "Chemicals",
+    description: "Wellpit offers high-quality industrial chemicals and refreshing beverages like mango and jaljeera drinks. Trusted for purity, lab-tested products, and sustainable practices.",
+    fullDescription: "Well Pit required a professional platform to showcase their dual focus on industrial chemicals and beverage products. We created a clean, modern website that effectively communicates their commitment to quality and sustainability while serving both B2B and B2C markets.",
+    image: "/portfolio/wellpit.png",
+    images: [
+      "/portfolio/wellpit.png",
+      "/portfolio/wellpit-1.png",
+      "/portfolio/wellpit-2.png",
+      "/portfolio/wellpit-3.png"
+    ],
+    tags: ["Packaging Design", "Logo Design", "Visual Identity"],
+    technologies: ["WordPress", "Product Catalog", "B2B Portal", "Quality Certifications", "SEO", "Analytics"],
+    link: "https://wellpit.com",
+    featured: false,
+    client: "Well Pit Industries",
+    duration: "2 months",
+    year: "2024",
+    challenges: [
+      "Dual market targeting (B2B/B2C)",
+      "Complex product categorization",
+      "Quality certification display",
+      "Regulatory compliance presentation"
+    ],
+    solutions: [
+      "Created separate user experiences",
+      "Built hierarchical product structure",
+      "Integrated certification displays",
+      "Designed compliance resource center"
+    ],
+    results: [
+      "220% increase in B2B inquiries",
+      "150% growth in beverage sales",
+      "95% compliance approval rate",
+      "Industry recognition for transparency"
+    ]
+  },
+  {
+    id: "north-goa-taxi-services",
+    title: "North Goa Taxi Services",
+    category: "Travel",
+    description: "Reliable taxi services in North Goa for hassle-free airport transfers, local sightseeing, and intercity travel.",
+    fullDescription: "North Goa Taxi Services needed a modern booking platform to compete in the competitive Goa tourism market. We developed a user-friendly website with real-time booking, fare calculators, and driver tracking features.",
+    image: "/portfolio/ride.png",
+    images: [
+      "/portfolio/ride.png",
+      "/portfolio/ride-1.png",
+      "/portfolio/ride-2.png",
+      "/portfolio/ride-3.png"
+    ],
+    tags: ["React", "Stripe", "Firebase", "Netlify"],
+    technologies: ["WordPress", "Booking System", "Payment Gateway", "GPS Integration", "Mobile App", "Analytics"],
+    link: "https://northgoataxiservice.com/",
+    featured: false,
+    client: "North Goa Taxi Services",
+    duration: "2.5 months",
+    year: "2024",
+    challenges: [
+      "Real-time booking system",
+      "Dynamic fare calculation",
+      "Driver management interface",
+      "Tourist-friendly design"
+    ],
+    solutions: [
+      "Built responsive booking platform",
+      "Integrated fare calculator",
+      "Created driver dashboard",
+      "Designed intuitive user interface"
+    ],
+    results: [
+      "400% increase in online bookings",
+      "70% reduction in booking time",
+      "95% customer satisfaction rate",
+      "Expansion to South Goa market"
+    ]
+  },
+  {
+    id: "shree-moters",
+    title: "Shree Motors",
+    category: "Automotive",
+    description: "Complete visual identity for an automotive company specializing in electric vehicles.",
+    fullDescription: "Shree Motors required a modern digital presence to showcase their automotive services and electric vehicle offerings. We created a comprehensive website with service catalogs, vehicle showcases, and customer service portals.",
+    image: "/portfolio/shreemoters.png",
+    images: [
+      "/portfolio/shreemoters.png",
+      "/portfolio/shreemoters-1.png",
+      "/portfolio/shreemoters-2.png",
+      "/portfolio/shreemoters-3.png"
+    ],
+    tags: ["Logo Design", "Brand Guidelines", "Print Materials"],
+    technologies: ["WordPress", "Vehicle Catalog", "Service Booking", "Inventory Management", "Customer Portal", "SEO"],
+    link: "https://srirammotors.in/",
+    featured: false,
+    client: "Shree Motors",
+    duration: "3 months",
+    year: "2024",
+    challenges: [
+      "Vehicle inventory display",
+      "Service appointment booking",
+      "Electric vehicle information",
+      "Customer service integration"
+    ],
+    solutions: [
+      "Built dynamic vehicle catalog",
+      "Integrated booking calendar",
+      "Created EV information center",
+      "Developed customer portal"
+    ],
+    results: [
+      "250% increase in service bookings",
+      "60% growth in EV inquiries",
+      "80% improvement in customer engagement",
+      "Recognition as leading EV dealer"
+    ]
+  }
 ];
 
 export default function ProjectDetailPage() {

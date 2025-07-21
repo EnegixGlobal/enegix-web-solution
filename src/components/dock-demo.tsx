@@ -9,18 +9,14 @@ export function DockDemo() {
   return (
     <div className="relative">
       <Dock iconMagnification={50} iconDistance={150}>
-        <DockIcon className="bg-black/10 dark:bg-white/10">
-        <a href="https://x.com/enegixweb" target="_blank" rel="noopener noreferrer">
-          <Icons.twitter className="size-full" />
-        </a>
-        </DockIcon>
+        
         <DockIcon className="bg-black/10 dark:bg-white/10">
         <a href="https://www.facebook.com/enegixwebsolution/" target="_blank" rel="noopener noreferrer">
           <Icons.facebook className="size-full" />
         </a>
         </DockIcon>
         <DockIcon className="bg-black/10 dark:bg-white/10">
-        <a href="https://www.instagram.com/enegixwebsolution/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/enegixwebsolutions/" target="_blank" rel="noopener noreferrer">
           <Icons.insta className="size-full" />
         </a>  
         </DockIcon>

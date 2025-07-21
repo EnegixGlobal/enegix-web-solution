@@ -141,43 +141,24 @@ export default function BlogPage() {
       <Navbar />
       <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
         {/* Hero Section */}
-        <header className="relative pt-24 pb-16 px-6 lg:px-8 min-h-[75vh] flex items-center bg-gradient-to-br from-teal-50 via-emerald-50 to-teal-100">
+        <header className="relative pt-24 pb-16 px-6 lg:px-8 min-h-[75vh] flex items-center ">
           {/* Background Effects */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-gradient-to-br from-teal-100/40 to-emerald-200/40 blur-3xl animate-pulse" />
-            <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-tr from-emerald-100/40 to-teal-200/40 blur-3xl animate-pulse" />
-            <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-teal-200/30 blur-2xl" />
-            <div className="absolute bottom-1/4 right-1/4 w-40 h-40 rounded-full bg-emerald-200/30 blur-2xl" />
-            <div className="absolute inset-0 opacity-30">
-              <div className="absolute inset-0" style={{
-                backgroundImage: `radial-gradient(circle at 1px 1px, rgba(20, 184, 166, 0.1) 1px, transparent 0)`,
-                backgroundSize: '40px 40px'
-              }} />
-            </div>
-          </div>
 
-          <div className="max-w-7xl mx-auto relative z-10">
+
+          <div className="max-w-7xl pt-10 mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm text-teal-700 px-6 py-3 rounded-full text-sm font-medium mb-8 border border-teal-200/50 shadow-lg"
-              >
-                <div className="w-2 h-2 bg-teal-500 rounded-full animate-pulse" />
-                Latest Insights & Expert Knowledge
-              </motion.div>
+             
 
               <motion.h1 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-inter tracking-tight"
+                className="text-5xl md:text-5xl lg:text-5xl font-bold mb-8 font-inter tracking-tight"
               >
                 <span className="text-gray-900">Blogs &</span>
                 <br />
@@ -190,7 +171,7 @@ export default function BlogPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-gray-600 text-xl md:text-2xl max-w-4xl mx-auto font-inter leading-relaxed mb-10"
+                className="text-gray-600 text-xl md:text-xl max-w-4xl mx-auto font-inter leading-relaxed mb-10"
               >
                 Stay ahead with expert insights on web development, digital marketing, and the latest technology trends from Enegix Web Solutions.
               </motion.p>

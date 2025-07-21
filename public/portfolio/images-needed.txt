@@ -1,0 +1,53 @@
+Portfolio Images Needed for Case Studies
+==========================================
+
+Please add the following additional images to the /public/portfolio/ folder:
+
+For each project, you need 3 additional images (numbered 1, 2, 3):
+
+Cozy Trunk:
+- cozy-1.png
+- cozy-2.png
+- cozy-3.png
+
+Thakurain:
+- thakurain-1.png
+- thakurain-2.png
+- thakurain-3.png
+
+Aussie Voyages:
+- ausi-1.png
+- ausi-2.png
+- ausi-3.png
+
+Bharat Edge:
+- bharat-1.png
+- bharat-2.png
+- bharat-3.png
+
+Bagwan Interiors:
+- bagwan-1.png
+- bagwan-2.png
+- bagwan-3.png
+
+RJ Holidays:
+- travel-1.png
+- travel-2.png
+- travel-3.png
+
+Well Pit:
+- wellpit-1.png
+- wellpit-2.png
+- wellpit-3.png
+
+North Goa Taxi:
+- ride-1.png
+- ride-2.png
+- ride-3.png
+
+Shree Motors:
+- shreemoters-1.png
+- shreemoters-2.png
+- shreemoters-3.png
+
+Note: These should be different views/pages of each project to showcase various aspects of the work.

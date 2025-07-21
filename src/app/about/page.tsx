@@ -283,7 +283,7 @@ export default function About() {
 
       <main className="bg-white">
         {/* Hero Section - "Wow" About Page */}
-        <section className="relative overflow-hidden pt-26 pb-10 bg-gradient-to-br from-teal-50 via-white to-emerald-50">
+        <section className="relative overflow-hidden pt-26">
          
           <Container>
             <div className="relative mx-auto z-10 flex max-w-3xl flex-col lg:flex-row items-center justify-between min-h-[300px] py-4">
@@ -298,24 +298,13 @@ export default function About() {
                   Our Story
                 </span>
                 <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4 text-gray-900 drop-shadow-lg">
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-emerald-500 to-teal-700 animate-gradient-x">About Enegix</span>
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-emerald-500 to-teal-700 animate-gradient-x py-2">About Enegix</span>
                   <span className="block text-gray-800 mt-1">Web Solutions</span>
                 </h1>
                 <p className="text-gray-800 text-base md:text-lg leading-relaxed  mb-6 mx-auto lg:mx-0">
                   We are your digital growth partners, committed to transforming your online presence with innovation and creativity.
                 </p>
-                <div className="flex flex-wrap justify-center  gap-3">
-                  <a href="#about-enegix">
-                    <button className="px-6 py-2 rounded-full bg-teal-600 text-white font-semibold text-base shadow-lg hover:bg-teal-700 transition-all duration-300">
-                      Discover Our Mission
-                    </button>
-                  </a>
-                  <a href="#values">
-                    <button className="px-6 py-2 rounded-full bg-white border-2 border-teal-600 text-teal-600 font-semibold text-base hover:bg-teal-50 transition-all duration-300">
-                      Our Values
-                    </button>
-                  </a>
-                </div>
+
               </motion.div>
               {/* Right: Half-screen graphic, only on large screens */}
               
