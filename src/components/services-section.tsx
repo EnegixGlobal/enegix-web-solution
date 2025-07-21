@@ -145,8 +145,8 @@ export default function ServicesSection() {
                 <div className="p-8 min-h-[350px] flex flex-col group-hover:pb-4 transition-all duration-500">
                   {/* Icon with Gradient Ring */}
                   <div className="relative flex items-center justify-center mb-8">
-                    <div className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-teal-200 via-indigo-200 to-white blur-xl opacity-70 animate-pulse"></div>
-                    <div className="relative w-16 h-16 bg-gradient-to-br from-teal-400 to-indigo-400 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border-4 border-white">
+                    <div className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-teal-200 via-teal-200 to-white blur-xl opacity-70 animate-pulse"></div>
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 border-4 border-white">
                       <service.icon className="w-8 h-8 text-white drop-shadow-lg" />
                     </div>
                   </div>
@@ -165,13 +165,13 @@ export default function ServicesSection() {
                 {/* Expanded Content - Glassmorphism effect */}
                 <div className="absolute bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t-2 border-teal-200/60 px-8 pt-12 pb-6 min-h-[260px] transform translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-out rounded-b-3xl shadow-2xl mt-2">
                   {/* Spacer line for visual separation */}
-                  <div className="w-16 h-1 bg-gradient-to-r from-teal-400 to-indigo-400 rounded-full mx-auto mb-6"></div>
+                  <div className="w-16 h-1 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full mx-auto mb-6"></div>
 
                   {/* Read More Buttons for Each SubService */}
                   <div className="space-y-2">
                     {service.subServices.map((item, idx) => (
                       <Link href={item.href} key={idx + '-btn'}>
-                        <button className="w-full bg-gradient-to-r from-teal-500 to-indigo-500 hover:from-teal-600 hover:to-indigo-600 text-white py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center group/btn shadow-lg hover:shadow-xl mb-2">
+                        <button className="w-full bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-600 hover:to-teal-600 text-white py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center group/btn shadow-lg hover:shadow-xl mb-2">
                           <span> {item.title}</span>
                           <ExternalLink className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                         </button>
@@ -181,7 +181,7 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Gradient Overlay for smooth transition */}
-                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-teal-100/40 via-indigo-100/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-teal-100/40 via-teal-100/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               </div>
             </motion.div>
           ))}

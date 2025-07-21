@@ -62,7 +62,7 @@ export default function GoogleMyBusiness() {
                 transition={{ duration: 0.3 }}>
                 <div className="flex items-center space-x-3 mb-6">
                   
-                  <h1 className="text-5xl md:text-5xl font-bold text-green-600">
+                  <h1 className="text-5xl md:text-5xl font-bold text-teal-600">
                     <FcGoogle className="text-6xl inline mb-3"/>oogle My Business
                   </h1>
                 </div>
@@ -112,7 +112,7 @@ export default function GoogleMyBusiness() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
               className="text-center mb-16">
-              <div className="text-green-500 font-semibold text-sm uppercase tracking-wider mb-4">
+              <div className="text-teal-500 font-semibold text-sm uppercase tracking-wider mb-4">
                 OUR GMB SERVICES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -245,9 +245,9 @@ export default function GoogleMyBusiness() {
                       {faq.question}
                     </span>
                     {openFAQ === index ? (
-                      <FaMinus className="w-5 h-5 text-green-600 flex-shrink-0" />
+                      <FaMinus className="w-5 h-5 text-teal-600 flex-shrink-0" />
                     ) : (
-                      <FaPlus className="w-5 h-5 text-green-600 flex-shrink-0" />
+                      <FaPlus className="w-5 h-5 text-teal-600 flex-shrink-0" />
                     )}
                   </button>
                   

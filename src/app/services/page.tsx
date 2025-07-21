@@ -113,7 +113,7 @@ const services = [
     ],
     image: "/web-development.jpg",
     icon: FaMobile,
-    color: "from-green-500 to-emerald-600",
+    color: "from-teal-500 to-emerald-600",
     href: "/services/mobile-application",
   },
   {
@@ -217,7 +217,7 @@ const services = [
     ],
     image: "/web-development.jpg",
     icon: FaPen,
-    color: "from-emerald-500 to-green-600",
+    color: "from-emerald-500 to-teal-600",
     href: "/services/blog-and-articles",
   },
   {
