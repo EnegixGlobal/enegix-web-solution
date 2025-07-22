@@ -39,6 +39,7 @@ export const metadata: Metadata = {
     google: "wouO7LV2T5yaBd9_fdrhsyi1VTl_hzsith__e1orQJQ",
   },
   keywords: [
+    "With google verification consoling",
     "Best digital marketing",
     "digital agency",
     "SEO company",
