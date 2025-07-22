@@ -215,7 +215,7 @@ export default function Navbar() {
     if (href === "/") {
       return pathname === href;
     }
-    return pathname.startsWith(href);
+    return pathname ? pathname.startsWith(href) : false;
   };
 
   const handleDropdownEnter = (label: string) => {
