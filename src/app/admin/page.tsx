@@ -2,6 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { useRequireAuth } from '@/hooks/useAuth';
+import { useAuthStore } from '@/stores/authStore';
 import {
   Users,
   FileText,
@@ -9,6 +12,7 @@ import {
   TrendingUp,
   Activity,
   BarChart3,
+  LogOut,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -26,6 +30,13 @@ interface DashboardStats {
 }
 
 const AdminDashboard = () => {
+  const router = useRouter();
+  
+  // Authentication hook
+  const { isAuthenticated, isLoading: isAuthLoading, shouldRender } = useRequireAuth();
+  const { logout } = useAuthStore();
+  
+  // Local state for dashboard
   const [stats, setStats] = useState<DashboardStats>({
     totalTeamMembers: 0,
     activeMembers: 0,
@@ -35,9 +46,17 @@ const AdminDashboard = () => {
   });
   const [loading, setLoading] = useState(true);
 
+  // Logout function
+  const handleLogout = async () => {
+    await logout();
+    router.push('/admin-login');
+  };
+
   useEffect(() => {
-    fetchDashboardStats();
-  }, []);
+    if (shouldRender) {
+      fetchDashboardStats();
+    }
+  }, [shouldRender]);
 
   const fetchDashboardStats = async () => {
     try {
@@ -147,6 +166,23 @@ const AdminDashboard = () => {
     },
   ];
 
+  // Show loading screen while checking authentication
+  if (isAuthLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Verifying authentication...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render admin content if not authenticated
+  if (!shouldRender) {
+    return null;
+  }
+
   if (loading) {
     return (
       <div className="p-6 pt-8">
@@ -170,11 +206,23 @@ const AdminDashboard = () => {
     <div className="p-6 pt-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-        <p className="text-gray-600">
-          Welcome to your admin dashboard. Here's what's happening with your
-          website.
-        </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
+            <p className="text-gray-600">
+              Welcome to your admin dashboard. Here's what's happening with your
+              website.
+            </p>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+            title="Logout"
+          >
+            <LogOut size={20} />
+            Logout
+          </button>
+        </div>
       </div>
 
       {/* Stats Cards */}

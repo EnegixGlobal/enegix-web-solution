@@ -95,7 +95,7 @@ const portfolioProjects = [
       "Wellpit offers high-quality industrial chemicals and refreshing beverages like mango and jaljeera drinks. Trusted for purity, lab-tested products, and sustainable practices. Blending science and refreshment with innovation from Gujarat, India.",
     image: "/portfolio/wellpit.png",
     tags: ["Packaging Design", "Logo Design", "Visual Identity"],
-    link: "https://wellpit.com",
+    link: "https://wellpit.in/",
     featured: false,
   },
   {

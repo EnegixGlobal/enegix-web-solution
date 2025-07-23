@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useAuthStore, selectIsAuthenticated, selectIsLoading, selectError } from '@/stores/authStore';
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { Meteors } from "@/components/magicui/meteors";
 import ScrollFix from "@/components/scroll-fix";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Image from "next/image";
-import axios from "axios";
 import toast from "react-hot-toast";
 
 
@@ -18,8 +18,13 @@ export default function AdminLoginPage() {
     email: "",
     password: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  
+  // Zustand store
+  const isAuthenticated = useAuthStore(selectIsAuthenticated);
+  const isLoading = useAuthStore(selectIsLoading);
+  const error = useAuthStore(selectError);
+  const { login, clearAuth } = useAuthStore();
+  
   const router = useRouter();
   
   // Prevent hydration mismatch
@@ -28,7 +33,15 @@ export default function AdminLoginPage() {
     
     // Enable page scrolling
     enablePageScroll();
-  }, []);
+    
+    // Clear any previous auth errors
+    clearAuth();
+    
+    // Redirect if already authenticated
+    if (isAuthenticated) {
+      router.push('/admin');
+    }
+  }, [isAuthenticated, clearAuth, router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -37,21 +50,14 @@ export default function AdminLoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError(null);
     
-    try {
-      const response = await axios.post("/api/admin/login", formData);
-      if(response.data.success ) {
-        toast.success("Login successful! Redirecting to admin dashboard...");
-        router.push("/admin")
-    }    } catch (err: unknown) {
-      const errorMessage = err instanceof Error 
-        ? err.message 
-        : (err as { response?: { data?: { message?: string } } })?.response?.data?.message || "An error occurred";
-      setError(errorMessage);
-    } finally {
-      setIsLoading(false);
+    const success = await login(formData);
+    
+    if (success) {
+      toast.success("Login successful! Redirecting to admin dashboard...");
+      router.push("/admin");
+    } else {
+      toast.error(error || "Login failed. Please try again.");
     }
   };
 

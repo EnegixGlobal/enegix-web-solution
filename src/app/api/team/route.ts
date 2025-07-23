@@ -20,8 +20,6 @@ export async function GET(request: NextRequest) {
     
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
-    const featured = searchParams.get('featured');
-    const department = searchParams.get('department');
     const status = searchParams.get('status') || 'active';
     const limit = parseInt(searchParams.get('limit') || '50');
     const page = parseInt(searchParams.get('page') || '1');
@@ -43,20 +41,12 @@ export async function GET(request: NextRequest) {
     // Build query object
     const query: any = { status };
     
-    if (featured !== null && featured !== undefined) {
-      query.featured = featured === 'true';
-    }
-    
-    if (department && department !== 'all') {
-      query.department = department;
-    }
-    
     // Calculate pagination
     const skip = (page - 1) * limit;
     
     // Fetch team members with pagination and sorting
     const teamMembers = await TeamMember.find(query)
-      .sort({ featured: -1, order: 1, createdAt: -1 })
+      .sort({ order: 1, createdAt: -1 })
       .limit(limit)
       .skip(skip)
       .lean();
@@ -90,20 +80,14 @@ export async function POST(request: NextRequest) {
     const {
       name,
       role,
-      bio,
       image,
-      socialLinks,
-      featured,
-      experience,
-      skills,
-      department,
       status,
       order,
     } = body;
     
     // Validation
-    if (!name || !role || !bio) {
-      return errorResponse("Name, role, and bio are required");
+    if (!name || !role) {
+      return errorResponse("Name and role are required");
     }
     
     // Validate image URL if provided
@@ -124,13 +108,7 @@ export async function POST(request: NextRequest) {
     const newTeamMember = new TeamMember({
       name,
       role,
-      bio,
       image: image || undefined,
-      socialLinks: socialLinks || {},
-      featured: featured || false,
-      experience: experience || 0,
-      skills: skills || [],
-      department: department || 'other',
       status: status || 'active',
       order: order || 0,
     });
@@ -167,13 +145,7 @@ export async function PUT(request: NextRequest) {
     const {
       name,
       role,
-      bio,
       image,
-      socialLinks,
-      featured,
-      experience,
-      skills,
-      department,
       status,
       order,
     } = body;
@@ -200,13 +172,7 @@ export async function PUT(request: NextRequest) {
     const updateData: any = {};
     if (name !== undefined) updateData.name = name;
     if (role !== undefined) updateData.role = role;
-    if (bio !== undefined) updateData.bio = bio;
     if (image !== undefined) updateData.image = image;
-    if (socialLinks !== undefined) updateData.socialLinks = socialLinks;
-    if (featured !== undefined) updateData.featured = featured;
-    if (experience !== undefined) updateData.experience = experience;
-    if (skills !== undefined) updateData.skills = skills;
-    if (department !== undefined) updateData.department = department;
     if (status !== undefined) updateData.status = status;
     if (order !== undefined) updateData.order = order;
     

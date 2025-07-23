@@ -51,25 +51,8 @@ interface TeamMember {
   _id: string;
   name: string;
   role: string;
-  bio: string;
   image?: string;
-  socialLinks: {
-    facebook?: string;
-    instagram?: string;
-    linkedin?: string;
-  };
-  featured: boolean;
-  experience: number;
-  skills: string[];
-  department:
-    | "leadership"
-    | "development"
-    | "sales"
-    | "marketing"
-    | "design"
-    | "other";
-  joinDate: string;
-  status: "active" | "inactive" | "archived";
+  status: "active" | "inactive";
   order: number;
   createdAt: string;
   updatedAt: string;
@@ -236,9 +219,9 @@ export default function TeamPage() {
       setLoading(true);
       setError(null);
 
-      // Fetch all active employees (non-founders) with comprehensive data
+      // Fetch all active employees with simplified data (name, role, image only)
       const response = await fetch(
-        "/api/team?status=active&featured=false&limit=50&sort=order,name"
+        "/api/team?status=active&limit=50&sort=order,name"
       );
       const data = await response.json();
 
@@ -255,7 +238,7 @@ export default function TeamPage() {
     }
   };
 
-  // Filter members based on active filter
+  // Filter members based on active filter (simplified)
   const filteredEmployees = employees.filter((member) => {
     if (activeFilter === "all") return true;
     if (activeFilter === "leadership") return false; // Leadership is handled separately (founders)
@@ -263,16 +246,14 @@ export default function TeamPage() {
       return (
         member.role.toLowerCase().includes("developer") ||
         member.role.toLowerCase().includes("development") ||
-        member.role.toLowerCase().includes("engineer") ||
-        (member.department && member.department.toLowerCase() === "development")
+        member.role.toLowerCase().includes("engineer")
       );
     if (activeFilter === "sales")
       return (
         member.role.toLowerCase().includes("sales") ||
         member.role.toLowerCase().includes("business") ||
         member.role.toLowerCase().includes("account") ||
-        member.role.toLowerCase().includes("marketing") ||
-        (member.department && member.department.toLowerCase() === "sales")
+        member.role.toLowerCase().includes("marketing")
       );
     return true;
   });
@@ -489,7 +470,7 @@ export default function TeamPage() {
 
             {/* Team Statistics */}
             {!loading && !error && employees.length > 0 && (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 <div className="text-center p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
                   <div className="text-3xl font-bold text-teal-600 mb-2">
                     {foundersData.length + employees.length}
@@ -498,35 +479,9 @@ export default function TeamPage() {
                 </div>
                 <div className="text-center p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
                   <div className="text-3xl font-bold text-blue-600 mb-2">
-                    {
-                      employees.filter((m) => m.department === "development")
-                        .length
-                    }
+                    {employees.length}
                   </div>
-                  <p className="text-gray-600 text-sm">Developers</p>
-                </div>
-                <div className="text-center p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-bold text-green-600 mb-2">
-                    {
-                      employees.filter(
-                        (m) =>
-                          m.department === "sales" ||
-                          m.department === "marketing"
-                      ).length
-                    }
-                  </div>
-                  <p className="text-gray-600 text-sm">Sales & Marketing</p>
-                </div>
-                <div className="text-center p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-bold text-purple-600 mb-2">
-                    {Math.round(
-                      employees.reduce((acc, m) => acc + m.experience, 0) /
-                        employees.length
-                    ) || 0}
-                  </div>
-                  <p className="text-gray-600 text-sm">
-                    Avg. Experience (Years)
-                  </p>
+                  <p className="text-gray-600 text-sm">Active Employees</p>
                 </div>
               </div>
             )}

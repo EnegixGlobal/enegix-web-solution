@@ -11,54 +11,14 @@ const teamMemberSchema = new mongoose.Schema({
     required: [true, "Role is required"],
     trim: true,
   },
-  bio: {
-    type: String,
-    required: [true, "Bio is required"],
-    trim: true,
-  },
   image: {
     type: String,
-    required: false, // Made optional since it will be uploaded via Cloudinary
+    required: false,
     default: "",
-  },
-  socialLinks: {
-    facebook: {
-      type: String,
-      default: "",
-    },
-    instagram: {
-      type: String,
-      default: "",
-    },
-    linkedin: {
-      type: String,
-      default: "",
-    },
-  },
-  featured: {
-    type: Boolean,
-    default: false,
-  },
-  experience: {
-    type: Number,
-    default: 0,
-  },
-  skills: [{
-    type: String,
-    trim: true,
-  }],
-  department: {
-    type: String,
-    enum: ['leadership', 'development', 'sales', 'marketing', 'design', 'other'],
-    default: 'other',
-  },
-  joinDate: {
-    type: Date,
-    default: Date.now,
   },
   status: {
     type: String,
-    enum: ['active', 'inactive', 'archived'],
+    enum: ['active', 'inactive'],
     default: 'active',
   },
   order: {
@@ -70,9 +30,8 @@ const teamMemberSchema = new mongoose.Schema({
 });
 
 // Create indexes for better query performance
-teamMemberSchema.index({ featured: 1, order: 1 });
-teamMemberSchema.index({ department: 1, status: 1 });
-teamMemberSchema.index({ name: 'text', role: 'text', bio: 'text' });
+teamMemberSchema.index({ status: 1, order: 1 });
+teamMemberSchema.index({ name: 'text', role: 'text' });
 
 const TeamMember = mongoose.models.TeamMember || mongoose.model("TeamMember", teamMemberSchema);
 
