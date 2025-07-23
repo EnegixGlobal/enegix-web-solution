@@ -77,7 +77,7 @@ const services = [
     ],
     image: "/web-development.jpg",
     icon: FaPalette,
-    color: "from-purple-500 to-pink-600",
+    color: "from-teal-500 to-pink-600",
     href: "/services/ui-ux-designing",
   },
   {
@@ -199,7 +199,7 @@ const services = [
     ],
     image: "/digital-marketing.jpg",
     icon: FaShare,
-    color: "from-indigo-500 to-purple-600",
+    color: "from-indigo-500 to-teal-600",
     href: "/services/social-media-marketing",
   },
   {
@@ -270,7 +270,7 @@ const services = [
     ],
     image: "/web-development.jpg",
     icon: FaBullseye,
-    color: "from-violet-500 to-purple-600",
+    color: "from-violet-500 to-teal-600",
     href: "/services/landing-page-design",
   },
 ];
@@ -333,7 +333,7 @@ const ServiceCard = ({
       {/* Content */}
       <div className="p-4 space-y-3">
         <div>
-          <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-teal-600 group-hover:to-purple-600 transition-all duration-300 leading-tight">
+          <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-teal-600 group-hover:to-teal-600 transition-all duration-300 leading-tight">
             {service.title}
           </h3>
           <p className="text-gray-600 text-xs leading-relaxed mb-3">
@@ -354,11 +354,14 @@ const ServiceCard = ({
           ))}
         </div>
 
-        {/* Read More Button */}
+        {/* Request Service Button */}
         <div className="">
-          <Link href={service.href} className={``}>
-            <button className="flex items-center gap-2 justify-center text-teal-600 cursor-pointer hover:text-teal-500">
-              Read More <FaArrowRight />
+          <Link 
+            href={`https://wa.me/919905953677?text=Hi! I'm interested in your ${encodeURIComponent(service.title)} service. Could you share pricing and timeline details? Thanks!`}
+            target="_blank" 
+            className={``}>
+            <button className="flex items-center gap-2 justify-center text-teal-600 cursor-pointer hover:text-teal-500 bg-teal-50 hover:bg-teal-100 px-3 py-2 rounded-lg transition-all duration-300 text-xs font-medium">
+              Request Service <FaArrowRight />
             </button>
           </Link>
         </div>
@@ -443,53 +446,163 @@ export default function ServicesPage() {
       <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
         <Container  >
           {/* Hero Section */}
-          <section className="pt-32 pb-10">
-            <div className="max-w-7xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <section className="pt-28 pb-12 relative overflow-hidden">
+            {/* Background Elements */}
+            <div className="absolute inset-0 "></div>
+            <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-teal-100 to-transparent rounded-full blur-3xl opacity-30"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-teal-100 to-transparent rounded-full blur-3xl opacity-30"></div>
+            
+            <div className="max-w-7xl mx-auto relative z-10">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3 }}>
-                  <div className="flex items-center space-x-3 mb-6">
-                    <h1 className="text-5xl md:text-5xl font-bold text-teal-600">
-                      Our Services
-                    </h1>
-                  </div>
-                  <p className="text-xl text-gray-900 mb-8 leading-relaxed">
-                    Comprehensive digital solutions designed to transform your
-                    business. From stunning designs to powerful development, we
-                    deliver excellence in every project.
-                  </p>
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="space-y-6">
+                  
+                  {/* Badge */}
 
-                  <div className="w-sm">
+                  {/* Main Heading */}
+                  <div className="space-y-3">
+                    <motion.h1 
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                      className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                      <span className="text-gray-900">Our</span>{" "}
+                      <span className="bg-gradient-to-r from-teal-600 via-teal-500 to-teal-600 bg-clip-text text-transparent">
+                        Services
+                      </span>
+                    </motion.h1>
+                    
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "80px" }}
+                      transition={{ duration: 1, delay: 0.8 }}
+                      className="h-1 bg-gradient-to-r from-teal-500 to-teal-500 rounded-full">
+                    </motion.div>
+                  </div>
+
+                  {/* Description */}
+                  <motion.p 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                    className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl">
+                    Comprehensive digital solutions designed to{" "}
+                    <span className="text-teal-600 font-semibold">transform your business</span>.
+                    From stunning designs to powerful development, we deliver excellence in every project.
+                  </motion.p>
+
+                  {/* Stats */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="flex flex-wrap gap-6 py-3">
+                    {[
+                      { number: "50+", label: "Projects Completed" },
+                      { number: "25+", label: "Happy Clients" },
+                      { number: "12", label: "Services Offered" }
+                    ].map((stat, index) => (
+                      <div key={index} className="text-center">
+                        <div className="text-xl md:text-2xl font-bold text-teal-600">{stat.number}</div>
+                        <div className="text-xs text-gray-500">{stat.label}</div>
+                      </div>
+                    ))}
+                  </motion.div>
+
+                  {/* CTA Button */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.7 }}
+                    className="flex flex-col sm:flex-row gap-3">
                     <Link
                       href="https://wa.me/919608263050?text=Hi%20I%20am%20interested%20in%20your%20services.%20Can%20you%20share%20more%20details%20about%20your%20offerings?"
-                      target="_blank">
-                      <Button className="py-2 gap-3">
-                        Connect with Us <FaArrowRight />
+                      target="_blank"
+                      className="group">
+                      <Button className="py-3 gap-3 px-6 text-base font-semibold bg-gradient-to-r from-teal-600 to-teal-600 hover:from-teal-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                        Contact Us
+                        <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
                       </Button>
                     </Link>
-                  </div>
+                    
+
+                  </motion.div>
                 </motion.div>
+
+                {/* Right Side - Compact Image Section */}
                 <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  className="w-full flex justify-right mb-10  ">
-                  <Image
-                    src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="Hero Image"
-                    height={600}
-                    width={500}
-                    className=" h-[400px] rounded-tl-[100px] rounded-br-[100px]  object-cover shadow-lg transition-transform duration-500 ease-in-out transform hover:scale-102  z-20"
-                  />
-                  <Image
-                    src="/pattern.png"
-                    alt="Hero Image"
-                    height={600}
-                    width={600}
-                    className=" h-[400px] -top-15  relative md:-left-[200px] -left-[350px] object-cover  "
-                  />
+                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+                  className="relative">
+                  
+                  {/* Main Image Container */}
+                  <div className="relative">
+                    {/* Floating Cards - Smaller */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.8, delay: 1.2 }}
+                      className="absolute md:-left-6 left-3 top-10 bg-white rounded-xl p-3 shadow-lg border border-gray-100 z-20">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-gradient-to-r from-teal-500 to-teal-500 rounded-lg flex items-center justify-center">
+                          <FaCode className="text-white text-xs" />
+                        </div>
+                        <div>
+                          <div className="text-xs font-semibold text-gray-900">Web Development</div>
+                          <div className="text-xs text-gray-500">Modern & Fast</div>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.8, delay: 1.4 }}
+                      className="absolute right-3 bottom-10 bg-white rounded-xl p-3 shadow-lg border border-gray-100 z-30">
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-gradient-to-r from-teal-500 to-pink-500 rounded-lg flex items-center justify-center">
+                          <FaPalette className="text-white text-xs" />
+                        </div>
+                        <div>
+                          <div className="text-xs font-semibold text-gray-900">UI/UX Design</div>
+                          <div className="text-xs text-gray-500">User Focused</div>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Main Hero Image - Smaller */}
+                    <div className="relative">
+                      <Image
+                        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Digital Solutions Hero"
+                        height={400}
+                        width={400}
+                        className="w-full h-[350px] rounded-2xl object-cover shadow-xl transition-transform duration-700 ease-in-out hover:scale-102 z-10 relative"
+                      />
+                      
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl"></div>
+                    </div>
+
+                    {/* Background Pattern - Smaller */}
+                    <div className="absolute -top-6 -right-6 w-full h-full">
+                      <Image
+                        src="/pattern.png"
+                        alt="Background Pattern"
+                        height={400}
+                        width={400}
+                        className="w-full h-full object-cover opacity-15 -z-10"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Decorative Elements - Smaller */}
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-500 rounded-full opacity-20 blur-xl"></div>
+                  <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-teal-400 to-pink-500 rounded-full opacity-20 blur-xl"></div>
                 </motion.div>
               </div>
             </div>
@@ -588,7 +701,7 @@ export default function ServicesPage() {
                     key={index}
                     className="bg-white rounded-xl p-6 border border-gray-100 hover:border-teal-300 transition-all duration-300 hover:shadow-lg hover:scale-105"
                     style={{ willChange: "transform" }}>
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-teal-100 to-purple-100 flex items-center justify-center text-teal-600 mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-teal-100 to-teal-100 flex items-center justify-center text-teal-600 mb-4">
                       {feature.icon}
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">

@@ -199,7 +199,7 @@ export default function AdminLoginPage() {
                         Logging in...
                       </>
                     ) : (
-                      "Login to Dashboard"
+                      " to Dashboard"
                     )}
                   </button>
                 </form>

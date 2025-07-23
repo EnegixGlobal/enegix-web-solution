@@ -7,6 +7,7 @@ import {
   ExternalLink,
   Search,
 } from "lucide-react";
+import Container from "./Container";
 
 const services = [
   {
@@ -104,7 +105,7 @@ const services = [
 export default function ServicesSection() {
   return (
     <section className="py-20 bg-white">
-      <div className="container mx-auto md:px-8 px-4">
+      <Container>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -142,7 +143,7 @@ export default function ServicesSection() {
               {/* Card Content */}
               <div className="relative bg-gradient-to-br from-white/80 to-teal-50/60 group-hover:opacity-95 transition-all duration-500 ease-out rounded-3xl overflow-hidden">
                 {/* Collapsed Content */}
-                <div className="p-8 min-h-[350px] flex flex-col group-hover:pb-4 transition-all duration-500">
+                <div className="p-8 min-h-[370px] flex flex-col group-hover:pb-4 transition-all duration-500">
                   {/* Icon with Gradient Ring */}
                   <div className="relative flex items-center justify-center mb-8">
                     <div className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-teal-200 via-teal-200 to-white blur-xl opacity-70 animate-pulse"></div>
@@ -186,7 +187,7 @@ export default function ServicesSection() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

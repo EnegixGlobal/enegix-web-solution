@@ -29,7 +29,7 @@ const Footer = () => {
     },
     {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/enegix-web-solutions-332427360/",
+      href: "https://www.linkedin.com/company/enegix-global-private-limited/",
       icon: "linkedin",
     },
   ];
