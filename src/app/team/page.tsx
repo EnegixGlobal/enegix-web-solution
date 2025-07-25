@@ -468,24 +468,6 @@ export default function TeamPage() {
               ))}
             </div>
 
-            {/* Team Statistics */}
-            {!loading && !error && employees.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                <div className="text-center p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-bold text-teal-600 mb-2">
-                    {foundersData.length + employees.length}
-                  </div>
-                  <p className="text-gray-600 text-sm">Total Team Members</p>
-                </div>
-                <div className="text-center p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">
-                    {employees.length}
-                  </div>
-                  <p className="text-gray-600 text-sm">Active Employees</p>
-                </div>
-              </div>
-            )}
-
             {/* Team Members Grid */}
             {loading ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -559,65 +541,6 @@ export default function TeamPage() {
                 </p>
               </div>
             )}
-          </Container>
-        </section>
-        {/* Join Our Team Section */}
-        <section className="py-20 bg-white">
-          <Container>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-600 via-teal-600 to-teal-600 p-12 lg:p-16 text-center text-white">
-              {/* Background decorative elements */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-20 translate-x-20"></div>
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-16 -translate-x-16"></div>
-
-              <div className="relative z-10 max-w-4xl mx-auto">
-                {/* Icon */}
-                <div className="inline-flex p-4 rounded-2xl bg-white/20 backdrop-blur-sm mb-6">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-10 h-10">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM3 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 019.374 21c-2.331 0-4.512-.645-6.374-1.766z"
-                    />
-                  </svg>
-                </div>
-
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  Join Our Growing Team
-                </h2>
-                <p className="text-white/90 mb-8 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
-                  We're always looking for talented individuals to join our
-                  team. Check out our current openings or send us your resume.
-                </p>
-
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Link href="/contact">
-                    <Button
-                      size="lg"
-                      className="bg-white text-teal-600 hover:bg-gray-100">
-                      View Open Positions
-                    </Button>
-                  </Link>
-                  <Link href="/contact">
-                    <Button
-                      size="lg"
-                      className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-teal-600">
-                      Contact Us
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
           </Container>
         </section>
       </main>

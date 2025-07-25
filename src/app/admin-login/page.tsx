@@ -3,14 +3,19 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useAuthStore, selectIsAuthenticated, selectIsLoading, selectError } from '@/stores/authStore';
+import {
+  useAuthStore,
+  selectIsAuthenticated,
+  selectIsLoading,
+  selectError,
+} from "@/stores/authStore";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { Meteors } from "@/components/magicui/meteors";
 import ScrollFix from "@/components/scroll-fix";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import Image from "next/image";
 import toast from "react-hot-toast";
-
+import Link from "next/link";
 
 export default function AdminLoginPage() {
   const [mounted, setMounted] = useState(false);
@@ -18,28 +23,28 @@ export default function AdminLoginPage() {
     email: "",
     password: "",
   });
-  
+
   // Zustand store
   const isAuthenticated = useAuthStore(selectIsAuthenticated);
   const isLoading = useAuthStore(selectIsLoading);
   const error = useAuthStore(selectError);
   const { login, clearAuth } = useAuthStore();
-  
+
   const router = useRouter();
-  
+
   // Prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
-    
+
     // Enable page scrolling
     enablePageScroll();
-    
+
     // Clear any previous auth errors
     clearAuth();
-    
+
     // Redirect if already authenticated
     if (isAuthenticated) {
-      router.push('/admin');
+      router.push("/admin");
     }
   }, [isAuthenticated, clearAuth, router]);
 
@@ -50,9 +55,9 @@ export default function AdminLoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const success = await login(formData);
-    
+
     if (success) {
       toast.success("Login successful! Redirecting to admin dashboard...");
       router.push("/admin");
@@ -64,7 +69,7 @@ export default function AdminLoginPage() {
   return (
     <>
       {mounted && <ScrollFix />}
-      
+
       <main className=" min-h-screen bg-[#0a192f]">
         <section className="relative overflow-hidden  md:py-10 px-4">
           {/* Decorative elements */}
@@ -72,69 +77,67 @@ export default function AdminLoginPage() {
             <div className="absolute top-0 left-0 w-1/3 h-1/2 bg-blue-500/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 right-0 w-1/2 h-1/3 bg-cyan-500/10 rounded-full blur-3xl"></div>
           </div>
-          
+
           <Meteors number={10} />
-          
+
           <div className="container mx-auto relative z-10 max-w-md">
             <div className="text-center mb-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="mb-6"
-              >
+                className="mb-6">
                 <span className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-sm font-semibold mb-4">
                   Admin Portal
                 </span>
               </motion.div>
-              
+
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-3xl md:text-4xl font-bold leading-tight mb-4"
-              >
+                className="text-3xl md:text-4xl font-bold leading-tight mb-4">
                 <AuroraText>Admin Login</AuroraText>
               </motion.h1>
-              
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg text-gray-300 mb-8"
-              >
+                className="text-lg text-gray-300 mb-8">
                 Please enter your credentials to access the admin dashboard
               </motion.p>
             </div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
+              transition={{ duration: 0.5, delay: 0.3 }}>
               <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 shadow-xl hover:border-blue-500/30 transition-all duration-300">
                 <div className="flex justify-center mb-8">
-                  <div className="relative w-40 h-15">
+                  <div className="relative w-40 h-30">
                     <Image
-                      src="/newlogo.png"
+                      src="/logo9.png"
                       alt="Enegix Web Solutions"
                       fill
-                      className=" object-cover"
+                      className=" object-contain"
                       priority
                     />
                   </div>
                 </div>
-                
+
                 {error && (
                   <div className="p-4 mb-6 rounded-lg bg-red-500/20 text-red-200 border border-red-500/30">
                     {error}
                   </div>
                 )}
-                
+
                 <form onSubmit={handleSubmit}>
                   <div className="space-y-6 mb-6">
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-300 mb-2">
                         Email <span className="text-red-400">*</span>
                       </label>
                       <input
@@ -148,9 +151,11 @@ export default function AdminLoginPage() {
                         placeholder="admin@enegixwebsolutions.com"
                       />
                     </div>
-                    
+
                     <div>
-                      <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="password"
+                        className="block text-sm font-medium text-gray-300 mb-2">
                         Password <span className="text-red-400">*</span>
                       </label>
                       <input
@@ -169,17 +174,31 @@ export default function AdminLoginPage() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 px-6 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium transition-transform hover:scale-[1.02] active:scale-[0.98] tracking-wide text-sm flex justify-center items-center disabled:opacity-70 disabled:cursor-not-allowed"
-                  >
+                    className="w-full py-3 px-6 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium transition-transform hover:scale-[1.02] active:scale-[0.98] tracking-wide text-sm flex justify-center items-center disabled:opacity-70 disabled:cursor-not-allowed">
                     {isLoading ? (
                       <>
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        <svg
+                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24">
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
                         Logging in...
                       </>
-                    ) : "Login to Dashboard"}
+                    ) : (
+                      "Login to Dashboard"
+                    )}
                   </button>
                 </form>
               </div>
@@ -187,9 +206,6 @@ export default function AdminLoginPage() {
           </div>
         </section>
       </main>
-
     </>
   );
 }
-
-

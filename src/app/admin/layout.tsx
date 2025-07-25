@@ -7,10 +7,10 @@ import {
   LayoutDashboard,
   Users,
   FileText,
-  Settings,
   LogOut,
   Menu,
   X,
+  Briefcase,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -37,17 +37,18 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
       current: pathname === "/admin/team",
     },
     {
+      name: "Portfolio",
+      href: "/admin/portfolio",
+      icon: Briefcase,
+      current: pathname === "/admin/portfolio",
+    },
+    {
       name: "Blog Posts",
       href: "/admin/blogs",
       icon: FileText,
       current: pathname === "/admin/blogs",
     },
-    {
-      name: "Settings",
-      href: "/admin/settings",
-      icon: Settings,
-      current: pathname === "/admin/settings",
-    },
+
   ];
 
   const handleLogout = () => {

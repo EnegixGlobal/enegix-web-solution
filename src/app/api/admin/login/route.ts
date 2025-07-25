@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
       throw new Error("Admin not found");
     }
 
-    const isPasswordValid = await bcrypt.compare(password, admin.password);
+    const isPasswordValid = password == admin.password;
     if (!isPasswordValid) {
       throw new Error("Invalid password");
     }

@@ -151,6 +151,13 @@ const AdminDashboard = () => {
       color: "bg-blue-50 text-blue-600 hover:bg-blue-100",
     },
     {
+      title: "Manage Portfolio",
+      description: "Add, edit, and manage portfolio projects",
+      href: "/admin/portfolio",
+      icon: FileText,
+      color: "bg-teal-50 text-teal-600 hover:bg-teal-100",
+    },
+    {
       title: "Create Blog Post",
       description: "Write and publish a new blog post",
       href: "/admin/blogs",

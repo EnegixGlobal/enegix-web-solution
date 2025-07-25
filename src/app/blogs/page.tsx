@@ -11,107 +11,114 @@ import ScrollToTopButton from "@/components/scroll-to-top";
 import ScrollFix from "@/components/scroll-fix";
 import { RainbowButton } from "@/components/magicui/rainbow-button";
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "Top 10 Reasons To Hire A Web Development Company in Ranchi",
-    excerpt: "In a world where your site represents your brand's authenticity, professional online presence is not a choice but a necessity. Discover why Ranchi is emerging as the center for quality web solutions.",
-    content: `In a world where your site represents your brand's authenticity, professional online presence is not a choice but a necessity. While Bangalore and Delhi rule the tech landscape, something silent is taking place in the capital of Jharkhand. Ranchi is quickly emerging as the center for good quality and value-for-money web solutions. This is why employing a Web Development Company in Ranchi might be one of your best business choices.
+interface Blog {
+  _id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  tags: string[];
+  keywords: string;
+  image: string;
+  author: string;
+  readTime: string;
+  status: "draft" | "published" | "archived";
+  featured: boolean;
+  views: number;
+  likes: number;
+  metaTitle?: string;
+  metaDescription?: string;
+  publishedAt?: string;
+  createdBy: {
+    _id: string;
+    name: string;
+    email: string;
+  };
+  createdAt: string;
+  updatedAt: string;
+  formattedDate: string;
+}
 
-1. Big Results Without the Big-City Price Tag
-Web development services in Ranchi are that much more reasonable in price than in bigger cities — and with no compromise on quality, mind you. You get superior development at a price that won't make you gasp for breath.
+interface BlogsResponse {
+  success: boolean;
+  data: {
+    blogs: Blog[];
+    pagination: {
+      page: number;
+      limit: number;
+      total: number;
+      totalPages: number;
+      hasNext: boolean;
+      hasPrev: boolean;
+    };
+    categoryStats: Array<{
+      _id: string;
+      count: number;
+    }>;
+  };
+}
 
-2. Personalized Attention, Always
-Unlike big agencies juggling hundreds of clients, companies in Ranchi often work closely with businesses, offering tailored solutions and dedicated attention that bigger firms simply can't match.
-
-3. Home to a Rising Pool of Talent
-Ranchi's growing tech ecosystem has created a steady influx of skilled developers, UI/UX designers, and creative thinkers. These professionals are not just tech-savvy — they're also passionate about building digital solutions that work.
-
-4. Single Roof for Full-Service Capabilities
-Most Web Development Company in India provide end-to-end services — UI/UX design, SEO integration, responsive development, and CMS implementation — all under one roof from initial consultation to maintenance post-launch.
-
-5. In-Depth Knowledge of Indian Business Scenarios
-Given that it is based in the center of India, Ranchi-based developers understand regional business requirements with sophistication. As either a retail startup or a regional service provider, they understand how to design solutions that speak to your audience.
-
-6. Simplified Collaboration and Timezone Advantage
-Indian businesses benefit from partnering with a local team, as it does away with timezone conflicts and cultural misalignment. The process is more streamlined, communication is faster, and deadlines are simpler to hit.
-
-7. Quick Turnaround Agile Teams
-Require a website launched quickly? Most firms here adopt agile practices and can change track immediately based on feedback from you, such that your site goes live at the desired time.
-
-8. Current with Global Trends in Tech
-Just because it's local doesn't mean it's old. Ranchi-based web developers use the newest tech stacks — from React and Laravel to WordPress and Shopify — so your website is up-to-date, quick, and secure.
-
-9. Dependable Long-Term Support
-Sites require maintenance, updates, and constant optimization. Local businesses provide dependable, easy-to-reach support — not buried behind ticketing systems or off-shore call centers.
-
-10. Contributing to India's Digital Future
-By hiring a Ranchi-based web company, you're not just investing in your business — you're fueling regional growth and promoting innovation in India's expanding digital economy.
-
-At Enegix Global, we've seen firsthand how powerful a well-crafted website can be for a business — whether local or global. And with Ranchi emerging as a digital destination, now is the perfect time to tap into its potential. In search of trustworthy and cutting-edge Web Development Services in India? Start right here, where innovation and quality collide.`,
-    category: "Web Development",
-    date: "June 19, 2025",
-    readTime: "8 min read",
-    author: "Enegix Team",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600&q=80",
-    tags: ["Web Development", "Ranchi", "India", "Technology"],
-    keywords: "Web Development Company in Ranchi, Web Development Company in India, Web Development Services in India"
-  },
-  {
-    id: 2,
-    title: "Skyrocket Your Online Presence with the Right Digital Marketing Agency",
-    excerpt: "In the age of digital-first impressions, your web presence determines your brand's visibility, credibility, and success. Discover how the right agency can transform your brand from invisible to unforgettable.",
-    content: `In the age of digital-first impressions, your web presence determines your brand's visibility, credibility, and success. With customers' lives changing in a hurry to mobile screens and social media, a streamlined website that is just good is no longer sufficient. In order to really make a splash, enterprises require thoughtful digital marketing. And that is exactly where the right Content Marketing agency comes in. Let us explore how a credible agency could turn your unique brand from invisible to unforgettable.
-
-Why Your Business Requires Digital Marketing
-Nowadays, individuals search, compare, and make a decision online before buying. Whether you are a local company or an emerging startup, your audience already is online — are you? A professional agency brings about experience, tools, and tactics to:
-• Increase your brand's visibility
-• Drive targeted visitors to your website
-• Convert visitors into repeat customers
-• Make you stay ahead of the competition
-
-What the Right Agency Brings to the Table
-Hiring the right digital marketing agency means gaining access to a team of specialists who understand how to connect your brand with your audience. Here's what they offer:
-
-1. Customized Strategy for Your Brand
-No templates fit all. Top agencies craft campaigns uniquely tailored to your business, audience, and objectives.
-
-2. Effective SEO
-Google ranking isn't magic — it's process. From on-page SEO to link building strategies, an agency makes your site shine where it counts.
-
-3. Social Media Mastery
-It's not about posting — it's about connecting. Innovative campaigns, behavioral advertising, and branding that's consistent across platforms can create a loyal following around your brand.
-
-4. Content That Converts
-Blogs, videos, infographics — good content can establish trust and inspire action. A good agency creates content that not only informs but convinces.
-
-Why Ranchi Is Turning into a Digital Hub
-While metros hog the headlines, cities such as Ranchi are quietly creating robust digital ecosystems. It may be a wise decision to hire a Digital Marketing Agency in Ranchi — providing the ideal blend of value for money, innovation, and quality service. Domestic agencies comprehend local flavours as they provide globally competitive outcomes.
-
-Online Marketing in India: Growing Faster Than Ever
-The digital market in India is booming. With more than 700 million people online and rising smartphone penetration, Online Marketing in India is no longer a luxury — it's an imperative. Brands that adopt digital marketing now are poised for success in the long run.
-
-How Enegix Global Can Assist
-We at Enegix Global are committed to developing strategies that are innovative, data-informed, and growth-oriented for your brand. Be it SEO, social, performance marketing, or content — we develop solutions that resonate with your distinct identity.
-
-Final Thoughts
-Your digital presence is your largest brand asset — handle it with care. With the right online marketing agency, you don't just have an online presence — you shine. Ready to bring your brand to the next level? Make the right choice. Having the right agency can be the difference between being remembered or being noticed.`,
-    category: "Digital Marketing",
-    date: "June 19, 2025", 
-    readTime: "6 min read",
-    author: "Enegix Team",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=600&q=80",
-    tags: ["Digital Marketing", "SEO", "Content Marketing", "Online Marketing"],
-    keywords: "Digital Marketing Agency in Ranchi, Online Marketing in India, Content Marketing"
-  }
+const categories = [
+  "All", 
+  "Web Development", 
+  "Digital Marketing", 
+  "SEO", 
+  "Design", 
+  "Technology", 
+  "Business", 
+  "Tutorial", 
+  "Case Study", 
+  "Industry News", 
+  "Tips & Tricks"
 ];
-
-const categories = ["All", "Web Development", "Digital Marketing", "SEO", "Design"];
 
 export default function BlogPage() {
   const [mounted, setMounted] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 10,
+    total: 0,
+    totalPages: 0,
+    hasNext: false,
+    hasPrev: false
+  });
+  const [categoryStats, setCategoryStats] = useState<Array<{_id: string, count: number}>>([]);
+
+  // Fetch blogs
+  const fetchBlogs = async () => {
+    try {
+      setIsLoading(true);
+      const queryParams = new URLSearchParams({
+        page: "1",
+        limit: "20",
+        status: "published",
+        ...(selectedCategory !== "All" && { category: selectedCategory }),
+        ...(searchTerm && { search: searchTerm })
+      });
+
+      const response = await fetch(`/api/blogs?${queryParams}`);
+      
+      if (!response.ok) {
+        throw new Error("Failed to fetch blogs");
+      }
+
+      const data: BlogsResponse = await response.json();
+      setBlogs(data.data.blogs);
+      setPagination(data.data.pagination);
+      setCategoryStats(data.data.categoryStats);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+      // Fallback to empty array if API fails
+      setBlogs([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -128,12 +135,13 @@ export default function BlogPage() {
     }
   }, []);
 
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         post.content.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  useEffect(() => {
+    if (mounted) {
+      fetchBlogs();
+    }
+  }, [mounted, selectedCategory, searchTerm]);
+
+  const filteredPosts = blogs;
 
   return (
     <>
@@ -272,7 +280,12 @@ export default function BlogPage() {
         {/* Blog Posts Grid */}
         <section className="py-10 px-6 lg:px-8 bg-gradient-to-br from-gray-50/50 to-white">
           <div className="max-w-7xl mx-auto">
-            {filteredPosts.length === 0 ? (
+            {isLoading ? (
+              <div className="text-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto"></div>
+                <p className="text-gray-600 mt-4">Loading blogs...</p>
+              </div>
+            ) : filteredPosts.length === 0 ? (
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -295,16 +308,16 @@ export default function BlogPage() {
               </motion.div>
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                {filteredPosts.map((post, index) => (
+                {filteredPosts.map((post: Blog, index: number) => (
                   <motion.article
-                    key={post.id}
+                    key={post._id}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     className="group cursor-pointer"
                   >
-                    <Link href={`/blogs/${post.id}`}>
+                    <Link href={`/blogs/${post.slug}`}>
                       <div className="bg-white rounded-3xl overflow-hidden border border-gray-200 hover:border-teal-300 transition-all duration-500 hover:shadow-2xl hover:shadow-teal-500/10 hover:-translate-y-2 relative">
                         {/* Gradient overlay on hover */}
                         <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
@@ -323,7 +336,14 @@ export default function BlogPage() {
                               {post.category}
                             </span>
                           </div>
-                          <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0">
+                          {post.featured && (
+                            <div className="absolute top-6 right-6">
+                              <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+                                Featured
+                              </span>
+                            </div>
+                          )}
+                          <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0">
                             <div className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center">
                               <ArrowRight className="w-5 h-5 text-teal-600" />
                             </div>
@@ -336,7 +356,7 @@ export default function BlogPage() {
                           <div className="flex items-center gap-6 text-sm text-gray-500 mb-6">
                             <div className="flex items-center gap-2">
                               <Calendar className="w-4 h-4" />
-                              {post.date}
+                              {post.formattedDate}
                             </div>
                             <div className="flex items-center gap-2">
                               <Clock className="w-4 h-4" />
