@@ -171,7 +171,7 @@ export default function ServicesSection() {
                   {/* Read More Buttons for Each SubService */}
                   <div className="space-y-2">
                     {service.subServices.map((item, idx) => (
-                      <Link href={item.href} key={idx + '-btn'}>
+                      <Link href={`https://wa.me/919905953677?text=Hi! I'm interested in your ${encodeURIComponent(item.title)} service. Could you share pricing and timeline details? Thanks!`} key={idx + '-btn'} target="_blank" rel="noopener noreferrer">
                         <button className="w-full bg-gradient-to-r from-teal-500 to-teal-700 hover:from-teal-600 hover:to-teal-600 text-white py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center group/btn shadow-lg hover:shadow-xl mb-2">
                           <span> {item.title}</span>
                           <ExternalLink className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />

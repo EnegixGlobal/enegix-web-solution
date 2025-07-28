@@ -63,8 +63,8 @@ const FeaturedProjectCard = ({ project }: { project: Portfolio }) => {
             <Image
               src={project.logo || "/placeholder-logo.png"}
               alt={project.title}
-              width={60}
-              height={50}
+              width={65}
+              height={55}
               className="mb-4 block md:hidden"
             />
           </div>
@@ -93,12 +93,12 @@ const FeaturedProjectCard = ({ project }: { project: Portfolio }) => {
         </div>
         {/* Project Image */}
         <div className="lg:flex-6 relative">
-          <div className="relative h-60 lg:h-60 lg:top-4 lg:right-4  lg:rounded-bl-2xl lg:rounded-tr-2xl overflow-hidden">
+          <div className="relative shadow-lg  h-60 lg:h-60 lg:top-4 lg:right-4  lg:rounded-bl-2xl lg:rounded-tr-2xl overflow-hidden">
             <Image
               src={project.image}
               alt={project.title}
               fill
-              className="object-cover hover:scale-105 transition-transform duration-500"
+              className=" hover:scale-105 transition-transform duration-500"
             />
           </div>
 
@@ -250,17 +250,20 @@ export default function PortfolioPage() {
       <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
         <Container>
           {/* Hero Section - Edge-to-edge, big tilted image cards */}
-          <section className="relative pt-26 md:pt-24 pb-8 md:pb-12 bg-white border-b border-teal-100">
+          <section className="relative pt-26 md:pt-20 pb-8 md:pb-12 bg-white border-b border-teal-100">
             <div className="w-full flex flex-col md:flex-row items-center md:items-stretch gap-6 md:gap-8">
               {/* Left: Text */}
               <div className="flex-1 flex flex-col justify-center px-4 md:px-0">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-teal-700 mb-3 md:mb-4 leading-tight">
                   Our Portfolio
                 </h1>
-                <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-4 md:mb-6 max-w-xl leading-relaxed">
-                  Explore a curated selection of our best work in web,
-                  e-commerce, branding, and marketing. Simple, effective, and
-                  results-driven.
+                <p className="text-sm sm:text-base md:text-lg text-gray-700 font-semibold mb-4 md:mb-6 max-w-xl leading-relaxed">
+                  Explore a handpicked showcase of our top projects across web
+                  development, e-commerce, branding, and digital marketing —
+                  each crafted with simplicity, purpose, and a sharp focus on
+                  delivering real results. Every piece reflects our commitment
+                  to clean design, smart strategy, and building solutions that
+                  actually work for your business.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-2 md:gap-4">
                   <Link href="/contact">
@@ -274,7 +277,7 @@ export default function PortfolioPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-teal-600 text-teal-700 hover:bg-teal-50 w-full sm:w-auto text-xs md:text-sm px-4 py-2 md:px-6 md:py-3">
+                      className="border-teal-600 bg-white text-teal-600! hover:bg-teal-600! hover:text-white! w-full sm:w-auto text-xs md:text-sm px-4 py-2 md:px-6 md:py-3">
                       Explore Services
                     </Button>
                   </Link>
@@ -283,7 +286,7 @@ export default function PortfolioPage() {
               {/* Right: Three big tilted images like cards */}
               <div className="flex-1 flex justify-center items-center relative min-h-[280px] sm:min-h-[350px] md:min-h-[420px] lg:min-h-[500px] w-full">
                 {/* Card 1 (bottom, left) */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-[60%] -translate-y-[55%] rotate-[-12deg] shadow-xl rounded-2xl md:rounded-3xl overflow-hidden border border-teal-100 w-[200px] h-[140px] sm:w-[280px] sm:h-[180px] md:w-[360px] md:h-[240px] lg:w-[440px] lg:h-[300px] bg-gray-100 z-10">
+                <div className="absolute left-1/2 top-1/2 -translate-x-[60%] -translate-y-[55%] rotate-[-12deg] shadow-xl rounded-2xl md:rounded-3xl overflow-hidden border border-teal-100 w-[220px] h-[140px] sm:w-[280px] sm:h-[180px] md:w-[360px] md:h-[240px] lg:w-[480px] lg:h-[300px] bg-gray-100 z-10">
                   <Image
                     src={portfolioProjects[1]?.image || "/portfolio/cozy.png"}
                     alt={portfolioProjects[1]?.title || "Portfolio Project"}
@@ -294,7 +297,7 @@ export default function PortfolioPage() {
                   />
                 </div>
                 {/* Card 2 (middle, main) */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[3deg] shadow-2xl rounded-2xl md:rounded-3xl overflow-hidden border-2 border-teal-200 w-[220px] h-[160px] sm:w-[320px] sm:h-[220px] md:w-[400px] md:h-[280px] lg:w-[480px] lg:h-[340px] bg-white z-20">
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[3deg] shadow-2xl rounded-2xl md:rounded-3xl overflow-hidden border-2 border-teal-500 w-[220px] h-[160px] sm:w-[320px] sm:h-[220px] md:w-[400px] md:h-[280px] lg:w-[540px] lg:h-[320px] bg-white z-20">
                   <Image
                     src={
                       portfolioProjects[0]?.image || "/portfolio/thakurain.png"
@@ -302,12 +305,12 @@ export default function PortfolioPage() {
                     alt={portfolioProjects[0]?.title || "Portfolio Project"}
                     width={480}
                     height={340}
-                    className="object-cover w-full h-full"
+                    className=" w-full h-full"
                     priority
                   />
                 </div>
                 {/* Card 3 (top, right) */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-[40%] -translate-y-[45%] rotate-[15deg] shadow-xl rounded-2xl md:rounded-3xl overflow-hidden border border-teal-100 w-[200px] h-[140px] sm:w-[280px] sm:h-[180px] md:w-[360px] md:h-[240px] lg:w-[440px] lg:h-[300px] bg-gray-100 z-10">
+                <div className="absolute left-1/2 top-1/2 -translate-x-[40%] -translate-y-[45%] rotate-[15deg] shadow-xl rounded-2xl md:rounded-3xl overflow-hidden border border-teal-100 w-[200px] h-[140px] sm:w-[280px] sm:h-[180px] md:w-[360px] md:h-[240px] lg:w-[480px] lg:h-[300px] bg-gray-100 z-10">
                   <Image
                     src={
                       portfolioProjects[2]?.image || "/portfolio/wedding.png"
@@ -324,7 +327,7 @@ export default function PortfolioPage() {
           </section>
 
           {/* Featured Projects Section */}
-          <section id="featured-projects" className="py-6 md:py-8">
+          <section id="featured-projects" className="py-6 md:py-8 bg-white">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -335,27 +338,25 @@ export default function PortfolioPage() {
                 <span className="text-teal-600">Projects</span>
               </h2>
               <p className="text-gray-600 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-                {activeCategory === "All" 
+                {activeCategory === "All"
                   ? "Take a closer look at some of our most successful projects that have delivered exceptional results for our clients."
-                  : `Explore our ${activeCategory.toLowerCase()} projects and see how we've helped clients in this industry.`
-                }
+                  : `Explore our ${activeCategory.toLowerCase()} projects and see how we've helped clients in this industry.`}
               </p>
             </motion.div>
 
             <div className="flex flex-col lg:flex-row gap-4 relative">
               {/* Sticky Left Button - Hidden on mobile */}
-              <div className="hidden lg:block w-[180px] z-20 h-fit space-y-2 sticky top-24">
+              <div className="hidden  lg:block w-[180px] h-fit space-y-2 top-[500px]">
                 {categories.map((category) => (
                   <Button
                     key={category}
                     onClick={() => setActiveCategory(category)}
-                    className={`w-fit text-left text-xs py-2 px-3 ${
+                    className={`w-fit text-left text-sm py-2 px-3 ${
                       activeCategory === category
                         ? "bg-teal-600 text-white"
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                     }`}>
                     {category}
-                    
                   </Button>
                 ))}
               </div>
@@ -366,7 +367,7 @@ export default function PortfolioPage() {
                   <Button
                     key={category}
                     onClick={() => setActiveCategory(category)}
-                    className={`whitespace-nowrap text-xs py-1 px-3 ${
+                    className={`whitespace-nowrap text-sm py-1 px-3 ${
                       activeCategory === category
                         ? "bg-teal-600 text-white"
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -378,23 +379,27 @@ export default function PortfolioPage() {
 
               {/* Scrollable Cards */}
               <div className="flex-1 space-y-3 md:space-y-4">
-                {activeCategory === "All" 
+                {activeCategory === "All"
                   ? featuredProjects.map((project: Portfolio) => (
-                      <FeaturedProjectCard key={project._id} project={project} />
+                      <FeaturedProjectCard
+                        key={project._id}
+                        project={project}
+                      />
                     ))
                   : filteredProjects.map((project: Portfolio) => (
-                      <FeaturedProjectCard key={project._id} project={project} />
-                    ))
-                }
-                
+                      <FeaturedProjectCard
+                        key={project._id}
+                        project={project}
+                      />
+                    ))}
+
                 {/* Show message if no projects in selected category */}
                 {filteredProjects.length === 0 && (
                   <div className="text-center py-12">
                     <p className="text-gray-500">
-                      {activeCategory === "All" 
-                        ? "No featured projects available" 
-                        : `No projects found in ${activeCategory} category`
-                      }
+                      {activeCategory === "All"
+                        ? "No featured projects available"
+                        : `No projects found in ${activeCategory} category`}
                     </p>
                   </div>
                 )}

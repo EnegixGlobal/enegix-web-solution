@@ -119,7 +119,7 @@ const services = [
     id: "seo",
     title: "Search Engine Optimization",
     description: "Enhancing online visibility and driving organic traffic",
-    percentage: 95,
+    percentage: 87,
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +139,7 @@ const services = [
     id: "web-dev",
     title: "Website Development & Design",
     description: "Crafting visually stunning and highly functional websites",
-    percentage: 98,
+    percentage: 96,
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -218,8 +218,8 @@ const Stats = () => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 my-12">
       {[
-        { value: "8+", label: "Years Experience" },
-        { value: "150+", label: "Projects Delivered" },
+        { value: "4+", label: "Years Experience" },
+        { value: "50+", label: "Projects Delivered" },
         { value: "50+", label: "Happy Clients" },
         { value: "4+", label: "Countries Served" },
       ].map((stat, index) => (
@@ -284,7 +284,6 @@ export default function About() {
       <main className="bg-white">
         {/* Hero Section - "Wow" About Page */}
         <section className="relative overflow-hidden pt-26">
-         
           <Container>
             <div className="relative mx-auto z-10 flex max-w-3xl flex-col lg:flex-row items-center justify-between min-h-[300px] py-4">
               {/* Left: Text */}
@@ -292,22 +291,24 @@ export default function About() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.9 }}
-                className="w-full  text-center"
-              >
+                className="w-full  text-center">
                 <span className="inline-block  px-3 py-1 rounded-full bg-gradient-to-r from-teal-100 to-emerald-100 text-teal-700 text-sm font-semibold mb-4 shadow">
                   Our Story
                 </span>
                 <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-4 text-gray-900 drop-shadow-lg">
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-emerald-500 to-teal-700 animate-gradient-x py-2">About Enegix</span>
-                  <span className="block text-gray-800 mt-1">Web Solutions</span>
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-600 via-emerald-500 to-teal-700 animate-gradient-x py-2">
+                    About Enegix
+                  </span>
+                  <span className="block text-gray-800 mt-1">
+                    Web Solutions
+                  </span>
                 </h1>
                 <p className="text-gray-800 text-base md:text-lg leading-relaxed  mb-6 mx-auto lg:mx-0">
-                  We are your digital growth partners, committed to transforming your online presence with innovation and creativity.
+                  We are your digital growth partners, committed to transforming
+                  your online presence with innovation and creativity.
                 </p>
-
               </motion.div>
               {/* Right: Half-screen graphic, only on large screens */}
-              
             </div>
           </Container>
         </section>
@@ -525,20 +526,24 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
                 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-                Enegix Global
+                Enegix Global Pvt. Ltd.
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="text-gray-600">
-                Enegix Global is the driving force behind Enegix Web Solutions,
-                serving as the parent company that pioneers cutting-edge digital
-                transformation. With expertise in web development, digital
-                marketing, AI-driven solutions, and enterprise technology,
-                Enegix Global empowers businesses to scale, innovate, and
-                succeed in the modern digital landscape.
+                className="text-gray-800 font-semibold">
+                Enegix Global is the backbone of Enegix Web Solutions — a
+                growing tech company that's all about helping businesses go
+                digital the smart way. We're a passionate team building
+                everything from sleek websites and strong digital marketing
+                strategies to smart AI tools and powerful enterprise software.
+                We’re not here to just build stuff and call it a day. We’re here
+                to make sure what we build actually helps you grow, stand out,
+                and move forward. At Enegix Global, we believe in real
+                solutions, real results, and shaping a future where technology
+                actually works for people — not the other way around.
               </motion.p>
             </div>
 
@@ -597,7 +602,8 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
                 className="text-3xl md:text-4xl text-gray-900 font-bold mb-6">
-                The <span className="text-teal-600">Principles</span> That Guide Us
+                The <span className="text-teal-600">Principles</span> That Guide
+                Us
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -649,7 +655,8 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
                 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-                Better <span className="text-teal-600">Design</span> for Your Digital Products
+                Better <span className="text-teal-600">Design</span> for Your
+                Digital Products
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -693,8 +700,6 @@ export default function About() {
             </div>
           </Container>
         </section>
-
-        
       </main>
 
       <Footer />

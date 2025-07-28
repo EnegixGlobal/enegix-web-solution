@@ -106,7 +106,7 @@ const HeroSectionNew = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="flex flex-wrap justify-center lg:justify-start gap-8 pt-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">245+</div>
+                  <div className="text-2xl font-bold text-gray-900">50+</div>
                   <div className="text-sm text-gray-600">
                     Projects Delivered
                   </div>
