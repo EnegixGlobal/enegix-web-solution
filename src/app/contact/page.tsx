@@ -151,7 +151,6 @@ const ContactForm = () => {
     }, 5000);
   };
 
-  const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash) {
@@ -362,7 +361,7 @@ const ContactInfo = () => {
               </p>
               <p className="text-gray-700 mb-1">Kadru, Ranchi, Jharkhand</p>
               <a
-                href="https://www.google.com/maps/place/Enegix+Web+Solutions/@23.3514491,85.3163412,21z/"
+                href="https://maps.app.goo.gl/ccd5SSKteK4MpUnx8"
                 target="_blank"
                 className="inline-block mt-2 text-teal-600 hover:text-teal-500 transition-colors">
                 View on map →
@@ -427,9 +426,9 @@ const ContactInfo = () => {
                 +91 96082 63050
               </a>
               <a
-                href="tel:+919801828117"
+                href="tel:+9905953677"
                 className="block text-gray-700 hover:text-teal-600 transition-colors">
-                +91 98018 28117
+                +91 99059 53677
               </a>
             </div>
           </div>
@@ -729,7 +728,7 @@ export default function Contact() {
               viewport={{ once: true }}
               className="rounded-xl overflow-hidden border border-gray-200 shadow-xl h-[400px] relative">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117711.79643388708!2d85.2427698754836!3d23.344214949837785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e104aa5db7dd%3A0xdc09d49d6899f43e!2sRanchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1716470350983!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1926.5374816433716!2d85.3162779!3d23.351633000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1c173830ab7%3A0x9cd58d1bf17ff0de!2sEnegix%20Web%20Solutions!5e1!3m2!1sen!2sin!4v1753696847167!5m2!1sen!2sin"
                 className="w-full h-full border-0"
                 allowFullScreen
                 loading="lazy"

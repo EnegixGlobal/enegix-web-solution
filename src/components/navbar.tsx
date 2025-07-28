@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
-import { RainbowButton } from "./magicui/rainbow-button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -16,18 +15,7 @@ import { Route } from "next";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";
 import { 
-  FaPalette, 
-  FaCode, 
-  FaMobile, 
-  FaCog, 
   FaRocket, 
-  FaMapMarkerAlt, 
-  FaAd, 
-  FaShare, 
-  FaPen, 
-  FaEdit, 
-  FaTags, 
-  FaBullseye,
   FaBuilding,
   FaUsers,
   FaBriefcase,
@@ -80,12 +68,6 @@ const navLinks = [
         href: "/careers",
         icon: FaBriefcase,
         description: "Join our team and grow your career with us",
-      },
-      {
-        label: "Blogs",
-        href: "/blogs",
-        icon: FaNewspaper,
-        description: "Stay updated with our latest insights and news",
       },
     ],
   },
