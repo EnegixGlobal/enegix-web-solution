@@ -59,15 +59,7 @@ export default function ApplicationForm() {
                   }`}>
                   Job Application
                 </button>
-                <button
-                  onClick={() => setActiveTab("internship")}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeTab === "internship"
-                      ? "bg-teal-500 text-white"
-                      : "text-gray-600 hover:text-teal-500"
-                  }`}>
-                  Internship Application
-                </button>
+
               </div>
             </div>
 

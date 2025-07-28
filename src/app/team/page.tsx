@@ -19,8 +19,7 @@ const foundersData = [
     name: "Ehtesham Raghib",
     role: "Founder & CEO",
     bio: "Ehtesham Raghib, the founder of Enegix Web Solutions, is a passionate entrepreneur and digital strategist dedicated to transforming businesses through cutting-edge web solutions. With a deep understanding of web development, digital marketing, and brand growth, he has played a pivotal role in helping businesses establish a powerful online presence. Under his leadership, Enegix Web Solutions has evolved from a specialized web development firm into a full-service digital agency, offering innovative and results-driven solutions. Ehtesham's expertise in leveraging the latest technologies and data-driven strategies ensures that businesses stay ahead in the ever-evolving digital landscape.",
-    image:
-      "https://enegixwebsolutions.com/wp-content/uploads/2025/03/f3-300x300.png.webp",
+    image: "/team/raghib.jpg",
     socialLinks: {
       facebook: "https://www.facebook.com/Imthepatientwolf",
       instagram: "https://www.instagram.com/imthepatientwolf/",
@@ -33,8 +32,7 @@ const foundersData = [
     name: "Shreya Raj",
     role: "Co-Founder & CTO",
     bio: "Shreya Raj, co-founder of Enegix Web Solutions, is a dynamic leader and creative strategist dedicated to crafting impactful digital experiences. With expertise in brand development and digital marketing, she brings a unique blend of creativity and technical acumen to the company. Her passion for innovation and eye for detail have played a crucial role in shaping Enegix Web Solutions into a full-service digital agency that delivers visually stunning and results-driven web solutions. Shreya believes in blending aesthetics with functionality, ensuring that every project not only looks exceptional but also achieves its intended impact.",
-    image:
-      "https://enegixwebsolutions.com/wp-content/uploads/2025/03/shreya1-300x300-1.png.webp",
+    image: "/team/shreya.jpg",
     socialLinks: {
       facebook:
         "https://www.facebook.com/profile.php?id=61574563300591&mibextid=wwXIfr&rdid=xtteN194F8ccVUqv&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1F3jvQrKje%2F%3Fmibextid%3DwwXIfr#",
@@ -298,7 +296,7 @@ export default function TeamPage() {
           </div>
           <Container>
             {/* Breadcrumb Navigation */}
-            <nav aria-label="Breadcrumb" className="mb-8 mt-5 relative z-10">
+            <nav aria-label="Breadcrumb" className="mb-4 md:mt-5 relative z-10">
               <ol className="flex items-center space-x-2 text-sm text-gray-600">
                 <li>
                   <Link
@@ -318,9 +316,9 @@ export default function TeamPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9 }}
-              className="relative z-10 flex flex-col lg:flex-row items-center gap-12  mx-auto">
+              className="relative pt-10 md:pt-0 z-10 flex flex-col lg:flex-row items-center gap-12  mx-auto">
               {/* Left: Text */}
-              <div className="flex-1 text-center lg:text-left">
+              <div className="flex-1 text-center md:-mt-30 lg:text-left">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-gray-900">
                   <span className="inline-block bg-gradient-to-r from-teal-600 via-teal-400 to-teal-600 text-transparent bg-clip-text animate-gradient-x">
                     Meet the Minds
@@ -339,7 +337,7 @@ export default function TeamPage() {
                   <Link href="#leadership">
                     <Button
                       size="lg"
-                      className="bg-teal-600 text-white hover:bg-teal-700 shadow-lg shadow-teal-200/30">
+                      className="bg-teal-500 py-2 text-white hover:bg-teal-700 shadow-lg shadow-teal-200/30">
                       Meet Our Leaders
                     </Button>
                   </Link>
@@ -347,17 +345,17 @@ export default function TeamPage() {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="text-teal-600 border-teal-600 hover:bg-teal-50 hover:text-teal-700 shadow-sm">
+                      className="text-teal-600! hover:bg-teal-500! bg-white py-2 border-teal-600  hover:text-white! shadow-sm">
                       View Full Team
                     </Button>
                   </Link>
                 </div>
               </div>
               {/* Right: Hero Image/Collage */}
-              <div className="flex-1 flex items-center justify-center relative min-w-[280px]">
-                <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-                  {/* Main circle with 2 featured faces */}
-                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-56 md:h-56 rounded-full border-4 border-teal-200 bg-white shadow-xl flex items-center justify-center overflow-hidden">
+              <div className="flex-1 flex items-center justify-center relative min-w-[280px] py-8 md:py-4">
+                <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem]">
+                  {/* Main central image */}
+                  <div className="absolute md:left-[340px] left-[220px]  md:top-1/2 top-60 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64  rounded-full border-4 border-teal-500 bg-gradient-to-br from-teal-50 to-white shadow-2xl overflow-hidden transform transition-transform duration-500 hover:scale-105">
                     <Image
                       src={foundersData[0].image}
                       alt={foundersData[0].name}
@@ -366,8 +364,9 @@ export default function TeamPage() {
                       priority
                     />
                   </div>
-                  {/* Overlapping smaller circles for other featured */}
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-white shadow-lg overflow-hidden bg-white">
+
+                  {/* Secondary image - top left */}
+                  <div className="absolute top-10 left-5 w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-teal-500 bg-white shadow-lg overflow-hidden transform -translate-x-1/4 -translate-y-1/4 transition-transform duration-500 hover:scale-110 hover:-rotate-3">
                     <Image
                       src={foundersData[1].image}
                       alt={foundersData[1].name}
@@ -375,41 +374,28 @@ export default function TeamPage() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="absolute bottom-0 -right-6 w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-white shadow-lg overflow-hidden bg-white">
-                    <Image
-                      src={foundersData[0].image}
-                      alt={foundersData[0].name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="absolute top-1/2 -left-8 -translate-y-1/2 w-14 h-14 md:w-16 md:h-16 rounded-full border-4 border-white shadow-md overflow-hidden bg-white">
-                    <Image
-                      src={foundersData[1].image}
-                      alt={foundersData[1].name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  {/* Decorative ring */}
+
                   <div
-                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 md:w-80 md:h-80 border-2 border-dashed border-teal-100 rounded-full animate-spin-slow pointer-events-none"
-                    style={{ animationDuration: "12s" }}
+                    className="absolute left-1/2 top-[165px] -z-10 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 lg:w-[300px] lg:h-[300px] border-5 rounded-full border-teal-200/50 bg-gradient-to-r from-teal-100/20 to-blue-100/20 animate-pulse pointer-events-none"
+                    style={{ animationDuration: "8s" }}
                   />
+
+                  {/* Subtle glow effect */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full bg-teal-100/10 blur-3xl pointer-events-none" />
                 </div>
               </div>
             </motion.div>
           </Container>
         </section>
         {/* Featured Members Section */}
-        <section id="leadership" className="py-20 bg-white">
-          <Container>
+        <section id="leadership" className=" bg-white mt-10">
+          <Container >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-center mb-16">
+              className="text-center  mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-gray-900">
                 Our{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-600">
