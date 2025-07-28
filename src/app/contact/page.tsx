@@ -177,7 +177,8 @@ const ContactForm = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit}>
+      <form action="https://formsubmit.co/enegixglobalhelp@gmail.com"
+                method="POST">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label
@@ -189,8 +190,6 @@ const ContactForm = () => {
               type="text"
               id="name"
               name="name"
-              value={formData.name}
-              onChange={handleChange}
               required
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Your Name"
@@ -207,8 +206,6 @@ const ContactForm = () => {
               type="email"
               id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
               required
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Your Email"
@@ -225,8 +222,6 @@ const ContactForm = () => {
               type="tel"
               id="phone"
               name="phone"
-              value={formData.phone}
-              onChange={handleChange}
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Your Phone Number"
             />
@@ -241,8 +236,6 @@ const ContactForm = () => {
             <select
               id="service"
               name="service"
-              value={formData.service}
-              onChange={handleChange}
               required
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
               <option value="Select a service" disabled>
@@ -267,8 +260,6 @@ const ContactForm = () => {
               type="text"
               id="subject"
               name="subject"
-              value={formData.subject}
-              onChange={handleChange}
               required
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Subject of your message"
@@ -284,8 +275,6 @@ const ContactForm = () => {
             <textarea
               id="message"
               name="message"
-              value={formData.message}
-              onChange={handleChange}
               required
               rows={5}
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
