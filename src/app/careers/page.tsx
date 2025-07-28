@@ -10,8 +10,6 @@ import ScrollFix from "@/components/scroll-fix";
 export default function ApplicationForm() {
   const [activeTab, setActiveTab] = useState<"job" | "internship">("job");
 
-
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <ScrollFix />
@@ -59,7 +57,6 @@ export default function ApplicationForm() {
                   }`}>
                   Job Application
                 </button>
-
               </div>
             </div>
 
@@ -72,7 +69,8 @@ export default function ApplicationForm() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
                 // onSubmit={handleSubmit}
-                action="https://formsubmit.co/enegixglobalhelp@gmail.com" method="POST"
+                action="https://formsubmit.co/enegixglobalhelp@gmail.com"
+                method="POST"
                 className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name */}
@@ -115,7 +113,6 @@ export default function ApplicationForm() {
                       placeholder="Enter your mobile number"
                     />
                   </div>
-               
 
                   {/* Gender */}
                   <div>
@@ -194,13 +191,27 @@ export default function ApplicationForm() {
                       }
                     />
                   </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Preferred Internship Role (Optional)
+                    </label>
+                    <input
+                      type="text"
+                      name="designation"
+                      required
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
+                      placeholder={
+                        "Enter preferred role"
+                      }
+                    />
+                  </div>
                 </div>
 
                 {/* Submit Button */}
                 <div className="flex justify-end gap-4">
                   <button
                     type="submit"
-                    
                     className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-all duration-300">
                     Clear
                   </button>
@@ -208,7 +219,7 @@ export default function ApplicationForm() {
                     type="submit"
                     // disabled={isSubmitting}
                     className="px-6 py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
-                      Submit
+                    Submit
                   </button>
                 </div>
               </motion.form>
