@@ -9,51 +9,8 @@ import ScrollFix from "@/components/scroll-fix";
 
 export default function ApplicationForm() {
   const [activeTab, setActiveTab] = useState<"job" | "internship">("job");
-  const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    gender: "",
-    qualifications: "",
-    experience: "",
-    designation: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Form Data:", formData);
-      alert(
-        `${
-          activeTab === "job" ? "Job" : "Internship"
-        } application submitted successfully!`
-      );
-      setFormData({
-        name: "",
-        age: "",
-        gender: "",
-        qualifications: "",
-        experience: "",
-        designation: "",
-      });
-    } catch (error) {
-      alert("Failed to submit application. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -122,7 +79,8 @@ export default function ApplicationForm() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
-                onSubmit={handleSubmit}
+                // onSubmit={handleSubmit}
+                action="https://formsubmit.co/enegixglobalhelp@gmail.com" method="POST"
                 className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name */}
@@ -133,8 +91,6 @@ export default function ApplicationForm() {
                     <input
                       type="text"
                       name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
                       placeholder="Enter your full name"
@@ -149,14 +105,25 @@ export default function ApplicationForm() {
                     <input
                       type="number"
                       name="age"
-                      value={formData.age}
-                      onChange={handleInputChange}
                       required
                       min="18"
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
                       placeholder="Enter your age"
                     />
                   </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Mobile Number *
+                    </label>
+                    <input
+                      type="tel"
+                      name="mobile"
+                      required
+                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Enter your mobile number"
+                    />
+                  </div>
+               
 
                   {/* Gender */}
                   <div>
@@ -165,8 +132,6 @@ export default function ApplicationForm() {
                     </label>
                     <select
                       name="gender"
-                      value={formData.gender}
-                      onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300">
                       <option value="">Select gender</option>
@@ -186,8 +151,6 @@ export default function ApplicationForm() {
                     </label>
                     <select
                       name="qualifications"
-                      value={formData.qualifications}
-                      onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300">
                       <option value="">Select qualification</option>
@@ -208,8 +171,6 @@ export default function ApplicationForm() {
                     </label>
                     <select
                       name="experience"
-                      value={formData.experience}
-                      onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300">
                       <option value="">Select experience</option>
@@ -232,8 +193,6 @@ export default function ApplicationForm() {
                     <input
                       type="text"
                       name="designation"
-                      value={formData.designation}
-                      onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-300"
                       placeholder={
@@ -248,32 +207,16 @@ export default function ApplicationForm() {
                 {/* Submit Button */}
                 <div className="flex justify-end gap-4">
                   <button
-                    type="button"
-                    onClick={() =>
-                      setFormData({
-                        name: "",
-                        age: "",
-                        gender: "",
-                        qualifications: "",
-                        experience: "",
-                        designation: "",
-                      })
-                    }
+                    type="submit"
+                    
                     className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-all duration-300">
                     Clear
                   </button>
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    // disabled={isSubmitting}
                     className="px-6 py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
-                    {isSubmitting ? (
-                      <div className="flex items-center">
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                        Submitting...
-                      </div>
-                    ) : (
-                      "Submit Application"
-                    )}
+                      Submit
                   </button>
                 </div>
               </motion.form>

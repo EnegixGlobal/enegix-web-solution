@@ -23,7 +23,7 @@ const foundersData = [
       "https://enegixwebsolutions.com/wp-content/uploads/2025/03/f3-300x300.png.webp",
     socialLinks: {
       facebook: "https://www.facebook.com/Imthepatientwolf",
-      instagram: "https://www.instagram.com/the.patient_wolf/",
+      instagram: "https://www.instagram.com/imthepatientwolf/",
       linkedin: "https://www.linkedin.com/in/ehtesham-raghib-9b5b6b201/",
     },
     featured: true,
