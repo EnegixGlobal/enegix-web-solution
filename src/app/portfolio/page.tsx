@@ -379,26 +379,19 @@ export default function PortfolioPage() {
 
               {/* Scrollable Cards */}
               <div className="flex-1 space-y-3 md:space-y-4">
-                {activeCategory === "All"
-                  ? featuredProjects.map((project: Portfolio) => (
-                      <FeaturedProjectCard
-                        key={project._id}
-                        project={project}
-                      />
-                    ))
-                  : filteredProjects.map((project: Portfolio) => (
-                      <FeaturedProjectCard
-                        key={project._id}
-                        project={project}
-                      />
-                    ))}
+                {filteredProjects.map((project: Portfolio) => (
+                  <FeaturedProjectCard
+                    key={project._id}
+                    project={project}
+                  />
+                ))}
 
                 {/* Show message if no projects in selected category */}
                 {filteredProjects.length === 0 && (
                   <div className="text-center py-12">
                     <p className="text-gray-500">
                       {activeCategory === "All"
-                        ? "No featured projects available"
+                        ? "No projects available"
                         : `No projects found in ${activeCategory} category`}
                     </p>
                   </div>
