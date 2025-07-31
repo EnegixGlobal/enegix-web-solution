@@ -148,7 +148,6 @@ const FAQSearch = () => {
                   </div>
                 </button>
 
-<<<<<<< HEAD
                 {openIndex === index && (
                   <div className="px-6 pb-4 border-t border-gray-100">
                     <div className="pt-4">
@@ -158,15 +157,6 @@ const FAQSearch = () => {
                     </div>
                   </div>
                 )}
-=======
-                <div className="px-6 pb-4 border-t border-gray-100">
-                  <div className="pt-4">
-                    <p className="text-gray-700 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </div>
->>>>>>> 9901b4af0274008bf8cd0ac558aabf7e94a30b38
               </div>
             ))}
           </div>
