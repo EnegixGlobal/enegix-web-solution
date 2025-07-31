@@ -1,71 +1,71 @@
 "use client";
 
-import React, { useState } from 'react';
-import { Search, ChevronDown, ChevronUp } from 'lucide-react';
+import React, { useState } from "react";
+import { Search, ChevronDown, ChevronUp } from "lucide-react";
 
 interface FAQ {
   question: string;
   answer: string;
-  category: string;
 }
 
 const FAQSearch = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredFAQs, setFilteredFAQs] = useState<FAQ[]>([]);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   // Default FAQ data
-  const faqs: FAQ[] = [
+  const faqs = [
     {
       question: "What services does Enegix Web Solutions offer?",
-      answer: "We offer comprehensive digital services including web development, mobile app development, e-commerce solutions, digital marketing, SEO optimization, logo design, and PPC advertising. Our team specializes in creating modern, responsive websites and applications tailored to your business needs.",
-      category: "Services"
+      answer:
+        "We offer a full suite of digital marketing and web services, including website design and development, SEO, social media marketing, PPC campaigns, branding, and content marketing.",
     },
     {
-      question: "How long does it take to develop a website?",
-      answer: "The timeline depends on the complexity and scope of your project. A basic website typically takes 2-4 weeks, while complex e-commerce or custom applications may take 6-12 weeks. We provide detailed timelines during our initial consultation and keep you updated throughout the development process.",
-      category: "Development"
+      question: "How long does it take to build a website?",
+      answer:
+        "Typically, website development takes 2 to 6 weeks depending on the complexity, features, and feedback cycle. We ensure timely delivery without compromising on quality.",
     },
     {
-      question: "Do you provide ongoing support after the website launch?",
-      answer: "Yes, we offer comprehensive post-launch support including maintenance, updates, security monitoring, and technical assistance. We provide different support packages to suit your needs and ensure your website continues to perform optimally.",
-      category: "Support"
+      question: "Do you offer SEO services?",
+      answer:
+        "Yes, we provide comprehensive SEO services, including keyword research, on-page and off-page optimization, technical SEO, and monthly performance tracking.",
     },
     {
-      question: "What technologies do you use for web development?",
-      answer: "We use modern technologies including React, Next.js, Node.js, PHP, Python, MongoDB, MySQL, and cloud platforms like AWS and Google Cloud. Our tech stack is chosen based on your project requirements to ensure optimal performance and scalability.",
-      category: "Technology"
+      question: "Can you manage our social media accounts?",
+      answer:
+        "Absolutely! We handle content creation, scheduling, engagement, and growth strategies for platforms like Instagram, Facebook, LinkedIn, and more.",
     },
     {
-      question: "Can you help with SEO and digital marketing?",
-      answer: "Absolutely! We provide comprehensive SEO services including on-page optimization, keyword research, content strategy, and technical SEO. Our digital marketing services cover social media marketing, PPC advertising, email marketing, and content marketing to help grow your online presence.",
-      category: "Marketing"
+      question: "How do I get started with your services?",
+      answer:
+        "You can reach out to us via our contact form, call us directly, or schedule a free consultation. We’ll understand your needs and recommend the best solution.",
     },
     {
-      question: "Do you work with international clients?",
-      answer: "Yes, we proudly serve clients across multiple countries including India, Australia, Sri Lanka, Nepal, Bangladesh, and many others. We provide 24/7 support and have completed 100+ international projects across 5 continents.",
-      category: "Global"
+      question: "Do you work with startups or only big companies?",
+      answer:
+        "We work with businesses of all sizes — from early-stage startups to large enterprises. Our strategies are tailored to fit your goals and budget.",
     },
     {
-      question: "What is your pricing structure?",
-      answer: "Our pricing is project-based and depends on the scope, complexity, and timeline. We provide transparent quotes with no hidden costs. Contact us for a free consultation and customized quote based on your specific requirements.",
-      category: "Pricing"
+      question: "Will my website be mobile-friendly and SEO-optimized?",
+      answer:
+        "Yes. All websites we build are fully responsive and developed with SEO best practices in mind for optimal performance on search engines and mobile devices.",
     },
     {
-      question: "Do you create mobile-responsive websites?",
-      answer: "Yes, all our websites are mobile-responsive and optimized for all devices including smartphones, tablets, and desktops. We follow mobile-first design principles to ensure your website looks and performs great on every screen size.",
-      category: "Development"
+      question: "Do you offer ongoing support after the website is launched?",
+      answer:
+        "Yes, we provide maintenance and support packages to keep your website updated, secure, and running smoothly.",
     },
     {
-      question: "Can you redesign my existing website?",
-      answer: "Certainly! We specialize in website redesigns to improve user experience, modernize design, enhance performance, and implement new features. We can work with your existing content or help create new content as needed.",
-      category: "Services"
+      question: "What industries do you specialize in?",
+      answer:
+        "We’ve worked across various industries, including e-commerce, education, healthcare, real estate, hospitality, and professional services.",
     },
     {
-      question: "How do I get started with my project?",
-      answer: "Getting started is easy! Simply contact us through our website, email, or phone. We'll schedule a free consultation to discuss your requirements, provide recommendations, and create a customized proposal for your project.",
-      category: "Getting Started"
-    }
+      question:
+        "How do you measure the success of digital marketing campaigns?",
+      answer:
+        "We use key performance indicators (KPIs) such as ROI, traffic growth, conversion rates, engagement, and more—paired with regular performance reports.",
+    },
   ];
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,8 +74,7 @@ const FAQSearch = () => {
     const filtered = faqs.filter(
       (faq) =>
         faq.question.toLowerCase().includes(term) ||
-        faq.answer.toLowerCase().includes(term) ||
-        faq.category.toLowerCase().includes(term)
+        faq.answer.toLowerCase().includes(term)
     );
     setFilteredFAQs(filtered);
   };
@@ -93,7 +92,8 @@ const FAQSearch = () => {
             Have Questions? Search Our FAQ
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Find quick answers to common questions about our services, process, and more
+            Find quick answers to common questions about our services, process,
+            and more
           </p>
         </div>
 
@@ -115,28 +115,26 @@ const FAQSearch = () => {
         {searchTerm && filteredFAQs.length > 0 && (
           <div className="space-y-4 mb-8">
             <div className="text-sm text-gray-600 mb-4">
-              Found {filteredFAQs.length} result{filteredFAQs.length !== 1 ? 's' : ''}
+              Found {filteredFAQs.length} result
+              {filteredFAQs.length !== 1 ? "s" : ""}
             </div>
             {filteredFAQs.map((faq, index) => (
               <div
                 key={index}
                 className={`bg-white rounded-lg shadow-sm border overflow-hidden transition-all duration-200 ${
-                  openIndex === index ? 'border-teal-200 shadow-md' : 'border-gray-200'
-                }`}
-              >
+                  openIndex === index
+                    ? "border-teal-200 shadow-md"
+                    : "border-gray-200"
+                }`}>
                 <button
                   onClick={() => toggleFAQ(index)}
                   className={`w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none transition-colors duration-200 ${
-                    openIndex === index ? 'bg-teal-50' : 'hover:bg-gray-50 focus:bg-gray-50'
+                    openIndex === index
+                      ? "bg-teal-50"
+                      : "hover:bg-gray-50 focus:bg-gray-50"
                   }`}
-                  aria-expanded={openIndex === index}
-                >
+                  aria-expanded={openIndex === index}>
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded-full font-medium">
-                        {faq.category}
-                      </span>
-                    </div>
                     <h3 className="text-lg font-semibold text-gray-900">
                       {faq.question}
                     </h3>
@@ -149,15 +147,14 @@ const FAQSearch = () => {
                     )}
                   </div>
                 </button>
-                
-                  <div className="px-6 pb-4 border-t border-gray-100">
-                    <div className="pt-4">
-                      <p className="text-gray-700 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
+
+                <div className="px-6 pb-4 border-t border-gray-100">
+                  <div className="pt-4">
+                    <p className="text-gray-700 leading-relaxed">
+                      {faq.answer}
+                    </p>
                   </div>
-                
+                </div>
               </div>
             ))}
           </div>
@@ -173,7 +170,8 @@ const FAQSearch = () => {
             </div>
             <div className="mt-4">
               <p className="text-sm text-gray-600">
-                Popular searches: pricing, support, development time, mobile responsive, SEO
+                Popular searches: pricing, support, development time, mobile
+                responsive, SEO
               </p>
             </div>
           </div>
@@ -186,19 +184,18 @@ const FAQSearch = () => {
               Can't find what you're looking for?
             </h3>
             <p className="text-gray-600 mb-6">
-              Our team is here to help! Contact us directly for personalized assistance.
+              Our team is here to help! Contact us directly for personalized
+              assistance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 transition-colors duration-200"
-              >
+                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 transition-colors duration-200">
                 Contact Us
               </a>
               <a
                 href="tel:+1234567890"
-                className="inline-flex items-center justify-center px-6 py-3 border border-teal-600 text-base font-medium rounded-md text-teal-600 bg-white hover:bg-teal-50 transition-colors duration-200"
-              >
+                className="inline-flex items-center justify-center px-6 py-3 border border-teal-600 text-base font-medium rounded-md text-teal-600 bg-white hover:bg-teal-50 transition-colors duration-200">
                 Call Now
               </a>
             </div>
