@@ -11,6 +11,7 @@ import {
   FaLinkedinIn,
   FaThreads,
 } from "react-icons/fa6";
+import Button from "./Button";
 
 const Footer = () => {
   const pageLinks = [
@@ -65,7 +66,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
             {/* About Us Section */}
             <div className="space-y-6">
-              <h3 className="text-2xl font-extrabold bg-gradient-to-r from-teal-400 to-blue-400 bg-clip-text text-transparent">
+              <h3 className="text-2xl font-extrabold bg-gradient-to-r from-teal-400 to-teal-400 bg-clip-text text-transparent">
                 Enegix Web Solutions
               </h3>
               <p className="text-sm leading-relaxed max-w-xs">
@@ -78,7 +79,7 @@ const Footer = () => {
                   size={16}
                 />
                 <p className="text-xs leading-relaxed">
-                  House No.2, Old AG More, Kadru, Ranchi, Jharkhand, 834002
+                     Enegix Web Solutions, House No.2, Old AG More, near Bharat Kitchen, above Saryu Sons Jwellers, Kadru, Delatoli, Ranchi, Jharkhand 834002 {" "}
                 </p>
               </div>
               <div className="space-y-3">
@@ -163,11 +164,11 @@ const Footer = () => {
                   className="bg-gray-800/50 text-sm px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 w-full border border-gray-700/50"
                   required
                 />
-                <button
+                <Button
                   type="button"
-                  className="bg-gradient-to-r from-teal-500 to-blue-600 text-white px-4 py-3 rounded-lg text-sm font-medium hover:from-teal-600 hover:to-blue-700 transition-all duration-300 shadow-md">
+                  className=" py-3">
                   Subscribe Now
-                </button>
+                </Button>
               </div>
             </div>
           </div>

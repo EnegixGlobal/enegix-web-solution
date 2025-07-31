@@ -10,84 +10,58 @@ import Link from "next/link";
 import { enablePageScroll } from "@/utils/scroll-helper";
 import { DockDemo } from "@/components/dock-demo";
 import Button from "@/components/Button";
-import { useRouter } from "next/navigation";
 import Container from "@/components/Container";
 
 const faqs = [
   {
-    question: "How long to website?",
+    question: "What services does Enegix Web Solutions offer?",
     answer:
-      "The timeline depends on your project complexity. A basic business website typically takes 1-2 weeks. Advanced e-commerce or custom portals may take 3-6 weeks. We always give you a realistic timeline before starting.",
+      "We offer a full suite of digital marketing and web services, including website design and development, SEO, social media marketing, PPC campaigns, branding, and content marketing.",
   },
   {
-    question: "Technologies we use?",
+    question: "How long does it take to build a website?",
     answer:
-      "We work with modern, scalable technologies like React.js, Next.js, Node.js, MongoDB, WordPress, Shopify, and more. Our tech stack is tailored to match your project's goals and future scalability.",
+      "Typically, website development takes 2 to 6 weeks depending on the complexity, features, and feedback cycle. We ensure timely delivery without compromising on quality.",
   },
   {
-    question: "Challenges we completed?",
+    question: "Do you offer SEO services?",
     answer:
-      "From revamping slow websites into high-speed performers to building complex CRM, booking, and e-commerce systems from scratch — we've successfully delivered solutions across various industries with unique challenges.",
+      "Yes, we provide comprehensive SEO services, including keyword research, on-page and off-page optimization, technical SEO, and monthly performance tracking.",
   },
   {
-    question: "Mobile Friendly?",
+    question: "Can you manage our social media accounts?",
     answer:
-      "Absolutely! Every website we build is fully responsive and optimized for mobile devices, ensuring smooth user experience across phones, tablets, and desktops.",
+      "Absolutely! We handle content creation, scheduling, engagement, and growth strategies for platforms like Instagram, Facebook, LinkedIn, and more.",
   },
   {
-    question: "Can I update my website after it is built?",
+    question: "How do I get started with your services?",
     answer:
-      "Yes! We offer content management systems or admin panels that let you update text, images, and more — even if you're not tech-savvy. Or you can opt for our support plans for ongoing updates.",
+      "You can reach out to us via our contact form, call us directly, or schedule a free consultation. We’ll understand your needs and recommend the best solution.",
   },
   {
-    question: "Domain and hosting services too?",
+    question: "Do you work with startups or only big companies?",
     answer:
-      "Yes, we offer domain registration and lightning-fast, secure hosting. Whether you need shared hosting, VPS, or cloud deployment — we’ve got you covered end-to-end.",
+      "We work with businesses of all sizes — from early-stage startups to large enterprises. Our strategies are tailored to fit your goals and budget.",
   },
   {
-    question: "Cost?",
+    question: "Will my website be mobile-friendly and SEO-optimized?",
     answer:
-      "Website pricing depends on the features, number of pages, and design complexity. Our packages start from budget-friendly options and scale up as per your need. Reach out for a free quote!",
+      "Yes. All websites we build are fully responsive and developed with SEO best practices in mind for optimal performance on search engines and mobile devices.",
   },
   {
-    question: "Digital Marketing services included?",
+    question: "Do you offer ongoing support after the website is launched?",
     answer:
-      "We provide complete digital marketing services including SEO, social media management, PPC advertising, content strategy, and email marketing. Everything you need to grow your digital presence.",
+      "Yes, we provide maintenance and support packages to keep your website updated, secure, and running smoothly.",
   },
   {
-    question: "Results and ROI?",
+    question: "What industries do you specialize in?",
     answer:
-      "Our marketing strategies are data-driven. We focus on increasing traffic, generating qualified leads, and boosting conversions — so you see real business growth and return on investment (ROI).",
+      "We’ve worked across various industries, including e-commerce, education, healthcare, real estate, hospitality, and professional services.",
   },
   {
-    question: "Lists of Social Media we can handle?",
+    question: "How do you measure the success of digital marketing campaigns?",
     answer:
-      "We handle Instagram, Facebook, LinkedIn, Twitter (X), and YouTube. From content creation to posting schedules and engagement — we manage it all professionally.",
-  },
-  {
-    question: "Paid Ad services -> Insta, Facebook, LinkedIn, YouTube?",
-    answer:
-      "Yes, we run high-converting ad campaigns on Instagram, Facebook, LinkedIn, and YouTube. From ad design to targeting and analytics — we take care of everything for better ROI.",
-  },
-  {
-    question: "SEO and Result?",
-    answer:
-      "We provide full-stack SEO services: keyword research, on-page optimization, technical SEO, backlinks, and performance tracking. You’ll see steady growth in rankings and organic traffic.",
-  },
-  {
-    question: "Plans and Discounts?",
-    answer:
-      "We offer flexible monthly and one-time project plans. Discounts are available for long-term packages, startups, and bundle deals. Contact us to know what’s best for your budget.",
-  },
-  {
-    question: "Our payment modes",
-    answer:
-      "We accept payments via UPI, bank transfer, credit/debit cards, and international methods like PayPal. EMI options available on select packages.",
-  },
-  {
-    question: "Maintenance and Support services?",
-    answer:
-      "Yes, we offer ongoing support plans covering updates, bug fixes, security patches, performance checks, backups, and technical assistance. Peace of mind, guaranteed.",
+      "We use key performance indicators (KPIs) such as ROI, traffic growth, conversion rates, engagement, and more—paired with regular performance reports.",
   },
 ];
 
@@ -151,7 +125,6 @@ const ContactForm = () => {
     }, 5000);
   };
 
-
   useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash) {
       const id = window.location.hash.substring(1);
@@ -177,8 +150,9 @@ const ContactForm = () => {
         </div>
       )}
 
-      <form action="https://formsubmit.co/enegixglobalhelp@gmail.com"
-                method="POST">
+      <form
+        action="https://formsubmit.co/enegixglobalhelp@gmail.com"
+        method="POST">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label
@@ -284,11 +258,11 @@ const ContactForm = () => {
         </div>
 
         <div className="flex items-center justify-between">
-          <button
+          <Button
             type="submit"
-            className="py-3 px-8 rounded-lg bg-gradient-to-r from-teal-600 to-indigo-700 text-white font-medium transition-transform hover:scale-[1.02] active:scale-[0.98] tracking-wide text-sm">
+            className="py-3 px-8  text-sm">
             Send Message
-          </button>
+          </Button>
 
           <Link
             href="https://wa.me/919608263050?text=Hi%20I%20Need%20Digital%20Marketing%20services%20for%20My%20Business"
@@ -344,11 +318,7 @@ const ContactInfo = () => {
 
             <div>
               <h4 className="text-black font-semibold mb-2">Address</h4>
-              <p className="text-gray-700 mb-1">House No.2, Old AG More</p>
-              <p className="text-gray-700 mb-1">
-                near Bharat Kitchen, above Saryu Son's Jwellers
-              </p>
-              <p className="text-gray-700 mb-1">Kadru, Ranchi, Jharkhand</p>
+             Enegix Web Solutions, House No.2, Old AG More, near Bharat Kitchen, above Saryu Sons Jwellers, Kadru, Delatoli, Ranchi, Jharkhand 834002 {" "}
               <a
                 href="https://maps.app.goo.gl/ccd5SSKteK4MpUnx8"
                 target="_blank"
@@ -756,7 +726,6 @@ export default function Contact() {
             </motion.div>
           </div>
         </section>
-
       </main>
 
       <Footer />
