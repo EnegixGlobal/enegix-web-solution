@@ -62,44 +62,57 @@ const TeamMemberCard = ({
 }: {
   member: TeamMember | (typeof foundersData)[0];
 }) => {
-  const isTeamMember = "_id" in member; // Check if it's from API (TeamMember) or static (founder)
-
   return (
-    <>
-      {
-        <motion.div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true, margin: "-120px" }}
+      className="group relative overflow-hidden rounded-2xl h-[470px] md:h-[340px] cursor-pointer transform transition-all duration-500 hover:scale-102 hover:shadow-2xl"
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0 rounded-2xl overflow-hidden">
+        <Image
+          src={member.image || "/team/placeholder.jpg"}
+          alt={member.name}
+          fill
+          className="object-cover transition-all duration-700 group-hover:scale-102 group-hover:brightness-45"
+        />
+      </div>
+
+      {/* Content Overlay */}
+      <div
+        className={`
+          absolute inset-0 flex flex-col justify-end text-center p-4 
+          transition-all duration-500 transform 
+          md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0
+          opacity-100 translate-y-0
+        `}
+      >
+        {/* Name */}
+        <motion.h3
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true, margin: "-120px" }}
-          className="group relative overflow-hidden rounded-2xl  h-[320px] cursor-pointer transform transition-all duration-500 hover:scale-102 hover:shadow-2xl">
-          {/* Background Image */}
-          <div className="absolute  inset-0 rounded-2xl overflow-hidden">
-            <Image
-              src={member.image || "/team/placeholder.jpg"}
-              alt={member.name}
-              fill
-              className="object-cover transition-all duration-700 group-hover:scale-102 group-hover:brightness-45"
-            />
-          </div>
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-2xl md:text-2xl font-bold text-white"
+        >
+          {member.name}
+        </motion.h3>
 
-          {/* Content overlay - hidden by default, shown on hover */}
-          <div className="absolute inset-0 flex flex-col justify-end text-center p-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-            {/* Name */}
-            <h3 className="text-2xl md:text-2xl font-bold text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100">
-              {member.name}
-            </h3>
-
-            {/* Role */}
-            <p className="text-gray-300 text-md transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-200">
-              {member.role}
-            </p>
-          </div>
-        </motion.div>
-      }
-    </>
+        {/* Role */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-gray-300 text-md"
+        >
+          {member.role}
+        </motion.p>
+      </div>
+    </motion.div>
   );
 };
+
 
 // Featured Team Member Card
 const FeaturedTeamMemberCard = ({
@@ -460,7 +473,7 @@ export default function TeamPage() {
                 {[...Array(8)].map((_, i) => (
                   <div
                     key={i}
-                    className="animate-pulse bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl aspect-square">
+                    className="animate-pulse bg-gradient-to-br from-gray-400 to-gray-500 rounded-2xl aspect-square">
                     <div className="h-full w-full bg-gray-200/30 rounded-2xl"></div>
                   </div>
                 ))}
