@@ -36,8 +36,9 @@ export const metadata: Metadata = {
     icon: "/favicon.ico", // path relative to /public
   },
   verification: {
-    google: "wouO7LV2T5yaBd9_fdrhsyi1VTl_hzsith__e1orQJQ",
+    google: "DiZ0PwZbLtanrpwgGJUCu7q35tKMPnDaQwcmN1nR2GY",
   },
+
   keywords: [
     "With google verification consoling",
     "Best digital marketing",
@@ -140,8 +141,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <meta name="google-site-verification" content="DiZ0PwZbLtanrpwgGJUCu7q35tKMPnDaQwcmN1nR2GY" />
+      </head>
       <body
-        className={` font-montserrat antialiased overscroll-none ${montserrat.variable}`}>
+        className={` font-montserrat antialiased overscroll-none ${montserrat.variable}`}
+      >
         {/* The loading component is client-side only, so we don't include it directly in layout */}
         {children}
       </body>
