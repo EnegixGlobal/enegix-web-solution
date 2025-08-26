@@ -117,7 +117,7 @@ export default function AdminLoginPage() {
                 <div className="flex justify-center mb-8">
                   <div className="relative w-40 h-30">
                     <Image
-                      src="/logo9.png"
+                      src="/new_logo.png"
                       alt="Enegix Web Solutions"
                       fill
                       className=" object-contain"

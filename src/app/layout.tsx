@@ -142,7 +142,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <meta name="google-site-verification" content="DiZ0PwZbLtanrpwgGJUCu7q35tKMPnDaQwcmN1nR2GY" />
+        <meta
+          name="google-site-verification"
+          content="DiZ0PwZbLtanrpwgGJUCu7q35tKMPnDaQwcmN1nR2GY"
+        />
       </head>
       <body
         className={` font-montserrat antialiased overscroll-none ${montserrat.variable}`}

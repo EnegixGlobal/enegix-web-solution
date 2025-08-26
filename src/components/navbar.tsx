@@ -9,17 +9,17 @@ import {
   ChevronDownIcon,
   XMarkIcon,
   Bars3BottomRightIcon,
-  ChevronRightIcon
+  ChevronRightIcon,
 } from "@heroicons/react/24/outline";
 import { Route } from "next";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";
-import { 
-  FaRocket, 
+import {
+  FaRocket,
   FaBuilding,
   FaUsers,
   FaBriefcase,
-  FaNewspaper
+  FaNewspaper,
 } from "react-icons/fa";
 import { IconType } from "react-icons";
 
@@ -126,11 +126,11 @@ export default function Navbar() {
           <Link href="/" className="flex items-center group">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Image
-                src="/logo9.png"
+                src="/new_logo.png"
                 alt="Enegix Web Solutions"
                 width={40}
                 height={30}
-                className="  md:w-13  object-cover transition-all duration-500"
+                className="  md:h-11 w-full object-cover transition-all duration-500"
               />
             </motion.div>
             <span className="font-extrabold md:text-3xl text-lg ml-3 ">
@@ -152,7 +152,8 @@ export default function Navbar() {
               onMouseLeave={() => {
                 setHoveredLink(null);
                 if (link.hasDropdown) handleDropdownLeave();
-              }}>
+              }}
+            >
               {link.hasDropdown ? (
                 <Link href={link.href as Route}>
                   <motion.button
@@ -161,7 +162,8 @@ export default function Navbar() {
                       isLinkActive(link.href)
                         ? "text-black border border-teal-300 rounded-full"
                         : "text-black hover:text-teal-800"
-                    )}>
+                    )}
+                  >
                     <span className="relative z-10 font-bold">
                       {link.label}
                     </span>
@@ -185,7 +187,7 @@ export default function Navbar() {
                   </motion.button>
                 </Link>
               ) : (
-                <motion.div  className="relative">
+                <motion.div className="relative">
                   <Link
                     href={link.href as Route}
                     className={cn(
@@ -193,7 +195,8 @@ export default function Navbar() {
                       isLinkActive(link.href)
                         ? "text-black border border-teal-300 rounded-full "
                         : "text-black hover:text-teal-800"
-                    )}>
+                    )}
+                  >
                     <span className="relative z-10 font-bold">
                       {link.label}
                     </span>
@@ -222,17 +225,21 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    style={{ transformOrigin: "top" }}>
-                    
+                    style={{ transformOrigin: "top" }}
+                  >
                     <div className="flex">
                       {/* Left side - Main Categories */}
                       <div className="w-1/2 pr-4 border-r border-teal-200">
-                        <h3 className="text-lg font-bold text-teal-900 mb-4 px-3">Service Categories</h3>
+                        <h3 className="text-lg font-bold text-teal-900 mb-4 px-3">
+                          Service Categories
+                        </h3>
                         <div className="space-y-1">
                           {link.dropdownItems?.map((category) => (
                             <div
                               key={category.label}
-                              onMouseEnter={() => handleCategoryHover(category.label)}
+                              onMouseEnter={() =>
+                                handleCategoryHover(category.label)
+                              }
                               className={cn(
                                 "group flex items-center justify-between p-3 rounded-lg transition-all duration-300 cursor-pointer",
                                 hoveredCategory === category.label
@@ -241,17 +248,25 @@ export default function Navbar() {
                               )}
                             >
                               <div className="flex items-center space-x-3">
-                                <div className={cn(
-                                  "transition-colors duration-300",
-                                  hoveredCategory === category.label ? "text-teal-600" : "text-teal-500"
-                                )}>
+                                <div
+                                  className={cn(
+                                    "transition-colors duration-300",
+                                    hoveredCategory === category.label
+                                      ? "text-teal-600"
+                                      : "text-teal-500"
+                                  )}
+                                >
                                   <category.icon className="w-6 h-6" />
                                 </div>
                                 <div>
-                                  <h4 className={cn(
-                                    "font-semibold transition-colors duration-300",
-                                    hoveredCategory === category.label ? "text-teal-700" : "text-teal-900"
-                                  )}>
+                                  <h4
+                                    className={cn(
+                                      "font-semibold transition-colors duration-300",
+                                      hoveredCategory === category.label
+                                        ? "text-teal-700"
+                                        : "text-teal-900"
+                                    )}
+                                  >
                                     {category.label}
                                   </h4>
                                   <p className="text-xs text-teal-600 mt-1">
@@ -259,10 +274,14 @@ export default function Navbar() {
                                   </p>
                                 </div>
                               </div>
-                              <ChevronRightIcon className={cn(
-                                "w-4 h-4 transition-all duration-300",
-                                hoveredCategory === category.label ? "text-teal-600 translate-x-1" : "text-teal-400"
-                              )} />
+                              <ChevronRightIcon
+                                className={cn(
+                                  "w-4 h-4 transition-all duration-300",
+                                  hoveredCategory === category.label
+                                    ? "text-teal-600 translate-x-1"
+                                    : "text-teal-400"
+                                )}
+                              />
                             </div>
                           ))}
                         </div>
@@ -277,28 +296,32 @@ export default function Navbar() {
                             </h3>
                             <div className="space-y-2">
                               {(link.dropdownItems as DropdownItem[])
-                                ?.find(cat => cat.label === hoveredCategory)
-                                ?.subcategories?.map((subcategory: Subcategory) => (
-                                <Link
-                                  key={subcategory.label}
-                                  href={subcategory.href as Route}
-                                  className="group block p-3 rounded-lg hover:bg-teal-50 transition-all duration-300 border border-transparent hover:border-teal-200"
-                                >
-                                  <h5 className="font-semibold text-teal-900 group-hover:text-teal-600 transition-colors mb-1">
-                                    {subcategory.label}
-                                  </h5>
-                                  <p className="text-xs text-teal-600 leading-relaxed">
-                                    {subcategory.description}
-                                  </p>
-                                </Link>
-                              ))}
+                                ?.find((cat) => cat.label === hoveredCategory)
+                                ?.subcategories?.map(
+                                  (subcategory: Subcategory) => (
+                                    <Link
+                                      key={subcategory.label}
+                                      href={subcategory.href as Route}
+                                      className="group block p-3 rounded-lg hover:bg-teal-50 transition-all duration-300 border border-transparent hover:border-teal-200"
+                                    >
+                                      <h5 className="font-semibold text-teal-900 group-hover:text-teal-600 transition-colors mb-1">
+                                        {subcategory.label}
+                                      </h5>
+                                      <p className="text-xs text-teal-600 leading-relaxed">
+                                        {subcategory.description}
+                                      </p>
+                                    </Link>
+                                  )
+                                )}
                             </div>
                           </div>
                         ) : (
                           <div className="flex items-center justify-center h-full">
                             <div className="text-center text-teal-500">
                               <FaRocket className="w-12 h-12 mx-auto mb-3 text-teal-300" />
-                              <p className="text-sm">Hover over a category to see services</p>
+                              <p className="text-sm">
+                                Hover over a category to see services
+                              </p>
                             </div>
                           </div>
                         )}
@@ -323,13 +346,15 @@ export default function Navbar() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2 }}>
+                    transition={{ duration: 0.2 }}
+                  >
                     <div className="space-y-2">
                       {link.dropdownItems?.map((item) => (
                         <Link
                           key={item.label}
                           href={item.href as Route}
-                          className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-teal-100/50 transition-all duration-300 border border-transparent hover:border-teal-200">
+                          className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-teal-100/50 transition-all duration-300 border border-transparent hover:border-teal-200"
+                        >
                           <div className="text-teal-600 mt-1">
                             <item.icon className="w-5 h-5" />
                           </div>
@@ -366,7 +391,8 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="lg:hidden flex flex-col items-center justify-center p-2 rounded-lg bg-teal-100/30 hover:bg-teal-200/50 transition-colors duration-200 border border-teal-200"
           whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}>
+          whileTap={{ scale: 0.95 }}
+        >
           {mobileMenuOpen ? (
             <XMarkIcon className="h-6 w-6 text-black" />
           ) : (
@@ -383,7 +409,8 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}>
+            transition={{ duration: 0.3 }}
+          >
             <div className="pt-4 pb-6">
               <div className="flex flex-col space-y-2">
                 {navLinks.map((link) => (
@@ -396,7 +423,8 @@ export default function Navbar() {
                               activeDropdown === link.label ? null : link.label
                             )
                           }
-                          className="w-full flex items-center justify-between px-4 py-3 text-black hover:text-teal-800 hover:bg-teal-100/30 rounded-lg transition-all duration-200 border border-teal-200">
+                          className="w-full flex items-center justify-between px-4 py-3 text-black hover:text-teal-800 hover:bg-teal-100/30 rounded-lg transition-all duration-200 border border-teal-200"
+                        >
                           <span>{link.label}</span>
                           <ChevronDownIcon
                             className={cn(
@@ -412,37 +440,47 @@ export default function Navbar() {
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: "auto" }}
                               exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.2 }}>
-                              {link.label === "Services" ? (
-                                // Mobile hierarchical services menu
-                                (link.dropdownItems as DropdownItem[])?.map((category) => (
-                                  <div key={category.label} className="border-l-2 border-teal-200 pl-3 mb-3">
-                                    <h4 className="font-semibold text-teal-700 mb-2 text-sm">
-                                      {category.label}
-                                    </h4>
-                                    {category.subcategories?.map((subcategory: Subcategory) => (
-                                      <Link
-                                        key={subcategory.label}
-                                        href={subcategory.href as Route}
-                                        className="block px-2 py-1 text-xs text-black/80 hover:text-teal-800 hover:bg-teal-100/20 rounded transition-all duration-200"
-                                        onClick={() => setMobileMenuOpen(false)}>
-                                        {subcategory.label}
-                                      </Link>
-                                    ))}
-                                  </div>
-                                ))
-                              ) : (
-                                // Regular company menu
-                                link.dropdownItems?.map((item) => (
-                                  <Link
-                                    key={item.label}
-                                    href={item.href as Route}
-                                    className="block px-4 py-2 text-sm text-black/80 hover:text-teal-800 hover:bg-teal-100/20 rounded-lg transition-all duration-200"
-                                    onClick={() => setMobileMenuOpen(false)}>
-                                    {item.label}
-                                  </Link>
-                                ))
-                              )}
+                              transition={{ duration: 0.2 }}
+                            >
+                              {link.label === "Services"
+                                ? // Mobile hierarchical services menu
+                                  (link.dropdownItems as DropdownItem[])?.map(
+                                    (category) => (
+                                      <div
+                                        key={category.label}
+                                        className="border-l-2 border-teal-200 pl-3 mb-3"
+                                      >
+                                        <h4 className="font-semibold text-teal-700 mb-2 text-sm">
+                                          {category.label}
+                                        </h4>
+                                        {category.subcategories?.map(
+                                          (subcategory: Subcategory) => (
+                                            <Link
+                                              key={subcategory.label}
+                                              href={subcategory.href as Route}
+                                              className="block px-2 py-1 text-xs text-black/80 hover:text-teal-800 hover:bg-teal-100/20 rounded transition-all duration-200"
+                                              onClick={() =>
+                                                setMobileMenuOpen(false)
+                                              }
+                                            >
+                                              {subcategory.label}
+                                            </Link>
+                                          )
+                                        )}
+                                      </div>
+                                    )
+                                  )
+                                : // Regular company menu
+                                  link.dropdownItems?.map((item) => (
+                                    <Link
+                                      key={item.label}
+                                      href={item.href as Route}
+                                      className="block px-4 py-2 text-sm text-black/80 hover:text-teal-800 hover:bg-teal-100/20 rounded-lg transition-all duration-200"
+                                      onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                      {item.label}
+                                    </Link>
+                                  ))}
                             </motion.div>
                           )}
                         </AnimatePresence>
@@ -451,7 +489,8 @@ export default function Navbar() {
                       <Link
                         href={link.href as Route}
                         className="block px-4 py-3 text-black hover:text-teal-800 hover:bg-teal-100/30 rounded-lg transition-all duration-200 border border-teal-200"
-                        onClick={() => setMobileMenuOpen(false)}>
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
                         {link.label}
                       </Link>
                     )}
@@ -460,12 +499,11 @@ export default function Navbar() {
                 <div className="pt-4">
                   <Link
                     href="/contact"
-                    onClick={() => setMobileMenuOpen(false)}>
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     <div className="relative group">
                       <div className=" inset-0 bg-gradient-to-r from-teal-600 to-indigo-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
-                      <Button className="py-2">
-                        Get Started
-                      </Button>
+                      <Button className="py-2">Get Started</Button>
                     </div>
                   </Link>
                 </div>
