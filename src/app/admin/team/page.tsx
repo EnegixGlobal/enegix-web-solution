@@ -257,6 +257,7 @@ const AdminTeamDashboard = () => {
           </div>
 
           <select
+          title='Active'
             value={filters.status}
             onChange={(e) => setFilters(prev => ({ ...prev, status: e.target.value }))}
             className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -329,12 +330,14 @@ const AdminTeamDashboard = () => {
 
                   <div className="col-span-3 flex items-center gap-2">
                     <button
+                    title='Edit'
                       onClick={() => handleEditMember(member)}
                       className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                     >
                       <Edit2 size={16} />
                     </button>
                     <button
+                     title='Delete'
                       onClick={() => handleDeleteMember(member._id)}
                       className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                     >
@@ -353,6 +356,7 @@ const AdminTeamDashboard = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <button
+                        title='Previous Page'
                     onClick={() => handlePageChange(pagination.page - 1)}
                     disabled={pagination.page <= 1}
                     className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
@@ -375,6 +379,7 @@ const AdminTeamDashboard = () => {
                   ))}
                   
                   <button
+                  title='Next Page'
                     onClick={() => handlePageChange(pagination.page + 1)}
                     disabled={pagination.page >= pagination.pages}
                     className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
@@ -417,6 +422,7 @@ const AdminTeamDashboard = () => {
               )}
               <span>{notification.message}</span>
               <button
+              title='Close'
                 onClick={() => setNotification(null)}
                 className="ml-2 hover:bg-black/20 rounded p-1"
               >
@@ -566,6 +572,7 @@ const TeamMemberModal: React.FC<TeamMemberModalProps> = ({ isOpen, onClose, memb
               {member ? 'Edit Team Member' : 'Add Team Member'}
             </h2>
             <button
+             title='Close'
               onClick={onClose}
               className="text-gray-400 hover:text-gray-600"
             >
@@ -582,6 +589,7 @@ const TeamMemberModal: React.FC<TeamMemberModalProps> = ({ isOpen, onClose, memb
                 Name *
               </label>
               <input
+              title='John Doe'
                 type="text"
                 required
                 value={formData.name}
@@ -595,6 +603,7 @@ const TeamMemberModal: React.FC<TeamMemberModalProps> = ({ isOpen, onClose, memb
                 Role *
               </label>
               <input
+              title='Software Engineer'
                 type="text"
                 required
                 value={formData.role}
@@ -641,6 +650,7 @@ const TeamMemberModal: React.FC<TeamMemberModalProps> = ({ isOpen, onClose, memb
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <span>{selectedFile.name}</span>
                   <button
+                  title='Close'
                     type="button"
                     onClick={() => {
                       setSelectedFile(null);
@@ -676,6 +686,7 @@ const TeamMemberModal: React.FC<TeamMemberModalProps> = ({ isOpen, onClose, memb
                 Display Order
               </label>
               <input
+              title='1'
                 type="number"
                 value={formData.order}
                 onChange={(e) => setFormData(prev => ({ ...prev, order: parseInt(e.target.value) || 0 }))}
@@ -688,6 +699,7 @@ const TeamMemberModal: React.FC<TeamMemberModalProps> = ({ isOpen, onClose, memb
                 Status
               </label>
               <select
+              title='Active'
                 value={formData.status}
                 onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value as 'active' | 'inactive' }))}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"

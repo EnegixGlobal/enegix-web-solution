@@ -368,6 +368,7 @@ export default function AdminBlogsPage() {
 
             {/* Category Filter */}
             <select
+              title="Filter by category"
               value={selectedCategory}
               onChange={(e) => {
                 setSelectedCategory(e.target.value);
@@ -384,6 +385,7 @@ export default function AdminBlogsPage() {
 
             {/* Status Filter */}
             <select
+              title="Filter by status"
               value={selectedStatus}
               onChange={(e) => {
                 setSelectedStatus(e.target.value);

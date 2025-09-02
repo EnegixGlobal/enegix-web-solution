@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { 
   Save, 
@@ -89,7 +90,7 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
     image: "",
     author: "Enegix Team",
     readTime: "",
-    status: "draft" as "draft" | "published" | "archived",
+  status: "published" as "draft" | "published" | "archived",
     featured: false,
     metaTitle: "",
     metaDescription: ""
@@ -101,6 +102,26 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
   const [showPreview, setShowPreview] = useState(false);
   const [tagInput, setTagInput] = useState("");
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [sections, setSections] = useState<Array<{ heading: string; body: string; level: 2 | 3 }>>([
+    { heading: "", body: "", level: 3 },
+  ]);
+
+  const addSectionH3 = () => setSections((prev) => [...prev, { heading: "", body: "", level: 3 }]);
+  const addSectionH2 = () => setSections((prev) => [...prev, { heading: "", body: "", level: 2 }]);
+  const removeSection = (idx: number) =>
+    setSections((prev) => prev.filter((_, i) => i !== idx));
+  const updateSection = (idx: number, field: "heading" | "body", value: string) =>
+    setSections((prev) => prev.map((s, i) => (i === idx ? { ...s, [field]: value } : s)));
+  const buildContentFromSections = () => {
+    const combined = sections
+      .map((s) => {
+        const prefix = s.heading ? `${s.level === 2 ? "##" : "###"} ${s.heading}\n` : "";
+        return `${prefix}${s.body}`.trim();
+      })
+      .filter(Boolean)
+      .join("\n\n");
+    handleContentChange(combined);
+  };
 
   // Initialize form data if editing
   useEffect(() => {
@@ -190,17 +211,16 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
       }
 
       const result = await response.json();
-      
-      if (result.success) {
+      if (result.url) {
         setFormData(prev => ({
           ...prev,
-          image: result.data.secure_url
+          image: result.url
         }));
         toast.success('Image uploaded successfully');
       } else {
         throw new Error(result.error || 'Upload failed');
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Upload error:', error);
       toast.error('Failed to upload image');
     } finally {
@@ -270,8 +290,8 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
         method,
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
         },
+        credentials: 'include',
         body: JSON.stringify(formData)
       });
 
@@ -283,9 +303,10 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
       const result = await response.json();
       toast.success(`Blog ${blog ? 'updated' : 'created'} successfully`);
       onSuccess();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Submit error:', error);
-      toast.error(error.message);
+      const message = (error as { message?: string })?.message || 'Failed to submit';
+      toast.error(message);
     } finally {
       setIsSubmitting(false);
     }
@@ -371,6 +392,7 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
                 Category *
               </label>
               <select
+              title="Select Category"
                 value={formData.category}
                 onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
@@ -461,11 +483,9 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
             
             {formData.image && (
               <div className="w-full max-w-md">
-                <img
-                  src={formData.image}
-                  alt="Featured image preview"
-                  className="w-full h-48 object-cover rounded-lg border border-gray-300"
-                />
+                <div className="relative h-48 w-full overflow-hidden rounded-lg border border-gray-300">
+                  <Image src={formData.image} alt="Featured image preview" fill className="object-cover" />
+                </div>
               </div>
             )}
           </div>
@@ -477,6 +497,76 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
             <FileText className="w-5 h-5" />
             Content *
           </h2>
+
+          {/* Content Sections Builder (Optional) */}
+          <div className="mb-6 rounded-lg border border-gray-200">
+            <div className="flex items-center justify-between px-4 py-3 border-b">
+              <p className="text-sm font-medium text-gray-900">Content Sections (Optional)</p>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={addSectionH3}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-md border border-gray-300 hover:bg-gray-50"
+                  title="Add H3 section (###)"
+                >
+                  <Plus className="w-4 h-4" /> Add H3
+                </button>
+                <button
+                  type="button"
+                  onClick={addSectionH2}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-md border border-gray-300 hover:bg-gray-50"
+                  title="Add H2 section (##)"
+                >
+                  <Plus className="w-4 h-4" /> Add H2
+                </button>
+                <button
+                  type="button"
+                  onClick={buildContentFromSections}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 text-sm rounded-md bg-teal-600 text-white hover:bg-teal-700"
+                  title="Build content from sections"
+                >
+                  Build content
+                </button>
+              </div>
+            </div>
+
+            <div className="p-4 space-y-4">
+              {sections.map((s, idx) => (
+                <div key={idx} className="rounded-lg border border-gray-200 p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <label className="text-sm font-medium text-gray-700">Section {idx + 1} <span className="ml-1 inline-block rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-700">H{sections[idx].level}</span></label>
+                    {sections.length > 1 && (
+                      <button
+                        type="button"
+                        onClick={() => removeSection(idx)}
+                        className="inline-flex items-center gap-1 text-sm text-red-600 hover:bg-red-50 px-2 py-1 rounded"
+                        title="Remove section"
+                      >
+                        <Minus className="w-4 h-4" /> Remove
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-3">
+                    <input
+                      type="text"
+                      value={s.heading}
+                      onChange={(e) => updateSection(idx, "heading", e.target.value)}
+                      placeholder="Section title (e.g., Introduction)"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                    />
+                    <textarea
+                      value={s.body}
+                      onChange={(e) => updateSection(idx, "body", e.target.value)}
+                      rows={6}
+                      placeholder="Section content..."
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
           
           <textarea
             value={formData.content}
@@ -488,6 +578,9 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
           />
           <p className="text-xs text-gray-500 mt-2">
             {formData.content.split(/\s+/).length} words
+          </p>
+          <p className="text-xs text-gray-500 mt-1">
+            Tips: Use section titles with <code>## Heading</code> (H2) or <code>### Heading</code> (H3). Add links like <code>[text](https://example.com)</code> or paste a full URL; they’ll be clickable on the blog page.
           </p>
         </div>
 
@@ -514,6 +607,7 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
                   placeholder="Add a tag..."
                 />
                 <button
+                title="Add Tag"
                   type="button"
                   onClick={addTag}
                   className="px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
@@ -530,6 +624,7 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
                   >
                     {tag}
                     <button
+                    title="Remove Tag"
                       type="button"
                       onClick={() => removeTag(tag)}
                       className="text-teal-600 hover:text-teal-800"
@@ -571,8 +666,9 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
                 Status
               </label>
               <select
+              title="Select Status"
                 value={formData.status}
-                onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value as any }))}
+                onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value as "draft" | "published" | "archived" }))}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
               >
                 {statusOptions.map((status) => (
@@ -624,11 +720,11 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
                   value={formData.metaTitle}
                   onChange={(e) => setFormData(prev => ({ ...prev, metaTitle: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                  placeholder="SEO meta title (max 60 characters)"
-                  maxLength={60}
+                  placeholder="SEO meta title (max 100 characters)"
+                  maxLength={100}
                 />
                 <p className="text-xs text-gray-500 mt-1">
-                  {formData.metaTitle.length}/60 characters
+                  {formData.metaTitle.length}/100 characters
                 </p>
               </div>
 
@@ -642,11 +738,11 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
                   onChange={(e) => setFormData(prev => ({ ...prev, metaDescription: e.target.value }))}
                   rows={3}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                  placeholder="SEO meta description (max 160 characters)"
-                  maxLength={160}
+                  placeholder="SEO meta description (max 200 characters)"
+                  maxLength={200}
                 />
                 <p className="text-xs text-gray-500 mt-1">
-                  {formData.metaDescription.length}/160 characters
+                  {formData.metaDescription.length}/200 characters
                 </p>
               </div>
             </div>

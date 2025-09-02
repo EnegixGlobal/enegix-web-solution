@@ -20,7 +20,7 @@ const Footer = () => {
     { label: "Services", href: "/services" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Careers", href: "/careers" },
-    { label: "Blog", href: "/blog" },
+  { label: "Blog", href: "/blogs" },
   ];
 
   const legalLinks = [

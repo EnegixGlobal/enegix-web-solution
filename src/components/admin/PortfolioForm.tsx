@@ -317,6 +317,7 @@ const PortfolioForm = ({ portfolio, onClose, onSubmit }: PortfolioFormProps) => 
             {portfolio ? "Edit Portfolio" : "Add New Portfolio"}
           </h2>
           <button
+          title="Close"
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
@@ -348,6 +349,7 @@ const PortfolioForm = ({ portfolio, onClose, onSubmit }: PortfolioFormProps) => 
                 Category *
               </label>
               <select
+              title="Select Category"
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
@@ -428,6 +430,7 @@ const PortfolioForm = ({ portfolio, onClose, onSubmit }: PortfolioFormProps) => 
                       className="mx-auto object-contain rounded"
                     />
                     <button
+                    title="Remove Logo"
                       type="button"
                       onClick={(e) => {
                         e.stopPropagation();
@@ -449,6 +452,7 @@ const PortfolioForm = ({ portfolio, onClose, onSubmit }: PortfolioFormProps) => 
                 )}
               </div>
               <input
+              title="Upload Logo"
                 ref={logoInputRef}
                 type="file"
                 accept="image/*"
@@ -476,6 +480,7 @@ const PortfolioForm = ({ portfolio, onClose, onSubmit }: PortfolioFormProps) => 
                       className="mx-auto object-cover rounded"
                     />
                     <button
+                    title="Remove Image"
                       type="button"
                       onClick={(e) => {
                         e.stopPropagation();
@@ -497,6 +502,7 @@ const PortfolioForm = ({ portfolio, onClose, onSubmit }: PortfolioFormProps) => 
                 )}
               </div>
               <input
+              title="Upload Project Image"
                 ref={imageInputRef}
                 type="file"
                 accept="image/*"
@@ -537,6 +543,7 @@ const PortfolioForm = ({ portfolio, onClose, onSubmit }: PortfolioFormProps) => 
                 >
                   {tech}
                   <button
+                  title="Remove Technology"
                     type="button"
                     onClick={() => removeTechnology(index)}
                     className="text-teal-600 hover:text-teal-800"
@@ -579,6 +586,7 @@ const PortfolioForm = ({ portfolio, onClose, onSubmit }: PortfolioFormProps) => 
                 >
                   {tag}
                   <button
+                  title="Remove Tag"
                     type="button"
                     onClick={() => removeTag(index)}
                     className="text-blue-600 hover:text-blue-800"
@@ -630,6 +638,7 @@ const PortfolioForm = ({ portfolio, onClose, onSubmit }: PortfolioFormProps) => 
                 Status
               </label>
               <select
+              title="Select Status"
                 name="status"
                 value={formData.status}
                 onChange={handleInputChange}

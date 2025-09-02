@@ -1,8 +1,29 @@
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/db";
 import Blog from "@/models/Blog.models";
+import jwt, { JwtPayload } from "jsonwebtoken";
+import Admin from "@/models/Admin.models";
+
+const calculateReadTime = (text: string): string => {
+  const wordsPerMinute = 200;
+  const wordCount = text.split(/\s+/).length;
+  const minutes = Math.ceil(wordCount / wordsPerMinute);
+  return `${minutes} min read`;
+};
 
 // GET /api/blogs - Get all blogs with filtering, pagination, and search
+type BlogFilter = {
+  category?: string;
+  status?: string;
+  featured?: boolean;
+  $or?: Array<
+    | { title: { $regex: string; $options: string } }
+    | { content: { $regex: string; $options: string } }
+    | { excerpt: { $regex: string; $options: string } }
+    | { tags: { $in: RegExp[] } }
+  >;
+};
+
 export async function GET(request: NextRequest) {
   try {
     await dbConnect();
@@ -16,15 +37,17 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get("search");
     const sort = searchParams.get("sort") || "-createdAt";
 
-    // Build filter object
-    const filter: any = {};
+  // Build filter object
+  const filter: BlogFilter = {};
 
     if (category && category !== "All") {
       filter.category = category;
     }
 
     if (status) {
-      filter.status = status;
+      if (status !== "all") {
+        filter.status = status;
+      }
     } else {
       // Default to published for public API calls
       filter.status = "published";
@@ -35,7 +58,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (search) {
-      filter.$or = [
+  filter.$or = [
         { title: { $regex: search, $options: "i" } },
         { content: { $regex: search, $options: "i" } },
         { excerpt: { $regex: search, $options: "i" } },
@@ -80,7 +103,7 @@ export async function GET(request: NextRequest) {
         categoryStats,
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error fetching blogs:", error);
     return NextResponse.json(
       { success: false, error: "Failed to fetch blogs" },
@@ -92,7 +115,32 @@ export async function GET(request: NextRequest) {
 // POST /api/blogs - Create new blog (Admin only)
 export async function POST(request: NextRequest) {
   try {
-    // Verify admin authentication
+    // Verify admin authentication via cookie token
+    const token = request.cookies.get("token")?.value;
+    if (!token) {
+      return NextResponse.json(
+        { success: false, error: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+
+    let adminId: string | null = null;
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload & { id: string };
+      const admin = await Admin.findById(decoded.id).select("_id");
+      if (!admin) {
+        return NextResponse.json(
+          { success: false, error: "Unauthorized" },
+          { status: 401 }
+        );
+      }
+      adminId = admin._id.toString();
+    } catch (e) {
+      return NextResponse.json(
+        { success: false, error: "Invalid token" },
+        { status: 401 }
+      );
+    }
 
     await dbConnect();
 
@@ -138,7 +186,7 @@ export async function POST(request: NextRequest) {
       finalSlug = `${finalSlug}-${Date.now()}`;
     }
 
-    const calculatedReadTime = readTime;
+  const calculatedReadTime = readTime || calculateReadTime(content);
     // Create new blog
     const newBlog = new Blog({
       title,
@@ -155,6 +203,7 @@ export async function POST(request: NextRequest) {
       featured: featured || false,
       metaTitle,
       metaDescription,
+      createdBy: adminId,
     });
 
     const savedBlog = await newBlog.save();
@@ -170,20 +219,19 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const err = error as { code?: number; name?: string; errors?: Record<string, { message: string }>; message?: string };
     console.error("Error creating blog:", error);
 
-    if (error.code === 11000) {
+    if (err.code === 11000) {
       return NextResponse.json(
         { success: false, error: "Blog with this slug already exists" },
         { status: 409 }
       );
     }
 
-    if (error.name === "ValidationError") {
-      const validationErrors = Object.values(error.errors).map(
-        (err: any) => err.message
-      );
+    if (err.name === "ValidationError" && err.errors) {
+      const validationErrors = Object.values(err.errors).map((e) => e.message);
       return NextResponse.json(
         { success: false, error: validationErrors.join(", ") },
         { status: 400 }
