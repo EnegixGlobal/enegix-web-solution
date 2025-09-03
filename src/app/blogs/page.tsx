@@ -31,16 +31,17 @@ async function getBlogs(baseUrl: string, query: string) {
 export default async function BlogsPage({
 	searchParams,
 }: {
-	searchParams?: { [key: string]: string | string[] | undefined };
+	searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
+	const resolvedSearchParams = await searchParams;
 	const params = new URLSearchParams();
 	params.set("status", "published");
 	params.set("limit", "12");
-	if (searchParams?.category && typeof searchParams.category === "string") {
-		params.set("category", searchParams.category);
+	if (resolvedSearchParams?.category && typeof resolvedSearchParams.category === "string") {
+		params.set("category", resolvedSearchParams.category);
 	}
-		if (searchParams?.status && typeof searchParams.status === "string") {
-			params.set("status", searchParams.status);
+		if (resolvedSearchParams?.status && typeof resolvedSearchParams.status === "string") {
+			params.set("status", resolvedSearchParams.status);
 		}
 
 		const h = await headers();
@@ -51,7 +52,7 @@ export default async function BlogsPage({
 		const data = await getBlogs(baseUrl, params.toString()).catch(() => ({ success: false }));
 	const blogs: Blog[] = data?.data?.blogs ?? [];
 	const categoryStats: CategoryStat[] = data?.data?.categoryStats ?? [];
-	const activeCategory = searchParams?.category as string | undefined;
+	const activeCategory = resolvedSearchParams?.category as string | undefined;
 
 	return (
 		<main className="min-h-screen bg-gray-50">

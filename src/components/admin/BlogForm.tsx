@@ -443,7 +443,7 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
               <textarea
                 value={formData.excerpt}
                 onChange={(e) => setFormData(prev => ({ ...prev, excerpt: e.target.value }))}
-                rows={3}
+                rows={6}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
                 placeholder="Brief description of the blog post..."
                 required
