@@ -126,7 +126,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center group">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Image
-                src="/new_logo.png"
+                src="/enegix_logo.svg"
                 alt="Enegix Web Solutions"
                 width={40}
                 height={30}
