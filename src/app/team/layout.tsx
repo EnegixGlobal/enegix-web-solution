@@ -1,9 +1,11 @@
 "use client";
 
-export default function TeamLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+import React, { ReactNode } from "react";
+
+interface TeamLayoutProps {
+  children: ReactNode;
+}
+
+export default function TeamLayout({ children }: TeamLayoutProps) {
+  return <div>{children}</div>;
 }
