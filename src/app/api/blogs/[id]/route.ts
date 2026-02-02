@@ -3,7 +3,9 @@ import dbConnect from "@/lib/db";
 import Blog from "@/models/Blog.models";
 import mongoose from "mongoose";
 
-// GET /api/blogs/[id] - Get single blog by ID or slug
+/* ----------------------------------------
+   GET : Single Blog (Public)
+---------------------------------------- */
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
@@ -11,57 +13,40 @@ export async function GET(
   try {
     await dbConnect();
 
-    const { id } = params;
-    const decoded = decodeURIComponent(id);
-    const normalized = decoded.toLowerCase();
-    const slugify = (s: string) => s
-      .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, "")
-      .replace(/\s+/g, "-")
-      .replace(/-+/g, "-")
-      .trim();
-    
-    // Try to find by ID if valid, then by slug
-  let blog: unknown | null = null;
-    if (mongoose.Types.ObjectId.isValid(decoded)) {
-      blog = await Blog.findById(decoded).populate("createdBy", "name email");
-    }
-    
-    if (!blog) {
-      blog = await Blog.findOne({ slug: normalized }).populate("createdBy", "name email");
+    const param = decodeURIComponent(params.id).trim();
+
+    let blog = null;
+
+    // 1️⃣ If valid Mongo ID → fetch by ID
+    if (mongoose.Types.ObjectId.isValid(param)) {
+      blog = await Blog.findOneAndUpdate(
+        { _id: param, status: "published" },
+        { $inc: { views: 1 } },
+        { new: true }
+      ).populate("createdBy", "name email");
+    } 
+    // 2️⃣ Else → fetch by slug ONLY
+    else {
+      blog = await Blog.findOneAndUpdate(
+        { slug: param.toLowerCase(), status: "published" },
+        { $inc: { views: 1 } },
+        { new: true }
+      ).populate("createdBy", "name email");
     }
 
     if (!blog) {
-      const fallback = slugify(decoded);
-      blog = await Blog.findOne({ slug: fallback }).populate("createdBy", "name email");
-    }
-
-    if (!blog) {
-      // Last resort: match by exact title case-insensitive
-      const escaped = decoded.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      blog = await Blog.findOne({ title: { $regex: `^${escaped}$`, $options: "i" } }).populate("createdBy", "name email");
-    }
-
-  if (!blog) {
       return NextResponse.json(
         { success: false, error: "Blog not found" },
         { status: 404 }
       );
     }
 
-    // Increment view count for published blogs
-    const { _id, status } = blog as { _id: string; status: string };
-    if (status === "published") {
-      await Blog.findByIdAndUpdate(_id, { $inc: { views: 1 } });
-    }
-
     return NextResponse.json({
       success: true,
-  data: blog
+      data: blog,
     });
-
-  } catch (error: unknown) {
-    console.error("Error fetching blog:", error);
+  } catch (error) {
+    console.error("GET BLOG ERROR:", error);
     return NextResponse.json(
       { success: false, error: "Failed to fetch blog" },
       { status: 500 }
@@ -69,23 +54,27 @@ export async function GET(
   }
 }
 
-// PUT /api/blogs/[id] - Update blog (Admin only)
+/* ----------------------------------------
+   PUT : Update Blog (Admin Only)
+---------------------------------------- */
 export async function PUT(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    // Verify admin authentication
-
-
     await dbConnect();
 
-  const { id } = params;
-  const decoded = decodeURIComponent(id);
+    const blogId = decodeURIComponent(params.id);
     const body = await request.json();
 
-    // Find the blog
-  const existingBlog = await Blog.findById(decoded);
+    if (!mongoose.Types.ObjectId.isValid(blogId)) {
+      return NextResponse.json(
+        { success: false, error: "Invalid blog ID" },
+        { status: 400 }
+      );
+    }
+
+    const existingBlog = await Blog.findById(blogId);
     if (!existingBlog) {
       return NextResponse.json(
         { success: false, error: "Blog not found" },
@@ -93,61 +82,34 @@ export async function PUT(
       );
     }
 
-    // If slug is being changed, check for duplicates
+    // Slug uniqueness check
     if (body.slug && body.slug !== existingBlog.slug) {
-      const duplicateSlug = await Blog.findOne({ 
-        slug: (body.slug as string).toLowerCase(), 
-        _id: { $ne: decoded } 
+      const slugExists = await Blog.findOne({
+        slug: body.slug.toLowerCase(),
+        _id: { $ne: blogId },
       });
-      
-      if (duplicateSlug) {
+
+      if (slugExists) {
         return NextResponse.json(
-          { success: false, error: "Blog with this slug already exists" },
+          { success: false, error: "Slug already exists" },
           { status: 409 }
         );
       }
     }
 
-    // Calculate read time if content is updated
-    if (body.content && body.content !== existingBlog.content) {
-      // Keep existing readTime or recalc on server if needed (skipping here)
-    }
-
-    // Update the blog
     const updatedBlog = await Blog.findByIdAndUpdate(
-  decoded,
-      { ...body },
-      { 
-        new: true, 
-        runValidators: true 
-      }
+      blogId,
+      body,
+      { new: true, runValidators: true }
     ).populate("createdBy", "name email");
 
     return NextResponse.json({
       success: true,
       data: updatedBlog,
-      message: "Blog updated successfully"
+      message: "Blog updated successfully",
     });
-
-  } catch (error: unknown) {
-    const err = error as { code?: number; name?: string; errors?: Record<string, { message: string }>; message?: string };
-    console.error("Error updating blog:", error);
-    
-    if (err.code === 11000) {
-      return NextResponse.json(
-        { success: false, error: "Blog with this slug already exists" },
-        { status: 409 }
-      );
-    }
-    
-    if (err.name === "ValidationError" && err.errors) {
-      const validationErrors = Object.values(err.errors).map((e) => e.message);
-      return NextResponse.json(
-        { success: false, error: validationErrors.join(", ") },
-        { status: 400 }
-      );
-    }
-
+  } catch (error) {
+    console.error("UPDATE BLOG ERROR:", error);
     return NextResponse.json(
       { success: false, error: "Failed to update blog" },
       { status: 500 }
@@ -155,21 +117,28 @@ export async function PUT(
   }
 }
 
-// DELETE /api/blogs/[id] - Delete blog (Admin only)
+/* ----------------------------------------
+   DELETE : Delete Blog (Admin Only)
+---------------------------------------- */
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-
-
     await dbConnect();
 
-    const { id } = params;
+    const blogId = decodeURIComponent(params.id);
 
-    const deletedBlog = await Blog.findByIdAndDelete(id);
-    
-    if (!deletedBlog) {
+    if (!mongoose.Types.ObjectId.isValid(blogId)) {
+      return NextResponse.json(
+        { success: false, error: "Invalid blog ID" },
+        { status: 400 }
+      );
+    }
+
+    const deleted = await Blog.findByIdAndDelete(blogId);
+
+    if (!deleted) {
       return NextResponse.json(
         { success: false, error: "Blog not found" },
         { status: 404 }
@@ -178,11 +147,10 @@ export async function DELETE(
 
     return NextResponse.json({
       success: true,
-      message: "Blog deleted successfully"
+      message: "Blog deleted successfully",
     });
-
-  } catch (error: unknown) {
-    console.error("Error deleting blog:", error);
+  } catch (error) {
+    console.error("DELETE BLOG ERROR:", error);
     return NextResponse.json(
       { success: false, error: "Failed to delete blog" },
       { status: 500 }
