@@ -11,6 +11,7 @@ import { enablePageScroll } from "@/utils/scroll-helper";
 import { DockDemo } from "@/components/dock-demo";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
+import axios from 'axios'
 
 const faqs = [
   {
@@ -73,9 +74,11 @@ const ContactForm = () => {
     phone: "",
     subject: "",
     message: "",
-    service: "Select a service",
+    service: "",
   });
 
+
+  const [loading, setLoading] = useState(false);
   const [formStatus, setFormStatus] = useState<{
     submitted: boolean;
     success: boolean;
@@ -91,9 +94,10 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.service === "Select a service") {
+
+    if (!formData.service) {
       setFormStatus({
         submitted: true,
         success: false,
@@ -102,28 +106,54 @@ const ContactForm = () => {
       return;
     }
 
-    console.log("Form submitted:", formData);
+    setLoading(true);
+    try {
+      const res = await axios.post("/api/contact", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-      service: "Select a service",
-    });
+      if (!res.data.success) {
+        throw new Error(res.data.message);
+      }
 
-    setFormStatus({
-      submitted: true,
-      success: true,
-      message:
-        "Your message has been sent successfully! We'll get back to you soon.",
-    });
+      setFormStatus({
+        submitted: true,
+        success: true,
+        message: "Message sent successfully!",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+        service: "",
+      });
+
+    } catch (error: any) {
+      console.error("Axios Error:", error);
+
+      setFormStatus({
+        submitted: true,
+        success: false,
+        message:
+          error?.response?.data?.message ||
+          "Failed to send message. Try again later.",
+      });
+    } finally {
+      setLoading(false);
+    }
 
     setTimeout(() => {
       setFormStatus(null);
     }, 5000);
   };
+
+
+
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash) {
@@ -141,18 +171,15 @@ const ContactForm = () => {
 
       {formStatus && (
         <div
-          className={`p-4 mb-6 rounded-lg ${
-            formStatus.success
-              ? "bg-green-100 text-green-800 border border-green-300"
-              : "bg-red-100 text-red-800 border border-red-300"
-          }`}>
+          className={`p-4 mb-6 rounded-lg ${formStatus.success
+            ? "bg-green-100 text-green-800 border border-green-300"
+            : "bg-red-100 text-red-800 border border-red-300"
+            }`}>
           {formStatus.message}
         </div>
       )}
 
-      <form
-        action="https://formsubmit.co/enegixglobalhelp@gmail.com"
-        method="POST">
+      <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label
@@ -164,6 +191,8 @@ const ContactForm = () => {
               type="text"
               id="name"
               name="name"
+              value={formData.name}
+              onChange={handleChange}
               required
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Your Name"
@@ -180,6 +209,8 @@ const ContactForm = () => {
               type="email"
               id="email"
               name="email"
+              value={formData.email}
+              onChange={handleChange}
               required
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Your Email"
@@ -196,6 +227,8 @@ const ContactForm = () => {
               type="tel"
               id="phone"
               name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Your Phone Number"
             />
@@ -210,9 +243,11 @@ const ContactForm = () => {
             <select
               id="service"
               name="service"
+              value={formData.service}
+              onChange={handleChange}
               required
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent">
-              <option value="Select a service" disabled>
+              <option value="" >
                 Select a service
               </option>
               <option value="Web Development">Web Development</option>
@@ -234,6 +269,8 @@ const ContactForm = () => {
               type="text"
               id="subject"
               name="subject"
+              value={formData.subject}
+              onChange={handleChange}
               required
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               placeholder="Subject of your message"
@@ -249,6 +286,8 @@ const ContactForm = () => {
             <textarea
               id="message"
               name="message"
+              value={formData.message}
+              onChange={handleChange}
               required
               rows={5}
               className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
@@ -258,11 +297,12 @@ const ContactForm = () => {
         </div>
 
         <div className="flex items-center justify-between">
-          <Button
+          <button
             type="submit"
-            className="py-3 px-8  text-sm">
-            Send Message
-          </Button>
+            disabled={loading}
+            className={`py-3 px-8 text-sm bg-teal-500 text-white rounded-full hover:bg-white border-teal-500 border hover:text-teal-500 transition-all duration-400 ease-in-out cursor-pointer ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}>
+            {loading ? "Sending..." : "Send Message"}
+          </button>
 
           <Link
             href="https://wa.me/919608263050?text=Hi%20I%20Need%20Digital%20Marketing%20services%20for%20My%20Business"
@@ -318,7 +358,7 @@ const ContactInfo = () => {
 
             <div>
               <h4 className="text-black font-semibold mb-2">Address</h4>
-             Enegix Web Solutions, House No.2, Old AG More, near Bharat Kitchen, above Saryu Sons Jwellers, Kadru, Delatoli, Ranchi, Jharkhand 834002 {" "}
+              Enegix Web Solutions, House No.2, Old AG More, near Bharat Kitchen, above Saryu Sons Jwellers, Kadru, Delatoli, Ranchi, Jharkhand 834002 {" "}
               <a
                 href="https://maps.app.goo.gl/ccd5SSKteK4MpUnx8"
                 target="_blank"
@@ -451,9 +491,8 @@ const FAQ = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className={`relative rounded-xl overflow-hidden ${
-                  openIndex === index ? "bg-teal-50/50" : "hover:bg-gray-50/70"
-                } transition-colors duration-200`}>
+                className={`relative rounded-xl overflow-hidden ${openIndex === index ? "bg-teal-50/50" : "hover:bg-gray-50/70"
+                  } transition-colors duration-200`}>
                 <button
                   className="flex items-center justify-between w-full px-6 py-5 text-left focus:outline-none group"
                   onClick={() => toggleFAQ(index)}>
@@ -469,9 +508,8 @@ const FAQ = () => {
                     }}
                     transition={{ duration: 0.3 }}>
                     <svg
-                      className={`w-5 h-5 ${
-                        openIndex === index ? "text-white" : "text-teal-500"
-                      } transition-colors`}
+                      className={`w-5 h-5 ${openIndex === index ? "text-white" : "text-teal-500"
+                        } transition-colors`}
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor">
