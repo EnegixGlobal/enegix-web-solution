@@ -1,38 +1,28 @@
 /* This file contains CSS overrides to fix scrolling issues */
 
-html, body {
-  height: auto !important;
-  width: 100% !important;
-  overflow-x: hidden !important;
-  -webkit-overflow-scrolling: touch;
+html {
   scroll-behavior: smooth;
+  overflow-y: auto !important;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
 }
 
 html.touch-device * {
   cursor: pointer;
 }
 
-body {
-  position: relative;
-  overflow-y: visible !important;
-  overflow-x: hidden !important;
-  min-height: 100vh !important;
-  overscroll-behavior-y: none;
-}
-
-/* iOS Safari specific fixes - REMOVED problematic position: fixed */
+/* iOS Safari specific fixes */
 @supports (-webkit-overflow-scrolling: touch) {
   body {
-    /* Removed position: fixed which was causing scroll issues */
     width: 100%;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
-    transform: translateZ(0); /* Force hardware acceleration */
-  }
-  
-  /* Improve touch scrolling performance */
-  * {
-    -webkit-transform: translateZ(0);
     transform: translateZ(0);
   }
 }
@@ -44,12 +34,12 @@ body {
 
 /* Ensure sections don't get stuck */
 [id] {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 90px;
 }
 
 /* Fix for potential hidden overflow */
-#__next, main, .bg-\[\#0a192f\] {
+#__next, main {
   overflow-y: visible !important;
   height: auto !important;
-  min-height: 100vh;
+  min-height: auto;
 }

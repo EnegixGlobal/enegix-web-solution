@@ -8,24 +8,26 @@ import mongoose from "mongoose";
 ---------------------------------------- */
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
 
-    const param = decodeURIComponent(params.id).trim();
+    // ✅ FIX: await params
+    const { id } = await context.params;
+    const param = decodeURIComponent(id).trim();
 
     let blog = null;
 
-    // 1️⃣ If valid Mongo ID → fetch by ID
+    // 1️⃣ If Mongo ObjectId → fetch by ID
     if (mongoose.Types.ObjectId.isValid(param)) {
       blog = await Blog.findOneAndUpdate(
         { _id: param, status: "published" },
         { $inc: { views: 1 } },
         { new: true }
       ).populate("createdBy", "name email");
-    } 
-    // 2️⃣ Else → fetch by slug ONLY
+    }
+    // 2️⃣ Else → fetch by slug
     else {
       blog = await Blog.findOneAndUpdate(
         { slug: param.toLowerCase(), status: "published" },
@@ -59,12 +61,14 @@ export async function GET(
 ---------------------------------------- */
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
 
-    const blogId = decodeURIComponent(params.id);
+    // ✅ FIX
+    const { id } = await context.params;
+    const blogId = decodeURIComponent(id);
     const body = await request.json();
 
     if (!mongoose.Types.ObjectId.isValid(blogId)) {
@@ -82,7 +86,6 @@ export async function PUT(
       );
     }
 
-    // Slug uniqueness check
     if (body.slug && body.slug !== existingBlog.slug) {
       const slugExists = await Blog.findOne({
         slug: body.slug.toLowerCase(),
@@ -122,12 +125,14 @@ export async function PUT(
 ---------------------------------------- */
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
 
-    const blogId = decodeURIComponent(params.id);
+    // ✅ FIX
+    const { id } = await context.params;
+    const blogId = decodeURIComponent(id);
 
     if (!mongoose.Types.ObjectId.isValid(blogId)) {
       return NextResponse.json(

@@ -4,9 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /* Adding smooth scrolling for the entire document */
-html {
-  scroll-behavior: smooth;
-}
+
 
 /* 3D Perspective for Hero Section */
 .perspective-1000 {
@@ -32,13 +30,25 @@ html {
   }
 }
 
+/* ✅ Correct scroll setup for Next.js App Router */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  min-height: 100vh;
   overflow-x: hidden;
-  overscroll-behavior-y: none; /* Prevents bounce effect on some browsers */
+  overflow-y: auto;
   margin: 0;
   padding: 0;
   width: 100%;
+  padding-top: 90px;
+  min-height: auto;
+}
+
+/* Main content must NOT block scroll */
+main {
+  display: block;
+  min-height: auto;
 }
 
 html {

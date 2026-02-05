@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document, Model } from "mongoose";
 
 export interface IBlog extends Document {
   title: string;
@@ -29,27 +29,31 @@ const BlogSchema = new Schema<IBlog>(
       type: String,
       required: [true, "Blog title is required"],
       trim: true,
-      maxlength: [200, "Title cannot exceed 200 characters"]
+      maxlength: [200, "Title cannot exceed 200 characters"],
     },
+
     slug: {
       type: String,
       required: [true, "Blog slug is required"],
-      unique: true,
       trim: true,
       lowercase: true,
-      match: [/^[a-z0-9-]+$/, "Slug can only contain lowercase letters, numbers, and hyphens"]
+      match: [/^[a-z0-9-]+$/, "Slug can only contain lowercase letters, numbers, and hyphens"],
+      // ❌ REMOVED: unique: true (handled by schema index)
     },
+
     excerpt: {
       type: String,
       required: [true, "Blog excerpt is required"],
       trim: true,
-      maxlength: [800, "Excerpt cannot exceed 800 characters"]
+      maxlength: [800, "Excerpt cannot exceed 800 characters"],
     },
+
     content: {
       type: String,
       required: [true, "Blog content is required"],
-      trim: true
+      trim: true,
     },
+
     category: {
       type: String,
       required: [true, "Blog category is required"],
@@ -63,141 +67,165 @@ const BlogSchema = new Schema<IBlog>(
         "Tutorial",
         "Case Study",
         "Industry News",
-        "Tips & Tricks"
-      ]
+        "Tips & Tricks",
+      ],
     },
-    tags: [{
-      type: String,
-      trim: true,
-      maxlength: [100, "Tag cannot exceed 50 characters"]
-    }],
+
+    tags: [
+      {
+        type: String,
+        trim: true,
+        maxlength: [100, "Tag cannot exceed 50 characters"],
+      },
+    ],
+
     keywords: {
       type: String,
       trim: true,
-      maxlength: [300, "Keywords cannot exceed 300 characters"]
+      maxlength: [300, "Keywords cannot exceed 300 characters"],
     },
+
     image: {
       type: String,
       required: [true, "Blog image is required"],
-      trim: true
+      trim: true,
     },
+
     author: {
       type: String,
-      required: [true, "Author is required"],
       trim: true,
-      default: "Enegix Team"
+      default: "Enegix Team",
     },
+
     readTime: {
       type: String,
-      required: [true, "Read time is required"],
       trim: true,
-      default: "5 min read"
+      default: "5 min read",
     },
+
     status: {
       type: String,
       enum: ["draft", "published", "archived"],
-      default: "draft"
+      default: "draft",
+      index: true,
     },
+
     featured: {
       type: Boolean,
-      default: false
+      default: false,
+      index: true,
     },
+
     views: {
       type: Number,
       default: 0,
-      min: 0
+      min: 0,
     },
+
     likes: {
       type: Number,
       default: 0,
-      min: 0
+      min: 0,
     },
+
     metaTitle: {
       type: String,
       trim: true,
-      maxlength: [100, "Meta title cannot exceed 60 characters"]
+      maxlength: [100, "Meta title cannot exceed 60 characters"],
     },
+
     metaDescription: {
       type: String,
       trim: true,
-      maxlength: [200, "Meta description cannot exceed 160 characters"]
+      maxlength: [200, "Meta description cannot exceed 160 characters"],
     },
+
     publishedAt: {
-      type: Date
+      type: Date,
     },
+
     createdBy: {
       type: Schema.Types.ObjectId,
       ref: "Admin",
-      required: true
-    }
+      required: true,
+    },
   },
   {
     timestamps: true,
     toJSON: { virtuals: true },
-    toObject: { virtuals: true }
+    toObject: { virtuals: true },
   }
 );
 
-// Indexes for better performance
+/* ----------------------------------------
+   INDEXES (SINGLE SOURCE OF TRUTH)
+---------------------------------------- */
+
+// ✅ UNIQUE SLUG INDEX (ONLY HERE)
+BlogSchema.index({ slug: 1 }, { unique: true });
+
+// Performance indexes
 BlogSchema.index({ status: 1, createdAt: -1 });
 BlogSchema.index({ category: 1, status: 1 });
 BlogSchema.index({ featured: 1, status: 1 });
-BlogSchema.index({ slug: 1 });
 BlogSchema.index({ tags: 1 });
-BlogSchema.index({ title: "text", content: "text", excerpt: "text" });
 
-// Virtual for formatted date
-BlogSchema.virtual("formattedDate").get(function() {
-  return this.publishedAt ? 
-    this.publishedAt.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    }) : 
-    this.createdAt.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
+// Text search index
+BlogSchema.index({
+  title: "text",
+  content: "text",
+  excerpt: "text",
 });
 
-// Pre-save middleware to generate slug if not provided
-BlogSchema.pre('save', function(next) {
+/* ----------------------------------------
+   VIRTUALS
+---------------------------------------- */
+BlogSchema.virtual("formattedDate").get(function () {
+  const date = this.publishedAt || this.createdAt;
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+});
+
+/* ----------------------------------------
+   MIDDLEWARE
+---------------------------------------- */
+BlogSchema.pre("save", function (next) {
   if (!this.slug && this.title) {
     this.slug = this.title
       .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-')
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
       .trim();
   }
-  
-  // Set publishedAt when status changes to published
-  if (this.status === 'published' && !this.publishedAt) {
+
+  if (this.status === "published" && !this.publishedAt) {
     this.publishedAt = new Date();
   }
-  
-  // Auto-generate meta fields if not provided
+
   if (!this.metaTitle) {
     this.metaTitle = this.title.substring(0, 60);
   }
-  
+
   if (!this.metaDescription) {
     this.metaDescription = this.excerpt.substring(0, 160);
   }
-  
+
   next();
 });
 
-// Static method to calculate read time
-BlogSchema.statics.calculateReadTime = function(content: string): string {
-  const wordsPerMinute = 200;
-  const wordCount = content.split(/\s+/).length;
-  const minutes = Math.ceil(wordCount / wordsPerMinute);
-  return `${minutes} min read`;
+/* ----------------------------------------
+   STATIC METHODS
+---------------------------------------- */
+BlogSchema.statics.calculateReadTime = function (content: string): string {
+  const words = content.split(/\s+/).length;
+  return `${Math.max(1, Math.ceil(words / 200))} min read`;
 };
 
-const Blog = mongoose.models.Blog || mongoose.model<IBlog>("Blog", BlogSchema);
+const Blog: Model<IBlog> =
+  mongoose.models.Blog || mongoose.model<IBlog>("Blog", BlogSchema);
 
 export default Blog;
-

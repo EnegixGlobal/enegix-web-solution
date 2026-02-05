@@ -148,7 +148,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={` font-montserrat antialiased overscroll-none ${montserrat.variable}`}
+        className={` font-montserrat antialiased ${montserrat.variable}`}
       >
         {/* The loading component is client-side only, so we don't include it directly in layout */}
         {children}
