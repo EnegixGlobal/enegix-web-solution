@@ -140,7 +140,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <meta
           name="google-site-verification"
@@ -148,6 +148,7 @@ export default function RootLayout({
         />
       </head>
       <body
+        suppressHydrationWarning
         className={` font-montserrat antialiased ${montserrat.variable}`}
       >
         {/* The loading component is client-side only, so we don't include it directly in layout */}
