@@ -142,9 +142,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        {/* ✅ Google Site Verification (explicit meta tag) */}
         <meta
           name="google-site-verification"
           content="DiZ0PwZbLtanrpwgGJUCu7q35tKMPnDaQwcmN1nR2GY"
+        />
+
+        {/* ✅ Facebook Domain Verification */}
+        <meta
+          name="facebook-domain-verification"
+          content="3xxeg6okfbrv6guha56khlof7y06ah"
         />
       </head>
       <body
