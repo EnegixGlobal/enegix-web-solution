@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   description:
     "Enegix Web Solutions is a full-service digital marketing agency based in Kadru, Ranchi, Jharkhand. We specialize in SEO, website development, social media marketing, content writing, Google Ads, and local SEO. Trusted by startups, businesses, and institutions across Ranchi, Jamshedpur, Dhanbad, and Bokaro, we deliver affordable, ROI-driven digital strategies. Our services include multilingual content, rural marketing, and digital branding. We also offer web solutions for MSMEs, government projects, and e-commerce businesses. Let us help you grow your online presence and connect with your customers effectively, ✔Website Designer ✔Marketing Consultant ✔Advertising Agency ✔Software Company & thanks for visiting our Google Business page.",
   icons: {
-    icon: "/favicon.ico", // path relative to /public
+    icon: "/enegix_logo.svg", // path relative to /public
   },
   verification: {
     google: "DiZ0PwZbLtanrpwgGJUCu7q35tKMPnDaQwcmN1nR2GY",
@@ -155,9 +155,9 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={` font-montserrat antialiased ${montserrat.variable}`}
+        suppressHydrationWarning
+        className={`antialiased ${montserrat.variable} ${spaceGrotesk.variable} ${inter.variable}`}
       >
-        {/* The loading component is client-side only, so we don't include it directly in layout */}
         {children}
       </body>
     </html>

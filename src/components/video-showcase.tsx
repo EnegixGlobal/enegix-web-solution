@@ -1,102 +1,135 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
-const VideoShowcase = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+export default function WorkSampleSection() {
+  const videos = [
+    { id: 1, src: "/worksamples/ae-demo.mp4" },
+    { id: 2, src: "/worksamples/Zohashow.mp4" },
+    { id: 3, src: "/worksamples/royal-oak.mp4" },
+    { id: 4, src: "/worksamples/nexus.mp4" },
+    { id: 5, src: "/worksamples/rectify-jawed.mp4" },
+  ];
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+  const [active, setActive] = useState(2);
 
-    const handleLoadedData = () => setIsLoaded(true);
-    const handlePlay = () => setIsPlaying(true);
-    const handlePause = () => setIsPlaying(false);
-    const handleEnded = () => setIsPlaying(false);
+  const prev = () =>
+    setActive((p) => (p === 0 ? videos.length - 1 : p - 1));
 
-    video.addEventListener('loadeddata', handleLoadedData);
-    video.addEventListener('play', handlePlay);
-    video.addEventListener('pause', handlePause);
-    video.addEventListener('ended', handleEnded);
+  const next = () =>
+    setActive((p) => (p === videos.length - 1 ? 0 : p + 1));
 
-    return () => {
-      video.removeEventListener('loadeddata', handleLoadedData);
-      video.removeEventListener('play', handlePlay);
-      video.removeEventListener('pause', handlePause);
-      video.removeEventListener('ended', handleEnded);
-    };
-  }, []);
-
-  const handlePlayClick = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  };
+  const getVisibleVideos = () => [
+    (active - 2 + videos.length) % videos.length,
+    (active - 1 + videos.length) % videos.length,
+    active,
+    (active + 1) % videos.length,
+    (active + 2) % videos.length,
+  ];
 
   return (
-    <section className="py-16 bg-gradient-to-r from-gray-50 to-teal-50">
-      <div className="w-full">
-        <div className="text-center mb-12">
-          <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            See Our Work in Action
-          </div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Watch how we bring digital experiences to life
-          </p>
-        </div>
+    <section className="w-full bg-[#EEEEEE] py-24 px-4 md:px-20 lg:px-40 overflow-hidden">
+      {/* Heading */}
+      <div className="text-center mb-14">
+        
+        <h2 className="text-3xl md:text-5xl font-semibold mt-3 text-teal-600">
+          Explore Our Work Samples
+        </h2>
+      </div>
 
-        {/* Video Container */}
-        <div className="max-w-4xl mx-auto">
-          <div className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-2xl">
-            {/* Video Element */}
-            <video
-              ref={videoRef}
-              className="w-full h-full object-cover"
-              muted
-              loop
-              playsInline
-              preload="metadata"
-            >
-              <source src="/header.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+      {/* Desktop */}
+      <div className="relative hidden md:flex items-center justify-center">
+        <button
+          type="button"
+          aria-label="Previous video"
+          onClick={prev}
+          className="absolute left-[30%] z-20 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center"
+        >
+          ←
+        </button>
 
-            {/* Play/Pause Overlay */}
-            {isLoaded && (
-              <div 
-                className={`absolute inset-0 flex items-center justify-center bg-black/20 cursor-pointer transition-opacity duration-300 ${
-                  isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'
-                }`}
-                onClick={handlePlayClick}
+        <div className="flex items-center">
+          {getVisibleVideos().map((videoIndex, idx) => {
+            const isCenter = idx === 2;
+
+            return (
+              <motion.div
+                key={`${videoIndex}-${active}`}
+                animate={{
+                  opacity: isCenter ? 1 : 0.45,
+                  scale: isCenter ? 1 : 0.88,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 22,
+                }}
+                className={`relative rounded-2xl overflow-hidden shadow-xl
+                  ${
+                    isCenter
+                      ? "w-96 h-[520px] mx-4"
+                      : "w-72 h-[480px] mx-2 blur-[1.5px]"
+                  }`}
               >
-                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm border-2 border-white/30 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-200">
-                  {isPlaying ? (
-                    <div className="w-4 h-4 bg-white rounded-sm" />
-                  ) : (
-                    <div className="w-0 h-0 border-l-[12px] border-l-white border-y-[8px] border-y-transparent ml-1" />
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Loading State */}
-            {!isLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-800">
-                <div className="w-8 h-8 border-4 border-gray-600 border-t-white rounded-full animate-spin" />
-              </div>
-            )}
-          </div>
+                <video
+                  key={active}
+                  src={videos[videoIndex].src}
+                  muted
+                  playsInline
+                  autoPlay={isCenter}
+                  onEnded={isCenter ? next : undefined}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            );
+          })}
         </div>
+
+        <button
+          type="button"
+          aria-label="Next video"
+          onClick={next}
+          className="absolute right-[30%] z-20 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center"
+        >
+          →
+        </button>
+      </div>
+
+      {/* Mobile */}
+      <div className="md:hidden relative flex items-center justify-center">
+        <button
+          type="button"
+          aria-label="Previous video"
+          onClick={prev}
+          className="absolute left-3 z-20 w-9 h-9 rounded-full bg-white/80 flex items-center justify-center"
+        >
+          ←
+        </button>
+
+        <motion.div
+          key={active}
+          className="relative w-72 h-[460px] rounded-2xl overflow-hidden shadow-xl"
+        >
+          <video
+            src={videos[active].src}
+            muted
+            playsInline
+            autoPlay
+            onEnded={next}
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+
+        <button
+          type="button"
+          aria-label="Next video"
+          onClick={next}
+          className="absolute right-3 z-20 w-9 h-9 rounded-full bg-white/80 flex items-center justify-center"
+        >
+          →
+        </button>
       </div>
     </section>
   );
-};
-
-export default VideoShowcase;
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useMotionValue, useTransform, animate } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { RainbowButton } from "./magicui/rainbow-button";
@@ -9,6 +10,37 @@ import { usePrefersReducedMotion } from "@/utils/use-reduced-motion";
 import Image from "next/image";
 import Container from "./Container";
 import Button from "./Button";
+
+/* =======================
+   Number Increasing Component
+======================= */
+const CountUp = ({
+  value,
+  suffix = "",
+  duration = 1.5,
+}: {
+  value: number;
+  suffix?: string;
+  duration?: number;
+}) => {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (v) => Math.round(v));
+
+  useEffect(() => {
+    const controls = animate(count, value, { duration });
+    return () => controls.stop();
+  }, [count, value, duration]);
+
+  return (
+    <span>
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </span>
+  );
+};
+
+
+
 
 const HeroSectionNew = () => {
   const [heroRef, isInView] = useIntersectionObserver({ threshold: 0.3 });
@@ -31,7 +63,7 @@ const HeroSectionNew = () => {
         <section
           ref={heroRef}
           id="home-section"
-          className="relative z-10 md:pt-26 pt-26 pb-16 ">
+          className="relative z-10 pt-8 pb-16 ">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Content Section */}
             <motion.div
@@ -39,15 +71,8 @@ const HeroSectionNew = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="text-center lg:text-left space-y-8">
-              {/* Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200 rounded-full text-teal-700 text-sm font-medium">
-                <span className="w-2 h-2 bg-teal-500 rounded-full mr-2 animate-pulse"></span>
-                Leading Web Solutions in India
-              </motion.div>
+              
+              
 
               {/* Main Heading */}
               <motion.h1
@@ -58,13 +83,23 @@ const HeroSectionNew = () => {
                 <span className="text-gray-900">Top Web Design &</span>
                 <br />
                 <span className="bg-gradient-to-r from-teal-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">
-                  Marketing Company
+                  Brand Company
                 </span>
                 <br />
                 <span className="text-gray-700 text-3xl md:text-4xl lg:text-5xl">
                   in India
                 </span>
               </motion.h1>
+
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200 rounded-full text-teal-700 text-sm font-medium">
+                <span className="w-2 h-2 bg-teal-500 rounded-full mr-2 animate-pulse"></span>
+                Leading Web Solutions in India
+              </motion.div>
 
               {/* Description */}
               <motion.p
@@ -100,29 +135,42 @@ const HeroSectionNew = () => {
               </motion.div>
 
               {/* Stats or Trust Indicators */}
+              {/* 🔢 Animated Stats (ONLY CHANGE) */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="flex flex-wrap justify-center lg:justify-start gap-8 pt-8">
+                className="flex flex-wrap justify-center lg:justify-start gap-8 pt-8"
+              >
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">50+</div>
+                  <div className="text-2xl font-bold text-gray-900">
+                    {isInView && <CountUp value={50} suffix="+" />}
+                  </div>
                   <div className="text-sm text-gray-600">
                     Projects Delivered
                   </div>
                 </div>
+
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">98%</div>
+                  <div className="text-2xl font-bold text-gray-900">
+                    {isInView && <CountUp value={98} suffix="%" />}
+                  </div>
                   <div className="text-sm text-gray-600">
                     Client Satisfaction
                   </div>
                 </div>
+
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">24/7</div>
+                  <div className="text-2xl font-bold text-gray-900">
+                    {isInView && (
+                      <>
+                        <CountUp value={24} />/<CountUp value={7} />
+                      </>
+                    )}
+                  </div>
                   <div className="text-sm text-gray-600">Support</div>
                 </div>
               </motion.div>
             </motion.div>
+
+            
 
             {/* Image Section */}
             <motion.div
