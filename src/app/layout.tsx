@@ -140,7 +140,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         {/* ✅ Google Site Verification (explicit meta tag) */}
         <meta
@@ -156,7 +156,11 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
+<<<<<<< HEAD
         className={`antialiased ${montserrat.variable} ${spaceGrotesk.variable} ${inter.variable}`}
+=======
+        className={` font-montserrat antialiased ${montserrat.variable}`}
+>>>>>>> 034e2920896a720659dcb49068e8ee341ee16eb7
       >
         {children}
       </body>
