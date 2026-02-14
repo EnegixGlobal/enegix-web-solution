@@ -612,7 +612,7 @@ export default function Contact() {
       <main className="bg-white text-black overflow-x-hidden">
         {/* Hero Section - Simple Design */}
         <section
-          className="relative pt-34  pb-16 px-6 lg:px-8 bg-white"
+          className="relative pt-25 pb-16 px-6 lg:px-8 bg-white"
           role="banner">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

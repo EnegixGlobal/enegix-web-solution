@@ -127,13 +127,14 @@ const FAQSearch = () => {
                     : "border-gray-200"
                 }`}>
                 <button
+                  type="button"
                   onClick={() => toggleFAQ(index)}
                   className={`w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none transition-colors duration-200 ${
                     openIndex === index
                       ? "bg-teal-50"
                       : "hover:bg-gray-50 focus:bg-gray-50"
                   }`}
-                  aria-expanded={openIndex === index}>
+                  aria-expanded={openIndex === index ? "true" : "false"}>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-gray-900">
                       {faq.question}

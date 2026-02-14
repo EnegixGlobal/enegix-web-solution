@@ -250,7 +250,7 @@ export default function PortfolioPage() {
       <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
         <Container>
           {/* Hero Section - Edge-to-edge, big tilted image cards */}
-          <section className="relative pt-26 md:pt-20 pb-8 md:pb-12 bg-white border-b border-teal-100">
+          <section className="relative pt-26 md:pt-2 pb-8 md:pb-12 bg-white border-b border-teal-100">
             <div className="w-full flex flex-col md:flex-row items-center md:items-stretch gap-6 md:gap-8">
               {/* Left: Text */}
               <div className="flex-1 flex flex-col justify-center px-4 md:px-0">
