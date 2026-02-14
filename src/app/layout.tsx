@@ -142,25 +142,22 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        {/* ✅ Google Site Verification (explicit meta tag) */}
+        {/* Google Site Verification */}
         <meta
           name="google-site-verification"
           content="DiZ0PwZbLtanrpwgGJUCu7q35tKMPnDaQwcmN1nR2GY"
         />
 
-        {/* ✅ Facebook Domain Verification */}
+        {/* Facebook Domain Verification */}
         <meta
           name="facebook-domain-verification"
           content="3xxeg6okfbrv6guha56khlof7y06ah"
         />
       </head>
+
       <body
         suppressHydrationWarning
-<<<<<<< HEAD
         className={`antialiased ${montserrat.variable} ${spaceGrotesk.variable} ${inter.variable}`}
-=======
-        className={` font-montserrat antialiased ${montserrat.variable}`}
->>>>>>> 034e2920896a720659dcb49068e8ee341ee16eb7
       >
         {children}
       </body>
