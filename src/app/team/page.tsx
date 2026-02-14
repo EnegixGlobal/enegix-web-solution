@@ -302,7 +302,7 @@ export default function TeamPage() {
       <Navbar />
       <main className=" text-gray-900 min-h-screen relative overflow-x-hidden">
         {/* Hero Section */}
-        <section className="relative isolate overflow-hidden pt-28 pb-10 bg-gradient-to-br from-teal-50 via-white to-white">
+        <section className="relative isolate overflow-hidden pt-5 pb-10 bg-gradient-to-br from-teal-50 via-white to-white">
           {/* Decorative Aurora/Meteors */}
           <div className="absolute inset-0 pointer-events-none z-0">
             {/* <Meteors number={18} /> */}

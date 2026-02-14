@@ -113,26 +113,62 @@ const HeroSectionNew = () => {
               </motion.p>
 
               {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link
-                  href="https://wa.me/919608263050?text=Hi%20I%20am%20interested%20in%20your%20services.%20Can%20you%20share%20more%20details%20about%20your%20offerings?"
-                  target="_blank"
-                  className="group relative">
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
-                  <Button className="relative px-8 py-4 bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
-                    Connect with Us
-                  </Button>
-                </Link>
-                <Link href="/portfolio" className="group">
-                  <Button className="px-8 py-4 bg-white border-2 border-gray-200 text-green-600! font-semibold rounded-lg hover:border-teal-500 hover:text-teal-600 hover:shadow-md transform hover:-translate-y-0.5 transition-all duration-200">
-                    View Our Work
-                  </Button>
-                </Link>
-              </motion.div>
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.5 }}
+  className="
+    flex flex-col sm:flex-row
+    gap-4
+    justify-center lg:justify-start
+    w-full
+  "
+>
+  <Link
+    href="https://wa.me/919608263050?text=Hi%20I%20am%20interested%20in%20your%20services.%20Can%20you%20share%20more%20details%20about%20your%20offerings?"
+    target="_blank"
+    className="group relative w-full sm:w-auto"
+  >
+    <div className="absolute -inset-0.5 bg-gradient-to-r from-teal-500 to-blue-500 rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
+
+    <Button
+      className="
+        relative
+        w-full sm:w-auto
+        min-h-[52px]
+        px-8 py-4
+        bg-gradient-to-r from-teal-600 to-blue-600
+        hover:from-teal-700 hover:to-blue-700
+        text-white font-semibold
+        rounded-lg
+        shadow-lg
+        transition-all duration-200
+      "
+    >
+      Connect with Us
+    </Button>
+  </Link>
+
+  <Link href="/portfolio" className="group w-full sm:w-auto">
+    <Button
+      className="
+        w-full sm:w-auto
+        min-h-[52px]
+        px-8 py-4
+        bg-white
+        border-2 border-gray-200
+        text-green-600!
+        font-semibold
+        rounded-lg
+        hover:border-teal-500 hover:text-teal-600
+        hover:shadow-md
+        transition-all duration-200
+      "
+    >
+      View Our Work
+    </Button>
+  </Link>
+</motion.div>
 
               {/* Stats or Trust Indicators */}
               {/* 🔢 Animated Stats (ONLY CHANGE) */}

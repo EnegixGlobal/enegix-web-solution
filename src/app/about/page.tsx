@@ -283,7 +283,7 @@ export default function About() {
 
       <main className="bg-white">
         {/* Hero Section - "Wow" About Page */}
-        <section className="relative overflow-hidden pt-26">
+        <section className="relative overflow-hidden ">
           <Container>
             <div className="relative mx-auto z-10 flex max-w-3xl flex-col lg:flex-row items-center justify-between min-h-[300px] py-4">
               {/* Left: Text */}
