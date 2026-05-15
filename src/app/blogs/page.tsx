@@ -12,24 +12,29 @@ import "@/models/Admin.models"; // Ensure Admin model is registered for populate
 export const dynamic = "force-dynamic";
 
 type Blog = {
-	_id: string;
+	_id: any;
 	title: string;
 	slug: string;
 	excerpt: string;
 	image: string;
 	category: string;
 	readTime?: string;
-	createdAt?: string;
-	publishedAt?: string;
+	createdAt?: Date | string;
+	publishedAt?: Date | string;
 };
+
+interface CategoryStat {
+	_id: string;
+	count: number;
+}
 
 async function getBlogsData(searchParams: any) {
 	try {
 		await dbConnect();
-		
+
 		const category = searchParams?.category;
 		const status = searchParams?.status || "published";
-		
+
 		const filter: any = { status };
 		if (category && category !== "All") {
 			filter.category = category;
@@ -67,8 +72,8 @@ export default async function BlogsPage({
 			<Navbar />
 
 			{/* Hero Section */}
-					<section className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-teal-900 text-white">
-						<div className="absolute inset-0 opacity-10 bg-[url('/pattern.png')] bg-repeat" />
+			<section className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-teal-900 text-white">
+				<div className="absolute inset-0 opacity-10 bg-[url('/pattern.png')] bg-repeat" />
 				<Container>
 					<div className="relative z-10 py-16 md:py-20">
 						<h1 className="text-3xl md:text-5xl font-extrabold tracking-tight">Insights & Stories</h1>
@@ -144,8 +149,8 @@ export default async function BlogsPage({
 										</div>
 
 										<div className="mt-5">
-																	<Link
-																		href={`/blogs/${encodeURIComponent(post.slug)}`}
+											<Link
+												href={`/blogs/${encodeURIComponent(post.slug)}`}
 												className="inline-flex items-center gap-2 text-sm font-medium text-teal-700 hover:text-teal-800"
 											>
 												Read more
