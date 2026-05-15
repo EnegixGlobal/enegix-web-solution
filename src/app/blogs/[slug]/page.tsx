@@ -5,6 +5,9 @@ import Footer from "@/components/footer";
 import Container from "@/components/Container";
 import { headers } from "next/headers";
 import SlideIn from "@/components/animate/SlideIn";
+import dbConnect from "@/lib/db";
+import BlogModel from "@/models/Blog.models";
+import mongoose from "mongoose";
 
 export const dynamic = "force-dynamic";
 
@@ -29,22 +32,35 @@ type Blog = {
 	likes?: number;
 };
 
-async function getBlog(baseUrl: string, slug: string) {
-	// Try slug endpoint first (your API supports id or slug lookup)
-	const res = await fetch(`${baseUrl}/api/blogs/${slug}`, { cache: "no-store" });
-	if (!res.ok) throw new Error("Failed to fetch blog");
-	return res.json();
+async function getBlogData(slug: string) {
+	try {
+		await dbConnect();
+		const param = decodeURIComponent(slug).trim();
+		let blog = null;
+
+		if (mongoose.Types.ObjectId.isValid(param)) {
+			blog = await BlogModel.findOneAndUpdate(
+				{ _id: param, status: "published" },
+				{ $inc: { views: 1 } },
+				{ new: true }
+			).populate("createdBy", "name email").lean();
+		} else {
+			blog = await BlogModel.findOneAndUpdate(
+				{ slug: param.toLowerCase(), status: "published" },
+				{ $inc: { views: 1 } },
+				{ new: true }
+			).populate("createdBy", "name email").lean();
+		}
+		return blog;
+	} catch (error) {
+		console.error("Error fetching blog data:", error);
+		return null;
+	}
 }
 
 export default async function BlogDetail({ params }: { params: Promise<{ slug: string }> }) {
 	const { slug } = await params;
-	const h = await headers();
-	const host = h.get("host");
-	const proto = h.get("x-forwarded-proto") || "http";
-	const baseUrl = `${proto}://${host}`;
-
-	const data = await getBlog(baseUrl, slug).catch(() => ({ success: false }));
-	const post: Blog | undefined = data?.data;
+	const post = await getBlogData(slug);
 
 	if (!post) {
 		return (
@@ -163,12 +179,7 @@ export default async function BlogDetail({ params }: { params: Promise<{ slug: s
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
 	try {
 		const { slug } = await params;
-		const h = await headers();
-		const host = h.get("host");
-		const proto = h.get("x-forwarded-proto") || "http";
-		const baseUrl = `${proto}://${host}`;
-		const data = await getBlog(baseUrl, slug);
-		const post: Blog | undefined = data?.data;
+		const post = await getBlogData(slug);
 		const title = post?.metaTitle || post?.title || "Blog";
 		const description = post?.metaDescription || post?.content?.slice(0, 140) || "Read our latest blog post.";
 			const keywords = post?.keywords
