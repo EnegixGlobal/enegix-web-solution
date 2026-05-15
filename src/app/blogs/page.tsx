@@ -5,6 +5,8 @@ import Footer from "@/components/footer";
 import Container from "@/components/Container";
 import ScrollToTopButton from "@/components/scroll-to-top";
 import { headers } from "next/headers";
+import dbConnect from "@/lib/db";
+import BlogModel from "@/models/Blog.models";
 
 export const dynamic = "force-dynamic";
 
@@ -20,12 +22,32 @@ type Blog = {
 	publishedAt?: string;
 };
 
-type CategoryStat = { _id: string; count: number };
+async function getBlogsData(searchParams: any) {
+	try {
+		await dbConnect();
+		
+		const category = searchParams?.category;
+		const status = searchParams?.status || "published";
+		
+		const filter: any = { status };
+		if (category && category !== "All") {
+			filter.category = category;
+		}
 
-async function getBlogs(baseUrl: string, query: string) {
-	const res = await fetch(`${baseUrl}/api/blogs?${query}`, { cache: "no-store" });
-	if (!res.ok) throw new Error("Failed to fetch blogs");
-	return res.json();
+		const [blogs, categoryStats] = await Promise.all([
+			BlogModel.find(filter).sort("-createdAt").limit(12).lean(),
+			BlogModel.aggregate([
+				{ $match: { status: "published" } },
+				{ $group: { _id: "$category", count: { $sum: 1 } } },
+				{ $sort: { count: -1 } },
+			]),
+		]);
+
+		return { success: true, data: { blogs, categoryStats } };
+	} catch (error) {
+		console.error("Error fetching blogs data:", error);
+		return { success: false };
+	}
 }
 
 export default async function BlogsPage({
@@ -34,22 +56,7 @@ export default async function BlogsPage({
 	searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
 	const resolvedSearchParams = await searchParams;
-	const params = new URLSearchParams();
-	params.set("status", "published");
-	params.set("limit", "12");
-	if (resolvedSearchParams?.category && typeof resolvedSearchParams.category === "string") {
-		params.set("category", resolvedSearchParams.category);
-	}
-		if (resolvedSearchParams?.status && typeof resolvedSearchParams.status === "string") {
-			params.set("status", resolvedSearchParams.status);
-		}
-
-		const h = await headers();
-		const host = h.get("host");
-		const proto = h.get("x-forwarded-proto") || "http";
-		const baseUrl = `${proto}://${host}`;
-
-		const data = await getBlogs(baseUrl, params.toString()).catch(() => ({ success: false }));
+	const data = await getBlogsData(resolvedSearchParams);
 	const blogs: Blog[] = data?.data?.blogs ?? [];
 	const categoryStats: CategoryStat[] = data?.data?.categoryStats ?? [];
 	const activeCategory = resolvedSearchParams?.category as string | undefined;
