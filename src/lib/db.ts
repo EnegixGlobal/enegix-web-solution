@@ -20,7 +20,12 @@ const connectDB = async (): Promise<void> => {
     }
 
     // Connect to MongoDB
-    const db = await mongoose.connect(process.env.MONGO_URI);
+    // Connect to MongoDB with options for better stability in serverless environments
+    const db = await mongoose.connect(process.env.MONGO_URI, {
+      bufferCommands: false, // Disable buffering for serverless
+      connectTimeoutMS: 10000, // 10s timeout
+      socketTimeoutMS: 45000, // 45s socket timeout
+    });
 
     connection.isConnected = db.connections[0].readyState;
 
