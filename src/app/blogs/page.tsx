@@ -7,6 +7,7 @@ import ScrollToTopButton from "@/components/scroll-to-top";
 import { headers } from "next/headers";
 import dbConnect from "@/lib/db";
 import BlogModel from "@/models/Blog.models";
+import "@/models/Admin.models"; // Ensure Admin model is registered for populate
 
 export const dynamic = "force-dynamic";
 

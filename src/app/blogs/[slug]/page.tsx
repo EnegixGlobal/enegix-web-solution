@@ -7,11 +7,12 @@ import { headers } from "next/headers";
 import SlideIn from "@/components/animate/SlideIn";
 import dbConnect from "@/lib/db";
 import BlogModel from "@/models/Blog.models";
+import "@/models/Admin.models"; // Ensure Admin model is registered for populate
 import mongoose from "mongoose";
 
 export const dynamic = "force-dynamic";
 
-export const revalidate = 300;
+
 
 type Blog = {
 	_id: string;
@@ -32,40 +33,95 @@ type Blog = {
 	likes?: number;
 };
 
-async function getBlogData(slug: string) {
+async function getBlogData(slug: string, incrementViews = false) {
 	try {
+		console.log(`Fetching blog data for: ${slug} (incrementViews: ${incrementViews})`);
 		await dbConnect();
 		const param = decodeURIComponent(slug).trim();
 		let blog = null;
 
-		if (mongoose.Types.ObjectId.isValid(param)) {
+		// Try finding by ID first if it looks like one, then by slug
+		const isId = mongoose.Types.ObjectId.isValid(param);
+		const query = isId ? { _id: param } : { slug: param.toLowerCase() };
+		
+		console.log("Querying with:", JSON.stringify(query));
+
+		if (incrementViews) {
 			blog = await BlogModel.findOneAndUpdate(
-				{ _id: param, status: "published" },
+				query,
 				{ $inc: { views: 1 } },
 				{ new: true }
 			).populate("createdBy", "name email").lean();
 		} else {
-			blog = await BlogModel.findOneAndUpdate(
-				{ slug: param.toLowerCase(), status: "published" },
-				{ $inc: { views: 1 } },
-				{ new: true }
-			).populate("createdBy", "name email").lean();
+			blog = await BlogModel.findOne(query).populate("createdBy", "name email").lean();
 		}
+
+		if (!blog) {
+			console.warn(`Blog not found for: ${param}. Attempting case-insensitive slug search...`);
+			// Fallback: try case-insensitive search if not already tried
+			if (!isId) {
+				blog = await BlogModel.findOne({ 
+					slug: { $regex: new RegExp(`^${param}$`, "i") } 
+				}).populate("createdBy", "name email").lean();
+			}
+		}
+
+		if (blog) {
+			console.log(`Successfully found blog: ${blog.title}`);
+		} else {
+			console.error(`Final check: Blog NOT found for: ${param}`);
+		}
+		
 		return blog;
-	} catch (error) {
-		console.error("Error fetching blog data:", error);
-		return null;
+	} catch (error: any) {
+		console.error("CRITICAL error in getBlogData:", error);
+		return { error: error.message || "Database connection error" };
 	}
 }
 
 export default async function BlogDetail({ params }: { params: Promise<{ slug: string }> }) {
 	const { slug } = await params;
-	const post = await getBlogData(slug);
+	
+    // Connect to MongoDB with options for better stability in serverless environments
+    try {
+        await mongoose.connect(process.env.MONGO_URI!, {
+            bufferCommands: false,
+            connectTimeoutMS: 10000,
+        });
+    } catch (err) {
+        return (
+            <main className="min-h-[50vh] grid place-items-center">
+                <div className="text-center px-4">
+                    <p className="text-red-500 font-bold text-xl mb-2">Connection Error</p>
+                    <p className="text-gray-600">We are having trouble connecting to our database. Please try again in a few moments.</p>
+                </div>
+            </main>
+        );
+    }
+
+	const result = await getBlogData(slug, true);
+
+	// If it's an error object (connection failure)
+	if (result && 'error' in result) {
+		return (
+			<main className="min-h-[50vh] grid place-items-center">
+				<div className="text-center">
+					<p className="text-red-500 font-semibold">Server Error</p>
+					<p className="text-gray-500 text-sm">{result.error}</p>
+				</div>
+			</main>
+		);
+	}
+
+	const post = result;
 
 	if (!post) {
 		return (
 			<main className="min-h-[50vh] grid place-items-center">
-				<p className="text-gray-500">Blog not found.</p>
+				<div className="text-center">
+					<p className="text-gray-500">Blog not found.</p>
+					<p className="text-xs text-gray-400 mt-2">Slug: {slug}</p>
+				</div>
 			</main>
 		);
 	}
@@ -179,7 +235,7 @@ export default async function BlogDetail({ params }: { params: Promise<{ slug: s
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
 	try {
 		const { slug } = await params;
-		const post = await getBlogData(slug);
+		const post = await getBlogData(slug, false); // Don't increment views for metadata
 		const title = post?.metaTitle || post?.title || "Blog";
 		const description = post?.metaDescription || post?.content?.slice(0, 140) || "Read our latest blog post.";
 			const keywords = post?.keywords
