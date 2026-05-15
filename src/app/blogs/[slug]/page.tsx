@@ -36,13 +36,14 @@ async function getBlog(baseUrl: string, slug: string) {
 	return res.json();
 }
 
-export default async function BlogDetail({ params }: { params: { slug: string } }) {
+export default async function BlogDetail({ params }: { params: Promise<{ slug: string }> }) {
+	const { slug } = await params;
 	const h = await headers();
 	const host = h.get("host");
 	const proto = h.get("x-forwarded-proto") || "http";
 	const baseUrl = `${proto}://${host}`;
 
-	const data = await getBlog(baseUrl, params.slug).catch(() => ({ success: false }));
+	const data = await getBlog(baseUrl, slug).catch(() => ({ success: false }));
 	const post: Blog | undefined = data?.data;
 
 	if (!post) {
@@ -159,13 +160,14 @@ export default async function BlogDetail({ params }: { params: { slug: string } 
 	);
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
 	try {
-	const h = await headers();
-	const host = h.get("host");
-	const proto = h.get("x-forwarded-proto") || "http";
-	const baseUrl = `${proto}://${host}`;
-	const data = await getBlog(baseUrl, params.slug);
+		const { slug } = await params;
+		const h = await headers();
+		const host = h.get("host");
+		const proto = h.get("x-forwarded-proto") || "http";
+		const baseUrl = `${proto}://${host}`;
+		const data = await getBlog(baseUrl, slug);
 		const post: Blog | undefined = data?.data;
 		const title = post?.metaTitle || post?.title || "Blog";
 		const description = post?.metaDescription || post?.content?.slice(0, 140) || "Read our latest blog post.";
