@@ -8,12 +8,13 @@ import jwt from "jsonwebtoken";
 // GET - Fetch single portfolio by ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     await connectDb();
 
-    const portfolio = await Portfolio.findById(params.id)
+    const portfolio = await Portfolio.findById(id)
       .populate("createdBy", "name email")
       .populate("updatedBy", "name email");
 
@@ -44,16 +45,16 @@ export async function GET(
 // PUT - Update portfolio
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    
+    const { id } = await params;
     await connectDb();
 
     const body = await request.json();
     
     // Find existing portfolio
-    const existingPortfolio = await Portfolio.findById(params.id);
+    const existingPortfolio = await Portfolio.findById(id);
     if (!existingPortfolio) {
       return NextResponse.json(
         { success: false, message: "Portfolio not found" },
@@ -108,7 +109,7 @@ export async function PUT(
 
     // Update portfolio
     const updatedPortfolio = await Portfolio.findByIdAndUpdate(
-      params.id,
+      id,
       updateData,
       { new: true, runValidators: true }
     );
@@ -133,13 +134,13 @@ export async function PUT(
 // DELETE - Delete portfolio
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    
+    const { id } = await params;
     await connectDb();
 
-    const portfolio = await Portfolio.findById(params.id);
+    const portfolio = await Portfolio.findById(id);
     if (!portfolio) {
       return NextResponse.json(
         { success: false, message: "Portfolio not found" },
@@ -148,7 +149,7 @@ export async function DELETE(
     }
 
     // Delete portfolio from database
-    await Portfolio.findByIdAndDelete(params.id);
+    await Portfolio.findByIdAndDelete(id);
 
     return NextResponse.json({
       success: true,
