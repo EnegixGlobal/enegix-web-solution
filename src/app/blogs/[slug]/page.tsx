@@ -232,24 +232,47 @@ export default async function BlogDetail({ params }: { params: Promise<{ slug: s
 	);
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
 	try {
 		const { slug } = await params;
-		const post = await getBlogData(slug, false); // Don't increment views for metadata
-		const title = post?.metaTitle || post?.title || "Blog";
-		const description = post?.metaDescription || post?.content?.slice(0, 140) || "Read our latest blog post.";
-			const keywords = post?.keywords
-				? post.keywords.split(',').map((s) => s.trim()).filter(Boolean)
-				: undefined;
+		const post = await getBlogData(slug, false);
+
+		// Narrow type: If post is null or has an error property, return fallback metadata
+		if (!post || ("error" in post)) {
+			return {
+				title: "Blog Post | Enegix Web Solutions",
+				description: "Read our latest blog post on Enegix Web Solutions.",
+			};
+		}
+
+		const title = post.metaTitle || post.title || "Blog";
+		const description = post.metaDescription || post.content?.slice(0, 140) || "Read our latest blog post.";
+		const keywords = post.keywords
+			? post.keywords.split(",").map((s: string) => s.trim()).filter(Boolean)
+			: undefined;
+
 		return {
 			title,
 			description,
-				keywords,
-				openGraph: { title, description, images: post?.image ? [{ url: post.image }] : undefined },
-				twitter: { card: "summary_large_image", title, description },
-		} as const;
-	} catch {
-		return { title: "Blog", description: "Read our latest blog post." } as const;
+			keywords,
+			openGraph: {
+				title,
+				description,
+				images: post.image ? [{ url: post.image }] : undefined,
+			},
+			twitter: {
+				card: "summary_large_image",
+				title,
+				description,
+			},
+		};
+	} catch (error) {
+		return {
+			title: "Blog",
+			description: "Read our latest blog post.",
+		};
 	}
 }
 
