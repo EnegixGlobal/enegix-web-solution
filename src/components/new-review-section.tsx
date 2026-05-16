@@ -29,8 +29,24 @@ const reviews: Review[] = [
   },
   {
     id: 3,
-    text:
-      "SEO service ke baad 3–4 months mein keywords top positions mein aaye. Organic traffic increase hua aur genuine leads generate hone lage.",
+    rating: 5.0,
+    text: "I highly recommend Enegix Media to anyone seeking a reliable and skilled website development partner. Their commitment to delivering high-quality solutions on time is evident in every aspect of their work.Services: Website Development, App Development, Digital Marketing, Logo Designing Etc.",
+    author: "Ankita Singh",
+    work: "Website and App Development",
+    verified: true,
+  },
+  {
+    id: 4,
+    rating: 5.0,
+    text: "Exceptional work by the web developer! Agent Muskan's professionalism and expertise made the experience seamless. Highly recommended for their dedication, creativity, and outstanding results.",
+    author: "Mohammed Asiff",
+    work: "Web Development",
+    verified: true,
+  },
+  {
+    id: 6,
+    rating: 5.0,
+    text: "SEO service li thi aur 3 month ke andar hi keywords top 5 mein aane lage.. Bahut hi dedicated team hai jo result ke liye kaam karti hai bahut hi jyada effective bhi hai..💯👍 …",
     author: "Sayyed Sana",
     work: "SEO Services",
   },

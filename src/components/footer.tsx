@@ -20,7 +20,7 @@ const Footer = () => {
     { label: "Services", href: "/services" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Careers", href: "/careers" },
-  { label: "Blog", href: "/blogs" },
+    { label: "Blog", href: "/blogs" },
   ];
 
   const legalLinks = [
@@ -67,7 +67,7 @@ const Footer = () => {
             {/* About Us Section */}
             <div className="space-y-6">
               <h3 className="text-2xl font-extrabold bg-gradient-to-r from-teal-400 to-teal-400 bg-clip-text text-transparent">
-                Enegix Web Solutions
+                Enegix Media
               </h3>
               <p className="text-sm leading-relaxed max-w-xs">
                 Crafting innovative web solutions with cutting-edge technology
@@ -79,7 +79,7 @@ const Footer = () => {
                   size={16}
                 />
                 <p className="text-xs leading-relaxed">
-                     Enegix Web Solutions, House No.2, Old AG More, near Bharat Kitchen, above Saryu Sons Jwellers, Kadru, Delatoli, Ranchi, Jharkhand 834002 {" "}
+                  Enegix Media, House No.2, Old AG More, near Bharat Kitchen, above Saryu Sons Jwellers, Kadru, Delatoli, Ranchi, Jharkhand 834002 {" "}
                 </p>
               </div>
               <div className="space-y-3">
@@ -177,7 +177,7 @@ const Footer = () => {
           <div className="border-t border-gray-700/50 pt-8 mt-12">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
               <p className="text-xs text-gray-400">
-                © {new Date().getFullYear()} Enegix Web Solutions. All rights
+                © {new Date().getFullYear()} Enegix Media All rights
                 reserved.
               </p>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6">

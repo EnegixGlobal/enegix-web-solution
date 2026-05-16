@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Portfolio | Enegix Web Solutions',
+  title: 'Our Portfolio | Enegix Media',
   description: 'Explore our portfolio of web development, e-commerce, branding, and digital marketing projects that showcase our expertise and creative solutions.',
-  keywords: 'portfolio, web design, branding, digital marketing, e-commerce, case studies, Enegix Web Solutions',
+  keywords: 'portfolio, web design, branding, digital marketing, e-commerce, case studies, Enegix Media',
 };
 
 // This is a metadata file for the portfolio route

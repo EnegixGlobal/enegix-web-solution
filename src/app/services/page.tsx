@@ -47,7 +47,7 @@ const seoData = {
     name: "Digital Solutions Services",
     provider: {
       "@type": "Organization",
-      name: "Enegix Web Solutions Pvt. Ltd.",
+      name: "Enegix Media Pvt. Ltd.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Ranchi",
@@ -299,28 +299,28 @@ const ServiceCard = ({
             service.id === "ui-ux-designing"
               ? "https://plus.unsplash.com/premium_photo-1720903984909-04be5b4cda06?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8VUklMkZVWHxlbnwwfHwwfHx8MA%3D%3D "
               : service.id === "website-development"
-              ? "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
-              : service.id === "mobile-application"
-              ? "https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg"
-              : service.id === "crm-mlm"
-              ? "https://images.unsplash.com/photo-1634836023845-eddbfe9937da?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              : service.id === "search-engine-optimization"
-              ? "https://avatars.mds.yandex.net/get-altay/11873493/2a00000193f467aebf0c4d07782c55c3ebcf/XXXL"
-              : service.id === "google-my-business"
-              ? "/services/gmb.webp"
-              : service.id === "paid-advertising"
-              ? "/services/paid.jpg"
-              : service.id === "social-media-marketing"
-              ? "/services/social-media.webp"
-              : service.id === "blog-and-articles"
-              ? "/services/blog.jpg"
-              : service.id === "content-writing"
-              ? "/services/content.jpg"
-              : service.id === "logo-design"
-              ? "/services/design.webp"
-              : service.id === "landing-page-design"
-              ? "/services/landing.webp"
-              : "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
+                ? "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
+                : service.id === "mobile-application"
+                  ? "https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg"
+                  : service.id === "crm-mlm"
+                    ? "https://images.unsplash.com/photo-1634836023845-eddbfe9937da?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    : service.id === "search-engine-optimization"
+                      ? "https://avatars.mds.yandex.net/get-altay/11873493/2a00000193f467aebf0c4d07782c55c3ebcf/XXXL"
+                      : service.id === "google-my-business"
+                        ? "/services/gmb.webp"
+                        : service.id === "paid-advertising"
+                          ? "/services/paid.jpg"
+                          : service.id === "social-media-marketing"
+                            ? "/services/social-media.webp"
+                            : service.id === "blog-and-articles"
+                              ? "/services/blog.jpg"
+                              : service.id === "content-writing"
+                                ? "/services/content.jpg"
+                                : service.id === "logo-design"
+                                  ? "/services/design.webp"
+                                  : service.id === "landing-page-design"
+                                    ? "/services/landing.webp"
+                                    : "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80"
           }
           alt={service.title + " image"}
           fill
@@ -356,9 +356,9 @@ const ServiceCard = ({
 
         {/* Request Service Button */}
         <div className="">
-          <Link 
+          <Link
             href={`https://wa.me/919905953677?text=Hi! I'm interested in your ${encodeURIComponent(service.title)} service. Could you share pricing and timeline details? Thanks!`}
-            target="_blank" 
+            target="_blank"
             className={``}>
             <button className="flex items-center gap-2 justify-center text-teal-600 cursor-pointer hover:text-teal-500 bg-teal-50 hover:bg-teal-100 px-3 py-2 rounded-lg transition-all duration-300 text-xs font-medium">
               Request Service <FaArrowRight />
@@ -451,7 +451,7 @@ export default function ServicesPage() {
             <div className="absolute inset-0 "></div>
             <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-teal-100 to-transparent rounded-full blur-3xl opacity-30"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-teal-100 to-transparent rounded-full blur-3xl opacity-30"></div>
-            
+
             <div className="max-w-7xl mx-auto relative z-10">
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <motion.div
@@ -459,12 +459,12 @@ export default function ServicesPage() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   className="space-y-6">
-                  
+
                   {/* Badge */}
 
                   {/* Main Heading */}
                   <div className="space-y-3">
-                    <motion.h1 
+                    <motion.h1
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: 0.3 }}
@@ -474,7 +474,7 @@ export default function ServicesPage() {
                         Services
                       </span>
                     </motion.h1>
-                    
+
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: "80px" }}
@@ -484,7 +484,7 @@ export default function ServicesPage() {
                   </div>
 
                   {/* Description */}
-                  <motion.p 
+                  <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
@@ -527,7 +527,7 @@ export default function ServicesPage() {
                         <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300" />
                       </Button>
                     </Link>
-                    
+
 
                   </motion.div>
                 </motion.div>
@@ -538,7 +538,7 @@ export default function ServicesPage() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
                   className="relative">
-                  
+
                   {/* Main Image Container */}
                   <div className="relative">
                     {/* Floating Cards - Smaller */}
@@ -583,7 +583,7 @@ export default function ServicesPage() {
                         width={400}
                         className="w-full h-[350px] rounded-2xl object-cover shadow-xl transition-transform duration-700 ease-in-out hover:scale-102 z-10 relative"
                       />
-                      
+
                       {/* Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl"></div>
                     </div>

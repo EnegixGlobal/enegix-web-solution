@@ -46,7 +46,7 @@ const WhyChooseUsSection = () => {
             <div className="text-3xl md:text-5xl lg:text-5xl font-bold mb-6">
               Why Choose{" "}
               <span className="bg-clip-text text-teal-600">
-                Enegix Web Solutions?
+                Enegix Media?
               </span>
             </div>
           </div>

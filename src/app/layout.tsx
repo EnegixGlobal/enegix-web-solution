@@ -31,7 +31,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Top Web Design Company in Ranchi, Digital Marketing Agency in India",
   description:
-    "Enegix Web Solutions is a full-service digital marketing agency based in Kadru, Ranchi, Jharkhand. We specialize in SEO, website development, social media marketing, content writing, Google Ads, and local SEO. Trusted by startups, businesses, and institutions across Ranchi, Jamshedpur, Dhanbad, and Bokaro, we deliver affordable, ROI-driven digital strategies. Our services include multilingual content, rural marketing, and digital branding. We also offer web solutions for MSMEs, government projects, and e-commerce businesses. Let us help you grow your online presence and connect with your customers effectively, ✔Website Designer ✔Marketing Consultant ✔Advertising Agency ✔Software Company & thanks for visiting our Google Business page.",
+    "Enegix Media is a full-service digital marketing agency based in Kadru, Ranchi, Jharkhand. We specialize in SEO, website development, social media marketing, content writing, Google Ads, and local SEO. Trusted by startups, businesses, and institutions across Ranchi, Jamshedpur, Dhanbad, and Bokaro, we deliver affordable, ROI-driven digital strategies. Our services include multilingual content, rural marketing, and digital branding. We also offer web solutions for MSMEs, government projects, and e-commerce businesses. Let us help you grow your online presence and connect with your customers effectively, ✔Website Designer ✔Marketing Consultant ✔Advertising Agency ✔Software Company & thanks for visiting our Google Business page.",
   icons: {
     icon: "/enegix_logo.svg", // path relative to /public
   },
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
     "Tribal outreach campaign",
     "Digital reach rural Jharkhand",
     "Custom content for Jharkhand",
-    "Enegix Web Solutions",
+    "Enegix Media",
     "Jharkhand digital marketing companies",
     "Best SEO freelancers Jharkhand",
     "Jharkhand web dev agencies",

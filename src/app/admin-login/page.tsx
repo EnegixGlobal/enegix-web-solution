@@ -118,7 +118,7 @@ export default function AdminLoginPage() {
                   <div className="relative w-40 h-30">
                     <Image
                       src="/new_logo.png"
-                      alt="Enegix Web Solutions"
+                      alt="Enegix Media"
                       fill
                       className=" object-contain"
                       priority
@@ -170,7 +170,7 @@ export default function AdminLoginPage() {
                       />
                     </div>
                   </div>
-                  
+
                   <button
                     type="submit"
                     disabled={isLoading}

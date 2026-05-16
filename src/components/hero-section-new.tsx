@@ -108,7 +108,7 @@ const HeroSectionNew = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-lg md:text-md text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 We're a young, driven, and dynamic startup with big ambitions —
-                and even bigger results. At Enegix Web Solutions, we believe
+                and even bigger results. At Enegix Media, we believe
                 that trust isn't claimed — it's earned through delivery.
               </motion.p>
 
