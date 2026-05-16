@@ -15,7 +15,7 @@ import axios from 'axios'
 
 const faqs = [
   {
-    question: "What services does Enegix Web Solutions offer?",
+    question: "What services does Enegix Media offer?",
     answer:
       "We offer a full suite of digital marketing and web services, including website design and development, SEO, social media marketing, PPC campaigns, branding, and content marketing.",
   },
@@ -358,7 +358,7 @@ const ContactInfo = () => {
 
             <div>
               <h4 className="text-black font-semibold mb-2">Address</h4>
-              Enegix Web Solutions, House No.2, Old AG More, near Bharat Kitchen, above Saryu Sons Jwellers, Kadru, Delatoli, Ranchi, Jharkhand 834002 {" "}
+              Enegix Media, House No.2, Old AG More, near Bharat Kitchen, above Saryu Sons Jwellers, Kadru, Delatoli, Ranchi, Jharkhand 834002 {" "}
               <a
                 href="https://maps.app.goo.gl/ccd5SSKteK4MpUnx8"
                 target="_blank"

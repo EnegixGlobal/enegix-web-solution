@@ -18,7 +18,7 @@ const foundersData = [
     id: "Ehtesham Raghib",
     name: "Ehtesham Raghib",
     role: "Founder & CEO",
-    bio: "Ehtesham Raghib, the founder of Enegix Web Solutions, is a passionate entrepreneur and digital strategist dedicated to transforming businesses through cutting-edge web solutions. With a deep understanding of web development, digital marketing, and brand growth, he has played a pivotal role in helping businesses establish a powerful online presence. Under his leadership, Enegix Web Solutions has evolved from a specialized web development firm into a full-service digital agency, offering innovative and results-driven solutions. Ehtesham's expertise in leveraging the latest technologies and data-driven strategies ensures that businesses stay ahead in the ever-evolving digital landscape.",
+    bio: "Ehtesham Raghib, the founder of Enegix Media, is a passionate entrepreneur and digital strategist dedicated to transforming businesses through cutting-edge web solutions. With a deep understanding of web development, digital marketing, and brand growth, he has played a pivotal role in helping businesses establish a powerful online presence. Under his leadership, Enegix Media has evolved from a specialized web development firm into a full-service digital agency, offering innovative and results-driven solutions. Ehtesham's expertise in leveraging the latest technologies and data-driven strategies ensures that businesses stay ahead in the ever-evolving digital landscape.",
     image: "/team/raghib.jpg",
     socialLinks: {
       facebook: "https://www.facebook.com/Imthepatientwolf",
@@ -31,7 +31,7 @@ const foundersData = [
     id: "Shreya Raj",
     name: "Shreya Raj",
     role: "Co-Founder & CTO",
-    bio: "Shreya Raj, co-founder of Enegix Web Solutions, is a dynamic leader and creative strategist dedicated to crafting impactful digital experiences. With expertise in brand development and digital marketing, she brings a unique blend of creativity and technical acumen to the company. Her passion for innovation and eye for detail have played a crucial role in shaping Enegix Web Solutions into a full-service digital agency that delivers visually stunning and results-driven web solutions. Shreya believes in blending aesthetics with functionality, ensuring that every project not only looks exceptional but also achieves its intended impact.",
+    bio: "Shreya Raj, co-founder of Enegix Media, is a dynamic leader and creative strategist dedicated to crafting impactful digital experiences. With expertise in brand development and digital marketing, she brings a unique blend of creativity and technical acumen to the company. Her passion for innovation and eye for detail have played a crucial role in shaping Enegix Media into a full-service digital agency that delivers visually stunning and results-driven web solutions. Shreya believes in blending aesthetics with functionality, ensuring that every project not only looks exceptional but also achieves its intended impact.",
     image: "/team/shreya.jpg",
     socialLinks: {
       facebook:
@@ -457,11 +457,10 @@ export default function TeamPage() {
                 <button
                   key={filter.id}
                   onClick={() => setActiveFilter(filter.id)}
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                    activeFilter === filter.id
+                  className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === filter.id
                       ? "bg-teal-600 text-white shadow-lg shadow-teal-600/25"
                       : "bg-white text-gray-600 hover:bg-teal-50 hover:text-teal-600 border border-gray-200 hover:border-teal-200"
-                  }`}>
+                    }`}>
                   {filter.label}
                 </button>
               ))}

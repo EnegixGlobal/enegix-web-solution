@@ -82,7 +82,7 @@ export default function Navbar() {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Image
               src="/enegix_logo.svg"
-              alt="Enegix Web Solutions"
+              alt="Enegix Media"
               width={120}
               height={40}
               className="h-8 w-auto md:h-11 object-contain"
@@ -90,7 +90,7 @@ export default function Navbar() {
           </motion.div>
 
           <span className="font-extrabold md:text-3xl text-lg">
-            Enegix Web Solutions
+            Enegix Media
           </span>
         </Link>
 
@@ -123,9 +123,8 @@ export default function Navbar() {
                 {link.label}
                 {link.hasDropdown && (
                   <ChevronDownIcon
-                    className={`ml-1 h-4 w-4 transition ${
-                      activeDropdown === link.label ? "rotate-180" : ""
-                    }`}
+                    className={`ml-1 h-4 w-4 transition ${activeDropdown === link.label ? "rotate-180" : ""
+                      }`}
                   />
                 )}
               </Link>
@@ -200,9 +199,8 @@ export default function Navbar() {
                     >
                       Company
                       <ChevronDownIcon
-                        className={`h-5 w-5 transition ${
-                          mobileCompanyOpen ? "rotate-180" : ""
-                        }`}
+                        className={`h-5 w-5 transition ${mobileCompanyOpen ? "rotate-180" : ""
+                          }`}
                       />
                     </button>
 

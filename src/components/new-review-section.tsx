@@ -32,7 +32,7 @@ const reviews: Review[] = [
   {
     id: 3,
     rating: 5.0,
-    text: "I highly recommend Enegix Web Solutions to anyone seeking a reliable and skilled website development partner. Their commitment to delivering high-quality solutions on time is evident in every aspect of their work.Services: Website Development, App Development, Digital Marketing, Logo Designing Etc.",
+    text: "I highly recommend Enegix Media to anyone seeking a reliable and skilled website development partner. Their commitment to delivering high-quality solutions on time is evident in every aspect of their work.Services: Website Development, App Development, Digital Marketing, Logo Designing Etc.",
     author: "Ankita Singh",
     work: "Website and App Development",
     verified: true,

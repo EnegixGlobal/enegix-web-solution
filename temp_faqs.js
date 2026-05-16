@@ -1,6 +1,6 @@
 const faqs = [
   {
-    question: "What services does Enegix Web Solutions offer?",
+    question: "What services does Enegix Media offer?",
     answer:
       "We offer a full suite of digital marketing and web services, including website design and development, SEO, social media marketing, PPC campaigns, branding, and content marketing.",
   },

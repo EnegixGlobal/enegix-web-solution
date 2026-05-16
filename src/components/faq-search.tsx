@@ -16,7 +16,7 @@ const FAQSearch = () => {
   // Default FAQ data
   const faqs = [
     {
-      question: "What services does Enegix Web Solutions offer?",
+      question: "What services does Enegix Media offer?",
       answer:
         "We offer a full suite of digital marketing and web services, including website design and development, SEO, social media marketing, PPC campaigns, branding, and content marketing.",
     },
@@ -121,18 +121,16 @@ const FAQSearch = () => {
             {filteredFAQs.map((faq, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-lg shadow-sm border overflow-hidden transition-all duration-200 ${
-                  openIndex === index
+                className={`bg-white rounded-lg shadow-sm border overflow-hidden transition-all duration-200 ${openIndex === index
                     ? "border-teal-200 shadow-md"
                     : "border-gray-200"
-                }`}>
+                  }`}>
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className={`w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none transition-colors duration-200 ${
-                    openIndex === index
+                  className={`w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none transition-colors duration-200 ${openIndex === index
                       ? "bg-teal-50"
                       : "hover:bg-gray-50 focus:bg-gray-50"
-                  }`}
+                    }`}
                   aria-expanded={openIndex === index}>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-gray-900">

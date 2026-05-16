@@ -333,14 +333,14 @@ export default function About() {
                   </span>
                 </h2>
                 <p className="text-gray-600 mb-6">
-                  Enegix Web Solutions was founded with a vision to bridge the
+                  Enegix Media was founded with a vision to bridge the
                   gap between technology and business. Our team of skilled
                   developers, designers, and digital strategists work together
                   to create dynamic, user-friendly, and high-performance
                   websites tailored to your unique needs.
                 </p>
                 <p className="text-gray-600 mb-8">
-                  At Enegix Web Solutions, we are more than just a web
+                  At Enegix Media, we are more than just a web
                   development company—we are your digital growth partners. With
                   a passion for innovation and a commitment to excellence, we
                   provide businesses with cutting-edge web solutions that drive
@@ -433,7 +433,7 @@ export default function About() {
                   <div className="absolute inset-0 bg-gradient-to-tr from-teal-900/40 to-emerald-900/40 z-10 mix-blend-overlay"></div>
                   <Image
                     src="https://images.pexels.com/photos/2467506/pexels-photo-2467506.jpeg"
-                    alt="Enegix Web Solutions Team"
+                    alt="Enegix Media Team"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -534,7 +534,7 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
                 className="text-gray-800 font-semibold">
-                Enegix Global is the backbone of Enegix Web Solutions — a
+                Enegix Global is the backbone of Enegix Media — a
                 growing tech company that's all about helping businesses go
                 digital the smart way. We're a passionate team building
                 everything from sleek websites and strong digital marketing

@@ -78,7 +78,7 @@ export default async function BlogsPage({
 					<div className="relative z-10 py-16 md:py-20">
 						<h1 className="text-3xl md:text-5xl font-extrabold tracking-tight">Insights & Stories</h1>
 						<p className="mt-4 max-w-2xl text-teal-100">
-							Web development, design, SEO, and digital growth tips from Enegix Web Solutions.
+							Web development, design, SEO, and digital growth tips from Enegix Media
 						</p>
 
 						{categoryStats.length > 0 && (
@@ -175,8 +175,8 @@ export default async function BlogsPage({
 }
 
 export async function generateMetadata() {
-	const title = "Blog | Enegix Web Solutions";
-	const description = "Insights on web development, design, SEO, and digital growth from Enegix Web Solutions.";
+	const title = "Blog | Enegix Media";
+	const description = "Insights on web development, design, SEO, and digital growth from Enegix Media";
 	return {
 		title,
 		description,
