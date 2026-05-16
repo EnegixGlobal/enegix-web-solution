@@ -156,13 +156,14 @@ const CountriesWeServe = () => {
                 <div
                   key={`flag-${index}`}
                   className="flex-shrink-0 text-center group cursor-pointer w-16 h-12 md:w-28 md:h-20 flex flex-col items-center justify-center">
-                  <div className="overflow-hidden">
+                  {/* ✅ ONLY CHANGE: Circle Image */}
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden">
                     <Image
                       src={country.flag}
-                      alt={`${country.name}`}
-                      width={74}
-                      height={48}
-                      className="object-cover h-full w-full"
+                      alt={country.name}
+                      width={80}
+                      height={80}
+                      className="object-cover w-full h-full"
                     />
                   </div>
                 </div>

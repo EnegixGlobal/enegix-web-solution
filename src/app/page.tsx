@@ -15,6 +15,7 @@ import ReviewSection from "@/components/new-review-section";
 import FAQSearch from "@/components/faq-search";
 import HeroSectionNew from "@/components/hero-section-new";
 import NewReviewSection from "@/components/new-review-section";
+import VideoShowcase from "@/components/video-showcase";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
@@ -71,9 +72,9 @@ export default function Home() {
       <CountriesWeServe />
       <NewReviewSection />
       <TechStackSimple />
-      <WhyChooseUsSection />
+      {/* <WhyChooseUsSection /> */}
       <FAQSearch />
-      {/* <VideoShowcase /> */}
+      <VideoShowcase />
       {/* <ContactCTA /> */}
       <Footer />
       {isClient && <ScrollToTopButton />}

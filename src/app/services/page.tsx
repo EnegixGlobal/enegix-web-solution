@@ -446,7 +446,7 @@ export default function ServicesPage() {
       <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
         <Container  >
           {/* Hero Section */}
-          <section className="pt-28 pb-12 relative overflow-hidden">
+          <section className="pt-18 pb-12 relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 "></div>
             <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-teal-100 to-transparent rounded-full blur-3xl opacity-30"></div>

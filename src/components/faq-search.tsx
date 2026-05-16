@@ -126,6 +126,7 @@ const FAQSearch = () => {
                     : "border-gray-200"
                   }`}>
                 <button
+                  type="button"
                   onClick={() => toggleFAQ(index)}
                   className={`w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none transition-colors duration-200 ${openIndex === index
                       ? "bg-teal-50"
