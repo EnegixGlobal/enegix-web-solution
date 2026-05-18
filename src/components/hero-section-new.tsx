@@ -177,7 +177,7 @@ const HeroSectionNew = () => {
               >
                 <div className="text-center">
                   <div className="text-2xl font-bold text-gray-900">
-                    {isInView && <CountUp value={50} suffix="+" />}
+                    {isInView && <CountUp value={100} suffix="+" />}
                   </div>
                   <div className="text-sm text-gray-600">
                     Projects Delivered
@@ -219,7 +219,7 @@ const HeroSectionNew = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-500 to-blue-500 rounded-3xl transform rotate-6 scale-105 opacity-10"></div>
                 <div className="relative bg-white p-4 rounded-3xl shadow-2xl">
                   <Image
-                    src="/hero-image.jpg"
+                    src="/banner_img2.png"
                     alt="Hero Image"
                     height={600}
                     width={500}
