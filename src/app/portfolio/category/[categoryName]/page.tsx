@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -30,9 +30,35 @@ import {
   FlaskConical,
   Utensils,
   FolderOpen,
+  ArrowLeft,
+  Search,
   RefreshCw,
   type LucideIcon
 } from "lucide-react";
+
+// Portfolio project interface
+interface Portfolio {
+  _id: string;
+  title: string;
+  logo: string;
+  category: string;
+  type?: string;
+  description: string;
+  image: string;
+  technologiesUsed: string[];
+  tags: string[];
+  link?: string;
+  featured: boolean;
+  status: string;
+  stats: {
+    organicGrowth: number;
+    paidGrowth: number;
+  };
+  metaTitle?: string;
+  metaDescription?: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 // Category metadata definitions
 interface CategoryMeta {
@@ -183,104 +209,7 @@ const getCategoryMeta = (category: string): CategoryMeta => {
   };
 };
 
-interface CategoryCardProps {
-  categoryName: string;
-  projectCount: number;
-  isActive: boolean;
-  onClick: () => void;
-}
-
-const CategoryCard = ({ categoryName, projectCount, isActive, onClick }: CategoryCardProps) => {
-  const meta = getCategoryMeta(categoryName);
-  const Icon = meta.icon;
-
-  return (
-    <motion.div
-      whileHover={{ y: -8, scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      onClick={onClick}
-      className={`relative group cursor-pointer overflow-hidden rounded-2xl border transition-all duration-300 h-56 sm:h-64 md:h-72 flex flex-col justify-end p-6 ${
-        isActive
-          ? "border-teal-500 shadow-[0_0_25px_rgba(20,184,166,0.3)] ring-1 ring-teal-500"
-          : "border-gray-200 shadow-lg hover:border-teal-300 hover:shadow-xl"
-      }`}
-    >
-      {/* Background Image */}
-      <Image
-        src={meta.image}
-        alt={meta.title}
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        className="object-cover absolute inset-0 group-hover:scale-110 transition-transform duration-700 ease-out"
-        priority={categoryName === "All" || categoryName === "E-commerce"}
-      />
-
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-transparent opacity-85 transition-opacity duration-300 group-hover:opacity-90" />
-      
-      {/* Ambient background active glow overlay */}
-      {isActive && (
-        <div className="absolute inset-0 bg-teal-950/15 backdrop-blur-[0.5px]" />
-      )}
-
-      {/* Content */}
-      <div className="relative z-10 w-full flex flex-col items-start">
-        {/* Glassmorphic Icon Box */}
-        <div className={`p-2.5 rounded-xl backdrop-blur-md mb-3 flex items-center justify-center transition-colors duration-300 ${
-          isActive 
-            ? "bg-teal-500 text-white" 
-            : "bg-white/10 text-white group-hover:bg-white/20"
-        }`}>
-          <Icon className="h-5 w-5 md:h-6 md:w-6 transition-transform duration-500 group-hover:rotate-12" />
-        </div>
-
-        {/* Text */}
-        <h3 className="text-white text-base sm:text-lg font-bold tracking-wide leading-tight mb-1 group-hover:text-teal-300 transition-colors duration-300">
-          {meta.title}
-        </h3>
-        
-        <p className="text-gray-300 text-[11px] sm:text-xs leading-normal line-clamp-1 mb-2">
-          {meta.description}
-        </p>
-
-        {/* Dynamic Project Count Badge */}
-        <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold backdrop-blur-sm transition-all duration-300 ${
-          isActive
-            ? "bg-teal-400/25 text-teal-200 border border-teal-400/30"
-            : "bg-white/10 text-white border border-white/10 group-hover:bg-white/20"
-        }`}>
-          {projectCount} {projectCount === 1 ? "Project" : "Projects"}
-        </span>
-      </div>
-    </motion.div>
-  );
-};
-
-// Portfolio project interface
-interface Portfolio {
-  _id: string;
-  title: string;
-  logo: string;
-  category: string;
-  type?: string;
-  description: string;
-  image: string;
-  technologiesUsed: string[];
-  tags: string[];
-  link?: string;
-  featured: boolean;
-  status: string;
-  stats: {
-    organicGrowth: number;
-    paidGrowth: number;
-  };
-  metaTitle?: string;
-  metaDescription?: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-// Featured Project Card Component (larger display)
+// Featured Project Card Component
 const FeaturedProjectCard = ({ project }: { project: Portfolio }) => {
   return (
     <motion.div
@@ -316,9 +245,7 @@ const FeaturedProjectCard = ({ project }: { project: Portfolio }) => {
             {project.description}
           </p>
 
-          <div className="flex  sm:flex-row ">
-            <Link href={`/portfolio/${project._id}`}></Link>
-
+          <div className="flex sm:flex-row">
             {project.link && (
               <Link
                 href={project.link}
@@ -336,12 +263,12 @@ const FeaturedProjectCard = ({ project }: { project: Portfolio }) => {
         </div>
         {/* Project Image */}
         <div className="lg:flex-6 relative">
-          <div className="relative shadow-lg  h-60 lg:h-60 lg:top-4 lg:right-4  lg:rounded-bl-2xl lg:rounded-tr-2xl overflow-hidden">
+          <div className="relative shadow-lg h-60 lg:h-60 lg:top-4 lg:right-4 lg:rounded-bl-2xl lg:rounded-tr-2xl overflow-hidden">
             <Image
               src={project.image}
               alt={project.title}
               fill
-              className=" hover:scale-105 transition-transform duration-500"
+              className="hover:scale-105 transition-transform duration-500"
             />
           </div>
 
@@ -371,62 +298,94 @@ const FeaturedProjectCard = ({ project }: { project: Portfolio }) => {
   );
 };
 
-export default function PortfolioPage() {
+interface PageProps {
+  params: Promise<{
+    categoryName: string;
+  }>;
+}
+
+export default function CategoryPortfolioPage({ params }: PageProps) {
+  const resolvedParams = use(params);
+  const categoryName = decodeURIComponent(resolvedParams.categoryName);
+  
   const [mounted, setMounted] = useState(false);
   const [portfolioProjects, setPortfolioProjects] = useState<Portfolio[]>([]);
+  const [filteredProjects, setFilteredProjects] = useState<Portfolio[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // Fetch portfolios from API
+  const categoryMeta = getCategoryMeta(categoryName);
+  const CategoryIcon = categoryMeta.icon;
+
+  // Fetch portfolios from API filtered by category
   const fetchPortfolios = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/api/portfolio?status=active&limit=50");
+      // Fetch only for specific category
+      const response = await fetch(`/api/portfolio?status=active&limit=50&category=${encodeURIComponent(categoryName)}`);
       const data = await response.json();
 
       if (data.success) {
         setPortfolioProjects(data.data);
+        setFilteredProjects(data.data);
       } else {
         console.error("Failed to fetch portfolios:", data.message);
-        toast.error("Failed to load portfolio projects");
+        toast.error(`Failed to load ${categoryMeta.title} projects`);
       }
     } catch (error) {
       console.error("Error fetching portfolios:", error);
-      toast.error("Failed to load portfolio projects");
+      toast.error(`Failed to load ${categoryMeta.title} projects`);
     } finally {
       setLoading(false);
     }
   };
 
-  // Fetch portfolios on mount
+  // Filter projects based on local search query
+  useEffect(() => {
+    if (!searchQuery) {
+      setFilteredProjects(portfolioProjects);
+      return;
+    }
+
+    const query = searchQuery.toLowerCase();
+    const filtered = portfolioProjects.filter(
+      (project: Portfolio) =>
+        project.title.toLowerCase().includes(query) ||
+        project.description.toLowerCase().includes(query) ||
+        project.technologiesUsed.some((tech: string) =>
+          tech.toLowerCase().includes(query)
+        ) ||
+        (project.tags &&
+          project.tags.some((tag: string) =>
+            tag.toLowerCase().includes(query)
+          ))
+    );
+
+    setFilteredProjects(filtered);
+  }, [searchQuery, portfolioProjects]);
+
+  // Fetch portfolios on mount/categoryName change
   useEffect(() => {
     fetchPortfolios();
-  }, []);
+  }, [categoryName]);
 
   // Prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Add smooth scrolling for anchor links
+  // Add smooth scrolling and transform fixes
   useEffect(() => {
     if (!mounted) return;
 
-    // Enable page scrolling and fix scroll issues
     enablePageScroll();
 
-    // Clear any transform styles that might be affecting scroll
     const mainContent =
       document.getElementById("__next") || document.querySelector("main");
     if (mainContent) {
       mainContent.style.transform = "none";
     }
   }, [mounted]);
-
-  // Get unique categories from portfolios
-  const categories = [
-    "All",
-    ...Array.from(new Set(portfolioProjects.map((p) => p.category))),
-  ];
 
   if (loading) {
     return (
@@ -435,8 +394,9 @@ export default function PortfolioPage() {
         <Navbar />
         <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
           <Container>
-            <div className="flex justify-center items-center py-20">
+            <div className="flex flex-col justify-center items-center py-40 gap-4">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600"></div>
+              <p className="text-gray-500 text-sm animate-pulse">Loading {categoryMeta.title} projects...</p>
             </div>
           </Container>
         </main>
@@ -451,126 +411,158 @@ export default function PortfolioPage() {
       <Navbar />
 
       <main className="bg-white text-gray-900 min-h-screen relative overflow-x-hidden">
-        <Container>
-          {/* Hero Section - Edge-to-edge, big tilted image cards */}
-          <section className="relative pt-26 md:pt-2 pb-8 md:pb-12 bg-white border-b border-teal-100">
-            <div className="w-full flex flex-col md:flex-row items-center md:items-stretch gap-6 md:gap-8">
-              {/* Left: Text */}
-              <div className="flex-1 flex flex-col justify-center px-4 md:px-0">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-teal-700 mb-3 md:mb-4 leading-tight">
-                  Our Portfolio
-                </h1>
-                <p className="text-sm sm:text-base md:text-lg text-gray-700 font-semibold mb-4 md:mb-6 max-w-xl leading-relaxed">
-                  Explore a handpicked showcase of our top projects across web
-                  development, e-commerce, branding, and digital marketing —
-                  each crafted with simplicity, purpose, and a sharp focus on
-                  delivering real results. Every piece reflects our commitment
-                  to clean design, smart strategy, and building solutions that
-                  actually work for your business.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-2 md:gap-4">
-                  <Link href="/contact">
-                    <Button
-                      size="sm"
-                      className="bg-teal-600 text-white hover:bg-teal-700 w-full sm:w-auto text-xs md:text-sm px-4 py-2 md:px-6 md:py-3">
-                      Start Your Project
-                    </Button>
-                  </Link>
-                  <Link href="/services">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-teal-600 bg-white text-teal-600! hover:bg-teal-600! hover:text-white! w-full sm:w-auto text-xs md:text-sm px-4 py-2 md:px-6 md:py-3">
-                      Explore Services
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-              {/* Right: Three big tilted images like cards */}
-              <div className="flex-1 flex justify-center items-center relative min-h-[280px] sm:min-h-[350px] md:min-h-[420px] lg:min-h-[500px] w-full">
-                {/* Card 1 (bottom, left) */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-[60%] -translate-y-[55%] rotate-[-12deg] shadow-xl rounded-2xl md:rounded-3xl overflow-hidden border border-teal-100 w-[220px] h-[140px] sm:w-[280px] sm:h-[180px] md:w-[360px] md:h-[240px] lg:w-[480px] lg:h-[300px] bg-gray-100 z-10">
-                  <Image
-                    src={portfolioProjects[1]?.image || "/portfolio/cozy.png"}
-                    alt={portfolioProjects[1]?.title || "Portfolio Project"}
-                    width={440}
-                    height={300}
-                    className="object-cover w-full h-full"
-                    priority
-                  />
-                </div>
-                {/* Card 2 (middle, main) */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[3deg] shadow-2xl rounded-2xl md:rounded-3xl overflow-hidden border-2 border-teal-500 w-[220px] h-[160px] sm:w-[320px] sm:h-[220px] md:w-[400px] md:h-[280px] lg:w-[540px] lg:h-[320px] bg-white z-20">
-                  <Image
-                    src={
-                      portfolioProjects[0]?.image || "/portfolio/thakurain.png"
-                    }
-                    alt={portfolioProjects[0]?.title || "Portfolio Project"}
-                    width={480}
-                    height={340}
-                    className=" w-full h-full"
-                    priority
-                  />
-                </div>
-                {/* Card 3 (top, right) */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-[40%] -translate-y-[45%] rotate-[15deg] shadow-xl rounded-2xl md:rounded-3xl overflow-hidden border border-teal-100 w-[200px] h-[140px] sm:w-[280px] sm:h-[180px] md:w-[360px] md:h-[240px] lg:w-[480px] lg:h-[300px] bg-gray-100 z-10">
-                  <Image
-                    src={
-                      portfolioProjects[2]?.image || "/portfolio/wedding.png"
-                    }
-                    alt={portfolioProjects[2]?.title || "Portfolio Project"}
-                    width={440}
-                    height={300}
-                    className="object-cover w-full h-full"
-                    priority
-                  />
-                </div>
-              </div>
+        {/* Category Hero Header Banner */}
+        <section className="relative pt-28 pb-14 md:pt-32 md:pb-20 overflow-hidden bg-gray-950">
+          {/* Background themed image with scale and elegant overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={categoryMeta.image}
+              alt={categoryMeta.title}
+              fill
+              priority
+              className="object-cover opacity-60 scale-105 transition-all duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-950/40 via-gray-950/60 to-gray-950 z-10" />
+          </div>
+
+          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto px-4 md:px-0 flex flex-col items-center text-center">
+              
+              {/* Back to Portfolio navigation pill */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="mb-8"
+              >
+                <Link href="/portfolio">
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold text-teal-300 bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/25 transition-all duration-300 backdrop-blur-md cursor-pointer hover:-translate-x-1">
+                    <ArrowLeft className="h-3.5 w-3.5" />
+                    Back to Portfolio
+                  </span>
+                </Link>
+              </motion.div>
+
+              {/* Large Glowing Icon */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="p-4 rounded-3xl bg-teal-500/10 text-teal-400 border border-teal-500/20 backdrop-blur-md mb-6 shadow-[0_0_30px_rgba(20,184,166,0.15)]"
+              >
+                <CategoryIcon className="h-10 w-10 md:h-12 md:w-12 animate-pulse-slow" />
+              </motion.div>
+
+              {/* Title */}
+              <motion.h1
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-none mb-4"
+              >
+                {categoryMeta.title} <span className="text-teal-400">Projects</span>
+              </motion.h1>
+
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl font-medium leading-relaxed"
+              >
+                {categoryMeta.description} We construct tailored high-converting architectures for companies in the {categoryMeta.title.toLowerCase()} sector.
+              </motion.p>
+
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Categories Grid Showcase */}
-          <section id="featured-projects" className="py-12 md:py-16 bg-gray-50/40 rounded-3xl border border-gray-100 my-8 md:my-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-10 px-4"
-            >
-              <span className="text-teal-600 font-bold text-xs uppercase tracking-widest bg-teal-50 px-3 py-1.5 rounded-full border border-teal-100">
-                Browse our creations
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 mb-4 text-gray-900 leading-tight">
-                Our Work <span className="text-teal-600">Category Wise</span>
-              </h2>
-              <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-                Click on any category card below to instantly view all matching projects, and discover how we've built digital success across industries.
-              </p>
-            </motion.div>
+        {/* Projects Listing & Search Section */}
+        <Container>
+          <section className="py-10 md:py-16">
+            <div className="max-w-5xl mx-auto px-4 md:px-0">
+              
+              {/* Filter and Search Bar */}
+              <div className="flex flex-col md:flex-row gap-4 justify-between items-center border-b border-gray-150 pb-6 mb-8">
+                <div>
+                  <h2 className="text-lg md:text-xl font-bold text-gray-800">
+                    Category Showcase
+                  </h2>
+                  <p className="text-gray-500 text-xs md:text-sm mt-0.5">
+                    Currently displaying {filteredProjects.length} {filteredProjects.length === 1 ? 'creation' : 'creations'}
+                  </p>
+                </div>
 
-            {/* Premium Category Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 md:px-8 max-w-7xl mx-auto">
-              {categories.map((category) => {
-                // Calculate projects count for this category
-                const count = category === "All" 
-                  ? portfolioProjects.length 
-                  : portfolioProjects.filter((p) => p.category === category).length;
-                
-                return (
-                  <Link href={`/portfolio/category/${category}`} key={category} className="block">
-                    <CategoryCard
-                      categoryName={category}
-                      projectCount={count}
-                      isActive={false}
-                      onClick={() => {}}
-                    />
-                  </Link>
-                );
-              })}
+                {/* Local search input within category */}
+                <div className="relative w-full md:w-72">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="Search inside category..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-full text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition-all duration-300"
+                  />
+                </div>
+              </div>
+
+              {/* Projects Grid List */}
+              <div className="space-y-6 md:space-y-8">
+                <AnimatePresence mode="popLayout">
+                  {filteredProjects.map((project: Portfolio) => (
+                    <motion.div
+                      key={project._id}
+                      layout
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <FeaturedProjectCard project={project} />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+
+                {/* Empty State */}
+                {filteredProjects.length === 0 && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-center py-20 bg-gray-50 rounded-3xl border border-dashed border-gray-200"
+                  >
+                    <FolderOpen className="mx-auto h-14 w-14 text-gray-300 mb-4 animate-bounce" />
+                    <h3 className="text-lg font-bold text-gray-900 mb-1">No Projects Found</h3>
+                    <p className="text-gray-500 text-sm max-w-sm mx-auto px-4 mb-6">
+                      {searchQuery
+                        ? `There are no projects matching "${searchQuery}" inside the ${categoryMeta.title} category.`
+                        : `We are currently crafting some amazing new portfolios under the ${categoryMeta.title} category. Check back soon!`}
+                    </p>
+                    <div className="flex justify-center gap-3">
+                      {searchQuery ? (
+                        <Button
+                          onClick={() => setSearchQuery("")}
+                          className="flex items-center gap-2 bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        >
+                          <RefreshCw className="h-3.5 w-3.5" />
+                          Clear Search
+                        </Button>
+                      ) : (
+                        <Link href="/portfolio">
+                          <Button className="bg-teal-600 text-white hover:bg-teal-700">
+                            Explore Other Categories
+                          </Button>
+                        </Link>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+
             </div>
           </section>
         </Container>
       </main>
+
       <Footer />
       <ScrollToTopButton />
     </>

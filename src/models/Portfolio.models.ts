@@ -21,6 +21,7 @@ const portfolioSchema = new mongoose.Schema(
         "Interior Design",
         "Automotive",
         "Clothing",
+        "Gym",
         "Chemicals",
         "Food & Beverage",
         "Healthcare",
