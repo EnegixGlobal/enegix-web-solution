@@ -81,11 +81,11 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Image
-              src="/enegix_logo.svg"
+              src="/logo/Enegix%20Media.png"
               alt="Enegix Media"
-              width={120}
-              height={40}
-              className="h-8 w-auto md:h-11 object-contain"
+              width={180}
+              height={60}
+              className="h-12 w-auto md:h-16 object-contain mix-blend-multiply"
             />
           </motion.div>
 
