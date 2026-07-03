@@ -300,7 +300,7 @@ export default function About() {
                     About Enegix
                   </span>
                   <span className="block text-gray-800 mt-1">
-                    Web Solutions
+                    Media Solutions
                   </span>
                 </h1>
                 <p className="text-gray-800 text-base md:text-lg leading-relaxed  mb-6 mx-auto lg:mx-0">
