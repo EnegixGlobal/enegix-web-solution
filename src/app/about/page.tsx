@@ -219,8 +219,8 @@ const Stats = () => {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 my-12">
       {[
         { value: "4+", label: "Years Experience" },
-        { value: "50+", label: "Projects Delivered" },
-        { value: "50+", label: "Happy Clients" },
+        { value: "100+", label: "Projects Delivered" },
+        { value: "100+", label: "Happy Clients" },
         { value: "4+", label: "Countries Served" },
       ].map((stat, index) => (
         <motion.div
