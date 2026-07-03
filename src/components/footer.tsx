@@ -133,7 +133,8 @@ const Footer = () => {
                     size={16}
                   />
                   <span className="text-sm">
-                    contact@enegixwebsolutions.com
+                    enegixglobal@<wbr />gmail.com
+                  
                   </span>
                 </a>
                 <a

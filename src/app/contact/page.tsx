@@ -392,12 +392,12 @@ const ContactInfo = () => {
               <a
                 href="mailto:contact@enegixwebsolutions.com"
                 className="block text-gray-700 hover:text-teal-600 transition-colors">
-                contact@enegixwebsolutions.com
+                 enegixglobal@<wbr />gmail.com
               </a>
               <a
                 href="mailto:support@enegixwebsolutions.com"
                 className="block text-gray-700 hover:text-teal-600 transition-colors">
-                support@enegixwebsolutions.com
+                  enegixglobal048@<wbr />gmail.com
               </a>
             </div>
           </div>
