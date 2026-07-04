@@ -10,6 +10,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaThreads,
+  FaYoutube,
 } from "react-icons/fa6";
 import Button from "./Button";
 
@@ -33,12 +34,12 @@ const Footer = () => {
   const socialLinks = [
     {
       label: "Facebook",
-      href: "https://www.facebook.com/enegixwebsolution/",
+      href: "https://www.facebook.com/share/1DzbpNnrWq/?mibextid=wwXIfr",
       icon: <FaFacebookF size={16} />,
     },
     {
       label: "Instagram",
-      href: "https://www.instagram.com/enegixwebsolutions/",
+      href: "https://www.instagram.com/enegixmedia?igsh=ZzJ4dTd2ZzFwMnNo&utm_source=qr",
       icon: <FaInstagram size={16} />,
     },
     {
@@ -50,6 +51,11 @@ const Footer = () => {
       label: "Threads",
       href: "https://www.threads.com/@enegixwebsolutions",
       icon: <FaThreads size={16} />,
+    },
+    {
+      label: "YouTube",
+      href: "https://youtube.com/@enegixmedia?si=VPreHF1tqbTxfz8G",
+      icon: <FaYoutube size={16} />,
     },
   ];
 

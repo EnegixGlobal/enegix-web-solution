@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Dock, DockIcon } from "./magicui/dock";
-import { FaThreads } from "react-icons/fa6";
+import { FaThreads, FaYoutube } from "react-icons/fa6";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -12,7 +12,7 @@ export function DockDemo() {
       <Dock iconMagnification={50} iconDistance={150}>
         <DockIcon className="bg-black/10 dark:bg-white/10">
           <a
-            href="https://www.facebook.com/enegixwebsolution/"
+            href="https://www.facebook.com/share/1DzbpNnrWq/?mibextid=wwXIfr"
             target="_blank"
             rel="noopener noreferrer">
             <Icons.facebook className="size-full" />
@@ -20,7 +20,7 @@ export function DockDemo() {
         </DockIcon>
         <DockIcon className="bg-black/10 dark:bg-white/10">
           <a
-            href="https://www.instagram.com/enegixwebsolutions/"
+            href="https://www.instagram.com/enegixmedia?igsh=ZzJ4dTd2ZzFwMnNo&utm_source=qr"
             target="_blank"
             rel="noopener noreferrer">
             <Icons.insta className="size-full" />
@@ -38,6 +38,13 @@ export function DockDemo() {
             href="https://www.threads.com/@enegixwebsolutions"
             target="_blank">
             <FaThreads size={22} />
+          </a>
+        </DockIcon>
+        <DockIcon className="bg-black/10 dark:bg-white/10">
+          <a
+            href="https://youtube.com/@enegixmedia?si=VPreHF1tqbTxfz8G"
+            target="_blank">
+            <FaYoutube size={22} color="#FF0000" />
           </a>
         </DockIcon>
       </Dock>
