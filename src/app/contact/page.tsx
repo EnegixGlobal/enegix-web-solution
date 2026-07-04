@@ -307,7 +307,7 @@ const ContactForm = () => {
           </button>
 
           <Link
-            href="https://wa.me/919608263050?text=Hi%20I%20Need%20Digital%20Marketing%20services%20for%20My%20Business"
+            href="https://wa.me/918424869317?text=Hi%20I%20Need%20Digital%20Marketing%20services%20for%20My%20Business"
             target="_blank">
             <div className="flex items-center text-green-700 hover:text-green-600 transition-colors">
               <svg
@@ -390,14 +390,9 @@ const ContactInfo = () => {
             <div>
               <h4 className="text-black font-semibold mb-2">Email</h4>
               <a
-                href="mailto:contact@enegixwebsolutions.com"
+                href="mailto:enegixglobalhelp@gmail.com"
                 className="block text-gray-700 hover:text-teal-600 transition-colors">
-                 enegixglobal@<wbr />gmail.com
-              </a>
-              <a
-                href="mailto:support@enegixwebsolutions.com"
-                className="block text-gray-700 hover:text-teal-600 transition-colors">
-                  enegixglobal048@<wbr />gmail.com
+                 enegixglobalhelp@<wbr />gmail.com
               </a>
             </div>
           </div>
@@ -422,14 +417,9 @@ const ContactInfo = () => {
             <div>
               <h4 className="text-black font-semibold mb-2">Call Us</h4>
               <a
-                href="tel:+919608263050"
+                href="tel:+918424869317"
                 className="block text-gray-700 hover:text-teal-600 transition-colors">
-                +91 96082 63050
-              </a>
-              <a
-                href="tel:+9905953677"
-                className="block text-gray-700 hover:text-teal-600 transition-colors">
-                +91 99059 53677
+                +91 8424-869317
               </a>
             </div>
           </div>
@@ -641,7 +631,7 @@ export default function Contact() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="flex flex-col sm:flex-row gap-4">
                   <a
-  href="https://wa.me/919608263050?text=Hey%2C%20I%20need%20services%2C%20can%20you%20please%20help%20me%20with%20that."
+  href="https://wa.me/918424869317?text=Hey%2C%20I%20need%20services%2C%20can%20you%20please%20help%20me%20with%20that."
   target="_blank"
   rel="noopener noreferrer"
   className="group"

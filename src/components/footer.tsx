@@ -8,7 +8,6 @@ import { IoMdMail } from "react-icons/io";
 import {
   FaFacebookF,
   FaInstagram,
-  FaLinkedinIn,
   FaThreads,
   FaYoutube,
 } from "react-icons/fa6";
@@ -43,13 +42,8 @@ const Footer = () => {
       icon: <FaInstagram size={16} />,
     },
     {
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/company/enegix-global-private-limited/",
-      icon: <FaLinkedinIn size={16} />,
-    },
-    {
       label: "Threads",
-      href: "https://www.threads.com/@enegixwebsolutions",
+      href: "https://www.threads.com/@enegixmedia?igshid=NTc4MTIwNjQ2YQ==",
       icon: <FaThreads size={16} />,
     },
     {
@@ -132,25 +126,24 @@ const Footer = () => {
               </h4>
               <div className="space-y-4">
                 <a
-                  href="mailto:contact@enegixwebsolutions.com"
+                  href="mailto:enegixglobalhelp@gmail.com"
                   className="flex items-start gap-3 hover:text-teal-400 transition-colors duration-300 group">
                   <IoMdMail
                     className="mt-1 flex-shrink-0 text-teal-400"
                     size={16}
                   />
                   <span className="text-sm">
-                    enegixglobal@<wbr />gmail.com
-                  
+                    enegixglobalhelp@<wbr />gmail.com
                   </span>
                 </a>
                 <a
-                  href="tel:+919608263050"
+                  href="tel:+918424869317"
                   className="flex items-center gap-3 hover:text-teal-400 transition-colors duration-300 group">
                   <FaPhoneAlt
                     className="flex-shrink-0 text-teal-400"
                     size={16}
                   />
-                  <span className="text-sm">+91 96082 63050</span>
+                  <span className="text-sm">+91 8424-869317</span>
                 </a>
               </div>
             </div>
