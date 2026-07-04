@@ -28,14 +28,7 @@ export function DockDemo() {
         </DockIcon>
         <DockIcon className="bg-black/10 dark:bg-white/10">
           <a
-            href="https://www.linkedin.com/company/enegix-global-private-limited/"
-            target="_blank">
-            <Icons.linkedIn className="size-full" />
-          </a>
-        </DockIcon>
-        <DockIcon className="bg-black/10 dark:bg-white/10">
-          <a
-            href="https://www.threads.com/@enegixwebsolutions"
+            href="https://www.threads.com/@enegixmedia?igshid=NTc4MTIwNjQ2YQ=="
             target="_blank">
             <FaThreads size={22} />
           </a>
