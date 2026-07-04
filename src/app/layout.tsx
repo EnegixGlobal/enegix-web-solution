@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     icon: "/logo/Enegix%20logo.svg", // path relative to /public
   },
   verification: {
-    google: "DiZ0PwZbLtanrpwgGJUCu7q35tKMPnDaQwcmN1nR2GY",
+    google: "534YyGUcZbXL1oQivDRcKkWTGlJXUgLSNQaL5X3BB3Q",
   },
 
   keywords: [
@@ -145,7 +145,7 @@ export default function RootLayout({
         {/* Google Site Verification */}
         <meta
           name="google-site-verification"
-          content="DiZ0PwZbLtanrpwgGJUCu7q35tKMPnDaQwcmN1nR2GY"
+          content="534YyGUcZbXL1oQivDRcKkWTGlJXUgLSNQaL5X3BB3Q"
         />
 
         {/* Facebook Domain Verification */}
@@ -162,6 +162,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-    
   );
 }
