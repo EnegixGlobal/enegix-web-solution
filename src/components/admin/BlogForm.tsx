@@ -437,15 +437,19 @@ export default function BlogForm({ blog, onSuccess, onCancel }: BlogFormProps) {
 
             {/* Excerpt */}
             <div className="lg:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Excerpt *
+              <label className="block text-sm font-medium text-gray-700 mb-2 flex justify-between">
+                <span>Excerpt *</span>
+                <span className={`text-xs ${formData.excerpt.length > 800 ? 'text-red-500' : 'text-gray-500'}`}>
+                  {formData.excerpt.length}/800 characters
+                </span>
               </label>
               <textarea
                 value={formData.excerpt}
                 onChange={(e) => setFormData(prev => ({ ...prev, excerpt: e.target.value }))}
+                maxLength={800}
                 rows={6}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-                placeholder="Brief description of the blog post..."
+                placeholder="Brief description of the blog post (max 800 characters)..."
                 required
               />
             </div>
