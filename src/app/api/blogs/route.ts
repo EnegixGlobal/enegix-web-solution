@@ -207,7 +207,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { success: false, error: "Failed to create blog" },
+      { success: false, error: error?.message || "Failed to create blog", details: error },
       { status: 500 }
     );
   }
