@@ -26,22 +26,7 @@ const foundersData = [
       linkedin: "https://www.linkedin.com/in/ehtesham-raghib-9b5b6b201/",
     },
     featured: true,
-  },
-  // {
-  //   id: "Shreya Raj",
-  //   name: "Shreya Raj",
-  //   role: "Co-Founder & CTO",
-  //   bio: "Shreya Raj, co-founder of Enegix Media, is a dynamic leader and creative strategist dedicated to crafting impactful digital experiences. With expertise in brand development and digital marketing, she brings a unique blend of creativity and technical acumen to the company. Her passion for innovation and eye for detail have played a crucial role in shaping Enegix Media into a full-service digital agency that delivers visually stunning and results-driven web solutions. Shreya believes in blending aesthetics with functionality, ensuring that every project not only looks exceptional but also achieves its intended impact.",
-  //   image: "/team/shreya.jpg",
-  //   socialLinks: {
-  //     facebook:
-  //       "https://www.facebook.com/profile.php?id=61574563300591&mibextid=wwXIfr&rdid=xtteN194F8ccVUqv&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1F3jvQrKje%2F%3Fmibextid%3DwwXIfr#",
-  //     instagram: "https://www.instagram.com/potaciumpandey",
-  //     linkedin:
-  //       "https://www.linkedin.com/in/shreya-raj-75569a34b/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-  //   },
-  //   featured: true,
-  // },
+  }
 ];
 
 // Interface for team member from API
@@ -377,16 +362,6 @@ export default function TeamPage() {
                       priority
                     />
                   </div>
-
-                  {/* Secondary image - top left */}
-                  {/* <div className="absolute top-10 left-5 w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-teal-500 bg-white shadow-lg overflow-hidden transform -translate-x-1/4 -translate-y-1/4 transition-transform duration-500 hover:scale-110 hover:-rotate-3">
-                    <Image
-                      src={foundersData[1].image}
-                      alt={foundersData[1].name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div> */}
 
                   <div
                     className="absolute left-1/2 top-[165px] -z-10 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-80 md:h-80 lg:w-[300px] lg:h-[300px] border-5 rounded-full border-teal-200/50 bg-gradient-to-r from-teal-100/20 to-blue-100/20 animate-pulse pointer-events-none"
