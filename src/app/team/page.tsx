@@ -27,21 +27,21 @@ const foundersData = [
     },
     featured: true,
   },
-  {
-    id: "Shreya Raj",
-    name: "Shreya Raj",
-    role: "Co-Founder & CTO",
-    bio: "Shreya Raj, co-founder of Enegix Media, is a dynamic leader and creative strategist dedicated to crafting impactful digital experiences. With expertise in brand development and digital marketing, she brings a unique blend of creativity and technical acumen to the company. Her passion for innovation and eye for detail have played a crucial role in shaping Enegix Media into a full-service digital agency that delivers visually stunning and results-driven web solutions. Shreya believes in blending aesthetics with functionality, ensuring that every project not only looks exceptional but also achieves its intended impact.",
-    image: "/team/shreya.jpg",
-    socialLinks: {
-      facebook:
-        "https://www.facebook.com/profile.php?id=61574563300591&mibextid=wwXIfr&rdid=xtteN194F8ccVUqv&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1F3jvQrKje%2F%3Fmibextid%3DwwXIfr#",
-      instagram: "https://www.instagram.com/potaciumpandey",
-      linkedin:
-        "https://www.linkedin.com/in/shreya-raj-75569a34b/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-    },
-    featured: true,
-  },
+  // {
+  //   id: "Shreya Raj",
+  //   name: "Shreya Raj",
+  //   role: "Co-Founder & CTO",
+  //   bio: "Shreya Raj, co-founder of Enegix Media, is a dynamic leader and creative strategist dedicated to crafting impactful digital experiences. With expertise in brand development and digital marketing, she brings a unique blend of creativity and technical acumen to the company. Her passion for innovation and eye for detail have played a crucial role in shaping Enegix Media into a full-service digital agency that delivers visually stunning and results-driven web solutions. Shreya believes in blending aesthetics with functionality, ensuring that every project not only looks exceptional but also achieves its intended impact.",
+  //   image: "/team/shreya.jpg",
+  //   socialLinks: {
+  //     facebook:
+  //       "https://www.facebook.com/profile.php?id=61574563300591&mibextid=wwXIfr&rdid=xtteN194F8ccVUqv&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1F3jvQrKje%2F%3Fmibextid%3DwwXIfr#",
+  //     instagram: "https://www.instagram.com/potaciumpandey",
+  //     linkedin:
+  //       "https://www.linkedin.com/in/shreya-raj-75569a34b/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+  //   },
+  //   featured: true,
+  // },
 ];
 
 // Interface for team member from API
@@ -365,7 +365,7 @@ export default function TeamPage() {
                 </div>
               </div>
               {/* Right: Hero Image/Collage */}
-              <div className="flex-1 flex items-center justify-center relative min-w-[280px] py-8 md:py-4">
+              {/* <div className="flex-1 flex items-center justify-center relative min-w-[280px] py-8 md:py-4">
                 <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem]">
                   {/* Main central image */}
                   <div className="absolute md:left-[340px] left-[220px]  md:top-1/2 top-60 -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-64 md:h-64  rounded-full border-4 border-teal-500 bg-gradient-to-br from-teal-50 to-white shadow-2xl overflow-hidden transform transition-transform duration-500 hover:scale-105">
@@ -376,7 +376,7 @@ export default function TeamPage() {
                       className="object-cover"
                       priority
                     />
-                  </div>
+                  </div> */}
 
                   {/* Secondary image - top left */}
                   <div className="absolute top-10 left-5 w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-teal-500 bg-white shadow-lg overflow-hidden transform -translate-x-1/4 -translate-y-1/4 transition-transform duration-500 hover:scale-110 hover:-rotate-3">
